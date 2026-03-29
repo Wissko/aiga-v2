@@ -5,6 +5,7 @@ import Link from 'next/link';
 import AnimatedSection from '@/components/AnimatedSection';
 import CountUp from '@/components/CountUp';
 import Marquee from '@/components/Marquee';
+import WaveBackground from '@/components/WaveBackground';
 
 const services = [
   {
@@ -111,6 +112,9 @@ export default function HomePage() {
           backgroundSize: '80px 80px',
           pointerEvents: 'none',
         }} />
+
+        {/* Animated wave background */}
+        <WaveBackground />
 
         <div style={{ position: 'relative', zIndex: 1 }}>
           {/* H1 — AIGA oversized */}
