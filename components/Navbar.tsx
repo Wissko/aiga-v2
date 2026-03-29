@@ -43,7 +43,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Trigger pill — top left */}
+      {/* Trigger pill */}
       <motion.button
         onClick={() => setOpen(true)}
         aria-label="Open navigation"
@@ -59,37 +59,37 @@ export default function Navbar() {
           alignItems: 'center',
           gap: '10px',
           padding: '7px 16px',
-          background: 'rgba(6,6,8,0.75)',
+          background: 'rgba(9,8,6,0.8)',
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
           borderRadius: '999px',
-          border: '1px solid rgba(99,102,241,0.3)',
+          border: '1px solid rgba(200,169,110,0.2)',
           cursor: 'pointer',
           transition: 'border-color 0.3s ease',
         }}
-        onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(99,102,241,0.65)'; }}
-        onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(99,102,241,0.3)'; }}
+        onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(200,169,110,0.5)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(200,169,110,0.2)'; }}
       >
         <span style={{
-          width: '6px',
-          height: '6px',
+          width: '5px',
+          height: '5px',
           borderRadius: '50%',
-          background: 'var(--grad)',
+          background: 'var(--gold)',
           flexShrink: 0,
         }} />
         <span style={{
           width: '1px',
           height: '10px',
-          background: 'rgba(255,255,255,0.1)',
+          background: 'rgba(200,169,110,0.2)',
           flexShrink: 0,
         }} />
         <span style={{
-          fontFamily: "'DM Sans', system-ui, sans-serif",
+          fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
           fontSize: '9px',
           fontWeight: 500,
           letterSpacing: '0.22em',
           textTransform: 'uppercase',
-          color: 'rgba(238,238,245,0.55)',
+          color: 'var(--muted2)',
           userSelect: 'none',
         }}>
           Menu
@@ -111,13 +111,13 @@ export default function Navbar() {
             gap: '6px',
             padding: '7px 18px',
             borderRadius: '999px',
-            background: 'var(--grad)',
-            fontFamily: "'DM Sans', system-ui, sans-serif",
+            background: 'var(--gold)',
+            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
             fontSize: '9px',
-            fontWeight: 500,
+            fontWeight: 600,
             letterSpacing: '0.18em',
             textTransform: 'uppercase',
-            color: '#fff',
+            color: '#090806',
             textDecoration: 'none',
             transition: 'opacity 0.2s ease',
           }}
@@ -158,20 +158,20 @@ export default function Navbar() {
                 border: 'none',
                 cursor: 'pointer',
                 padding: '8px',
-                opacity: 0.4,
+                opacity: 0.35,
                 lineHeight: 0,
                 transition: 'opacity 0.2s ease',
               }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.opacity = '1'; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.opacity = '0.4'; }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.opacity = '0.9'; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.opacity = '0.35'; }}
             >
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <line x1="4" y1="4" x2="24" y2="24" stroke="#eeeef5" strokeWidth="1" />
-                <line x1="24" y1="4" x2="4" y2="24" stroke="#eeeef5" strokeWidth="1" />
+                <line x1="4" y1="4" x2="24" y2="24" stroke="var(--text)" strokeWidth="1" />
+                <line x1="24" y1="4" x2="4" y2="24" stroke="var(--text)" strokeWidth="1" />
               </svg>
             </button>
 
-            {/* AIGA logo — Playfair Display italic */}
+            {/* AIGA wordmark */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -180,14 +180,12 @@ export default function Navbar() {
                 position: 'absolute',
                 top: 'clamp(1.5rem, 3vw, 2rem)',
                 left: 'clamp(1.5rem, 5vw, 3.5rem)',
-                fontFamily: "'Playfair Display', Georgia, serif",
+                fontFamily: "'Cormorant Garamond', Georgia, serif",
                 fontStyle: 'italic',
-                fontWeight: 700,
-                fontSize: '1.35rem',
+                fontWeight: 600,
+                fontSize: '1.5rem',
                 letterSpacing: '0.05em',
-                background: 'var(--grad)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+                color: 'var(--gold)',
               }}
             >
               AIGA
@@ -209,7 +207,7 @@ export default function Navbar() {
                   key={link.href}
                   style={{
                     overflow: 'hidden',
-                    borderBottom: '1px solid rgba(255,255,255,0.04)',
+                    borderBottom: '1px solid var(--border)',
                   }}
                 >
                   <motion.div
@@ -236,7 +234,7 @@ export default function Navbar() {
               transition={{ duration: 1, delay: 0.55, ease: EASE }}
               style={{
                 padding: 'clamp(1.25rem, 2.5vw, 2rem) clamp(1.5rem, 8vw, 8rem)',
-                borderTop: '1px solid rgba(201,169,110,0.15)',
+                borderTop: '1px solid var(--border)',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -245,20 +243,21 @@ export default function Navbar() {
               }}
             >
               <p style={{
-                fontFamily: "'DM Sans', system-ui, sans-serif",
+                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                 fontSize: '0.62rem',
                 letterSpacing: '0.22em',
                 textTransform: 'uppercase',
-                color: 'rgba(238,238,245,0.2)',
+                color: 'var(--muted)',
                 fontWeight: 400,
               }}>
                 AI Automation · Brisbane, Australia
               </p>
               <p style={{
-                fontFamily: "'DM Sans', system-ui, sans-serif",
+                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                 fontSize: '0.62rem',
                 letterSpacing: '0.18em',
-                color: 'rgba(99,102,241,0.45)',
+                color: 'var(--gold)',
+                opacity: 0.5,
                 fontWeight: 400,
               }}>
                 hello@aiga.au
@@ -303,31 +302,22 @@ function NavLink({
     >
       {active && (
         <span style={{
-          width: '6px',
-          height: '6px',
+          width: '5px',
+          height: '5px',
           borderRadius: '50%',
           background: 'var(--gold)',
           flexShrink: 0,
         }} />
       )}
       <span style={{
-        fontFamily: "'Playfair Display', Georgia, serif",
+        fontFamily: "'Cormorant Garamond', Georgia, serif",
         fontStyle: (active || hovered) ? 'italic' : 'normal',
-        fontWeight: 700,
+        fontWeight: 600,
         fontSize: 'clamp(2rem, 5vw, 4.25rem)',
         lineHeight: 1.05,
-        letterSpacing: '-0.03em',
-        color: active
-          ? 'transparent'
-          : hovered
-          ? 'transparent'
-          : '#eeeef5',
-        background: (active || hovered)
-          ? 'var(--grad)'
-          : 'none',
-        WebkitBackgroundClip: (active || hovered) ? 'text' : 'unset',
-        WebkitTextFillColor: (active || hovered) ? 'transparent' : 'unset',
-        transition: 'all 0.3s ease',
+        letterSpacing: '-0.02em',
+        color: (active || hovered) ? 'var(--gold)' : 'var(--text)',
+        transition: 'color 0.25s ease',
       }}>
         {label}
       </span>

@@ -4,6 +4,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
+import AnimatedBackground from '@/components/AnimatedBackground';
+import { WebsiteIcon, PhoneAIIcon, BookingsIcon, CRMIcon, BundleIcon } from '@/components/ServiceIcon';
+
+const serviceIconMap: Record<string, React.ReactNode> = {
+  websites: <WebsiteIcon />,
+  'phone-ai': <PhoneAIIcon />,
+  bookings: <BookingsIcon />,
+  crm: <CRMIcon />,
+  bundle: <BundleIcon />,
+};
 
 const services = [
   {
@@ -99,8 +109,9 @@ export default function ServicesPage() {
   return (
     <>
       {/* Header */}
-      <section className="pt-32 pb-16" style={{ borderBottom: '1px solid rgba(201,169,110,0.15)' }}>
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="relative pt-32 pb-16 overflow-hidden" style={{ borderBottom: '1px solid var(--border)' }}>
+        <AnimatedBackground />
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -109,21 +120,21 @@ export default function ServicesPage() {
           >
             <div className="overline mb-6">Services</div>
             <h1 style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
               fontStyle: 'italic',
-              fontWeight: 700,
-              fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-              lineHeight: 1.1,
-              letterSpacing: '-0.03em',
+              fontWeight: 300,
+              fontSize: 'clamp(2.5rem, 6vw, 5.5rem)',
+              lineHeight: 1.05,
+              letterSpacing: '-0.02em',
               marginBottom: '1.5rem',
               color: 'var(--text)',
             }}>
               AI-powered tools for
               <br />
-              <span className="grad-text">Australian businesses</span>
+              <span className="grad-gold-text">Australian businesses</span>
             </h1>
             <p style={{
-              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
               fontWeight: 300,
               fontSize: '1.1rem',
               color: 'var(--muted2)',
@@ -137,6 +148,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Services */}
+
       <section className="py-8">
         <div className="max-w-7xl mx-auto px-6">
           {services.map((service, i) => (
@@ -157,7 +169,7 @@ export default function ServicesPage() {
                       className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-white mb-4"
                       style={{
                         background: 'var(--grad-gold)',
-                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                         fontSize: '0.65rem',
                         fontWeight: 500,
                         letterSpacing: '0.1em',
@@ -179,18 +191,19 @@ export default function ServicesPage() {
                     </span>
                   </div>
                   <h2 style={{
-                    fontFamily: "'Playfair Display', Georgia, serif",
-                    fontWeight: 700,
-                    fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
-                    lineHeight: 1.15,
-                    letterSpacing: '-0.02em',
+                    fontFamily: "'Cormorant Garamond', Georgia, serif",
+                    fontStyle: 'italic',
+                    fontWeight: 300,
+                    fontSize: 'clamp(1.75rem, 3.5vw, 3rem)',
+                    lineHeight: 1.1,
+                    letterSpacing: '-0.01em',
                     color: 'var(--text)',
                     marginBottom: '0.5rem',
                   }}>
                     {service.title}
                   </h2>
                   <p style={{
-                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontFamily: "'Cormorant Garamond', Georgia, serif",
                     fontStyle: 'italic',
                     fontWeight: 400,
                     fontSize: '1.1rem',
@@ -200,7 +213,7 @@ export default function ServicesPage() {
                     {service.tagline}
                   </p>
                   <p style={{
-                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                     fontWeight: 300,
                     fontSize: '0.9rem',
                     color: 'var(--muted)',
@@ -215,14 +228,14 @@ export default function ServicesPage() {
                       <li key={b} className="flex items-start gap-2.5">
                         <span
                           className="w-4 h-4 rounded-full flex-shrink-0 mt-0.5 flex items-center justify-center"
-                          style={{ background: 'var(--grad)' }}
+                          style={{ background: 'var(--gold)' }}
                         >
                           <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
                             <path d="M1 3l2 2 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                           </svg>
                         </span>
                         <span style={{
-                          fontFamily: "'DM Sans', system-ui, sans-serif",
+                          fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                           fontWeight: 300,
                           fontSize: '0.875rem',
                           color: 'var(--muted2)',
@@ -242,13 +255,13 @@ export default function ServicesPage() {
                         gap: '8px',
                         padding: '11px 24px',
                         borderRadius: '999px',
-                        background: 'var(--grad)',
-                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        background: 'var(--gold)',
+                        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                         fontSize: '0.7rem',
-                        fontWeight: 500,
+                        fontWeight: 600,
                         letterSpacing: '0.15em',
                         textTransform: 'uppercase',
-                        color: '#fff',
+                        color: '#090806',
                         textDecoration: 'none',
                       }}
                     >
@@ -257,7 +270,7 @@ export default function ServicesPage() {
                     <Link
                       href="/pricing"
                       style={{
-                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                         fontSize: '0.875rem',
                         fontWeight: 300,
                         color: 'var(--muted)',
@@ -302,7 +315,7 @@ export default function ServicesPage() {
                       height={600}
                       className="w-full h-80 object-cover opacity-70"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-[#060608]/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-[#090806]/60 to-transparent" />
                   </div>
                 </AnimatedSection>
               </div>
@@ -312,11 +325,11 @@ export default function ServicesPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-24" style={{ borderTop: '1px solid rgba(201,169,110,0.15)' }}>
+      <section className="py-24" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="max-w-3xl mx-auto px-6 text-center">
           <AnimatedSection>
             <h2 style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
               fontStyle: 'italic',
               fontWeight: 700,
               fontSize: 'clamp(1.75rem, 4vw, 3rem)',
@@ -327,7 +340,7 @@ export default function ServicesPage() {
               Not sure where to start?
             </h2>
             <p style={{
-              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
               fontWeight: 300,
               color: 'var(--muted)',
               lineHeight: 1.8,
@@ -343,13 +356,13 @@ export default function ServicesPage() {
                 gap: '8px',
                 padding: '14px 32px',
                 borderRadius: '999px',
-                background: 'var(--grad)',
-                fontFamily: "'DM Sans', system-ui, sans-serif",
+                background: 'var(--gold)',
+                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                 fontSize: '0.75rem',
-                fontWeight: 500,
+                fontWeight: 600,
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: '#fff',
+                color: '#090806',
                 textDecoration: 'none',
               }}
             >

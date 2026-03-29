@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
+import AnimatedBackground from '@/components/AnimatedBackground';
 
 const plans = [
   {
@@ -99,8 +100,9 @@ export default function PricingPage() {
   return (
     <>
       {/* Header */}
-      <section className="pt-32 pb-16" style={{ borderBottom: '1px solid rgba(201,169,110,0.15)' }}>
-        <div className="max-w-7xl mx-auto px-6 text-center">
+      <section className="relative pt-32 pb-16 overflow-hidden" style={{ borderBottom: '1px solid var(--border)' }}>
+        <AnimatedBackground />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -108,9 +110,9 @@ export default function PricingPage() {
           >
             <div className="overline mb-6">Pricing</div>
             <h1 style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
               fontStyle: 'italic',
-              fontWeight: 700,
+              fontWeight: 300,
               fontSize: 'clamp(2.5rem, 6vw, 5rem)',
               lineHeight: 1.1,
               letterSpacing: '-0.03em',
@@ -122,7 +124,7 @@ export default function PricingPage() {
               <span className="grad-gold-text">no surprises</span>
             </h1>
             <p style={{
-              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
               fontWeight: 300,
               fontSize: '1.1rem',
               color: 'var(--muted2)',
@@ -143,7 +145,7 @@ export default function PricingPage() {
                 style={{
                   padding: '8px 20px',
                   borderRadius: '0.6rem',
-                  fontFamily: "'DM Sans', system-ui, sans-serif",
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                   fontSize: '0.8rem',
                   fontWeight: 400,
                   letterSpacing: '0.08em',
@@ -161,7 +163,7 @@ export default function PricingPage() {
                 style={{
                   padding: '8px 20px',
                   borderRadius: '0.6rem',
-                  fontFamily: "'DM Sans', system-ui, sans-serif",
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                   fontSize: '0.8rem',
                   fontWeight: 400,
                   letterSpacing: '0.08em',
@@ -192,7 +194,7 @@ export default function PricingPage() {
             >
               <div
                 className="absolute top-0 right-0 w-64 h-64 blur-3xl opacity-10 pointer-events-none"
-                style={{ background: 'var(--grad)' }}
+                style={{ background: 'var(--gold)' }}
               />
               <div className="relative z-10">
                 <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
@@ -201,7 +203,7 @@ export default function PricingPage() {
                       className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium text-white mb-3"
                       style={{
                         background: 'var(--grad-gold)',
-                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
                         fontSize: '0.65rem',
@@ -210,8 +212,8 @@ export default function PricingPage() {
                       {bundle.badge}
                     </div>
                     <h2 style={{
-                      fontFamily: "'Playfair Display', Georgia, serif",
-                      fontWeight: 700,
+                      fontFamily: "'Cormorant Garamond', Georgia, serif",
+                      fontWeight: 300,
                       fontSize: '1.75rem',
                       color: 'var(--text)',
                       marginBottom: '0.35rem',
@@ -219,7 +221,7 @@ export default function PricingPage() {
                       {bundle.title}
                     </h2>
                     <p style={{
-                      fontFamily: "'DM Sans', system-ui, sans-serif",
+                      fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                       fontWeight: 300,
                       fontSize: '0.875rem',
                       color: 'var(--muted)',
@@ -240,7 +242,7 @@ export default function PricingPage() {
                           ${billing === 'monthly' ? bundle.monthly.price : bundle.onetime.price}
                           {billing === 'monthly' && (
                             <span style={{
-                              fontFamily: "'DM Sans', system-ui, sans-serif",
+                              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                               fontSize: '1.1rem',
                               fontWeight: 300,
                               color: 'var(--muted)',
@@ -248,7 +250,7 @@ export default function PricingPage() {
                           )}
                         </div>
                         <div style={{
-                          fontFamily: "'DM Sans', system-ui, sans-serif",
+                          fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                           fontSize: '0.8rem',
                           fontWeight: 400,
                           color: 'var(--gold)',
@@ -266,14 +268,14 @@ export default function PricingPage() {
                     <li key={item} className="flex items-start gap-2.5">
                       <span
                         className="w-4 h-4 rounded-full flex-shrink-0 mt-0.5 flex items-center justify-center"
-                        style={{ background: 'var(--grad)' }}
+                        style={{ background: 'var(--gold)' }}
                       >
                         <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
                           <path d="M1 3l2 2 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </span>
                       <span style={{
-                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                         fontWeight: 300,
                         fontSize: '0.875rem',
                         color: 'var(--muted2)',
@@ -292,13 +294,13 @@ export default function PricingPage() {
                     gap: '8px',
                     padding: '12px 28px',
                     borderRadius: '999px',
-                    background: 'var(--grad)',
-                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    background: 'var(--gold)',
+                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                     fontSize: '0.7rem',
                     fontWeight: 500,
                     letterSpacing: '0.15em',
                     textTransform: 'uppercase',
-                    color: '#fff',
+                    color: '#090806',
                     textDecoration: 'none',
                   }}
                 >
@@ -315,7 +317,7 @@ export default function PricingPage() {
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection className="mb-8">
             <h2 style={{
-              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
               fontWeight: 300,
               fontSize: '1.25rem',
               color: 'var(--muted)',
@@ -340,7 +342,7 @@ export default function PricingPage() {
                     <div className="flex items-start justify-between gap-4 mb-5">
                       <div>
                         <h3 style={{
-                          fontFamily: "'Playfair Display', Georgia, serif",
+                          fontFamily: "'Cormorant Garamond', Georgia, serif",
                           fontWeight: 600,
                           fontSize: '1.1rem',
                           color: 'var(--text)',
@@ -349,7 +351,7 @@ export default function PricingPage() {
                           {plan.title}
                         </h3>
                         <p style={{
-                          fontFamily: "'DM Sans', system-ui, sans-serif",
+                          fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                           fontWeight: 300,
                           fontSize: '0.75rem',
                           color: 'var(--muted)',
@@ -371,7 +373,7 @@ export default function PricingPage() {
                           </div>
                           {billing === 'monthly' && (
                             <div style={{
-                              fontFamily: "'DM Sans', system-ui, sans-serif",
+                              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                               fontSize: '0.7rem',
                               fontWeight: 300,
                               color: 'var(--muted)',
@@ -389,7 +391,7 @@ export default function PricingPage() {
                         <li key={item} className="flex items-start gap-2">
                           <span style={{ color: 'var(--gold)', flexShrink: 0, marginTop: '0.1rem' }}>+</span>
                           <span style={{
-                            fontFamily: "'DM Sans', system-ui, sans-serif",
+                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                             fontWeight: 300,
                             fontSize: '0.875rem',
                             color: 'var(--muted)',
@@ -409,7 +411,7 @@ export default function PricingPage() {
                         gap: '8px',
                         padding: '10px 20px',
                         borderRadius: '999px',
-                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                         fontSize: '0.7rem',
                         fontWeight: 500,
                         letterSpacing: '0.15em',
@@ -431,12 +433,12 @@ export default function PricingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24" style={{ borderTop: '1px solid rgba(201,169,110,0.15)' }}>
+      <section className="py-24" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="max-w-3xl mx-auto px-6">
           <AnimatedSection className="text-center mb-12">
             <h2 style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
-              fontWeight: 700,
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontWeight: 300,
               fontSize: 'clamp(2rem, 4vw, 3rem)',
               lineHeight: 1.15,
               letterSpacing: '-0.02em',
@@ -446,7 +448,7 @@ export default function PricingPage() {
               Frequently asked questions
             </h2>
             <p style={{
-              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
               fontWeight: 300,
               color: 'var(--muted)',
             }}>
@@ -462,7 +464,7 @@ export default function PricingPage() {
                   style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}
                 >
                   <h3 style={{
-                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontFamily: "'Cormorant Garamond', Georgia, serif",
                     fontWeight: 600,
                     fontSize: '1rem',
                     color: 'var(--text)',
@@ -471,7 +473,7 @@ export default function PricingPage() {
                     {faq.q}
                   </h3>
                   <p style={{
-                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                     fontWeight: 300,
                     fontSize: '0.875rem',
                     color: 'var(--muted)',
@@ -486,7 +488,7 @@ export default function PricingPage() {
 
           <AnimatedSection className="mt-12 text-center">
             <p style={{
-              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
               fontWeight: 300,
               color: 'var(--muted)',
               marginBottom: '1rem',
@@ -501,13 +503,13 @@ export default function PricingPage() {
                 gap: '8px',
                 padding: '12px 28px',
                 borderRadius: '999px',
-                background: 'var(--grad)',
-                fontFamily: "'DM Sans', system-ui, sans-serif",
+                background: 'var(--gold)',
+                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                 fontSize: '0.7rem',
                 fontWeight: 500,
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: '#fff',
+                color: '#090806',
                 textDecoration: 'none',
               }}
             >

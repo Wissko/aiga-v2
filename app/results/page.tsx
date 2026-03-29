@@ -85,7 +85,7 @@ export default function ResultsPage() {
   return (
     <>
       {/* Header */}
-      <section className="pt-32 pb-16" style={{ borderBottom: '1px solid rgba(201,169,110,0.15)' }}>
+      <section className="pt-32 pb-16" style={{ borderBottom: '1px solid var(--border)' }}>
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -95,9 +95,9 @@ export default function ResultsPage() {
           >
             <div className="overline mb-6">Client results</div>
             <h1 style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
               fontStyle: 'italic',
-              fontWeight: 700,
+              fontWeight: 300,
               fontSize: 'clamp(2.5rem, 6vw, 5rem)',
               lineHeight: 1.1,
               letterSpacing: '-0.03em',
@@ -109,7 +109,7 @@ export default function ResultsPage() {
               <span className="grad-gold-text">real numbers</span>
             </h1>
             <p style={{
-              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
               fontWeight: 300,
               fontSize: '1.1rem',
               color: 'var(--muted2)',
@@ -132,13 +132,13 @@ export default function ResultsPage() {
                   style={{ background: 'var(--bg3)', border: '1px solid var(--border2)' }}
                 >
                   <div
-                    className="stat-number grad-text mb-2"
+                    className="stat-number grad-gold-text mb-2"
                     style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1 }}
                   >
                     {stat.value}
                   </div>
                   <div style={{
-                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                     fontSize: '0.75rem',
                     fontWeight: 300,
                     color: 'var(--muted)',
@@ -171,14 +171,14 @@ export default function ResultsPage() {
                       fill
                       className="object-cover opacity-60"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#111120] to-transparent md:bg-gradient-to-r" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#090806] to-transparent md:bg-gradient-to-r" />
                     <div className="absolute top-4 left-4">
                       <div
                         className="px-3 py-1.5 rounded-lg"
                         style={{
                           background: 'rgba(6,6,8,0.8)',
                           border: '1px solid var(--border)',
-                          fontFamily: "'DM Sans', system-ui, sans-serif",
+                          fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                           fontSize: '0.7rem',
                           fontWeight: 400,
                           letterSpacing: '0.1em',
@@ -195,8 +195,8 @@ export default function ResultsPage() {
                   <div className="p-8 md:p-10">
                     <div className="mb-6">
                       <h2 style={{
-                        fontFamily: "'Playfair Display', Georgia, serif",
-                        fontWeight: 700,
+                        fontFamily: "'Cormorant Garamond', Georgia, serif",
+                        fontWeight: 300,
                         fontSize: '1.5rem',
                         color: 'var(--text)',
                         marginBottom: '0.25rem',
@@ -204,7 +204,7 @@ export default function ResultsPage() {
                         {cs.business}
                       </h2>
                       <div style={{
-                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                         fontWeight: 300,
                         fontSize: '0.8rem',
                         color: 'var(--muted)',
@@ -248,7 +248,7 @@ export default function ResultsPage() {
                             {r.metric}
                           </div>
                           <div style={{
-                            fontFamily: "'DM Sans', system-ui, sans-serif",
+                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                             fontSize: '0.7rem',
                             fontWeight: 300,
                             color: 'var(--muted)',
@@ -264,7 +264,7 @@ export default function ResultsPage() {
                       style={{ borderLeft: '2px solid rgba(201,169,110,0.4)' }}
                     >
                       <p style={{
-                        fontFamily: "'Playfair Display', Georgia, serif",
+                        fontFamily: "'Cormorant Garamond', Georgia, serif",
                         fontStyle: 'italic',
                         fontWeight: 400,
                         fontSize: '0.9rem',
@@ -275,7 +275,7 @@ export default function ResultsPage() {
                         "{cs.quote}"
                       </p>
                       <cite style={{
-                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                         fontWeight: 300,
                         fontSize: '0.75rem',
                         color: 'var(--muted)',
@@ -290,7 +290,7 @@ export default function ResultsPage() {
                         <summary
                           className="list-none flex items-center gap-1.5 cursor-pointer"
                           style={{
-                            fontFamily: "'DM Sans', system-ui, sans-serif",
+                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                             fontSize: '0.75rem',
                             fontWeight: 400,
                             color: 'var(--muted)',
@@ -303,7 +303,7 @@ export default function ResultsPage() {
                         <p
                           className="mt-2 pl-4"
                           style={{
-                            fontFamily: "'DM Sans', system-ui, sans-serif",
+                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                             fontWeight: 300,
                             fontSize: '0.8rem',
                             color: 'var(--muted)',
@@ -317,7 +317,7 @@ export default function ResultsPage() {
                         <summary
                           className="list-none flex items-center gap-1.5 cursor-pointer"
                           style={{
-                            fontFamily: "'DM Sans', system-ui, sans-serif",
+                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                             fontSize: '0.75rem',
                             fontWeight: 400,
                             color: 'var(--muted)',
@@ -329,7 +329,7 @@ export default function ResultsPage() {
                         <p
                           className="mt-2 pl-4"
                           style={{
-                            fontFamily: "'DM Sans', system-ui, sans-serif",
+                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                             fontWeight: 300,
                             fontSize: '0.8rem',
                             color: 'var(--muted)',
@@ -360,7 +360,7 @@ export default function ResultsPage() {
               }}
             >
               <p style={{
-                fontFamily: "'DM Sans', system-ui, sans-serif",
+                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                 fontWeight: 300,
                 fontSize: '0.8rem',
                 color: 'var(--gold)',
@@ -375,13 +375,13 @@ export default function ResultsPage() {
       </section>
 
       {/* Lead-in CTA */}
-      <section className="py-24" style={{ borderTop: '1px solid rgba(201,169,110,0.15)' }}>
+      <section className="py-24" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <AnimatedSection direction="left">
               <h2 style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                fontWeight: 700,
+                fontFamily: "'Cormorant Garamond', Georgia, serif",
+                fontWeight: 300,
                 fontSize: 'clamp(1.75rem, 4vw, 3rem)',
                 lineHeight: 1.15,
                 letterSpacing: '-0.02em',
@@ -392,7 +392,7 @@ export default function ResultsPage() {
                 <span className="grad-gold-text" style={{ fontStyle: 'italic' }}>next</span>
               </h2>
               <p style={{
-                fontFamily: "'DM Sans', system-ui, sans-serif",
+                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                 fontWeight: 300,
                 fontSize: '0.95rem',
                 color: 'var(--muted)',
@@ -403,7 +403,7 @@ export default function ResultsPage() {
                 Not a proposal. Not a quote. Just an honest assessment.
               </p>
               <p style={{
-                fontFamily: "'DM Sans', system-ui, sans-serif",
+                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                 fontWeight: 300,
                 fontSize: '0.95rem',
                 color: 'var(--muted)',
@@ -422,8 +422,8 @@ export default function ResultsPage() {
                 }}
               >
                 <h3 style={{
-                  fontFamily: "'Playfair Display', Georgia, serif",
-                  fontWeight: 700,
+                  fontFamily: "'Cormorant Garamond', Georgia, serif",
+                  fontWeight: 300,
                   fontSize: '1.5rem',
                   color: 'var(--text)',
                   marginBottom: '1.5rem',
@@ -440,14 +440,14 @@ export default function ResultsPage() {
                     <li key={item} className="flex items-start gap-2.5">
                       <span
                         className="w-4 h-4 rounded-full flex-shrink-0 mt-0.5 flex items-center justify-center"
-                        style={{ background: 'var(--grad)' }}
+                        style={{ background: 'var(--gold)' }}
                       >
                         <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
                           <path d="M1 3l2 2 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </span>
                       <span style={{
-                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                         fontWeight: 300,
                         fontSize: '0.875rem',
                         color: 'var(--muted2)',
@@ -465,13 +465,13 @@ export default function ResultsPage() {
                     gap: '8px',
                     padding: '12px 24px',
                     borderRadius: '999px',
-                    background: 'var(--grad)',
-                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    background: 'var(--gold)',
+                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                     fontSize: '0.7rem',
                     fontWeight: 500,
                     letterSpacing: '0.15em',
                     textTransform: 'uppercase',
-                    color: '#fff',
+                    color: '#090806',
                     textDecoration: 'none',
                   }}
                 >

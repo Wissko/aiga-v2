@@ -1,19 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #060608;
-  --bg2: #0c0c14;
-  --bg3: #111120;
-  --accent: #6366f1;
-  --accent2: #a78bfa;
-  --gold: #c9a96e;
-  --text: #eeeef5;
-  --muted: #6b6b80;
-  --muted2: #9999b0;
-  --grad: linear-gradient(135deg, #6366f1, #a78bfa);
-  --grad-gold: linear-gradient(135deg, #c9a96e, #e8d5a3);
-  --border: rgba(255,255,255,0.06);
-  --border2: rgba(99,102,241,0.2);
+  /* ── Obsidian palette — warm dark, gold only ── */
+  --bg:    #090806;
+  --bg2:   #0f0e0b;
+  --bg3:   #161410;
+
+  --gold:  #c8a96e;
+  --gold2: #e8d5a3;
+
+  --text:   #e8e2d9;
+  --muted:  #6e6560;
+  --muted2: #9e9890;
+
+  --border:  rgba(200,169,110,0.10);
+  --border2: rgba(200,169,110,0.22);
+
+  /* Gold gradient — single accent */
+  --grad:      linear-gradient(135deg, #c8a96e, #e8d5a3);
+  --grad-gold: linear-gradient(135deg, #c8a96e, #e8d5a3);
 }
 
 @theme inline {
@@ -32,7 +37,7 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'DM Sans', system-ui, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -40,12 +45,12 @@ body {
 
 /* ── Typography utility classes ── */
 
-.font-playfair {
-  font-family: 'Playfair Display', Georgia, serif;
+.font-cormorant {
+  font-family: 'Cormorant Garamond', Georgia, serif;
 }
 
-.font-dm {
-  font-family: 'DM Sans', system-ui, sans-serif;
+.font-jakarta {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
 }
 
 .font-mono-space {
@@ -54,7 +59,7 @@ body {
 
 /* Overline / label style */
 .overline {
-  font-family: 'DM Sans', system-ui, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   font-size: 0.58rem;
   font-weight: 500;
   letter-spacing: 0.25em;
@@ -63,7 +68,7 @@ body {
 }
 
 .overline-muted {
-  font-family: 'DM Sans', system-ui, sans-serif;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
   font-size: 0.58rem;
   font-weight: 500;
   letter-spacing: 0.25em;
@@ -71,16 +76,16 @@ body {
   color: var(--muted2);
 }
 
-/* Stat number (Space Mono) */
+/* Stat number */
 .stat-number {
-  font-family: 'Space Mono', 'Courier New', monospace;
-  font-weight: 700;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  font-weight: 500;
 }
 
 /* Gold separator */
 .gold-divider {
   border: none;
-  border-top: 1px solid rgba(201, 169, 110, 0.3);
+  border-top: 1px solid rgba(200,169,110,0.25);
   width: 100%;
 }
 
@@ -129,15 +134,15 @@ body {
   background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e1e32;
+  background: #1e1b15;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
+  background: var(--gold);
 }
 
 /* ── Focus ring ── */
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--gold);
   outline-offset: 2px;
 }

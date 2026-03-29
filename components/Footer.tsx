@@ -18,32 +18,32 @@ const footerLinks = {
   ],
 };
 
+const J = "'Plus Jakarta Sans', system-ui, sans-serif";
+
 export default function Footer() {
   return (
-    <footer style={{ borderTop: '1px solid rgba(201,169,110,0.18)', background: 'var(--bg)' }}>
+    <footer style={{ borderTop: '1px solid var(--border)', background: 'var(--bg)' }}>
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-2">
             <div
-              className="mb-3"
+              className="mb-4"
               style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
+                fontFamily: "'Cormorant Garamond', Georgia, serif",
                 fontStyle: 'italic',
-                fontWeight: 700,
-                fontSize: '1.35rem',
+                fontWeight: 600,
+                fontSize: '1.5rem',
                 letterSpacing: '0.04em',
-                background: 'var(--grad)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+                color: 'var(--gold)',
               }}
             >
               AIGA
             </div>
             <p
-              className="max-w-xs leading-relaxed"
+              className="max-w-xs"
               style={{
-                fontFamily: "'DM Sans', system-ui, sans-serif",
+                fontFamily: J,
                 fontSize: '0.875rem',
                 fontWeight: 300,
                 color: 'var(--muted)',
@@ -61,15 +61,18 @@ export default function Footer() {
                   gap: '6px',
                   padding: '9px 20px',
                   borderRadius: '999px',
-                  background: 'var(--grad)',
-                  fontFamily: "'DM Sans', system-ui, sans-serif",
-                  fontSize: '0.7rem',
-                  fontWeight: 500,
+                  background: 'var(--gold)',
+                  fontFamily: J,
+                  fontSize: '0.65rem',
+                  fontWeight: 600,
                   letterSpacing: '0.15em',
                   textTransform: 'uppercase',
-                  color: '#fff',
+                  color: '#090806',
                   textDecoration: 'none',
+                  transition: 'opacity 0.2s ease',
                 }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.opacity = '0.85'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.opacity = '1'; }}
               >
                 Book a free strategy call
               </Link>
@@ -82,7 +85,7 @@ export default function Footer() {
               <h3
                 className="mb-4"
                 style={{
-                  fontFamily: "'DM Sans', system-ui, sans-serif",
+                  fontFamily: J,
                   fontSize: '0.58rem',
                   fontWeight: 500,
                   letterSpacing: '0.25em',
@@ -98,7 +101,7 @@ export default function Footer() {
                     <Link
                       href={item.href}
                       style={{
-                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontFamily: J,
                         fontSize: '0.875rem',
                         fontWeight: 300,
                         color: 'var(--muted)',
@@ -119,26 +122,12 @@ export default function Footer() {
 
         <div
           className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
-          style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}
+          style={{ borderTop: '1px solid var(--border)' }}
         >
-          <p
-            style={{
-              fontFamily: "'DM Sans', system-ui, sans-serif",
-              fontSize: '0.75rem',
-              fontWeight: 300,
-              color: 'var(--muted)',
-            }}
-          >
+          <p style={{ fontFamily: J, fontSize: '0.75rem', fontWeight: 300, color: 'var(--muted)' }}>
             2024 AIGA. All rights reserved. Based in Australia.
           </p>
-          <p
-            style={{
-              fontFamily: "'DM Sans', system-ui, sans-serif",
-              fontSize: '0.75rem',
-              fontWeight: 300,
-              color: 'var(--muted)',
-            }}
-          >
+          <p style={{ fontFamily: J, fontSize: '0.75rem', fontWeight: 300, color: 'var(--muted)' }}>
             Prices in AUD. GST may apply.
           </p>
         </div>

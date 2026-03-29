@@ -32,7 +32,7 @@ export default function ContactPage() {
     background: 'var(--bg3)',
     border: '1px solid var(--border)',
     color: 'var(--text)',
-    fontFamily: "'DM Sans', system-ui, sans-serif",
+    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
     fontSize: '0.9rem',
     fontWeight: 300,
     outline: 'none',
@@ -41,7 +41,7 @@ export default function ContactPage() {
 
   const labelStyle: React.CSSProperties = {
     display: 'block',
-    fontFamily: "'DM Sans', system-ui, sans-serif",
+    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
     fontSize: '0.6rem',
     fontWeight: 500,
     letterSpacing: '0.2em',
@@ -53,7 +53,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Header */}
-      <section className="pt-32 pb-16" style={{ borderBottom: '1px solid rgba(201,169,110,0.15)' }}>
+      <section className="pt-32 pb-16" style={{ borderBottom: '1px solid var(--border)' }}>
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -63,9 +63,9 @@ export default function ContactPage() {
           >
             <div className="overline mb-6">Contact</div>
             <h1 style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
               fontStyle: 'italic',
-              fontWeight: 700,
+              fontWeight: 300,
               fontSize: 'clamp(2.5rem, 6vw, 5rem)',
               lineHeight: 1.1,
               letterSpacing: '-0.03em',
@@ -77,7 +77,7 @@ export default function ContactPage() {
               <span className="grad-gold-text">free strategy call</span>
             </h1>
             <p style={{
-              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
               fontWeight: 300,
               fontSize: '1.1rem',
               color: 'var(--muted2)',
@@ -102,15 +102,15 @@ export default function ContactPage() {
                 >
                   <div
                     className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
-                    style={{ background: 'var(--grad)' }}
+                    style={{ background: 'var(--gold)' }}
                   >
                     <svg width="24" height="18" viewBox="0 0 24 18" fill="none">
                       <path d="M2 9l7 7L22 2" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </div>
                   <h2 style={{
-                    fontFamily: "'Playfair Display', Georgia, serif",
-                    fontWeight: 700,
+                    fontFamily: "'Cormorant Garamond', Georgia, serif",
+                    fontWeight: 300,
                     fontSize: '1.5rem',
                     color: 'var(--text)',
                     marginBottom: '0.75rem',
@@ -118,7 +118,7 @@ export default function ContactPage() {
                     Message sent
                   </h2>
                   <p style={{
-                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                     fontWeight: 300,
                     color: 'var(--muted)',
                     lineHeight: 1.7,
@@ -213,16 +213,16 @@ export default function ContactPage() {
                       width: '100%',
                       padding: '14px 20px',
                       borderRadius: '999px',
-                      background: 'var(--grad)',
+                      background: 'var(--gold)',
                       border: 'none',
                       cursor: status === 'sending' ? 'not-allowed' : 'pointer',
                       opacity: status === 'sending' ? 0.6 : 1,
-                      fontFamily: "'DM Sans', system-ui, sans-serif",
+                      fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                       fontSize: '0.75rem',
                       fontWeight: 500,
                       letterSpacing: '0.15em',
                       textTransform: 'uppercase',
-                      color: '#fff',
+                      color: '#090806',
                       transition: 'opacity 0.2s ease',
                     }}
                   >
@@ -230,7 +230,7 @@ export default function ContactPage() {
                   </button>
 
                   <p style={{
-                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                     fontWeight: 300,
                     fontSize: '0.75rem',
                     color: 'var(--muted)',
@@ -247,7 +247,7 @@ export default function ContactPage() {
               <div className="space-y-6">
                 <div>
                   <h2 style={{
-                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontFamily: "'Cormorant Garamond', Georgia, serif",
                     fontWeight: 600,
                     fontSize: '1.5rem',
                     color: 'var(--text)',
@@ -270,13 +270,13 @@ export default function ContactPage() {
                             border: '1px solid var(--border2)',
                           }}
                         >
-                          <span className="stat-number" style={{ fontSize: '0.6rem', color: 'var(--accent2)' }}>
+                          <span className="stat-number" style={{ fontSize: '0.6rem', color: 'var(--gold2)' }}>
                             {item.step}
                           </span>
                         </div>
                         <div>
                           <div style={{
-                            fontFamily: "'DM Sans', system-ui, sans-serif",
+                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                             fontSize: '0.9rem',
                             fontWeight: 500,
                             color: 'var(--text)',
@@ -285,7 +285,7 @@ export default function ContactPage() {
                             {item.title}
                           </div>
                           <div style={{
-                            fontFamily: "'DM Sans', system-ui, sans-serif",
+                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                             fontWeight: 300,
                             fontSize: '0.8rem',
                             color: 'var(--muted)',
@@ -307,7 +307,7 @@ export default function ContactPage() {
                   style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}
                 >
                   <h3 style={{
-                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                     fontWeight: 500,
                     fontSize: '0.9rem',
                     color: 'var(--text)',
@@ -322,7 +322,7 @@ export default function ContactPage() {
                         style={{
                           padding: '4px 10px',
                           borderRadius: '6px',
-                          fontFamily: "'DM Sans', system-ui, sans-serif",
+                          fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                           fontWeight: 300,
                           fontSize: '0.75rem',
                           color: 'var(--muted)',
@@ -341,7 +341,7 @@ export default function ContactPage() {
                   style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}
                 >
                   <h3 style={{
-                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                     fontWeight: 500,
                     fontSize: '0.9rem',
                     color: 'var(--text)',
@@ -350,7 +350,7 @@ export default function ContactPage() {
                     Based in Australia
                   </h3>
                   <p style={{
-                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                     fontWeight: 300,
                     fontSize: '0.875rem',
                     color: 'var(--muted)',

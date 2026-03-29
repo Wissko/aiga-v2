@@ -32,7 +32,7 @@ export default function AboutPage() {
   return (
     <>
       {/* Header */}
-      <section className="pt-32 pb-20" style={{ borderBottom: '1px solid rgba(201,169,110,0.15)' }}>
+      <section className="pt-32 pb-20" style={{ borderBottom: '1px solid var(--border)' }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -42,9 +42,9 @@ export default function AboutPage() {
             >
               <div className="overline mb-6">About AIGA</div>
               <h1 style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
+                fontFamily: "'Cormorant Garamond', Georgia, serif",
                 fontStyle: 'italic',
-                fontWeight: 700,
+                fontWeight: 300,
                 fontSize: 'clamp(2.5rem, 6vw, 5rem)',
                 lineHeight: 1.1,
                 letterSpacing: '-0.03em',
@@ -56,7 +56,7 @@ export default function AboutPage() {
                 <span className="grad-gold-text">that keep Australia running</span>
               </h1>
               <p style={{
-                fontFamily: "'DM Sans', system-ui, sans-serif",
+                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                 fontWeight: 300,
                 fontSize: '1.05rem',
                 color: 'var(--muted2)',
@@ -67,7 +67,7 @@ export default function AboutPage() {
                 Not because the tools do not exist, but because no one builds, integrates, and maintains them at a price that makes sense.
               </p>
               <p style={{
-                fontFamily: "'DM Sans', system-ui, sans-serif",
+                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                 fontWeight: 300,
                 fontSize: '1rem',
                 color: 'var(--muted)',
@@ -95,7 +95,7 @@ export default function AboutPage() {
                   className="w-full h-80 object-cover opacity-70"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#060608]/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#090806]/60 to-transparent" />
               </div>
             </motion.div>
           </div>
@@ -118,19 +118,19 @@ export default function AboutPage() {
                   height={600}
                   className="w-full h-96 object-cover opacity-70"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#060608]/70 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#090806]/70 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <div style={{
-                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontFamily: "'Cormorant Garamond', Georgia, serif",
                     fontStyle: 'italic',
-                    fontWeight: 700,
+                    fontWeight: 300,
                     fontSize: '1.35rem',
                     color: 'var(--text)',
                   }}>
                     Yose
                   </div>
                   <div style={{
-                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                     fontWeight: 300,
                     fontSize: '0.8rem',
                     color: 'var(--muted)',
@@ -145,7 +145,7 @@ export default function AboutPage() {
             <AnimatedSection direction="right" delay={0.2}>
               <div className="overline mb-6">The founder</div>
               <h2 style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
+                fontFamily: "'Cormorant Garamond', Georgia, serif",
                 fontWeight: 600,
                 fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
                 lineHeight: 1.2,
@@ -163,7 +163,7 @@ export default function AboutPage() {
                   'That is the gap AIGA fills. We are not a software company. We are the team that builds, connects, and maintains the systems that keep your business running smoothly, so you can focus on what you actually do well.',
                 ].map((text, i) => (
                   <p key={i} style={{
-                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                     fontWeight: 300,
                     fontSize: '0.95rem',
                     color: 'var(--muted)',
@@ -182,13 +182,13 @@ export default function AboutPage() {
                     gap: '8px',
                     padding: '12px 24px',
                     borderRadius: '999px',
-                    background: 'var(--grad)',
-                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    background: 'var(--gold)',
+                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                     fontSize: '0.7rem',
                     fontWeight: 500,
                     letterSpacing: '0.15em',
                     textTransform: 'uppercase',
-                    color: '#fff',
+                    color: '#090806',
                     textDecoration: 'none',
                   }}
                 >
@@ -201,12 +201,12 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-24" style={{ borderTop: '1px solid rgba(201,169,110,0.15)' }}>
+      <section className="py-24" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection className="mb-16">
             <h2 style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
-              fontWeight: 700,
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontWeight: 300,
               fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
               lineHeight: 1.1,
               letterSpacing: '-0.02em',
@@ -226,7 +226,7 @@ export default function AboutPage() {
                   {/* Gold accent */}
                   <div style={{ height: '1px', background: 'rgba(201,169,110,0.3)', marginBottom: '1.25rem' }} />
                   <h3 style={{
-                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontFamily: "'Cormorant Garamond', Georgia, serif",
                     fontWeight: 600,
                     fontSize: '1.1rem',
                     color: 'var(--text)',
@@ -235,7 +235,7 @@ export default function AboutPage() {
                     {v.title}
                   </h3>
                   <p style={{
-                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                     fontWeight: 300,
                     fontSize: '0.875rem',
                     color: 'var(--muted)',
@@ -255,8 +255,8 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection className="text-center mb-12">
             <h2 style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
-              fontWeight: 700,
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontWeight: 300,
               fontSize: 'clamp(1.75rem, 4vw, 3rem)',
               letterSpacing: '-0.02em',
               marginBottom: '1rem',
@@ -265,7 +265,7 @@ export default function AboutPage() {
               Tools we build with
             </h2>
             <p style={{
-              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
               fontWeight: 300,
               color: 'var(--muted)',
               maxWidth: '36rem',
@@ -303,7 +303,7 @@ export default function AboutPage() {
       </section>
 
       {/* Stats */}
-      <section className="py-20" style={{ borderTop: '1px solid rgba(201,169,110,0.15)', borderBottom: '1px solid rgba(201,169,110,0.15)' }}>
+      <section className="py-20" style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
@@ -314,13 +314,13 @@ export default function AboutPage() {
             ].map((stat, i) => (
               <AnimatedSection key={stat.value} delay={i * 0.1} className="text-center">
                 <div
-                  className="stat-number grad-text mb-2"
+                  className="stat-number grad-gold-text mb-2"
                   style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1 }}
                 >
                   {stat.value}
                 </div>
                 <div style={{
-                  fontFamily: "'DM Sans', system-ui, sans-serif",
+                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                   fontSize: '0.8rem',
                   fontWeight: 300,
                   color: 'var(--muted)',
@@ -338,9 +338,9 @@ export default function AboutPage() {
         <div className="max-w-3xl mx-auto px-6 text-center">
           <AnimatedSection>
             <h2 style={{
-              fontFamily: "'Playfair Display', Georgia, serif",
+              fontFamily: "'Cormorant Garamond', Georgia, serif",
               fontStyle: 'italic',
-              fontWeight: 700,
+              fontWeight: 300,
               fontSize: 'clamp(1.75rem, 4vw, 3rem)',
               letterSpacing: '-0.02em',
               marginBottom: '1rem',
@@ -349,7 +349,7 @@ export default function AboutPage() {
               Want to work with us?
             </h2>
             <p style={{
-              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
               fontWeight: 300,
               color: 'var(--muted)',
               lineHeight: 1.8,
@@ -365,13 +365,13 @@ export default function AboutPage() {
                 gap: '8px',
                 padding: '14px 32px',
                 borderRadius: '999px',
-                background: 'var(--grad)',
-                fontFamily: "'DM Sans', system-ui, sans-serif",
+                background: 'var(--gold)',
+                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
                 fontSize: '0.75rem',
                 fontWeight: 500,
                 letterSpacing: '0.15em',
                 textTransform: 'uppercase',
-                color: '#fff',
+                color: '#090806',
                 textDecoration: 'none',
               }}
             >
