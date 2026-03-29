@@ -179,7 +179,7 @@ export default function HomePage() {
 
             {/* Right: meta */}
             <p className="label" style={{ color: 'var(--muted-dark)' }}>
-              Brisbane, Australia · Est. 2024
+              Brisbane, Australia
             </p>
           </div>
         </div>
@@ -196,7 +196,6 @@ export default function HomePage() {
         }}
       >
         <AnimatedSection>
-          <p className="label" style={{ marginBottom: '2rem' }}>(Est. 2024)</p>
           <h2 style={{
             fontFamily: 'Satoshi, sans-serif',
             fontWeight: 500,

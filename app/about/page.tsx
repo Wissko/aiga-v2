@@ -1,4 +1,6 @@
 'use client';
+import LiquidBackground from '@/components/LiquidBackground';
+import ParticleWaves from '@/components/ParticleWaves';
 
 import Link from 'next/link';
 import AnimatedSection from '@/components/AnimatedSection';
@@ -43,8 +45,13 @@ export default function AboutPage() {
           flexDirection: 'column',
           justifyContent: 'flex-end',
           padding: 'clamp(6rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem) clamp(3rem, 5vw, 5rem)',
+        
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
+        <LiquidBackground />
+        <ParticleWaves />
         <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
           Who we are
         </p>
@@ -104,7 +111,7 @@ export default function AboutPage() {
 
           <AnimatedSection delay={0.15}>
             <p style={{ fontSize: '16px', lineHeight: 1.75, color: 'var(--muted-light)', marginBottom: '1.5rem' }}>
-              AIGA was founded in Brisbane in 2024 with a straightforward mission: make the automation tools that large corporations use accessible to small businesses across Australia.
+              AIGA was built with a straightforward mission: make the automation tools that large corporations use accessible to small businesses across Australia.
             </p>
             <p style={{ fontSize: '16px', lineHeight: 1.75, color: 'var(--muted-light)', marginBottom: '1.5rem' }}>
               We watched restaurants, salons, health clinics, and retail stores struggle not because they weren't good at what they did, but because the systems supporting their business were broken. Missed calls. Manual bookings. No follow-up. Websites built years ago that no longer served them.

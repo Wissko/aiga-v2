@@ -1,4 +1,6 @@
 'use client';
+import LiquidBackground from '@/components/LiquidBackground';
+import ParticleWaves from '@/components/ParticleWaves';
 
 import Link from 'next/link';
 import AnimatedSection from '@/components/AnimatedSection';
@@ -109,9 +111,13 @@ export default function ServicesPage() {
           flexDirection: 'column',
           justifyContent: 'flex-end',
           padding: 'clamp(6rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem) clamp(3rem, 5vw, 5rem)',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
-        <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
+        <LiquidBackground />
+        <ParticleWaves />
+        <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem', position: 'relative', zIndex: 2 }}>
           What we do
         </p>
         <h1 style={{

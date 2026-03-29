@@ -1,4 +1,6 @@
 'use client';
+import LiquidBackground from '@/components/LiquidBackground';
+import ParticleWaves from '@/components/ParticleWaves';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -84,8 +86,13 @@ export default function PricingPage() {
           flexDirection: 'column',
           justifyContent: 'flex-end',
           padding: 'clamp(6rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem) clamp(3rem, 5vw, 5rem)',
+        
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
+        <LiquidBackground />
+        <ParticleWaves />
         <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
           Simple pricing
         </p>
