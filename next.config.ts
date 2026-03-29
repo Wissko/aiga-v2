@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Use webpack (stable) instead of Turbopack to avoid SSG/client-hook conflicts
+  experimental: {},
   images: {
     remotePatterns: [
       {

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { Suspense } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
@@ -30,9 +31,9 @@ export default function RootLayout({
         <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400,300&display=swap" rel="stylesheet" />
       </head>
       <body className="min-h-screen flex flex-col">
-        <Navbar />
+        <Suspense fallback={null}><Navbar /></Suspense>
         <main className="flex-1">{children}</main>
-        <Footer />
+        <Suspense fallback={null}><Footer /></Suspense>
       </body>
     </html>
   );
