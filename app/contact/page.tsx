@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
+import Marquee from '@/components/Marquee';
 
 export default function ContactPage() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
@@ -27,162 +27,231 @@ export default function ContactPage() {
 
   const inputStyle: React.CSSProperties = {
     width: '100%',
-    padding: '12px 16px',
-    borderRadius: '10px',
-    background: 'var(--bg3)',
-    border: '1px solid var(--border)',
-    color: 'var(--text)',
-    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-    fontSize: '0.9rem',
-    fontWeight: 300,
+    padding: '14px 18px',
+    background: 'transparent',
+    border: '1px solid var(--border-light)',
+    color: 'var(--black)',
+    fontFamily: 'Satoshi, sans-serif',
+    fontSize: '15px',
+    fontWeight: 400,
     outline: 'none',
     transition: 'border-color 0.2s ease',
+    borderRadius: 0,
   };
 
   const labelStyle: React.CSSProperties = {
     display: 'block',
-    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-    fontSize: '0.6rem',
-    fontWeight: 500,
-    letterSpacing: '0.2em',
-    textTransform: 'uppercase' as const,
-    color: 'var(--muted)',
-    marginBottom: '6px',
+    fontFamily: 'Satoshi, sans-serif',
+    fontSize: '11px',
+    fontWeight: 400,
+    letterSpacing: '0.12em',
+    textTransform: 'uppercase',
+    color: 'var(--muted-light)',
+    marginBottom: '8px',
   };
 
   return (
     <>
-      {/* Header */}
-      <section className="pt-32 pb-16" style={{ borderBottom: '1px solid var(--border)' }}>
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-2xl"
-          >
-            <div className="overline mb-6">Contact</div>
-            <h1 style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontStyle: 'italic',
-              fontWeight: 300,
-              fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-              lineHeight: 1.1,
-              letterSpacing: '-0.03em',
-              marginBottom: '1.5rem',
-              color: 'var(--text)',
-            }}>
-              Start with a
-              <br />
-              <span className="grad-gold-text">free strategy call</span>
-            </h1>
-            <p style={{
-              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-              fontWeight: 300,
-              fontSize: '1.1rem',
-              color: 'var(--muted2)',
-              lineHeight: 1.8,
-            }}>
-              30 minutes. No sales pitch. We will map out which automations would have the biggest impact on your business and give you an honest assessment.
-            </p>
-          </motion.div>
-        </div>
+      {/* Hero */}
+      <section
+        className="section-dark"
+        style={{
+          minHeight: '60vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          padding: 'clamp(6rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem) clamp(3rem, 5vw, 5rem)',
+        }}
+      >
+        <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
+          Get in touch
+        </p>
+        <h1 style={{
+          fontFamily: 'Satoshi, sans-serif',
+          fontWeight: 900,
+          fontSize: 'clamp(64px, 12vw, 140px)',
+          letterSpacing: '-0.03em',
+          lineHeight: 0.9,
+          textTransform: 'uppercase',
+          color: 'var(--white)',
+          marginBottom: '2rem',
+        }}>
+          CONTACT
+        </h1>
+        <p style={{
+          fontFamily: 'Satoshi, sans-serif',
+          fontSize: 'clamp(16px, 2vw, 22px)',
+          color: 'var(--muted-dark)',
+          maxWidth: '480px',
+          lineHeight: 1.6,
+        }}>
+          Start with a free strategy call. No pressure, no pitch: just an honest conversation about your business.
+        </p>
       </section>
 
-      {/* Content */}
-      <section className="py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16">
-            {/* Form */}
-            <AnimatedSection direction="left">
-              {status === 'sent' ? (
-                <div
-                  className="p-8 rounded-2xl text-center"
-                  style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}
-                >
-                  <div
-                    className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
-                    style={{ background: 'var(--gold)' }}
-                  >
-                    <svg width="24" height="18" viewBox="0 0 24 18" fill="none">
-                      <path d="M2 9l7 7L22 2" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </div>
-                  <h2 style={{
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontWeight: 300,
-                    fontSize: '1.5rem',
-                    color: 'var(--text)',
-                    marginBottom: '0.75rem',
+      <Marquee text="Let's talk" separator="·" dark={true} size="md" speed={22} />
+
+      {/* Form section */}
+      <section
+        className="section-light"
+        style={{ padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)' }}
+      >
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: 'clamp(3rem, 6vw, 8rem)',
+          maxWidth: '1200px',
+          margin: '0 auto',
+        }}>
+          {/* Left: info */}
+          <AnimatedSection>
+            <h2 style={{
+              fontFamily: 'Satoshi, sans-serif',
+              fontWeight: 700,
+              fontSize: 'clamp(28px, 4vw, 48px)',
+              letterSpacing: '-0.02em',
+              lineHeight: 1.0,
+              color: 'var(--black)',
+              marginBottom: '2rem',
+            }}>
+              We'd love to hear about your business.
+            </h2>
+
+            <div style={{ marginBottom: '3rem' }}>
+              {[
+                { label: 'Email', value: 'hello@aiga.au' },
+                { label: 'Location', value: 'Brisbane, Australia' },
+                { label: 'Hours', value: 'Mon to Fri, 9am to 5pm AEST' },
+                { label: 'Response time', value: 'Within 24 hours' },
+              ].map((item) => (
+                <div key={item.label} style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  padding: '1rem 0',
+                  borderBottom: '1px solid var(--border-light)',
+                }}>
+                  <span className="label">{item.label}</span>
+                  <span style={{
+                    fontFamily: 'Satoshi, sans-serif',
+                    fontSize: '14px',
+                    color: 'var(--black)',
                   }}>
-                    Message sent
-                  </h2>
-                  <p style={{
-                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                    fontWeight: 300,
-                    color: 'var(--muted)',
-                    lineHeight: 1.7,
-                  }}>
-                    We will get back to you within 24 hours to schedule your strategy call.
-                  </p>
+                    {item.value}
+                  </span>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <label style={labelStyle}>Your name</label>
-                      <input
-                        name="name"
-                        value={form.name}
-                        onChange={handleChange}
-                        required
-                        placeholder="Sarah Mitchell"
-                        style={inputStyle}
-                        onFocus={(e) => { e.currentTarget.style.borderColor = 'var(--border2)'; }}
-                        onBlur={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; }}
-                      />
-                    </div>
-                    <div>
-                      <label style={labelStyle}>Email</label>
-                      <input
-                        name="email"
-                        type="email"
-                        value={form.email}
-                        onChange={handleChange}
-                        required
-                        placeholder="sarah@yourbusiness.com.au"
-                        style={inputStyle}
-                        onFocus={(e) => { e.currentTarget.style.borderColor = 'var(--border2)'; }}
-                        onBlur={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; }}
-                      />
-                    </div>
+              ))}
+            </div>
+
+            <div style={{
+              padding: '2rem',
+              border: '1px solid var(--border-light)',
+              background: 'rgba(0,0,0,0.02)',
+            }}>
+              <p className="label" style={{ marginBottom: '0.75rem' }}>What to expect</p>
+              <ul style={{ listStyle: 'none' }}>
+                {[
+                  'A 30-minute call to understand your business',
+                  'An honest assessment of what automation would actually help',
+                  'A clear proposal with pricing within 48 hours',
+                  'No obligation, no pressure',
+                ].map((item, i) => (
+                  <li key={i} style={{
+                    display: 'flex',
+                    gap: '10px',
+                    padding: '6px 0',
+                    fontFamily: 'Satoshi, sans-serif',
+                    fontSize: '14px',
+                    color: 'var(--muted-light)',
+                    lineHeight: 1.6,
+                  }}>
+                    <span style={{ color: 'var(--accent)', filter: 'brightness(0.7)' }}>✦</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </AnimatedSection>
+
+          {/* Right: form */}
+          <AnimatedSection delay={0.15}>
+            {status === 'sent' ? (
+              <div style={{
+                padding: '3rem',
+                border: '1px solid var(--border-light)',
+                textAlign: 'center',
+              }}>
+                <span style={{ color: 'var(--accent)', filter: 'brightness(0.7)', fontSize: '2rem', display: 'block', marginBottom: '1rem' }}>✦</span>
+                <h3 style={{
+                  fontFamily: 'Satoshi, sans-serif',
+                  fontWeight: 700,
+                  fontSize: '24px',
+                  color: 'var(--black)',
+                  marginBottom: '0.75rem',
+                }}>
+                  Message received.
+                </h3>
+                <p style={{ fontFamily: 'Satoshi, sans-serif', fontSize: '15px', color: 'var(--muted-light)', lineHeight: 1.7 }}>
+                  We'll be in touch within 24 hours to schedule your free strategy call.
+                </p>
+              </div>
+            ) : (
+              <form onSubmit={handleSubmit}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                  <div>
+                    <label style={labelStyle}>Your name</label>
+                    <input
+                      name="name"
+                      type="text"
+                      required
+                      value={form.name}
+                      onChange={handleChange}
+                      placeholder="Sarah Mitchell"
+                      style={inputStyle}
+                      onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.4)'; }}
+                      onBlur={(e) => { e.currentTarget.style.borderColor = 'var(--border-light)'; }}
+                    />
+                  </div>
+
+                  <div>
+                    <label style={labelStyle}>Email address</label>
+                    <input
+                      name="email"
+                      type="email"
+                      required
+                      value={form.email}
+                      onChange={handleChange}
+                      placeholder="hello@yourbusiness.com.au"
+                      style={inputStyle}
+                      onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.4)'; }}
+                      onBlur={(e) => { e.currentTarget.style.borderColor = 'var(--border-light)'; }}
+                    />
                   </div>
 
                   <div>
                     <label style={labelStyle}>Business name</label>
                     <input
                       name="business"
+                      type="text"
                       value={form.business}
                       onChange={handleChange}
-                      required
-                      placeholder="Your Business Name"
+                      placeholder="Your Business Pty Ltd"
                       style={inputStyle}
-                      onFocus={(e) => { e.currentTarget.style.borderColor = 'var(--border2)'; }}
-                      onBlur={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; }}
+                      onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.4)'; }}
+                      onBlur={(e) => { e.currentTarget.style.borderColor = 'var(--border-light)'; }}
                     />
                   </div>
 
                   <div>
-                    <label style={labelStyle}>Service you are interested in</label>
+                    <label style={labelStyle}>Service you're interested in</label>
                     <select
                       name="service"
                       value={form.service}
                       onChange={handleChange}
-                      style={{ ...inputStyle, color: form.service ? 'var(--text)' : 'var(--muted)' }}
-                      onFocus={(e) => { e.currentTarget.style.borderColor = 'var(--border2)'; }}
-                      onBlur={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; }}
+                      style={{ ...inputStyle, appearance: 'none' }}
+                      onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.4)'; }}
+                      onBlur={(e) => { e.currentTarget.style.borderColor = 'var(--border-light)'; }}
                     >
-                      <option value="">Select a service...</option>
+                      <option value="">Select a service</option>
                       <option value="websites">Website Creation</option>
                       <option value="phone-ai">Phone AI Automation</option>
                       <option value="bookings">Automated Bookings</option>
@@ -196,172 +265,28 @@ export default function ContactPage() {
                     <label style={labelStyle}>Tell us about your business</label>
                     <textarea
                       name="message"
+                      rows={5}
                       value={form.message}
                       onChange={handleChange}
-                      rows={4}
-                      placeholder="What kind of business do you run? What is your biggest challenge right now?"
+                      placeholder="What does your business do, and what's the main challenge you're facing right now?"
                       style={{ ...inputStyle, resize: 'none' }}
-                      onFocus={(e) => { e.currentTarget.style.borderColor = 'var(--border2)'; }}
-                      onBlur={(e) => { e.currentTarget.style.borderColor = 'var(--border)'; }}
+                      onFocus={(e) => { e.currentTarget.style.borderColor = 'rgba(0,0,0,0.4)'; }}
+                      onBlur={(e) => { e.currentTarget.style.borderColor = 'var(--border-light)'; }}
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={status === 'sending'}
-                    style={{
-                      width: '100%',
-                      padding: '14px 20px',
-                      borderRadius: '999px',
-                      background: 'var(--gold)',
-                      border: 'none',
-                      cursor: status === 'sending' ? 'not-allowed' : 'pointer',
-                      opacity: status === 'sending' ? 0.6 : 1,
-                      fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                      fontSize: '0.75rem',
-                      fontWeight: 500,
-                      letterSpacing: '0.15em',
-                      textTransform: 'uppercase',
-                      color: '#090806',
-                      transition: 'opacity 0.2s ease',
-                    }}
+                    className="cta-btn-light"
+                    style={{ border: '1px solid var(--border-light)', cursor: status === 'sending' ? 'wait' : 'pointer' }}
                   >
-                    {status === 'sending' ? 'Sending...' : 'Book my free strategy call'}
+                    {status === 'sending' ? 'Sending...' : 'Send message →'}
                   </button>
-
-                  <p style={{
-                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                    fontWeight: 300,
-                    fontSize: '0.75rem',
-                    color: 'var(--muted)',
-                    textAlign: 'center',
-                  }}>
-                    We typically respond within a few hours during business days.
-                  </p>
-                </form>
-              )}
-            </AnimatedSection>
-
-            {/* Info */}
-            <AnimatedSection direction="right" delay={0.2}>
-              <div className="space-y-6">
-                <div>
-                  <h2 style={{
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontWeight: 600,
-                    fontSize: '1.5rem',
-                    color: 'var(--text)',
-                    marginBottom: '1.25rem',
-                  }}>
-                    What to expect
-                  </h2>
-                  <div className="space-y-4">
-                    {[
-                      { step: '01', title: 'We review your submission', desc: 'Within a few hours, we will look at your business and prepare relevant questions and ideas.' },
-                      { step: '02', title: 'Schedule your call', desc: 'We will send a booking link so you can choose a time that works for you.' },
-                      { step: '03', title: '30-minute strategy session', desc: 'An honest, no-pressure conversation about where AI automation fits your business.' },
-                      { step: '04', title: 'Receive a clear plan', desc: 'After the call, we will send a written summary of what we recommend and how much it costs.' },
-                    ].map((item) => (
-                      <div key={item.step} className="flex gap-4">
-                        <div
-                          className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
-                          style={{
-                            background: 'var(--bg3)',
-                            border: '1px solid var(--border2)',
-                          }}
-                        >
-                          <span className="stat-number" style={{ fontSize: '0.6rem', color: 'var(--gold2)' }}>
-                            {item.step}
-                          </span>
-                        </div>
-                        <div>
-                          <div style={{
-                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                            fontSize: '0.9rem',
-                            fontWeight: 500,
-                            color: 'var(--text)',
-                            marginBottom: '0.25rem',
-                          }}>
-                            {item.title}
-                          </div>
-                          <div style={{
-                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                            fontWeight: 300,
-                            fontSize: '0.8rem',
-                            color: 'var(--muted)',
-                            lineHeight: 1.7,
-                          }}>
-                            {item.desc}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
                 </div>
-
-                {/* Gold divider */}
-                <div style={{ height: '1px', background: 'rgba(201,169,110,0.2)' }} />
-
-                <div
-                  className="p-5 rounded-xl"
-                  style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}
-                >
-                  <h3 style={{
-                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                    fontWeight: 500,
-                    fontSize: '0.9rem',
-                    color: 'var(--text)',
-                    marginBottom: '0.75rem',
-                  }}>
-                    Who we work with
-                  </h3>
-                  <div className="flex flex-wrap gap-2">
-                    {['Restaurants', 'Cafes', 'Hair salons', 'Beauty clinics', 'Physios', 'Dentists', 'Retail shops', 'Trades', 'Gyms', 'Yoga studios'].map((type) => (
-                      <span
-                        key={type}
-                        style={{
-                          padding: '4px 10px',
-                          borderRadius: '6px',
-                          fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                          fontWeight: 300,
-                          fontSize: '0.75rem',
-                          color: 'var(--muted)',
-                          background: 'rgba(255,255,255,0.03)',
-                          border: '1px solid var(--border)',
-                        }}
-                      >
-                        {type}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div
-                  className="p-5 rounded-xl"
-                  style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}
-                >
-                  <h3 style={{
-                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                    fontWeight: 500,
-                    fontSize: '0.9rem',
-                    color: 'var(--text)',
-                    marginBottom: '0.5rem',
-                  }}>
-                    Based in Australia
-                  </h3>
-                  <p style={{
-                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                    fontWeight: 300,
-                    fontSize: '0.875rem',
-                    color: 'var(--muted)',
-                    lineHeight: 1.7,
-                  }}>
-                    We work with businesses across Sydney, Melbourne, Brisbane, Perth, Adelaide, and everywhere in between.
-                  </p>
-                </div>
-              </div>
-            </AnimatedSection>
-          </div>
+              </form>
+            )}
+          </AnimatedSection>
         </div>
       </section>
     </>

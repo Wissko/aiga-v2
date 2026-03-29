@@ -1,24 +1,27 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
+import Marquee from '@/components/Marquee';
 
 const values = [
   {
+    num: '01.',
     title: 'Accessible by design',
     desc: 'AI automation should not be reserved for companies with dedicated tech teams. We build systems that any small business owner can understand and rely on.',
   },
   {
+    num: '02.',
     title: 'Results, not reports',
     desc: 'We measure success by what shows up in your bank account, your calendar, and your review count. Not vanity metrics.',
   },
   {
+    num: '03.',
     title: 'Done for you',
     desc: 'You run your business. We run your systems. No training manuals, no config spreadsheets. We set it up, you benefit.',
   },
   {
+    num: '04.',
     title: 'Built to last',
     desc: 'We use reliable, proven platforms. No fragile custom code that breaks when someone leaves. Systems that work whether we are involved or not.',
   },
@@ -31,354 +34,218 @@ const techPartners = [
 export default function AboutPage() {
   return (
     <>
-      {/* Header */}
-      <section className="pt-32 pb-20" style={{ borderBottom: '1px solid var(--border)' }}>
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <div className="overline mb-6">About AIGA</div>
-              <h1 style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontStyle: 'italic',
-                fontWeight: 300,
-                fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-                lineHeight: 1.1,
-                letterSpacing: '-0.03em',
-                marginBottom: '1.5rem',
-                color: 'var(--text)',
-              }}>
-                Built for the businesses
-                <br />
-                <span className="grad-gold-text">that keep Australia running</span>
-              </h1>
-              <p style={{
-                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                fontWeight: 300,
-                fontSize: '1.05rem',
-                color: 'var(--muted2)',
-                lineHeight: 1.8,
-                marginBottom: '1rem',
-              }}>
-                AIGA was founded with one observation: the technology that makes large companies highly efficient is completely inaccessible to most small businesses.
-                Not because the tools do not exist, but because no one builds, integrates, and maintains them at a price that makes sense.
-              </p>
-              <p style={{
-                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                fontWeight: 300,
-                fontSize: '1rem',
-                color: 'var(--muted)',
-                lineHeight: 1.8,
-              }}>
-                We fix that. AIGA brings enterprise-grade automation to restaurants, salons, clinics, trades, and retailers across Australia.
-                Affordable, done-for-you, and built to actually work.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-            >
-              <div
-                className="relative rounded-2xl overflow-hidden"
-                style={{ border: '1px solid var(--border)' }}
-              >
-                <Image
-                  src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80"
-                  alt="Data center infrastructure"
-                  width={800}
-                  height={600}
-                  className="w-full h-80 object-cover opacity-70"
-                  priority
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#090806]/60 to-transparent" />
-              </div>
-            </motion.div>
-          </div>
-        </div>
+      {/* Hero */}
+      <section
+        className="section-dark"
+        style={{
+          minHeight: '70vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          padding: 'clamp(6rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem) clamp(3rem, 5vw, 5rem)',
+        }}
+      >
+        <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
+          Who we are
+        </p>
+        <h1 style={{
+          fontFamily: 'Satoshi, sans-serif',
+          fontWeight: 900,
+          fontSize: 'clamp(64px, 12vw, 140px)',
+          letterSpacing: '-0.03em',
+          lineHeight: 0.9,
+          textTransform: 'uppercase',
+          color: 'var(--white)',
+          marginBottom: '2rem',
+        }}>
+          ABOUT
+        </h1>
+        <p style={{
+          fontFamily: 'Satoshi, sans-serif',
+          fontWeight: 400,
+          fontSize: 'clamp(16px, 2vw, 22px)',
+          color: 'var(--muted-dark)',
+          maxWidth: '560px',
+          lineHeight: 1.6,
+        }}>
+          Built for the businesses that keep Australia running.
+        </p>
       </section>
 
-      {/* Founder / Origin story — no portrait, abstract visual */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <AnimatedSection direction="left">
-              <div
-                className="relative rounded-2xl overflow-hidden"
-                style={{ border: '1px solid var(--border)' }}
-              >
-                <Image
-                  src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1200&q=80"
-                  alt="Abstract technology"
-                  width={800}
-                  height={600}
-                  className="w-full h-96 object-cover opacity-70"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#090806]/70 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <div style={{
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontStyle: 'italic',
-                    fontWeight: 300,
-                    fontSize: '1.35rem',
-                    color: 'var(--text)',
-                  }}>
-                    Yose
-                  </div>
-                  <div style={{
-                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                    fontWeight: 300,
-                    fontSize: '0.8rem',
-                    color: 'var(--muted)',
-                    letterSpacing: '0.1em',
-                  }}>
-                    Founder, AIGA
-                  </div>
-                </div>
-              </div>
-            </AnimatedSection>
+      {/* Marquee */}
+      <Marquee text="Our Story" separator="·" dark={true} size="md" speed={25} />
 
-            <AnimatedSection direction="right" delay={0.2}>
-              <div className="overline mb-6">The founder</div>
-              <h2 style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontWeight: 600,
-                fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
-                lineHeight: 1.2,
-                letterSpacing: '-0.02em',
-                marginBottom: '1.5rem',
-                color: 'var(--text)',
-              }}>
-                From frustration to{' '}
-                <span className="grad-gold-text" style={{ fontStyle: 'italic' }}>automation</span>
-              </h2>
-              <div className="space-y-4">
-                {[
-                  'AIGA started after watching small business owners struggle with the same problems: missed calls, manual bookings, no follow-up system, and websites built in 2015.',
-                  'The tools to fix these problems existed. Vapi, n8n, Cal.com, HubSpot — powerful platforms used by tech companies to operate at scale. But no one was packaging them in a way that a restaurant owner or salon manager could actually use without hiring a full-time tech person.',
-                  'That is the gap AIGA fills. We are not a software company. We are the team that builds, connects, and maintains the systems that keep your business running smoothly, so you can focus on what you actually do well.',
-                ].map((text, i) => (
-                  <p key={i} style={{
-                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                    fontWeight: 300,
-                    fontSize: '0.95rem',
-                    color: 'var(--muted)',
-                    lineHeight: 1.8,
-                  }}>
-                    {text}
-                  </p>
-                ))}
-              </div>
-              <div className="mt-8">
-                <Link
-                  href="/contact"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    padding: '12px 24px',
-                    borderRadius: '999px',
-                    background: 'var(--gold)',
-                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                    fontSize: '0.7rem',
-                    fontWeight: 500,
-                    letterSpacing: '0.15em',
-                    textTransform: 'uppercase',
-                    color: '#090806',
-                    textDecoration: 'none',
-                  }}
-                >
-                  Book a call with us
-                </Link>
-              </div>
-            </AnimatedSection>
-          </div>
+      {/* Mission */}
+      <section
+        className="section-light"
+        style={{ padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)' }}
+      >
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: 'clamp(3rem, 6vw, 6rem)',
+          alignItems: 'start',
+          maxWidth: '1400px',
+          margin: '0 auto',
+        }}>
+          <AnimatedSection>
+            <h2 style={{
+              fontFamily: 'Satoshi, sans-serif',
+              fontWeight: 700,
+              fontSize: 'clamp(32px, 5vw, 64px)',
+              letterSpacing: '-0.02em',
+              lineHeight: 1.0,
+              color: 'var(--black)',
+              marginBottom: '2rem',
+            }}>
+              We exist to make AI work for the businesses that need it most.
+            </h2>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.15}>
+            <p style={{ fontSize: '16px', lineHeight: 1.75, color: 'var(--muted-light)', marginBottom: '1.5rem' }}>
+              AIGA was founded in Brisbane in 2024 with a straightforward mission: make the automation tools that large corporations use accessible to small businesses across Australia.
+            </p>
+            <p style={{ fontSize: '16px', lineHeight: 1.75, color: 'var(--muted-light)', marginBottom: '1.5rem' }}>
+              We watched restaurants, salons, health clinics, and retail stores struggle not because they weren't good at what they did, but because the systems supporting their business were broken. Missed calls. Manual bookings. No follow-up. Websites built years ago that no longer served them.
+            </p>
+            <p style={{ fontSize: '16px', lineHeight: 1.75, color: 'var(--muted-light)', marginBottom: '2rem' }}>
+              Every system we build is designed to work without requiring you to become a tech expert. You run your business. We run everything that supports it.
+            </p>
+            <Link href="/contact" className="cta-btn-light">
+              Partner with us →
+            </Link>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Values */}
-      <section className="py-24" style={{ borderTop: '1px solid var(--border)' }}>
-        <div className="max-w-7xl mx-auto px-6">
-          <AnimatedSection className="mb-16">
-            <h2 style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontWeight: 300,
-              fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
-              lineHeight: 1.1,
-              letterSpacing: '-0.02em',
-              color: 'var(--text)',
-            }}>
-              How we operate
-            </h2>
-          </AnimatedSection>
+      <section
+        className="section-dark"
+        style={{ padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)' }}
+      >
+        <AnimatedSection>
+          <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
+            What we believe
+          </p>
+          <h2 style={{
+            fontFamily: 'Satoshi, sans-serif',
+            fontWeight: 700,
+            fontSize: 'clamp(32px, 5vw, 64px)',
+            letterSpacing: '-0.02em',
+            lineHeight: 1.0,
+            color: 'var(--white)',
+            marginBottom: '4rem',
+          }}>
+            Our values.
+          </h2>
+        </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {values.map((v, i) => (
-              <AnimatedSection key={v.title} delay={i * 0.08}>
-                <div
-                  className="p-6 rounded-2xl h-full"
-                  style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}
-                >
-                  {/* Gold accent */}
-                  <div style={{ height: '1px', background: 'rgba(201,169,110,0.3)', marginBottom: '1.25rem' }} />
-                  <h3 style={{
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontWeight: 600,
-                    fontSize: '1.1rem',
-                    color: 'var(--text)',
-                    marginBottom: '0.75rem',
-                  }}>
-                    {v.title}
-                  </h3>
-                  <p style={{
-                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                    fontWeight: 300,
-                    fontSize: '0.875rem',
-                    color: 'var(--muted)',
-                    lineHeight: 1.75,
-                  }}>
-                    {v.desc}
-                  </p>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: '0',
+          borderTop: '1px solid var(--border-dark)',
+        }}>
+          {values.map((v, i) => (
+            <AnimatedSection key={v.num} delay={i * 0.1}>
+              <div style={{
+                padding: 'clamp(2rem, 4vw, 3rem)',
+                borderBottom: '1px solid var(--border-dark)',
+                borderRight: i % 2 === 0 ? '1px solid var(--border-dark)' : 'none',
+              }}>
+                <span className="label" style={{ color: 'var(--muted-dark)', display: 'block', marginBottom: '1rem' }}>
+                  {v.num}
+                </span>
+                <h3 style={{
+                  fontFamily: 'Satoshi, sans-serif',
+                  fontWeight: 500,
+                  fontSize: 'clamp(20px, 2.5vw, 28px)',
+                  lineHeight: 1.2,
+                  color: 'var(--white)',
+                  marginBottom: '1rem',
+                }}>
+                  {v.title}
+                </h3>
+                <p style={{ fontSize: '15px', lineHeight: 1.75, color: 'var(--muted-dark)' }}>
+                  {v.desc}
+                </p>
+              </div>
+            </AnimatedSection>
+          ))}
         </div>
       </section>
 
       {/* Tech stack */}
-      <section className="py-24" style={{ borderTop: '1px solid var(--border)' }}>
-        <div className="max-w-7xl mx-auto px-6">
-          <AnimatedSection className="text-center mb-12">
-            <h2 style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontWeight: 300,
-              fontSize: 'clamp(1.75rem, 4vw, 3rem)',
-              letterSpacing: '-0.02em',
-              marginBottom: '1rem',
-              color: 'var(--text)',
-            }}>
-              Tools we build with
-            </h2>
-            <p style={{
-              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-              fontWeight: 300,
-              color: 'var(--muted)',
-              maxWidth: '36rem',
-              margin: '0 auto',
-              lineHeight: 1.8,
-            }}>
-              We use best-in-class, battle-tested platforms. No experiments on your business.
-            </p>
-          </AnimatedSection>
+      <section
+        className="section-light"
+        style={{ padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)' }}
+      >
+        <AnimatedSection>
+          <p className="label" style={{ marginBottom: '1.5rem' }}>Tools we use</p>
+          <h2 style={{
+            fontFamily: 'Satoshi, sans-serif',
+            fontWeight: 700,
+            fontSize: 'clamp(32px, 5vw, 64px)',
+            letterSpacing: '-0.02em',
+            lineHeight: 1.0,
+            color: 'var(--black)',
+            marginBottom: '3rem',
+          }}>
+            Built on proven platforms.
+          </h2>
+        </AnimatedSection>
 
-          <AnimatedSection>
-            <div className="flex flex-wrap justify-center gap-3">
-              {techPartners.map((tech) => (
-                <span
-                  key={tech}
-                  className="stat-number"
-                  style={{
-                    padding: '8px 16px',
-                    borderRadius: '8px',
-                    fontSize: '0.75rem',
-                    color: 'var(--muted)',
-                    background: 'var(--bg3)',
-                    border: '1px solid var(--border)',
-                    letterSpacing: '0.05em',
-                    transition: 'border-color 0.2s ease, color 0.2s ease',
-                    cursor: 'default',
-                  }}
-                >
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="py-20" style={{ borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { value: '500+', label: 'Automations deployed' },
-              { value: '98%', label: 'Client retention' },
-              { value: '2 weeks', label: 'Average go-live time' },
-              { value: '100%', label: 'Australian businesses served' },
-            ].map((stat, i) => (
-              <AnimatedSection key={stat.value} delay={i * 0.1} className="text-center">
-                <div
-                  className="stat-number grad-gold-text mb-2"
-                  style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1 }}
-                >
-                  {stat.value}
-                </div>
-                <div style={{
-                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                  fontSize: '0.8rem',
-                  fontWeight: 300,
-                  color: 'var(--muted)',
-                }}>
-                  {stat.label}
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
+          {techPartners.map((tech, i) => (
+            <AnimatedSection key={tech} delay={i * 0.05}>
+              <span style={{
+                display: 'inline-block',
+                padding: '10px 20px',
+                border: '1px solid var(--border-light)',
+                fontFamily: 'Satoshi, sans-serif',
+                fontSize: '13px',
+                fontWeight: 500,
+                letterSpacing: '0.08em',
+                color: 'var(--muted-light)',
+              }}>
+                {tech}
+              </span>
+            </AnimatedSection>
+          ))}
         </div>
       </section>
 
       {/* CTA */}
-      <section className="py-24">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <AnimatedSection>
-            <h2 style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontStyle: 'italic',
-              fontWeight: 300,
-              fontSize: 'clamp(1.75rem, 4vw, 3rem)',
-              letterSpacing: '-0.02em',
-              marginBottom: '1rem',
-              color: 'var(--text)',
-            }}>
-              Want to work with us?
-            </h2>
-            <p style={{
-              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-              fontWeight: 300,
-              color: 'var(--muted)',
-              lineHeight: 1.8,
-              marginBottom: '2rem',
-            }}>
-              Start with a free strategy call. No sales pressure, just an honest conversation about what would actually help your business.
-            </p>
-            <Link
-              href="/contact"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '14px 32px',
-                borderRadius: '999px',
-                background: 'var(--gold)',
-                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                fontSize: '0.75rem',
-                fontWeight: 500,
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                color: '#090806',
-                textDecoration: 'none',
-              }}
-            >
-              Book a free strategy call
-            </Link>
-          </AnimatedSection>
-        </div>
+      <section
+        className="section-dark"
+        style={{ padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)' }}
+      >
+        <AnimatedSection>
+          <h2 style={{
+            fontFamily: 'Satoshi, sans-serif',
+            fontWeight: 700,
+            fontSize: 'clamp(36px, 6vw, 80px)',
+            letterSpacing: '-0.02em',
+            lineHeight: 1.0,
+            color: 'var(--white)',
+            marginBottom: '1.5rem',
+          }}>
+            Ready to work together?
+          </h2>
+          <p style={{
+            fontSize: '16px',
+            color: 'var(--muted-dark)',
+            marginBottom: '2.5rem',
+            maxWidth: '460px',
+            lineHeight: 1.7,
+          }}>
+            Free strategy call. No pressure. We'll tell you honestly what would make the biggest difference for your business.
+          </p>
+          <Link href="/contact" className="cta-btn">
+            Book a free call →
+          </Link>
+        </AnimatedSection>
       </section>
     </>
   );

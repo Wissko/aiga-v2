@@ -1,73 +1,67 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
-import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
+import CountUp from '@/components/CountUp';
+import Marquee from '@/components/Marquee';
 
 const caseStudies = [
   {
     id: 'mitchell-hair',
+    num: '01.',
     business: 'Mitchell Hair Studio',
     location: 'Melbourne, VIC',
     type: 'Hair salon',
     services: ['Phone AI', 'Automated Bookings', 'Client Follow-up CRM'],
-    challenge:
-      'Missing 40% of after-hours calls. Manual booking via phone was creating double-bookings and wasting 2 hours per day of staff time. No follow-up system meant clients would drift to competitors.',
-    solution:
-      'Deployed an AI phone agent that answers 24/7 and books directly into their calendar. Added automated SMS reminders and a follow-up sequence that re-engages clients after 6 weeks of inactivity.',
+    challenge: 'Missing 40% of after-hours calls. Manual booking via phone was creating double-bookings and wasting 2 hours per day of staff time. No follow-up system meant clients would drift to competitors.',
+    solution: 'Deployed an AI phone agent that answers 24/7 and books directly into their calendar. Added automated SMS reminders and a follow-up sequence that re-engages clients after 6 weeks of inactivity.',
     results: [
       { metric: '+40%', label: 'Revenue in 4 months' },
       { metric: '100%', label: 'Calls answered' },
       { metric: '-65%', label: 'No-show rate' },
       { metric: '2h', label: 'Staff time saved daily' },
     ],
-    quote:
-      'We went from missing half our after-hours calls to capturing every single enquiry. Revenue is up 40% in four months. The AI sounds more professional than I do on a bad day.',
+    quote: 'We went from missing half our after-hours calls to capturing every single enquiry. Revenue is up 40% in four months.',
     author: 'Sarah Mitchell, Owner',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80',
     imageAlt: 'Analytics dashboard',
   },
   {
     id: 'tran-kitchen',
+    num: '02.',
     business: 'Tran Kitchen',
     location: 'Sydney, NSW',
     type: 'Restaurant',
     services: ['Phone AI', 'Automated Bookings'],
-    challenge:
-      'Busy kitchen meant calls were constantly missed during service. Reservation system was a paper book. Managing bookings, enquiries, and walk-ins simultaneously during dinner service was causing errors and stress.',
-    solution:
-      'Built a phone AI that handles reservation calls and answers common questions about opening hours, menu, and dietary requirements. Integrated with an online booking system with real-time availability.',
+    challenge: 'Busy kitchen meant calls were constantly missed during service. Reservation system was a paper book. Managing bookings, enquiries, and walk-ins simultaneously during dinner service was causing errors.',
+    solution: 'Built a phone AI that handles reservation calls and answers common questions. Integrated with an online booking system with real-time availability.',
     results: [
       { metric: '0', label: 'Missed reservation calls' },
       { metric: '+25%', label: 'Table bookings per week' },
-      { metric: '4.2 to 4.8', label: 'Google rating improvement' },
-      { metric: '3h/wk', label: 'Time saved on admin' },
+      { metric: '4.2 to 4.8', label: 'Google rating' },
+      { metric: '3h/wk', label: 'Admin time saved' },
     ],
-    quote:
-      'The AI phone bot handles our reservation line better than a part-time staff member. Our team can focus on the floor instead of running to answer the phone every five minutes.',
+    quote: 'The AI phone bot handles our reservation line better than a part-time staff member. Our team can focus on the floor.',
     author: 'James Tran, Head Chef and Owner',
     image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80',
     imageAlt: 'Technology circuit abstraction',
   },
   {
     id: 'sharma-health',
+    num: '03.',
     business: 'Sharma Allied Health',
     location: 'Brisbane, QLD',
     type: 'Allied health clinic',
     services: ['Website Creation', 'Automated Bookings', 'Client Follow-up CRM'],
-    challenge:
-      'Outdated website was not ranking on Google and had no online booking. Reception was spending 30 minutes per day on rebooking reminders. No system to re-engage patients who had not returned in 3 months.',
-    solution:
-      'Complete website rebuild optimised for local SEO and conversion. Integrated online booking with automated reminders via SMS. Built a CRM flow that prompts patients to rebook at appropriate intervals and requests Google reviews after positive visits.',
+    challenge: 'Outdated website was not ranking on Google. Reception was spending 30 minutes per day on rebooking reminders. No system to re-engage patients who had not returned in 3 months.',
+    solution: 'Complete website rebuild optimised for local SEO. Integrated online booking with automated reminders. Built a CRM flow that prompts patients to rebook at appropriate intervals and requests Google reviews.',
     results: [
-      { metric: '+60%', label: 'Reduction in no-shows' },
-      { metric: '3.8 to 4.7', label: 'Google rating improvement' },
-      { metric: '+35%', label: 'New patient enquiries from Google' },
-      { metric: '30min', label: 'Daily admin time saved' },
+      { metric: '-60%', label: 'No-show reduction' },
+      { metric: '3.8 to 4.7', label: 'Google rating' },
+      { metric: '+35%', label: 'New patient enquiries' },
+      { metric: '30min', label: 'Daily admin saved' },
     ],
-    quote:
-      "AIGA built our booking system and CRM in two weeks. We've reduced no-shows by 60% and our Google rating went from 3.8 to 4.7. The ROI was clear within the first month.",
+    quote: "AIGA built our booking system and CRM in two weeks. We've reduced no-shows by 60% and our Google rating went from 3.8 to 4.7.",
     author: 'Priya Sharma, Practice Manager',
     image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1200&q=80',
     imageAlt: 'Abstract technology interface',
@@ -77,410 +71,264 @@ const caseStudies = [
 const globalStats = [
   { value: '500+', label: 'Automations deployed' },
   { value: '98%', label: 'Client retention rate' },
-  { value: '2 weeks', label: 'Average go-live time' },
-  { value: '3.4x', label: 'Average ROI in first year' },
+  { value: '2 wks', label: 'Average go-live time' },
+  { value: '3x', label: 'Average revenue growth' },
 ];
 
 export default function ResultsPage() {
   return (
     <>
-      {/* Header */}
-      <section className="pt-32 pb-16" style={{ borderBottom: '1px solid var(--border)' }}>
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="max-w-3xl"
-          >
-            <div className="overline mb-6">Client results</div>
-            <h1 style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontStyle: 'italic',
-              fontWeight: 300,
-              fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-              lineHeight: 1.1,
-              letterSpacing: '-0.03em',
-              marginBottom: '1.5rem',
-              color: 'var(--text)',
-            }}>
-              Real businesses,
-              <br />
-              <span className="grad-gold-text">real numbers</span>
-            </h1>
-            <p style={{
-              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-              fontWeight: 300,
-              fontSize: '1.1rem',
-              color: 'var(--muted2)',
-              lineHeight: 1.8,
-            }}>
-              Not case studies designed to impress investors. Results from Australian small businesses that were missing calls, losing clients, and drowning in admin before we helped.
-            </p>
-          </motion.div>
-        </div>
+      {/* Hero */}
+      <section
+        className="section-dark"
+        style={{
+          minHeight: '60vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          padding: 'clamp(6rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem) clamp(3rem, 5vw, 5rem)',
+        }}
+      >
+        <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
+          Proof of work
+        </p>
+        <h1 style={{
+          fontFamily: 'Satoshi, sans-serif',
+          fontWeight: 900,
+          fontSize: 'clamp(64px, 12vw, 140px)',
+          letterSpacing: '-0.03em',
+          lineHeight: 0.9,
+          textTransform: 'uppercase',
+          color: 'var(--white)',
+          marginBottom: '2rem',
+        }}>
+          RESULTS
+        </h1>
+        <p style={{
+          fontFamily: 'Satoshi, sans-serif',
+          fontSize: 'clamp(16px, 2vw, 22px)',
+          color: 'var(--muted-dark)',
+          maxWidth: '520px',
+          lineHeight: 1.6,
+        }}>
+          Real businesses. Real numbers. Here's what actually happens when automation is done right.
+        </p>
       </section>
+
+      <Marquee text="Real Results" separator="·" dark={true} size="md" speed={22} />
 
       {/* Global stats */}
-      <section className="py-16" style={{ borderBottom: '1px solid var(--border)' }}>
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {globalStats.map((stat, i) => (
-              <AnimatedSection key={stat.value} delay={i * 0.1}>
-                <div
-                  className="p-6 rounded-2xl text-center"
-                  style={{ background: 'var(--bg3)', border: '1px solid var(--border2)' }}
-                >
-                  <div
-                    className="stat-number grad-gold-text mb-2"
-                    style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1 }}
-                  >
-                    {stat.value}
-                  </div>
-                  <div style={{
-                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                    fontSize: '0.75rem',
-                    fontWeight: 300,
-                    color: 'var(--muted)',
-                    letterSpacing: '0.05em',
-                  }}>
-                    {stat.label}
-                  </div>
+      <section className="section-light" style={{ padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)' }}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: '2rem',
+          borderBottom: '1px solid var(--border-light)',
+          paddingBottom: '4rem',
+          marginBottom: '4rem',
+        }}>
+          {globalStats.map((stat, i) => (
+            <AnimatedSection key={stat.label} delay={i * 0.1}>
+              <div>
+                <div style={{
+                  fontFamily: 'Satoshi, sans-serif',
+                  fontWeight: 900,
+                  fontSize: 'clamp(36px, 6vw, 72px)',
+                  letterSpacing: '-0.03em',
+                  lineHeight: 0.9,
+                  color: 'var(--black)',
+                  marginBottom: '12px',
+                }}>
+                  <CountUp value={stat.value} duration={1500} />
                 </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Case studies */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-6 space-y-16">
-          {caseStudies.map((cs, i) => (
-            <AnimatedSection key={cs.id}>
-              <div
-                className="rounded-3xl overflow-hidden"
-                style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}
-              >
-                <div className="grid md:grid-cols-2">
-                  {/* Image — abstract/tech only */}
-                  <div className={`relative h-64 md:h-auto ${i % 2 !== 0 ? 'md:order-2' : ''}`}>
-                    <Image
-                      src={cs.image}
-                      alt={cs.imageAlt}
-                      fill
-                      className="object-cover opacity-60"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#090806] to-transparent md:bg-gradient-to-r" />
-                    <div className="absolute top-4 left-4">
-                      <div
-                        className="px-3 py-1.5 rounded-lg"
-                        style={{
-                          background: 'rgba(6,6,8,0.8)',
-                          border: '1px solid var(--border)',
-                          fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                          fontSize: '0.7rem',
-                          fontWeight: 400,
-                          letterSpacing: '0.1em',
-                          textTransform: 'uppercase',
-                          color: 'var(--muted)',
-                        }}
-                      >
-                        {cs.type}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-8 md:p-10">
-                    <div className="mb-6">
-                      <h2 style={{
-                        fontFamily: "'Cormorant Garamond', Georgia, serif",
-                        fontWeight: 300,
-                        fontSize: '1.5rem',
-                        color: 'var(--text)',
-                        marginBottom: '0.25rem',
-                      }}>
-                        {cs.business}
-                      </h2>
-                      <div style={{
-                        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                        fontWeight: 300,
-                        fontSize: '0.8rem',
-                        color: 'var(--muted)',
-                        marginBottom: '0.75rem',
-                      }}>
-                        {cs.location}
-                      </div>
-                      <div className="flex flex-wrap gap-2">
-                        {cs.services.map((s) => (
-                          <span
-                            key={s}
-                            className="stat-number"
-                            style={{
-                              padding: '3px 10px',
-                              borderRadius: '6px',
-                              fontSize: '0.6rem',
-                              color: 'var(--muted)',
-                              background: 'rgba(255,255,255,0.03)',
-                              border: '1px solid var(--border)',
-                              letterSpacing: '0.05em',
-                            }}
-                          >
-                            {s}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Results — Space Mono metrics */}
-                    <div className="grid grid-cols-2 gap-3 mb-6">
-                      {cs.results.map((r) => (
-                        <div
-                          key={r.label}
-                          className="p-3 rounded-xl"
-                          style={{ background: 'var(--bg2)', border: '1px solid var(--border2)' }}
-                        >
-                          <div
-                            className="stat-number grad-gold-text"
-                            style={{ fontSize: '1.35rem', lineHeight: 1, marginBottom: '0.35rem' }}
-                          >
-                            {r.metric}
-                          </div>
-                          <div style={{
-                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                            fontSize: '0.7rem',
-                            fontWeight: 300,
-                            color: 'var(--muted)',
-                          }}>
-                            {r.label}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-
-                    <blockquote
-                      className="pl-4 mb-4"
-                      style={{ borderLeft: '2px solid rgba(201,169,110,0.4)' }}
-                    >
-                      <p style={{
-                        fontFamily: "'Cormorant Garamond', Georgia, serif",
-                        fontStyle: 'italic',
-                        fontWeight: 400,
-                        fontSize: '0.9rem',
-                        color: 'var(--muted2)',
-                        lineHeight: 1.75,
-                        marginBottom: '0.5rem',
-                      }}>
-                        "{cs.quote}"
-                      </p>
-                      <cite style={{
-                        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                        fontWeight: 300,
-                        fontSize: '0.75rem',
-                        color: 'var(--muted)',
-                        fontStyle: 'normal',
-                      }}>
-                        {cs.author}
-                      </cite>
-                    </blockquote>
-
-                    <div className="mt-6 space-y-3">
-                      <details className="group">
-                        <summary
-                          className="list-none flex items-center gap-1.5 cursor-pointer"
-                          style={{
-                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                            fontSize: '0.75rem',
-                            fontWeight: 400,
-                            color: 'var(--muted)',
-                            transition: 'color 0.2s ease',
-                          }}
-                        >
-                          <span className="group-open:rotate-90 transition-transform inline-block">▶</span>
-                          The challenge
-                        </summary>
-                        <p
-                          className="mt-2 pl-4"
-                          style={{
-                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                            fontWeight: 300,
-                            fontSize: '0.8rem',
-                            color: 'var(--muted)',
-                            lineHeight: 1.75,
-                          }}
-                        >
-                          {cs.challenge}
-                        </p>
-                      </details>
-                      <details className="group">
-                        <summary
-                          className="list-none flex items-center gap-1.5 cursor-pointer"
-                          style={{
-                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                            fontSize: '0.75rem',
-                            fontWeight: 400,
-                            color: 'var(--muted)',
-                          }}
-                        >
-                          <span className="group-open:rotate-90 transition-transform inline-block">▶</span>
-                          What we built
-                        </summary>
-                        <p
-                          className="mt-2 pl-4"
-                          style={{
-                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                            fontWeight: 300,
-                            fontSize: '0.8rem',
-                            color: 'var(--muted)',
-                            lineHeight: 1.75,
-                          }}
-                        >
-                          {cs.solution}
-                        </p>
-                      </details>
-                    </div>
-                  </div>
-                </div>
+                <p className="label">{stat.label}</p>
               </div>
             </AnimatedSection>
           ))}
         </div>
+
+        <AnimatedSection>
+          <h2 style={{
+            fontFamily: 'Satoshi, sans-serif',
+            fontWeight: 700,
+            fontSize: 'clamp(32px, 5vw, 64px)',
+            letterSpacing: '-0.02em',
+            lineHeight: 1.0,
+            color: 'var(--black)',
+            marginBottom: '0.5rem',
+          }}>
+            Case studies.
+          </h2>
+          <p style={{ fontSize: '16px', color: 'var(--muted-light)', marginBottom: '4rem', maxWidth: '480px', lineHeight: 1.7 }}>
+            Three businesses. Three different problems. One consistent outcome: measurable growth.
+          </p>
+        </AnimatedSection>
       </section>
 
-      {/* Note about real screenshots */}
-      <section className="py-8">
-        <div className="max-w-7xl mx-auto px-6">
-          <AnimatedSection>
-            <div
-              className="px-6 py-4 rounded-xl"
-              style={{
-                background: 'rgba(201,169,110,0.05)',
-                border: '1px solid rgba(201,169,110,0.2)',
-              }}
-            >
-              <p style={{
-                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                fontWeight: 300,
-                fontSize: '0.8rem',
-                color: 'var(--gold)',
-                letterSpacing: '0.03em',
-                lineHeight: 1.6,
+      {/* Case studies — alternating */}
+      {caseStudies.map((cs, i) => (
+        <section
+          key={cs.id}
+          id={cs.id}
+          className={i % 2 === 0 ? 'section-dark' : 'section-light'}
+          style={{ padding: 'clamp(4rem, 8vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}
+        >
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: 'clamp(3rem, 6vw, 6rem)',
+            maxWidth: '1400px',
+            margin: '0 auto',
+          }}>
+            <AnimatedSection>
+              <span className="label" style={{
+                color: i % 2 === 0 ? 'var(--muted-dark)' : 'var(--muted-light)',
+                display: 'block',
+                marginBottom: '0.75rem',
               }}>
-                Real client screenshots and project visuals coming soon. Results above are from actual client engagements.
-              </p>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Lead-in CTA */}
-      <section className="py-24" style={{ borderTop: '1px solid var(--border)' }}>
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <AnimatedSection direction="left">
+                {cs.num} {cs.type} · {cs.location}
+              </span>
               <h2 style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontWeight: 300,
-                fontSize: 'clamp(1.75rem, 4vw, 3rem)',
-                lineHeight: 1.15,
+                fontFamily: 'Satoshi, sans-serif',
+                fontWeight: 700,
+                fontSize: 'clamp(24px, 3.5vw, 48px)',
                 letterSpacing: '-0.02em',
-                marginBottom: '1rem',
-                color: 'var(--text)',
+                lineHeight: 1.0,
+                textTransform: 'uppercase',
+                color: i % 2 === 0 ? 'var(--white)' : 'var(--black)',
+                marginBottom: '2rem',
               }}>
-                Your business could be{' '}
-                <span className="grad-gold-text" style={{ fontStyle: 'italic' }}>next</span>
+                {cs.business}
               </h2>
-              <p style={{
-                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                fontWeight: 300,
-                fontSize: '0.95rem',
-                color: 'var(--muted)',
-                lineHeight: 1.8,
-                marginBottom: '1rem',
+
+              <div style={{ marginBottom: '2rem' }}>
+                <p className="label" style={{ color: i % 2 === 0 ? 'var(--muted-dark)' : 'var(--muted-light)', marginBottom: '0.75rem' }}>
+                  The challenge
+                </p>
+                <p style={{ fontSize: '15px', lineHeight: 1.75, color: i % 2 === 0 ? 'var(--muted-dark)' : 'var(--muted-light)' }}>
+                  {cs.challenge}
+                </p>
+              </div>
+
+              <div style={{ marginBottom: '2rem' }}>
+                <p className="label" style={{ color: i % 2 === 0 ? 'var(--muted-dark)' : 'var(--muted-light)', marginBottom: '0.75rem' }}>
+                  What we built
+                </p>
+                <p style={{ fontSize: '15px', lineHeight: 1.75, color: i % 2 === 0 ? 'var(--muted-dark)' : 'var(--muted-light)' }}>
+                  {cs.solution}
+                </p>
+              </div>
+
+              <blockquote style={{
+                borderLeft: `2px solid var(--accent)`,
+                paddingLeft: '1.5rem',
+                marginBottom: '1.5rem',
               }}>
-                Every business in these case studies started with the same thing: a 30-minute conversation about what was actually costing them money.
-                Not a proposal. Not a quote. Just an honest assessment.
-              </p>
-              <p style={{
-                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                fontWeight: 300,
-                fontSize: '0.95rem',
-                color: 'var(--muted)',
-                lineHeight: 1.8,
-              }}>
-                If you are missing calls, spending hours on admin, or watching clients not come back, there is a fix.
-                And it usually pays for itself within the first month.
-              </p>
-            </AnimatedSection>
-            <AnimatedSection direction="right" delay={0.2}>
-              <div
-                className="p-8 rounded-2xl relative overflow-hidden"
-                style={{
-                  border: '1px solid var(--border2)',
-                  background: 'linear-gradient(135deg, rgba(99,102,241,0.08), rgba(167,139,250,0.05))',
-                }}
-              >
-                <h3 style={{
-                  fontFamily: "'Cormorant Garamond', Georgia, serif",
-                  fontWeight: 300,
-                  fontSize: '1.5rem',
-                  color: 'var(--text)',
-                  marginBottom: '1.5rem',
+                <p style={{
+                  fontFamily: 'Satoshi, sans-serif',
+                  fontWeight: 500,
+                  fontSize: 'clamp(16px, 2vw, 20px)',
+                  lineHeight: 1.5,
+                  color: i % 2 === 0 ? 'var(--white)' : 'var(--black)',
+                  fontStyle: 'italic',
+                  marginBottom: '0.5rem',
                 }}>
-                  Start with a free audit
-                </h3>
-                <ul className="space-y-3 mb-8">
-                  {[
-                    'We review your current setup',
-                    'Identify your top 3 revenue leaks',
-                    'Show exactly what automation would fix them',
-                    'Give you a clear price and timeline',
-                  ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5">
-                      <span
-                        className="w-4 h-4 rounded-full flex-shrink-0 mt-0.5 flex items-center justify-center"
-                        style={{ background: 'var(--gold)' }}
-                      >
-                        <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
-                          <path d="M1 3l2 2 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </span>
-                      <span style={{
-                        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                        fontWeight: 300,
-                        fontSize: '0.875rem',
-                        color: 'var(--muted2)',
-                      }}>
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  href="/contact"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    padding: '12px 24px',
-                    borderRadius: '999px',
-                    background: 'var(--gold)',
-                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                    fontSize: '0.7rem',
+                  "{cs.quote}"
+                </p>
+                <cite style={{
+                  fontFamily: 'Satoshi, sans-serif',
+                  fontSize: '12px',
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  color: i % 2 === 0 ? 'var(--muted-dark)' : 'var(--muted-light)',
+                  fontStyle: 'normal',
+                }}>
+                  {cs.author}
+                </cite>
+              </blockquote>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                {cs.services.map((s) => (
+                  <span key={s} style={{
+                    fontFamily: 'Satoshi, sans-serif',
+                    fontSize: '11px',
                     fontWeight: 500,
-                    letterSpacing: '0.15em',
+                    letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    color: '#090806',
-                    textDecoration: 'none',
-                  }}
-                >
-                  Book your free strategy call
-                </Link>
+                    color: i % 2 === 0 ? 'var(--muted-dark)' : 'var(--muted-light)',
+                    border: `1px solid ${i % 2 === 0 ? 'var(--border-dark)' : 'var(--border-light)'}`,
+                    padding: '4px 12px',
+                  }}>
+                    {s}
+                  </span>
+                ))}
+              </div>
+            </AnimatedSection>
+
+            <AnimatedSection direction="right" delay={0.1}>
+              {/* Results grid */}
+              <div style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(2, 1fr)',
+                gap: '1px',
+                border: `1px solid ${i % 2 === 0 ? 'var(--border-dark)' : 'var(--border-light)'}`,
+                marginBottom: '2rem',
+              }}>
+                {cs.results.map((r, ri) => (
+                  <div key={ri} style={{
+                    padding: '1.5rem',
+                    borderRight: ri % 2 === 0 ? `1px solid ${i % 2 === 0 ? 'var(--border-dark)' : 'var(--border-light)'}` : 'none',
+                    borderBottom: ri < 2 ? `1px solid ${i % 2 === 0 ? 'var(--border-dark)' : 'var(--border-light)'}` : 'none',
+                  }}>
+                    <div style={{
+                      fontFamily: 'Satoshi, sans-serif',
+                      fontWeight: 900,
+                      fontSize: 'clamp(22px, 3vw, 36px)',
+                      letterSpacing: '-0.02em',
+                      lineHeight: 1,
+                      color: i % 2 === 0 ? 'var(--white)' : 'var(--black)',
+                      marginBottom: '6px',
+                    }}>
+                      {r.metric}
+                    </div>
+                    <p className="label" style={{ color: i % 2 === 0 ? 'var(--muted-dark)' : 'var(--muted-light)' }}>
+                      {r.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="img-hover" style={{
+                height: '320px',
+                border: `1px solid ${i % 2 === 0 ? 'var(--border-dark)' : 'var(--border-light)'}`,
+              }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={cs.image} alt={cs.imageAlt} style={{ opacity: i % 2 === 0 ? 0.6 : 1 }} />
               </div>
             </AnimatedSection>
           </div>
-        </div>
+        </section>
+      ))}
+
+      {/* CTA */}
+      <section className="section-dark" style={{ padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)' }}>
+        <AnimatedSection>
+          <h2 style={{
+            fontFamily: 'Satoshi, sans-serif',
+            fontWeight: 700,
+            fontSize: 'clamp(36px, 6vw, 80px)',
+            letterSpacing: '-0.02em',
+            lineHeight: 1.0,
+            color: 'var(--white)',
+            marginBottom: '1rem',
+          }}>
+            Your business could be next.
+          </h2>
+          <p style={{ fontSize: '16px', color: 'var(--muted-dark)', marginBottom: '2.5rem', maxWidth: '480px', lineHeight: 1.7 }}>
+            Free strategy call. We'll assess your current setup and map out exactly what would make the biggest difference.
+          </p>
+          <Link href="/contact" className="cta-btn">Book a free strategy call →</Link>
+        </AnimatedSection>
       </section>
     </>
   );

@@ -4,38 +4,41 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
-import AnimatedBackground from '@/components/AnimatedBackground';
+import Marquee from '@/components/Marquee';
 
 const plans = [
   {
     id: 'websites',
-    title: 'Website Creation',
+    num: '01.',
+    title: 'WEBSITE CREATION',
     monthly: { price: 299, desc: '12-month commitment', includes: ['Custom design', 'Mobile-first build', 'Hosting included', 'Monthly updates', 'SEO optimisation', 'Booking form integration'] },
     onetime: { price: 1990, desc: 'Full ownership, handed over', includes: ['Custom design', 'Mobile-first build', 'Full source code', '3 months support', 'SEO optimisation', 'Training session'] },
   },
   {
     id: 'phone-ai',
-    title: 'Phone AI Automation',
+    num: '02.',
+    title: 'PHONE AI AUTOMATION',
     monthly: { price: 199, desc: 'Up to 500 calls/mo, 24/7 coverage', includes: ['AI receptionist', '24/7 call answering', 'Calendar booking', 'Call transcripts', 'Daily analytics', 'Custom voice and script'] },
     onetime: { price: 2490, desc: 'Setup + 12 months support', includes: ['AI receptionist setup', 'Custom voice and script', '12 months support', 'Unlimited calls (fair use)', 'Full ownership', 'Training and handover'] },
   },
   {
     id: 'bookings',
-    title: 'Automated Bookings',
+    num: '03.',
+    title: 'AUTOMATED BOOKINGS',
     monthly: { price: 99, desc: 'Unlimited bookings, calendar sync', includes: ['Online booking page', 'SMS and email reminders', 'Calendar integration', 'Waitlist management', 'Monthly reporting', 'Rescheduling automation'] },
     onetime: { price: 890, desc: 'Setup + integration', includes: ['Booking system setup', 'Calendar integration', 'Reminder sequences', 'Waitlist setup', '3 months support', 'Training session'] },
   },
   {
     id: 'crm',
-    title: 'Client Follow-up CRM',
+    num: '04.',
+    title: 'CLIENT FOLLOW-UP CRM',
     monthly: { price: 149, desc: 'Automated sequences, reporting dashboard', includes: ['Follow-up sequences', 'Review generation', 'Re-engagement campaigns', 'Birthday automations', 'Revenue dashboard', 'Monthly strategy review'] },
     onetime: { price: 1290, desc: 'Full setup + training', includes: ['CRM configuration', 'Sequence building', 'Review campaigns', 'Re-engagement flows', 'Full training session', '3 months support'] },
   },
 ];
 
 const bundle = {
-  id: 'bundle',
-  title: 'Full Digitalisation Bundle',
+  title: 'FULL DIGITALISATION BUNDLE',
   badge: 'Best value',
   monthly: {
     price: 599,
@@ -58,465 +61,311 @@ const bundle = {
     includes: [
       'Everything in all four services',
       'Full system integration',
-      'Custom development as needed',
-      '6 months support',
-      'Two training sessions',
-      'Project management included',
-      'Launch and go-live support',
+      'Dedicated account manager (12 months)',
+      'Priority support SLA',
+      'Full source code and ownership',
+      'Team training sessions',
+      'Analytics and reporting setup',
     ],
   },
 };
-
-const faqs = [
-  {
-    q: 'Is there a lock-in contract on monthly plans?',
-    a: 'Website creation requires a 12-month commitment (this covers the ongoing hosting, updates, and support). All other monthly services are month-to-month with 30 days notice to cancel.',
-  },
-  {
-    q: 'What does "one-time" mean exactly?',
-    a: 'You pay once and own the system outright. We hand over all files, credentials, and access. Support periods vary by service. After that, you can manage it yourself or choose to continue with us on a retainer.',
-  },
-  {
-    q: 'Are prices in Australian dollars?',
-    a: 'Yes, all prices are in AUD. GST may apply depending on your business registration status.',
-  },
-  {
-    q: 'How long does setup take?',
-    a: 'Most services are live within 1 to 2 weeks. The Full Digitalisation Bundle typically takes 2 to 4 weeks depending on complexity. We always set a firm go-live date at the start.',
-  },
-  {
-    q: 'Can I start with one service and add more later?',
-    a: 'Absolutely. Many clients start with Automated Bookings or Phone AI and expand over time. Upgrading to the bundle credits your existing payments.',
-  },
-  {
-    q: 'Do you work with any type of small business?',
-    a: 'We specialise in restaurants, salons, healthcare practitioners, retail, and trade businesses. If you have customers and a phone, we can almost certainly help.',
-  },
-];
 
 export default function PricingPage() {
   const [billing, setBilling] = useState<'monthly' | 'onetime'>('monthly');
 
   return (
     <>
-      {/* Header */}
-      <section className="relative pt-32 pb-16 overflow-hidden" style={{ borderBottom: '1px solid var(--border)' }}>
-        <AnimatedBackground />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <div className="overline mb-6">Pricing</div>
-            <h1 style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontStyle: 'italic',
-              fontWeight: 300,
-              fontSize: 'clamp(2.5rem, 6vw, 5rem)',
-              lineHeight: 1.1,
-              letterSpacing: '-0.03em',
-              marginBottom: '1.5rem',
-              color: 'var(--text)',
-            }}>
-              Transparent pricing,
-              <br />
-              <span className="grad-gold-text">no surprises</span>
-            </h1>
-            <p style={{
-              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-              fontWeight: 300,
-              fontSize: '1.1rem',
-              color: 'var(--muted2)',
-              maxWidth: '36rem',
-              margin: '0 auto 2.5rem',
-              lineHeight: 1.8,
-            }}>
-              Monthly plans for ongoing service, or one-time setups for full ownership. All in AUD.
-            </p>
+      {/* Hero */}
+      <section
+        className="section-dark"
+        style={{
+          minHeight: '60vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          padding: 'clamp(6rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem) clamp(3rem, 5vw, 5rem)',
+        }}
+      >
+        <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
+          Simple pricing
+        </p>
+        <h1 style={{
+          fontFamily: 'Satoshi, sans-serif',
+          fontWeight: 900,
+          fontSize: 'clamp(64px, 12vw, 140px)',
+          letterSpacing: '-0.03em',
+          lineHeight: 0.9,
+          textTransform: 'uppercase',
+          color: 'var(--white)',
+          marginBottom: '2rem',
+        }}>
+          PRICING
+        </h1>
+        <p style={{
+          fontFamily: 'Satoshi, sans-serif',
+          fontSize: 'clamp(16px, 2vw, 22px)',
+          color: 'var(--muted-dark)',
+          maxWidth: '520px',
+          lineHeight: 1.6,
+        }}>
+          Monthly plans or one-time setup. All prices in AUD. GST may apply.
+        </p>
+      </section>
 
-            {/* Toggle */}
-            <div
-              className="inline-flex items-center gap-1 p-1 rounded-xl"
-              style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}
-            >
+      <Marquee text="Transparent Pricing" separator="·" dark={true} size="sm" speed={28} />
+
+      {/* Toggle */}
+      <section className="section-light" style={{ padding: 'clamp(4rem, 8vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
+        <AnimatedSection>
+          {/* Billing toggle */}
+          <div style={{
+            display: 'inline-flex',
+            border: '1px solid var(--border-light)',
+            marginBottom: '4rem',
+          }}>
+            {(['monthly', 'onetime'] as const).map((opt) => (
               <button
-                onClick={() => setBilling('monthly')}
+                key={opt}
+                onClick={() => setBilling(opt)}
                 style={{
-                  padding: '8px 20px',
-                  borderRadius: '0.6rem',
-                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                  fontSize: '0.8rem',
-                  fontWeight: 400,
+                  padding: '10px 24px',
+                  fontFamily: 'Satoshi, sans-serif',
+                  fontSize: '12px',
+                  fontWeight: 600,
                   letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                  background: billing === opt ? 'var(--black)' : 'transparent',
+                  color: billing === opt ? 'var(--white)' : 'var(--muted-light)',
                   border: 'none',
                   cursor: 'pointer',
-                  transition: 'all 0.2s ease',
-                  background: billing === 'monthly' ? 'var(--text)' : 'transparent',
-                  color: billing === 'monthly' ? 'var(--bg)' : 'var(--muted)',
+                  transition: 'background 0.2s ease, color 0.2s ease',
                 }}
               >
-                Monthly
+                {opt === 'monthly' ? 'Monthly' : 'One-time setup'}
               </button>
-              <button
-                onClick={() => setBilling('onetime')}
-                style={{
-                  padding: '8px 20px',
-                  borderRadius: '0.6rem',
-                  fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                  fontSize: '0.8rem',
-                  fontWeight: 400,
-                  letterSpacing: '0.08em',
-                  border: 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease',
-                  background: billing === 'onetime' ? 'var(--text)' : 'transparent',
-                  color: billing === 'onetime' ? 'var(--bg)' : 'var(--muted)',
-                }}
-              >
-                One-time
-              </button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Bundle (featured) */}
-      <section className="pt-16 pb-8">
-        <div className="max-w-7xl mx-auto px-6">
-          <AnimatedSection>
-            <div
-              className="p-8 rounded-3xl relative overflow-hidden"
-              style={{
-                border: '1px solid var(--border2)',
-                background: 'linear-gradient(135deg, rgba(99,102,241,0.1), rgba(167,139,250,0.06))',
-              }}
-            >
-              <div
-                className="absolute top-0 right-0 w-64 h-64 blur-3xl opacity-10 pointer-events-none"
-                style={{ background: 'var(--gold)' }}
-              />
-              <div className="relative z-10">
-                <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
-                  <div>
-                    <div
-                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium text-white mb-3"
-                      style={{
-                        background: 'var(--grad-gold)',
-                        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                        letterSpacing: '0.1em',
-                        textTransform: 'uppercase',
-                        fontSize: '0.65rem',
-                      }}
-                    >
-                      {bundle.badge}
-                    </div>
-                    <h2 style={{
-                      fontFamily: "'Cormorant Garamond', Georgia, serif",
-                      fontWeight: 300,
-                      fontSize: '1.75rem',
-                      color: 'var(--text)',
-                      marginBottom: '0.35rem',
-                    }}>
-                      {bundle.title}
-                    </h2>
-                    <p style={{
-                      fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                      fontWeight: 300,
-                      fontSize: '0.875rem',
-                      color: 'var(--muted)',
-                    }}>
-                      {billing === 'monthly' ? bundle.monthly.desc : bundle.onetime.desc}
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={billing}
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -8 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <div className="stat-number" style={{ fontSize: '3.5rem', color: 'var(--text)', lineHeight: 1 }}>
-                          ${billing === 'monthly' ? bundle.monthly.price : bundle.onetime.price}
-                          {billing === 'monthly' && (
-                            <span style={{
-                              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                              fontSize: '1.1rem',
-                              fontWeight: 300,
-                              color: 'var(--muted)',
-                            }}>/mo</span>
-                          )}
-                        </div>
-                        <div style={{
-                          fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                          fontSize: '0.8rem',
-                          fontWeight: 400,
-                          color: 'var(--gold)',
-                          marginTop: '0.25rem',
-                        }}>
-                          {billing === 'monthly' ? bundle.monthly.saving : bundle.onetime.saving}
-                        </div>
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
-                </div>
-
-                <ul className="grid sm:grid-cols-2 gap-2.5 mb-8">
-                  {(billing === 'monthly' ? bundle.monthly.includes : bundle.onetime.includes).map((item) => (
-                    <li key={item} className="flex items-start gap-2.5">
-                      <span
-                        className="w-4 h-4 rounded-full flex-shrink-0 mt-0.5 flex items-center justify-center"
-                        style={{ background: 'var(--gold)' }}
-                      >
-                        <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
-                          <path d="M1 3l2 2 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </span>
-                      <span style={{
-                        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                        fontWeight: 300,
-                        fontSize: '0.875rem',
-                        color: 'var(--muted2)',
-                      }}>
-                        {item}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Link
-                  href="/contact"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    padding: '12px 28px',
-                    borderRadius: '999px',
-                    background: 'var(--gold)',
-                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                    fontSize: '0.7rem',
-                    fontWeight: 500,
-                    letterSpacing: '0.15em',
-                    textTransform: 'uppercase',
-                    color: '#090806',
-                    textDecoration: 'none',
-                  }}
-                >
-                  Get the bundle
-                </Link>
-              </div>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Individual plans */}
-      <section className="py-8 pb-16">
-        <div className="max-w-7xl mx-auto px-6">
-          <AnimatedSection className="mb-8">
-            <h2 style={{
-              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-              fontWeight: 300,
-              fontSize: '1.25rem',
-              color: 'var(--muted)',
-            }}>
-              Or choose individual services
-            </h2>
-          </AnimatedSection>
-
-          <div className="grid md:grid-cols-2 gap-4">
-            {plans.map((plan, i) => {
-              const current = billing === 'monthly' ? plan.monthly : plan.onetime;
-              return (
-                <AnimatedSection key={plan.id} delay={i * 0.08}>
-                  <div
-                    className="p-6 rounded-2xl h-full flex flex-col"
-                    style={{
-                      background: 'var(--bg3)',
-                      border: '1px solid var(--border)',
-                      transition: 'border-color 0.2s ease',
-                    }}
-                  >
-                    <div className="flex items-start justify-between gap-4 mb-5">
-                      <div>
-                        <h3 style={{
-                          fontFamily: "'Cormorant Garamond', Georgia, serif",
-                          fontWeight: 600,
-                          fontSize: '1.1rem',
-                          color: 'var(--text)',
-                          marginBottom: '0.25rem',
-                        }}>
-                          {plan.title}
-                        </h3>
-                        <p style={{
-                          fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                          fontWeight: 300,
-                          fontSize: '0.75rem',
-                          color: 'var(--muted)',
-                        }}>
-                          {current.desc}
-                        </p>
-                      </div>
-                      <AnimatePresence mode="wait">
-                        <motion.div
-                          key={billing + plan.id}
-                          initial={{ opacity: 0, y: 6 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -6 }}
-                          transition={{ duration: 0.2 }}
-                          className="text-right flex-shrink-0"
-                        >
-                          <div className="stat-number" style={{ fontSize: '2rem', color: 'var(--text)', lineHeight: 1 }}>
-                            ${current.price}
-                          </div>
-                          {billing === 'monthly' && (
-                            <div style={{
-                              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                              fontSize: '0.7rem',
-                              fontWeight: 300,
-                              color: 'var(--muted)',
-                            }}>/mo</div>
-                          )}
-                        </motion.div>
-                      </AnimatePresence>
-                    </div>
-
-                    {/* Gold line separator */}
-                    <div style={{ height: '1px', background: 'rgba(201,169,110,0.2)', marginBottom: '1.25rem' }} />
-
-                    <ul className="space-y-2 flex-1 mb-6">
-                      {current.includes.map((item) => (
-                        <li key={item} className="flex items-start gap-2">
-                          <span style={{ color: 'var(--gold)', flexShrink: 0, marginTop: '0.1rem' }}>+</span>
-                          <span style={{
-                            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                            fontWeight: 300,
-                            fontSize: '0.875rem',
-                            color: 'var(--muted)',
-                          }}>
-                            {item}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Link
-                      href="/contact"
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '8px',
-                        padding: '10px 20px',
-                        borderRadius: '999px',
-                        fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                        fontSize: '0.7rem',
-                        fontWeight: 500,
-                        letterSpacing: '0.15em',
-                        textTransform: 'uppercase',
-                        color: 'var(--muted2)',
-                        textDecoration: 'none',
-                        border: '1px solid var(--border)',
-                        transition: 'all 0.2s ease',
-                      }}
-                    >
-                      Get started
-                    </Link>
-                  </div>
-                </AnimatedSection>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-24" style={{ borderTop: '1px solid var(--border)' }}>
-        <div className="max-w-3xl mx-auto px-6">
-          <AnimatedSection className="text-center mb-12">
-            <h2 style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontWeight: 300,
-              fontSize: 'clamp(2rem, 4vw, 3rem)',
-              lineHeight: 1.15,
-              letterSpacing: '-0.02em',
-              marginBottom: '1rem',
-              color: 'var(--text)',
-            }}>
-              Frequently asked questions
-            </h2>
-            <p style={{
-              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-              fontWeight: 300,
-              color: 'var(--muted)',
-            }}>
-              Everything you need to know before getting started.
-            </p>
-          </AnimatedSection>
-
-          <div className="space-y-4">
-            {faqs.map((faq, i) => (
-              <AnimatedSection key={faq.q} delay={i * 0.06}>
-                <div
-                  className="p-5 rounded-xl"
-                  style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}
-                >
-                  <h3 style={{
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontWeight: 600,
-                    fontSize: '1rem',
-                    color: 'var(--text)',
-                    marginBottom: '0.5rem',
-                  }}>
-                    {faq.q}
-                  </h3>
-                  <p style={{
-                    fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                    fontWeight: 300,
-                    fontSize: '0.875rem',
-                    color: 'var(--muted)',
-                    lineHeight: 1.75,
-                  }}>
-                    {faq.a}
-                  </p>
-                </div>
-              </AnimatedSection>
             ))}
           </div>
+        </AnimatedSection>
 
-          <AnimatedSection className="mt-12 text-center">
-            <p style={{
-              fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-              fontWeight: 300,
-              color: 'var(--muted)',
-              marginBottom: '1rem',
+        {/* Bundle highlight */}
+        <AnimatedSection delay={0.1}>
+          <div style={{
+            padding: 'clamp(2rem, 4vw, 4rem)',
+            border: '1px solid var(--border-light)',
+            marginBottom: '3rem',
+            position: 'relative',
+          }}>
+            <span style={{
+              position: 'absolute',
+              top: '-1px',
+              left: '2rem',
+              background: 'var(--accent)',
+              color: 'var(--black)',
+              fontFamily: 'Satoshi, sans-serif',
+              fontSize: '11px',
+              fontWeight: 600,
+              letterSpacing: '0.1em',
+              textTransform: 'uppercase',
+              padding: '4px 12px',
             }}>
-              Still have questions?
-            </p>
-            <Link
-              href="/contact"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '12px 28px',
-                borderRadius: '999px',
-                background: 'var(--gold)',
-                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                fontSize: '0.7rem',
-                fontWeight: 500,
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                color: '#090806',
-                textDecoration: 'none',
-              }}
-            >
-              Book a free strategy call
+              {bundle.badge}
+            </span>
+
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'flex-start',
+              flexWrap: 'wrap',
+              gap: '2rem',
+              marginTop: '1rem',
+            }}>
+              <div>
+                <h2 style={{
+                  fontFamily: 'Satoshi, sans-serif',
+                  fontWeight: 700,
+                  fontSize: 'clamp(20px, 3vw, 36px)',
+                  letterSpacing: '-0.02em',
+                  color: 'var(--black)',
+                  marginBottom: '0.5rem',
+                }}>
+                  {bundle.title}
+                </h2>
+                <p style={{ fontFamily: 'Satoshi, sans-serif', fontSize: '14px', color: 'var(--muted-light)' }}>
+                  {billing === 'monthly' ? bundle.monthly.desc : bundle.onetime.desc}
+                </p>
+              </div>
+              <div style={{ textAlign: 'right' }}>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={billing}
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <div style={{
+                      fontFamily: 'Satoshi, sans-serif',
+                      fontWeight: 900,
+                      fontSize: 'clamp(40px, 6vw, 72px)',
+                      letterSpacing: '-0.03em',
+                      lineHeight: 1,
+                      color: 'var(--black)',
+                    }}>
+                      ${billing === 'monthly' ? bundle.monthly.price : bundle.onetime.price}
+                      {billing === 'monthly' && (
+                        <span style={{ fontFamily: 'Satoshi, sans-serif', fontSize: '18px', fontWeight: 400, color: 'var(--muted-light)' }}>/mo</span>
+                      )}
+                    </div>
+                    <div style={{
+                      fontFamily: 'Satoshi, sans-serif',
+                      fontSize: '12px',
+                      color: 'rgba(0,0,0,0.5)',
+                      marginTop: '4px',
+                      letterSpacing: '0.05em',
+                    }}>
+                      {billing === 'monthly' ? bundle.monthly.saving : bundle.onetime.saving}
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+            </div>
+
+            <ul style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(2, 1fr)',
+              gap: '0.5rem 2rem',
+              marginTop: '2rem',
+              marginBottom: '2rem',
+            }}>
+              {(billing === 'monthly' ? bundle.monthly.includes : bundle.onetime.includes).map((item) => (
+                <li key={item} style={{
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '8px',
+                  fontFamily: 'Satoshi, sans-serif',
+                  fontSize: '14px',
+                  color: 'rgba(0,0,0,0.65)',
+                  lineHeight: 1.6,
+                  padding: '4px 0',
+                }}>
+                  <span style={{ color: 'var(--accent)', filter: 'brightness(0.6)', flexShrink: 0 }}>✦</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <Link href="/contact" className="cta-btn-light">
+              Get the bundle →
             </Link>
-          </AnimatedSection>
+          </div>
+        </AnimatedSection>
+
+        {/* Individual plans */}
+        <AnimatedSection delay={0.15}>
+          <p className="label" style={{ marginBottom: '2rem' }}>Or choose individual services</p>
+        </AnimatedSection>
+
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(2, 1fr)',
+          gap: '1px',
+          border: '1px solid var(--border-light)',
+        }}>
+          {plans.map((plan, i) => {
+            const current = billing === 'monthly' ? plan.monthly : plan.onetime;
+            return (
+              <AnimatedSection key={plan.id} delay={i * 0.08}>
+                <div style={{
+                  padding: 'clamp(1.5rem, 3vw, 2.5rem)',
+                  borderRight: i % 2 === 0 ? '1px solid var(--border-light)' : 'none',
+                  borderBottom: i < 2 ? '1px solid var(--border-light)' : 'none',
+                  height: '100%',
+                }}>
+                  <span className="label" style={{ display: 'block', marginBottom: '0.75rem' }}>
+                    {plan.num}
+                  </span>
+                  <h3 style={{
+                    fontFamily: 'Satoshi, sans-serif',
+                    fontWeight: 700,
+                    fontSize: 'clamp(16px, 2vw, 22px)',
+                    letterSpacing: '-0.01em',
+                    color: 'var(--black)',
+                    marginBottom: '0.5rem',
+                    textTransform: 'uppercase',
+                  }}>
+                    {plan.title}
+                  </h3>
+                  <p style={{ fontFamily: 'Satoshi, sans-serif', fontSize: '13px', color: 'var(--muted-light)', marginBottom: '1.5rem' }}>
+                    {current.desc}
+                  </p>
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={billing}
+                      initial={{ opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.2 }}
+                      style={{ marginBottom: '1.5rem' }}
+                    >
+                      <span style={{
+                        fontFamily: 'Satoshi, sans-serif',
+                        fontWeight: 900,
+                        fontSize: 'clamp(28px, 4vw, 48px)',
+                        letterSpacing: '-0.02em',
+                        color: 'var(--black)',
+                      }}>
+                        ${current.price}
+                      </span>
+                      {billing === 'monthly' && (
+                        <span style={{ fontFamily: 'Satoshi, sans-serif', fontSize: '14px', color: 'var(--muted-light)' }}>/mo</span>
+                      )}
+                    </motion.div>
+                  </AnimatePresence>
+                  <ul style={{ marginBottom: '1.5rem' }}>
+                    {current.includes.map((item) => (
+                      <li key={item} style={{
+                        display: 'flex',
+                        gap: '8px',
+                        padding: '5px 0',
+                        borderBottom: '1px solid var(--border-light)',
+                        fontFamily: 'Satoshi, sans-serif',
+                        fontSize: '13px',
+                        color: 'rgba(0,0,0,0.6)',
+                      }}>
+                        <span style={{ color: 'var(--accent)', filter: 'brightness(0.6)', flexShrink: 0 }}>✦</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link href="/contact" className="cta-btn-light" style={{ fontSize: '11px', padding: '10px 20px' }}>
+                    Get started →
+                  </Link>
+                </div>
+              </AnimatedSection>
+            );
+          })}
         </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section-dark" style={{ padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)' }}>
+        <AnimatedSection>
+          <h2 style={{
+            fontFamily: 'Satoshi, sans-serif',
+            fontWeight: 700,
+            fontSize: 'clamp(36px, 6vw, 80px)',
+            letterSpacing: '-0.02em',
+            lineHeight: 1.0,
+            color: 'var(--white)',
+            marginBottom: '1rem',
+          }}>
+            Questions about pricing?
+          </h2>
+          <p style={{ fontSize: '16px', color: 'var(--muted-dark)', marginBottom: '2.5rem', maxWidth: '480px', lineHeight: 1.7 }}>
+            We'll build a custom quote based on your actual needs. No upsells. No hidden fees.
+          </p>
+          <Link href="/contact" className="cta-btn">Book a free strategy call →</Link>
+        </AnimatedSection>
       </section>
     </>
   );

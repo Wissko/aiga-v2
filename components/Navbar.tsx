@@ -43,7 +43,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Trigger pill */}
+      {/* Nav pill trigger */}
       <motion.button
         onClick={() => setOpen(true)}
         aria-label="Open navigation"
@@ -58,38 +58,32 @@ export default function Navbar() {
           display: 'flex',
           alignItems: 'center',
           gap: '10px',
-          padding: '7px 16px',
-          background: 'rgba(9,8,6,0.8)',
+          padding: '8px 18px',
+          background: 'rgba(10,10,10,0.85)',
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
           borderRadius: '999px',
-          border: '1px solid rgba(200,169,110,0.2)',
+          border: '1px solid rgba(255,255,255,0.12)',
           cursor: 'pointer',
           transition: 'border-color 0.3s ease',
         }}
-        onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(200,169,110,0.5)'; }}
-        onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(200,169,110,0.2)'; }}
+        onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)'; }}
       >
         <span style={{
-          width: '5px',
-          height: '5px',
+          width: '6px',
+          height: '6px',
           borderRadius: '50%',
-          background: 'var(--gold)',
+          background: 'var(--accent)',
           flexShrink: 0,
         }} />
         <span style={{
-          width: '1px',
-          height: '10px',
-          background: 'rgba(200,169,110,0.2)',
-          flexShrink: 0,
-        }} />
-        <span style={{
-          fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-          fontSize: '9px',
+          fontFamily: 'Satoshi, sans-serif',
+          fontSize: '11px',
           fontWeight: 500,
-          letterSpacing: '0.22em',
+          letterSpacing: '0.15em',
           textTransform: 'uppercase',
-          color: 'var(--muted2)',
+          color: 'rgba(255,255,255,0.6)',
           userSelect: 'none',
         }}>
           Menu
@@ -109,20 +103,33 @@ export default function Navbar() {
             display: 'inline-flex',
             alignItems: 'center',
             gap: '6px',
-            padding: '7px 18px',
+            padding: '8px 20px',
             borderRadius: '999px',
-            background: 'var(--gold)',
-            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-            fontSize: '9px',
+            background: 'rgba(10,10,10,0.85)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            border: '1px solid rgba(255,255,255,0.12)',
+            fontFamily: 'Satoshi, sans-serif',
+            fontSize: '11px',
             fontWeight: 600,
-            letterSpacing: '0.18em',
+            letterSpacing: '0.12em',
             textTransform: 'uppercase',
-            color: '#090806',
+            color: 'rgba(255,255,255,0.8)',
             textDecoration: 'none',
-            transition: 'opacity 0.2s ease',
+            transition: 'background 0.25s ease, color 0.25s ease, border-color 0.25s ease',
           }}
-          onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.opacity = '0.85'; }}
-          onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.opacity = '1'; }}
+          onMouseEnter={(e) => {
+            const el = e.currentTarget as HTMLAnchorElement;
+            el.style.background = 'var(--accent)';
+            el.style.color = 'var(--black)';
+            el.style.borderColor = 'var(--accent)';
+          }}
+          onMouseLeave={(e) => {
+            const el = e.currentTarget as HTMLAnchorElement;
+            el.style.background = 'rgba(10,10,10,0.85)';
+            el.style.color = 'rgba(255,255,255,0.8)';
+            el.style.borderColor = 'rgba(255,255,255,0.12)';
+          }}
         >
           Book a free call
         </Link>
@@ -141,12 +148,12 @@ export default function Navbar() {
               position: 'fixed',
               inset: 0,
               zIndex: 200,
-              backgroundColor: 'var(--bg)',
+              backgroundColor: 'var(--black)',
               display: 'flex',
               flexDirection: 'column',
             }}
           >
-            {/* Close button */}
+            {/* Close */}
             <button
               onClick={close}
               aria-label="Close navigation"
@@ -166,8 +173,8 @@ export default function Navbar() {
               onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.opacity = '0.35'; }}
             >
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-                <line x1="4" y1="4" x2="24" y2="24" stroke="var(--text)" strokeWidth="1" />
-                <line x1="24" y1="4" x2="4" y2="24" stroke="var(--text)" strokeWidth="1" />
+                <line x1="4" y1="4" x2="24" y2="24" stroke="white" strokeWidth="1" />
+                <line x1="24" y1="4" x2="4" y2="24" stroke="white" strokeWidth="1" />
               </svg>
             </button>
 
@@ -180,12 +187,12 @@ export default function Navbar() {
                 position: 'absolute',
                 top: 'clamp(1.5rem, 3vw, 2rem)',
                 left: 'clamp(1.5rem, 5vw, 3.5rem)',
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-                fontStyle: 'italic',
-                fontWeight: 600,
+                fontFamily: 'Satoshi, sans-serif',
+                fontWeight: 900,
                 fontSize: '1.5rem',
-                letterSpacing: '0.05em',
-                color: 'var(--gold)',
+                letterSpacing: '-0.02em',
+                textTransform: 'uppercase',
+                color: 'var(--white)',
               }}
             >
               AIGA
@@ -207,7 +214,7 @@ export default function Navbar() {
                   key={link.href}
                   style={{
                     overflow: 'hidden',
-                    borderBottom: '1px solid var(--border)',
+                    borderBottom: '1px solid var(--border-dark)',
                   }}
                 >
                   <motion.div
@@ -227,14 +234,14 @@ export default function Navbar() {
               ))}
             </nav>
 
-            {/* Footer */}
+            {/* Overlay footer */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.55, ease: EASE }}
               style={{
                 padding: 'clamp(1.25rem, 2.5vw, 2rem) clamp(1.5rem, 8vw, 8rem)',
-                borderTop: '1px solid var(--border)',
+                borderTop: '1px solid var(--border-dark)',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',
@@ -243,25 +250,38 @@ export default function Navbar() {
               }}
             >
               <p style={{
-                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                fontSize: '0.62rem',
-                letterSpacing: '0.22em',
+                fontFamily: 'Satoshi, sans-serif',
+                fontSize: '11px',
+                letterSpacing: '0.18em',
                 textTransform: 'uppercase',
-                color: 'var(--muted)',
+                color: 'rgba(255,255,255,0.35)',
                 fontWeight: 400,
               }}>
                 AI Automation · Brisbane, Australia
               </p>
-              <p style={{
-                fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-                fontSize: '0.62rem',
-                letterSpacing: '0.18em',
-                color: 'var(--gold)',
-                opacity: 0.5,
-                fontWeight: 400,
-              }}>
-                hello@aiga.au
-              </p>
+              <Link
+                href="/contact"
+                onClick={close}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '10px 22px',
+                  background: 'var(--accent)',
+                  fontFamily: 'Satoshi, sans-serif',
+                  fontSize: '11px',
+                  fontWeight: 600,
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  color: 'var(--black)',
+                  textDecoration: 'none',
+                  transition: 'opacity 0.2s ease',
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.opacity = '0.85'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.opacity = '1'; }}
+              >
+                Book a free call
+              </Link>
             </motion.div>
           </motion.div>
         )}
@@ -302,21 +322,21 @@ function NavLink({
     >
       {active && (
         <span style={{
-          width: '5px',
-          height: '5px',
+          width: '6px',
+          height: '6px',
           borderRadius: '50%',
-          background: 'var(--gold)',
+          background: 'var(--accent)',
           flexShrink: 0,
         }} />
       )}
       <span style={{
-        fontFamily: "'Cormorant Garamond', Georgia, serif",
-        fontStyle: (active || hovered) ? 'italic' : 'normal',
-        fontWeight: 600,
+        fontFamily: 'Satoshi, sans-serif',
+        fontWeight: 700,
         fontSize: 'clamp(2rem, 5vw, 4.25rem)',
-        lineHeight: 1.05,
+        lineHeight: 1.0,
         letterSpacing: '-0.02em',
-        color: (active || hovered) ? 'var(--gold)' : 'var(--text)',
+        textTransform: 'uppercase',
+        color: (active || hovered) ? 'var(--accent)' : 'var(--white)',
         transition: 'color 0.25s ease',
       }}>
         {label}

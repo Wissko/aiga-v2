@@ -17,13 +17,13 @@ export default function AnimatedSection({
   direction = 'up',
 }: Props) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
+  const inView = useInView(ref, { once: true, margin: '-60px' });
 
   const dirMap = {
-    up: { y: 24, x: 0 },
-    down: { y: -24, x: 0 },
-    left: { y: 0, x: 24 },
-    right: { y: 0, x: -24 },
+    up: { y: 30, x: 0 },
+    down: { y: -30, x: 0 },
+    left: { y: 0, x: 30 },
+    right: { y: 0, x: -30 },
     none: { y: 0, x: 0 },
   };
 
