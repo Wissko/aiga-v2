@@ -6,6 +6,7 @@ import AnimatedSection from '@/components/AnimatedSection';
 import CountUp from '@/components/CountUp';
 import Marquee from '@/components/Marquee';
 import LiquidBackground from '@/components/LiquidBackground';
+import ParticleWaves from '@/components/ParticleWaves';
 
 const services = [
   {
@@ -113,8 +114,10 @@ export default function HomePage() {
           pointerEvents: 'none',
         }} />
 
-        {/* Liquid WebGL background */}
+        {/* Liquid WebGL background — base layer */}
         <LiquidBackground />
+        {/* Particle waves — overlay layer */}
+        <ParticleWaves />
 
         <div style={{ position: 'relative', zIndex: 1 }}>
           {/* H1 — AIGA oversized */}
