@@ -5,7 +5,7 @@ import Link from 'next/link';
 import AnimatedSection from '@/components/AnimatedSection';
 import CountUp from '@/components/CountUp';
 import Marquee from '@/components/Marquee';
-import ParticleWaves from '@/components/ParticleWaves';
+import LiquidBackground from '@/components/LiquidBackground';
 
 const services = [
   {
@@ -113,8 +113,8 @@ export default function HomePage() {
           pointerEvents: 'none',
         }} />
 
-        {/* Three.js particle waves */}
-        <ParticleWaves />
+        {/* Liquid WebGL background */}
+        <LiquidBackground />
 
         <div style={{ position: 'relative', zIndex: 1 }}>
           {/* H1 — AIGA oversized */}
