@@ -99,44 +99,78 @@ export default function PricingPage() {
   return (
     <>
       {/* Header */}
-      <section className="pt-32 pb-16 border-b border-white/5">
+      <section className="pt-32 pb-16" style={{ borderBottom: '1px solid rgba(201,169,110,0.15)' }}>
         <div className="max-w-7xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-[#888899] mb-6">
-              Pricing
-            </div>
-            <h1 className="font-syne font-bold text-5xl md:text-6xl mb-6">
+            <div className="overline mb-6">Pricing</div>
+            <h1 style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontStyle: 'italic',
+              fontWeight: 700,
+              fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+              lineHeight: 1.1,
+              letterSpacing: '-0.03em',
+              marginBottom: '1.5rem',
+              color: 'var(--text)',
+            }}>
               Transparent pricing,
               <br />
-              <span className="grad-text">no surprises</span>
+              <span className="grad-gold-text">no surprises</span>
             </h1>
-            <p className="text-[#888899] text-lg max-w-xl mx-auto mb-10">
+            <p style={{
+              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontWeight: 300,
+              fontSize: '1.1rem',
+              color: 'var(--muted2)',
+              maxWidth: '36rem',
+              margin: '0 auto 2.5rem',
+              lineHeight: 1.8,
+            }}>
               Monthly plans for ongoing service, or one-time setups for full ownership. All in AUD.
             </p>
 
             {/* Toggle */}
-            <div className="inline-flex items-center gap-1 p-1 rounded-xl bg-[#0d0d1a] border border-white/5">
+            <div
+              className="inline-flex items-center gap-1 p-1 rounded-xl"
+              style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}
+            >
               <button
                 onClick={() => setBilling('monthly')}
-                className={`px-5 py-2 rounded-lg text-sm font-medium transition-all ${
-                  billing === 'monthly'
-                    ? 'bg-white text-[#04040a]'
-                    : 'text-[#888899] hover:text-white'
-                }`}
+                style={{
+                  padding: '8px 20px',
+                  borderRadius: '0.6rem',
+                  fontFamily: "'DM Sans', system-ui, sans-serif",
+                  fontSize: '0.8rem',
+                  fontWeight: 400,
+                  letterSpacing: '0.08em',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  background: billing === 'monthly' ? 'var(--text)' : 'transparent',
+                  color: billing === 'monthly' ? 'var(--bg)' : 'var(--muted)',
+                }}
               >
                 Monthly
               </button>
               <button
                 onClick={() => setBilling('onetime')}
-                className={`px-5 py-2 rounded-lg text-sm font-medium transition-all ${
-                  billing === 'onetime'
-                    ? 'bg-white text-[#04040a]'
-                    : 'text-[#888899] hover:text-white'
-                }`}
+                style={{
+                  padding: '8px 20px',
+                  borderRadius: '0.6rem',
+                  fontFamily: "'DM Sans', system-ui, sans-serif",
+                  fontSize: '0.8rem',
+                  fontWeight: 400,
+                  letterSpacing: '0.08em',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                  background: billing === 'onetime' ? 'var(--text)' : 'transparent',
+                  color: billing === 'onetime' ? 'var(--bg)' : 'var(--muted)',
+                }}
               >
                 One-time
               </button>
@@ -150,8 +184,11 @@ export default function PricingPage() {
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection>
             <div
-              className="p-8 rounded-3xl border border-[#4f46e5]/30 relative overflow-hidden"
-              style={{ background: 'linear-gradient(135deg, rgba(79,70,229,0.12), rgba(6,182,212,0.08))' }}
+              className="p-8 rounded-3xl relative overflow-hidden"
+              style={{
+                border: '1px solid var(--border2)',
+                background: 'linear-gradient(135deg, rgba(99,102,241,0.1), rgba(167,139,250,0.06))',
+              }}
             >
               <div
                 className="absolute top-0 right-0 w-64 h-64 blur-3xl opacity-10 pointer-events-none"
@@ -160,11 +197,33 @@ export default function PricingPage() {
               <div className="relative z-10">
                 <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
                   <div>
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium text-white mb-3 grad-bg">
+                    <div
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium text-white mb-3"
+                      style={{
+                        background: 'var(--grad-gold)',
+                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        letterSpacing: '0.1em',
+                        textTransform: 'uppercase',
+                        fontSize: '0.65rem',
+                      }}
+                    >
                       {bundle.badge}
                     </div>
-                    <h2 className="font-syne font-bold text-3xl text-white">{bundle.title}</h2>
-                    <p className="text-[#888899] mt-1">
+                    <h2 style={{
+                      fontFamily: "'Playfair Display', Georgia, serif",
+                      fontWeight: 700,
+                      fontSize: '1.75rem',
+                      color: 'var(--text)',
+                      marginBottom: '0.35rem',
+                    }}>
+                      {bundle.title}
+                    </h2>
+                    <p style={{
+                      fontFamily: "'DM Sans', system-ui, sans-serif",
+                      fontWeight: 300,
+                      fontSize: '0.875rem',
+                      color: 'var(--muted)',
+                    }}>
                       {billing === 'monthly' ? bundle.monthly.desc : bundle.onetime.desc}
                     </p>
                   </div>
@@ -177,11 +236,24 @@ export default function PricingPage() {
                         exit={{ opacity: 0, y: -8 }}
                         transition={{ duration: 0.2 }}
                       >
-                        <div className="font-syne font-bold text-5xl text-white">
+                        <div className="stat-number" style={{ fontSize: '3.5rem', color: 'var(--text)', lineHeight: 1 }}>
                           ${billing === 'monthly' ? bundle.monthly.price : bundle.onetime.price}
-                          {billing === 'monthly' && <span className="text-xl text-[#888899] font-normal">/mo</span>}
+                          {billing === 'monthly' && (
+                            <span style={{
+                              fontFamily: "'DM Sans', system-ui, sans-serif",
+                              fontSize: '1.1rem',
+                              fontWeight: 300,
+                              color: 'var(--muted)',
+                            }}>/mo</span>
+                          )}
                         </div>
-                        <div className="text-sm text-[#06b6d4] mt-1">
+                        <div style={{
+                          fontFamily: "'DM Sans', system-ui, sans-serif",
+                          fontSize: '0.8rem',
+                          fontWeight: 400,
+                          color: 'var(--gold)',
+                          marginTop: '0.25rem',
+                        }}>
                           {billing === 'monthly' ? bundle.monthly.saving : bundle.onetime.saving}
                         </div>
                       </motion.div>
@@ -191,7 +263,7 @@ export default function PricingPage() {
 
                 <ul className="grid sm:grid-cols-2 gap-2.5 mb-8">
                   {(billing === 'monthly' ? bundle.monthly.includes : bundle.onetime.includes).map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm text-[#c8c8d8]">
+                    <li key={item} className="flex items-start gap-2.5">
                       <span
                         className="w-4 h-4 rounded-full flex-shrink-0 mt-0.5 flex items-center justify-center"
                         style={{ background: 'var(--grad)' }}
@@ -200,14 +272,35 @@ export default function PricingPage() {
                           <path d="M1 3l2 2 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </span>
-                      {item}
+                      <span style={{
+                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontWeight: 300,
+                        fontSize: '0.875rem',
+                        color: 'var(--muted2)',
+                      }}>
+                        {item}
+                      </span>
                     </li>
                   ))}
                 </ul>
 
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white grad-bg hover:opacity-90 transition-opacity"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '12px 28px',
+                    borderRadius: '999px',
+                    background: 'var(--grad)',
+                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontSize: '0.7rem',
+                    fontWeight: 500,
+                    letterSpacing: '0.15em',
+                    textTransform: 'uppercase',
+                    color: '#fff',
+                    textDecoration: 'none',
+                  }}
                 >
                   Get the bundle
                 </Link>
@@ -221,7 +314,12 @@ export default function PricingPage() {
       <section className="py-8 pb-16">
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection className="mb-8">
-            <h2 className="font-syne font-semibold text-2xl text-[#888899]">
+            <h2 style={{
+              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontWeight: 300,
+              fontSize: '1.25rem',
+              color: 'var(--muted)',
+            }}>
               Or choose individual services
             </h2>
           </AnimatedSection>
@@ -231,11 +329,33 @@ export default function PricingPage() {
               const current = billing === 'monthly' ? plan.monthly : plan.onetime;
               return (
                 <AnimatedSection key={plan.id} delay={i * 0.08}>
-                  <div className="p-6 rounded-2xl bg-[#0d0d1a] border border-white/5 hover:border-white/10 transition-colors h-full flex flex-col">
+                  <div
+                    className="p-6 rounded-2xl h-full flex flex-col"
+                    style={{
+                      background: 'var(--bg3)',
+                      border: '1px solid var(--border)',
+                      transition: 'border-color 0.2s ease',
+                    }}
+                  >
                     <div className="flex items-start justify-between gap-4 mb-5">
                       <div>
-                        <h3 className="font-syne font-semibold text-lg text-white">{plan.title}</h3>
-                        <p className="text-xs text-[#888899] mt-1">{current.desc}</p>
+                        <h3 style={{
+                          fontFamily: "'Playfair Display', Georgia, serif",
+                          fontWeight: 600,
+                          fontSize: '1.1rem',
+                          color: 'var(--text)',
+                          marginBottom: '0.25rem',
+                        }}>
+                          {plan.title}
+                        </h3>
+                        <p style={{
+                          fontFamily: "'DM Sans', system-ui, sans-serif",
+                          fontWeight: 300,
+                          fontSize: '0.75rem',
+                          color: 'var(--muted)',
+                        }}>
+                          {current.desc}
+                        </p>
                       </div>
                       <AnimatePresence mode="wait">
                         <motion.div
@@ -246,28 +366,59 @@ export default function PricingPage() {
                           transition={{ duration: 0.2 }}
                           className="text-right flex-shrink-0"
                         >
-                          <div className="font-syne font-bold text-3xl text-white">
+                          <div className="stat-number" style={{ fontSize: '2rem', color: 'var(--text)', lineHeight: 1 }}>
                             ${current.price}
                           </div>
                           {billing === 'monthly' && (
-                            <div className="text-xs text-[#888899]">/mo</div>
+                            <div style={{
+                              fontFamily: "'DM Sans', system-ui, sans-serif",
+                              fontSize: '0.7rem',
+                              fontWeight: 300,
+                              color: 'var(--muted)',
+                            }}>/mo</div>
                           )}
                         </motion.div>
                       </AnimatePresence>
                     </div>
 
+                    {/* Gold line separator */}
+                    <div style={{ height: '1px', background: 'rgba(201,169,110,0.2)', marginBottom: '1.25rem' }} />
+
                     <ul className="space-y-2 flex-1 mb-6">
                       {current.includes.map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-sm text-[#888899]">
-                          <span className="text-[#06b6d4] flex-shrink-0 mt-0.5">+</span>
-                          {item}
+                        <li key={item} className="flex items-start gap-2">
+                          <span style={{ color: 'var(--gold)', flexShrink: 0, marginTop: '0.1rem' }}>+</span>
+                          <span style={{
+                            fontFamily: "'DM Sans', system-ui, sans-serif",
+                            fontWeight: 300,
+                            fontSize: '0.875rem',
+                            color: 'var(--muted)',
+                          }}>
+                            {item}
+                          </span>
                         </li>
                       ))}
                     </ul>
 
                     <Link
                       href="/contact"
-                      className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-medium text-white border border-white/10 hover:border-white/20 hover:bg-white/5 transition-all"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '8px',
+                        padding: '10px 20px',
+                        borderRadius: '999px',
+                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontSize: '0.7rem',
+                        fontWeight: 500,
+                        letterSpacing: '0.15em',
+                        textTransform: 'uppercase',
+                        color: 'var(--muted2)',
+                        textDecoration: 'none',
+                        border: '1px solid var(--border)',
+                        transition: 'all 0.2s ease',
+                      }}
                     >
                       Get started
                     </Link>
@@ -280,13 +431,25 @@ export default function PricingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-24 border-t border-white/5">
+      <section className="py-24" style={{ borderTop: '1px solid rgba(201,169,110,0.15)' }}>
         <div className="max-w-3xl mx-auto px-6">
           <AnimatedSection className="text-center mb-12">
-            <h2 className="font-syne font-bold text-4xl mb-4">
+            <h2 style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontWeight: 700,
+              fontSize: 'clamp(2rem, 4vw, 3rem)',
+              lineHeight: 1.15,
+              letterSpacing: '-0.02em',
+              marginBottom: '1rem',
+              color: 'var(--text)',
+            }}>
               Frequently asked questions
             </h2>
-            <p className="text-[#888899]">
+            <p style={{
+              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontWeight: 300,
+              color: 'var(--muted)',
+            }}>
               Everything you need to know before getting started.
             </p>
           </AnimatedSection>
@@ -294,19 +457,59 @@ export default function PricingPage() {
           <div className="space-y-4">
             {faqs.map((faq, i) => (
               <AnimatedSection key={faq.q} delay={i * 0.06}>
-                <div className="p-5 rounded-xl bg-[#0d0d1a] border border-white/5">
-                  <h3 className="font-medium text-white mb-2">{faq.q}</h3>
-                  <p className="text-sm text-[#888899] leading-relaxed">{faq.a}</p>
+                <div
+                  className="p-5 rounded-xl"
+                  style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}
+                >
+                  <h3 style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontWeight: 600,
+                    fontSize: '1rem',
+                    color: 'var(--text)',
+                    marginBottom: '0.5rem',
+                  }}>
+                    {faq.q}
+                  </h3>
+                  <p style={{
+                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontWeight: 300,
+                    fontSize: '0.875rem',
+                    color: 'var(--muted)',
+                    lineHeight: 1.75,
+                  }}>
+                    {faq.a}
+                  </p>
                 </div>
               </AnimatedSection>
             ))}
           </div>
 
           <AnimatedSection className="mt-12 text-center">
-            <p className="text-[#888899] mb-4">Still have questions?</p>
+            <p style={{
+              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontWeight: 300,
+              color: 'var(--muted)',
+              marginBottom: '1rem',
+            }}>
+              Still have questions?
+            </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white grad-bg hover:opacity-90 transition-opacity"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '12px 28px',
+                borderRadius: '999px',
+                background: 'var(--grad)',
+                fontFamily: "'DM Sans', system-ui, sans-serif",
+                fontSize: '0.7rem',
+                fontWeight: 500,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: '#fff',
+                textDecoration: 'none',
+              }}
             >
               Book a free strategy call
             </Link>

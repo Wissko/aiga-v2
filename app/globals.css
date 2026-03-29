@@ -1,17 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
-
 @import "tailwindcss";
 
 :root {
-  --bg: #04040a;
-  --indigo: #4f46e5;
-  --cyan: #06b6d4;
-  --grad: linear-gradient(135deg, #4f46e5, #06b6d4);
-  --surface: #0d0d1a;
-  --surface2: #12121f;
-  --border: rgba(255,255,255,0.07);
-  --text: #e8e8f0;
-  --muted: #888899;
+  --bg: #060608;
+  --bg2: #0c0c14;
+  --bg3: #111120;
+  --accent: #6366f1;
+  --accent2: #a78bfa;
+  --gold: #c9a96e;
+  --text: #eeeef5;
+  --muted: #6b6b80;
+  --muted2: #9999b0;
+  --grad: linear-gradient(135deg, #6366f1, #a78bfa);
+  --grad-gold: linear-gradient(135deg, #c9a96e, #e8d5a3);
+  --border: rgba(255,255,255,0.06);
+  --border2: rgba(99,102,241,0.2);
 }
 
 @theme inline {
@@ -30,17 +32,69 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-weight: 300;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.font-syne {
-  font-family: 'Syne', sans-serif;
+/* ── Typography utility classes ── */
+
+.font-playfair {
+  font-family: 'Playfair Display', Georgia, serif;
 }
+
+.font-dm {
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+
+.font-mono-space {
+  font-family: 'Space Mono', 'Courier New', monospace;
+}
+
+/* Overline / label style */
+.overline {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.overline-muted {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--muted2);
+}
+
+/* Stat number (Space Mono) */
+.stat-number {
+  font-family: 'Space Mono', 'Courier New', monospace;
+  font-weight: 700;
+}
+
+/* Gold separator */
+.gold-divider {
+  border: none;
+  border-top: 1px solid rgba(201, 169, 110, 0.3);
+  width: 100%;
+}
+
+/* ── Gradient text helpers ── */
 
 .grad-text {
   background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.grad-gold-text {
+  background: var(--grad-gold);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -50,17 +104,24 @@ body {
   background: var(--grad);
 }
 
+/* ── Surface cards ── */
+
 .surface {
-  background: var(--surface);
+  background: var(--bg2);
   border: 1px solid var(--border);
 }
 
 .surface2 {
-  background: var(--surface2);
+  background: var(--bg3);
   border: 1px solid var(--border);
 }
 
-/* Custom scrollbar */
+.surface-accent {
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+}
+
+/* ── Custom scrollbar ── */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -68,15 +129,15 @@ body {
   background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2a3e;
+  background: #1e1e32;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--indigo);
+  background: var(--accent);
 }
 
-/* Focus ring */
+/* ── Focus ring ── */
 :focus-visible {
-  outline: 2px solid var(--indigo);
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }

@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 
 const footerLinks = {
@@ -18,21 +20,56 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/5 bg-[#04040a]">
+    <footer style={{ borderTop: '1px solid rgba(201,169,110,0.18)', background: 'var(--bg)' }}>
       <div className="max-w-7xl mx-auto px-6 py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
           {/* Brand */}
           <div className="col-span-2 md:col-span-2">
-            <div className="font-syne font-bold text-xl mb-3">
-              <span className="grad-text">AIGA</span>
+            <div
+              className="mb-3"
+              style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontStyle: 'italic',
+                fontWeight: 700,
+                fontSize: '1.35rem',
+                letterSpacing: '0.04em',
+                background: 'var(--grad)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              AIGA
             </div>
-            <p className="text-[#888899] text-sm max-w-xs leading-relaxed">
+            <p
+              className="max-w-xs leading-relaxed"
+              style={{
+                fontFamily: "'DM Sans', system-ui, sans-serif",
+                fontSize: '0.875rem',
+                fontWeight: 300,
+                color: 'var(--muted)',
+                lineHeight: '1.8',
+              }}
+            >
               Artificial Intelligence Growth Agency. Making AI automation accessible for Australian small businesses.
             </p>
             <div className="mt-6">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-white grad-bg hover:opacity-90 transition-opacity"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '9px 20px',
+                  borderRadius: '999px',
+                  background: 'var(--grad)',
+                  fontFamily: "'DM Sans', system-ui, sans-serif",
+                  fontSize: '0.7rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: '#fff',
+                  textDecoration: 'none',
+                }}
               >
                 Book a free strategy call
               </Link>
@@ -42,7 +79,17 @@ export default function Footer() {
           {/* Links */}
           {Object.entries(footerLinks).map(([category, items]) => (
             <div key={category}>
-              <h3 className="text-xs font-semibold text-[#888899] uppercase tracking-wider mb-4">
+              <h3
+                className="mb-4"
+                style={{
+                  fontFamily: "'DM Sans', system-ui, sans-serif",
+                  fontSize: '0.58rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.25em',
+                  textTransform: 'uppercase',
+                  color: 'var(--gold)',
+                }}
+              >
                 {category}
               </h3>
               <ul className="space-y-3">
@@ -50,7 +97,16 @@ export default function Footer() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="text-sm text-[#888899] hover:text-white transition-colors"
+                      style={{
+                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontSize: '0.875rem',
+                        fontWeight: 300,
+                        color: 'var(--muted)',
+                        textDecoration: 'none',
+                        transition: 'color 0.2s ease',
+                      }}
+                      onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--text)'; }}
+                      onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--muted)'; }}
                     >
                       {item.label}
                     </Link>
@@ -61,11 +117,28 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[#888899] text-xs">
+        <div
+          className="pt-8 flex flex-col md:flex-row justify-between items-center gap-4"
+          style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}
+        >
+          <p
+            style={{
+              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontSize: '0.75rem',
+              fontWeight: 300,
+              color: 'var(--muted)',
+            }}
+          >
             2024 AIGA. All rights reserved. Based in Australia.
           </p>
-          <p className="text-[#888899] text-xs">
+          <p
+            style={{
+              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontSize: '0.75rem',
+              fontWeight: 300,
+              color: 'var(--muted)',
+            }}
+          >
             Prices in AUD. GST may apply.
           </p>
         </div>

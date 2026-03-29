@@ -4,7 +4,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
-import type { Metadata } from 'next';
 
 const services = [
   {
@@ -19,7 +18,8 @@ const services = [
       'E-commerce ready with payment processing',
       'Ongoing hosting and updates included on monthly plans',
     ],
-    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80',
+    imageAlt: 'Analytics and dashboard interface',
     tech: ['Next.js', 'Webflow', 'WordPress', 'Stripe'],
     from: '$299/mo',
   },
@@ -35,7 +35,8 @@ const services = [
       'Transfers to you for urgent or complex calls',
       'Full call transcripts and analytics delivered daily',
     ],
-    image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80',
+    imageAlt: 'Tech circuit board abstraction',
     tech: ['Vapi.ai', 'Bland AI', 'ElevenLabs', 'Twilio'],
     from: '$199/mo',
   },
@@ -51,7 +52,8 @@ const services = [
       'Syncs with Google Calendar, iCal, and more',
       'Waitlist management and auto-fill cancellations',
     ],
-    image: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1200&q=80',
+    imageAlt: 'Abstract technology interface',
     tech: ['Cal.com', 'Calendly', 'n8n', 'Make'],
     from: '$99/mo',
   },
@@ -67,7 +69,8 @@ const services = [
       'Birthday and anniversary automations',
       'Dashboard showing revenue attributed to follow-ups',
     ],
-    image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80',
+    imageAlt: 'Data center infrastructure',
     tech: ['HubSpot', 'Airtable', 'Notion', 'n8n', 'Make'],
     from: '$149/mo',
   },
@@ -84,7 +87,8 @@ const services = [
       'Full integration across all systems',
       'Proactive optimisation and A/B testing',
     ],
-    image: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=1200&q=80',
+    imageAlt: 'Modern office abstract architecture',
     tech: ['Full stack', 'All integrations', 'Custom built'],
     from: '$599/mo',
     featured: true,
@@ -95,7 +99,7 @@ export default function ServicesPage() {
   return (
     <>
       {/* Header */}
-      <section className="pt-32 pb-16 border-b border-white/5">
+      <section className="pt-32 pb-16" style={{ borderBottom: '1px solid rgba(201,169,110,0.15)' }}>
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -103,15 +107,28 @@ export default function ServicesPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-3xl"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-[#888899] mb-6">
-              Services
-            </div>
-            <h1 className="font-syne font-bold text-5xl md:text-6xl mb-6 leading-tight">
+            <div className="overline mb-6">Services</div>
+            <h1 style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontStyle: 'italic',
+              fontWeight: 700,
+              fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+              lineHeight: 1.1,
+              letterSpacing: '-0.03em',
+              marginBottom: '1.5rem',
+              color: 'var(--text)',
+            }}>
               AI-powered tools for
               <br />
               <span className="grad-text">Australian businesses</span>
             </h1>
-            <p className="text-[#888899] text-lg leading-relaxed">
+            <p style={{
+              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontWeight: 300,
+              fontSize: '1.1rem',
+              color: 'var(--muted2)',
+              lineHeight: 1.8,
+            }}>
               Five core services that work independently or as a complete system.
               Pick what you need now and expand as you grow.
             </p>
@@ -126,7 +143,8 @@ export default function ServicesPage() {
             <div
               key={service.id}
               id={service.id}
-              className="py-20 border-b border-white/5 last:border-0"
+              className="py-20"
+              style={{ borderBottom: i < services.length - 1 ? '1px solid var(--border)' : 'none' }}
             >
               <div
                 className={`grid md:grid-cols-2 gap-12 items-center ${
@@ -135,22 +153,66 @@ export default function ServicesPage() {
               >
                 <AnimatedSection direction={i % 2 === 0 ? 'left' : 'right'}>
                   {service.featured && (
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium text-white mb-4 grad-bg">
+                    <div
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-white mb-4"
+                      style={{
+                        background: 'var(--grad-gold)',
+                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontSize: '0.65rem',
+                        fontWeight: 500,
+                        letterSpacing: '0.1em',
+                        textTransform: 'uppercase',
+                      }}
+                    >
                       Most popular
                     </div>
                   )}
-                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-[#888899] mb-4">
-                    From {service.from}
+                  <div
+                    className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4"
+                    style={{
+                      border: '1px solid var(--border)',
+                      background: 'rgba(255,255,255,0.02)',
+                    }}
+                  >
+                    <span className="stat-number" style={{ fontSize: '0.8rem', color: 'var(--gold)' }}>
+                      From {service.from}
+                    </span>
                   </div>
-                  <h2 className="font-syne font-bold text-4xl text-white mb-2">
+                  <h2 style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontWeight: 700,
+                    fontSize: 'clamp(1.75rem, 3.5vw, 2.75rem)',
+                    lineHeight: 1.15,
+                    letterSpacing: '-0.02em',
+                    color: 'var(--text)',
+                    marginBottom: '0.5rem',
+                  }}>
                     {service.title}
                   </h2>
-                  <p className="text-lg text-[#888899] mb-4">{service.tagline}</p>
-                  <p className="text-sm text-[#888899] leading-relaxed mb-6">{service.desc}</p>
+                  <p style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontStyle: 'italic',
+                    fontWeight: 400,
+                    fontSize: '1.1rem',
+                    color: 'var(--muted2)',
+                    marginBottom: '1rem',
+                  }}>
+                    {service.tagline}
+                  </p>
+                  <p style={{
+                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontWeight: 300,
+                    fontSize: '0.9rem',
+                    color: 'var(--muted)',
+                    lineHeight: 1.8,
+                    marginBottom: '1.5rem',
+                  }}>
+                    {service.desc}
+                  </p>
 
                   <ul className="space-y-2.5 mb-8">
                     {service.bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-2.5 text-sm text-[#c8c8d8]">
+                      <li key={b} className="flex items-start gap-2.5">
                         <span
                           className="w-4 h-4 rounded-full flex-shrink-0 mt-0.5 flex items-center justify-center"
                           style={{ background: 'var(--grad)' }}
@@ -159,7 +221,14 @@ export default function ServicesPage() {
                             <path d="M1 3l2 2 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                           </svg>
                         </span>
-                        {b}
+                        <span style={{
+                          fontFamily: "'DM Sans', system-ui, sans-serif",
+                          fontWeight: 300,
+                          fontSize: '0.875rem',
+                          color: 'var(--muted2)',
+                        }}>
+                          {b}
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -167,13 +236,34 @@ export default function ServicesPage() {
                   <div className="flex items-center gap-3 flex-wrap">
                     <Link
                       href="/contact"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white grad-bg hover:opacity-90 transition-opacity"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        padding: '11px 24px',
+                        borderRadius: '999px',
+                        background: 'var(--grad)',
+                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontSize: '0.7rem',
+                        fontWeight: 500,
+                        letterSpacing: '0.15em',
+                        textTransform: 'uppercase',
+                        color: '#fff',
+                        textDecoration: 'none',
+                      }}
                     >
                       Get started
                     </Link>
                     <Link
                       href="/pricing"
-                      className="text-sm text-[#888899] hover:text-white transition-colors"
+                      style={{
+                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontSize: '0.875rem',
+                        fontWeight: 300,
+                        color: 'var(--muted)',
+                        textDecoration: 'none',
+                        transition: 'color 0.2s ease',
+                      }}
                     >
                       View pricing →
                     </Link>
@@ -183,7 +273,16 @@ export default function ServicesPage() {
                     {service.tech.map((t) => (
                       <span
                         key={t}
-                        className="px-2.5 py-1 rounded-lg text-xs text-[#888899] bg-white/5 border border-white/5"
+                        className="stat-number"
+                        style={{
+                          padding: '4px 10px',
+                          borderRadius: '6px',
+                          fontSize: '0.65rem',
+                          color: 'var(--muted)',
+                          background: 'rgba(255,255,255,0.03)',
+                          border: '1px solid var(--border)',
+                          letterSpacing: '0.05em',
+                        }}
                       >
                         {t}
                       </span>
@@ -192,15 +291,18 @@ export default function ServicesPage() {
                 </AnimatedSection>
 
                 <AnimatedSection direction={i % 2 === 0 ? 'right' : 'left'} delay={0.2}>
-                  <div className="relative rounded-2xl overflow-hidden border border-white/10">
+                  <div
+                    className="relative rounded-2xl overflow-hidden"
+                    style={{ border: '1px solid var(--border)' }}
+                  >
                     <Image
                       src={service.image}
-                      alt={service.title}
+                      alt={service.imageAlt}
                       width={800}
                       height={600}
                       className="w-full h-80 object-cover opacity-70"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-[#04040a]/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-[#060608]/60 to-transparent" />
                   </div>
                 </AnimatedSection>
               </div>
@@ -210,18 +312,46 @@ export default function ServicesPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section className="py-24 border-t border-white/5">
+      <section className="py-24" style={{ borderTop: '1px solid rgba(201,169,110,0.15)' }}>
         <div className="max-w-3xl mx-auto px-6 text-center">
           <AnimatedSection>
-            <h2 className="font-syne font-bold text-4xl mb-4">
+            <h2 style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontStyle: 'italic',
+              fontWeight: 700,
+              fontSize: 'clamp(1.75rem, 4vw, 3rem)',
+              letterSpacing: '-0.02em',
+              marginBottom: '1rem',
+              color: 'var(--text)',
+            }}>
               Not sure where to start?
             </h2>
-            <p className="text-[#888899] mb-8">
+            <p style={{
+              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontWeight: 300,
+              color: 'var(--muted)',
+              lineHeight: 1.8,
+              marginBottom: '2rem',
+            }}>
               Book a free strategy call. We'll assess your current setup and tell you exactly which service will have the biggest impact.
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-semibold text-white grad-bg hover:opacity-90 transition-opacity"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '14px 32px',
+                borderRadius: '999px',
+                background: 'var(--grad)',
+                fontFamily: "'DM Sans', system-ui, sans-serif",
+                fontSize: '0.75rem',
+                fontWeight: 500,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: '#fff',
+                textDecoration: 'none',
+              }}
             >
               Book a free strategy call
             </Link>

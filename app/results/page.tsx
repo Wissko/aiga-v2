@@ -25,7 +25,8 @@ const caseStudies = [
     quote:
       'We went from missing half our after-hours calls to capturing every single enquiry. Revenue is up 40% in four months. The AI sounds more professional than I do on a bad day.',
     author: 'Sarah Mitchell, Owner',
-    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80',
+    imageAlt: 'Analytics dashboard',
   },
   {
     id: 'tran-kitchen',
@@ -46,7 +47,8 @@ const caseStudies = [
     quote:
       'The AI phone bot handles our reservation line better than a part-time staff member. Our team can focus on the floor instead of running to answer the phone every five minutes.',
     author: 'James Tran, Head Chef and Owner',
-    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80',
+    imageAlt: 'Technology circuit abstraction',
   },
   {
     id: 'sharma-health',
@@ -67,7 +69,8 @@ const caseStudies = [
     quote:
       "AIGA built our booking system and CRM in two weeks. We've reduced no-shows by 60% and our Google rating went from 3.8 to 4.7. The ROI was clear within the first month.",
     author: 'Priya Sharma, Practice Manager',
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80',
+    image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=1200&q=80',
+    imageAlt: 'Abstract technology interface',
   },
 ];
 
@@ -82,7 +85,7 @@ export default function ResultsPage() {
   return (
     <>
       {/* Header */}
-      <section className="pt-32 pb-16 border-b border-white/5">
+      <section className="pt-32 pb-16" style={{ borderBottom: '1px solid rgba(201,169,110,0.15)' }}>
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -90,31 +93,60 @@ export default function ResultsPage() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             className="max-w-3xl"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-[#888899] mb-6">
-              Client results
-            </div>
-            <h1 className="font-syne font-bold text-5xl md:text-6xl mb-6 leading-tight">
+            <div className="overline mb-6">Client results</div>
+            <h1 style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontStyle: 'italic',
+              fontWeight: 700,
+              fontSize: 'clamp(2.5rem, 6vw, 5rem)',
+              lineHeight: 1.1,
+              letterSpacing: '-0.03em',
+              marginBottom: '1.5rem',
+              color: 'var(--text)',
+            }}>
               Real businesses,
               <br />
-              <span className="grad-text">real numbers</span>
+              <span className="grad-gold-text">real numbers</span>
             </h1>
-            <p className="text-[#888899] text-lg leading-relaxed">
+            <p style={{
+              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontWeight: 300,
+              fontSize: '1.1rem',
+              color: 'var(--muted2)',
+              lineHeight: 1.8,
+            }}>
               Not case studies designed to impress investors. Results from Australian small businesses that were missing calls, losing clients, and drowning in admin before we helped.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-16 border-b border-white/5">
+      {/* Global stats */}
+      <section className="py-16" style={{ borderBottom: '1px solid var(--border)' }}>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {globalStats.map((stat, i) => (
-              <AnimatedSection key={stat.value} delay={i * 0.1} className="text-center">
-                <div className="font-syne font-bold text-4xl md:text-5xl grad-text mb-2">
-                  {stat.value}
+              <AnimatedSection key={stat.value} delay={i * 0.1}>
+                <div
+                  className="p-6 rounded-2xl text-center"
+                  style={{ background: 'var(--bg3)', border: '1px solid var(--border2)' }}
+                >
+                  <div
+                    className="stat-number grad-text mb-2"
+                    style={{ fontSize: 'clamp(2rem, 4vw, 3rem)', lineHeight: 1 }}
+                  >
+                    {stat.value}
+                  </div>
+                  <div style={{
+                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontSize: '0.75rem',
+                    fontWeight: 300,
+                    color: 'var(--muted)',
+                    letterSpacing: '0.05em',
+                  }}>
+                    {stat.label}
+                  </div>
                 </div>
-                <div className="text-sm text-[#888899]">{stat.label}</div>
               </AnimatedSection>
             ))}
           </div>
@@ -126,19 +158,34 @@ export default function ResultsPage() {
         <div className="max-w-7xl mx-auto px-6 space-y-16">
           {caseStudies.map((cs, i) => (
             <AnimatedSection key={cs.id}>
-              <div className="rounded-3xl bg-[#0d0d1a] border border-white/5 overflow-hidden">
+              <div
+                className="rounded-3xl overflow-hidden"
+                style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}
+              >
                 <div className="grid md:grid-cols-2">
-                  {/* Image */}
+                  {/* Image — abstract/tech only */}
                   <div className={`relative h-64 md:h-auto ${i % 2 !== 0 ? 'md:order-2' : ''}`}>
                     <Image
                       src={cs.image}
-                      alt={cs.business}
+                      alt={cs.imageAlt}
                       fill
                       className="object-cover opacity-60"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#0d0d1a] to-transparent md:bg-gradient-to-r" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#111120] to-transparent md:bg-gradient-to-r" />
                     <div className="absolute top-4 left-4">
-                      <div className="px-3 py-1.5 rounded-lg text-xs font-medium bg-[#04040a]/80 border border-white/10 text-[#888899]">
+                      <div
+                        className="px-3 py-1.5 rounded-lg"
+                        style={{
+                          background: 'rgba(6,6,8,0.8)',
+                          border: '1px solid var(--border)',
+                          fontFamily: "'DM Sans', system-ui, sans-serif",
+                          fontSize: '0.7rem',
+                          fontWeight: 400,
+                          letterSpacing: '0.1em',
+                          textTransform: 'uppercase',
+                          color: 'var(--muted)',
+                        }}
+                      >
                         {cs.type}
                       </div>
                     </div>
@@ -147,13 +194,38 @@ export default function ResultsPage() {
                   {/* Content */}
                   <div className="p-8 md:p-10">
                     <div className="mb-6">
-                      <h2 className="font-syne font-bold text-2xl text-white">{cs.business}</h2>
-                      <div className="text-sm text-[#888899] mt-1">{cs.location}</div>
-                      <div className="flex flex-wrap gap-2 mt-3">
+                      <h2 style={{
+                        fontFamily: "'Playfair Display', Georgia, serif",
+                        fontWeight: 700,
+                        fontSize: '1.5rem',
+                        color: 'var(--text)',
+                        marginBottom: '0.25rem',
+                      }}>
+                        {cs.business}
+                      </h2>
+                      <div style={{
+                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontWeight: 300,
+                        fontSize: '0.8rem',
+                        color: 'var(--muted)',
+                        marginBottom: '0.75rem',
+                      }}>
+                        {cs.location}
+                      </div>
+                      <div className="flex flex-wrap gap-2">
                         {cs.services.map((s) => (
                           <span
                             key={s}
-                            className="px-2.5 py-1 rounded-lg text-xs text-[#888899] bg-white/5 border border-white/5"
+                            className="stat-number"
+                            style={{
+                              padding: '3px 10px',
+                              borderRadius: '6px',
+                              fontSize: '0.6rem',
+                              color: 'var(--muted)',
+                              background: 'rgba(255,255,255,0.03)',
+                              border: '1px solid var(--border)',
+                              letterSpacing: '0.05em',
+                            }}
                           >
                             {s}
                           </span>
@@ -161,37 +233,111 @@ export default function ResultsPage() {
                       </div>
                     </div>
 
-                    {/* Results */}
+                    {/* Results — Space Mono metrics */}
                     <div className="grid grid-cols-2 gap-3 mb-6">
                       {cs.results.map((r) => (
-                        <div key={r.label} className="p-3 rounded-xl bg-[#04040a] border border-white/5">
-                          <div className="font-syne font-bold text-xl grad-text">{r.metric}</div>
-                          <div className="text-xs text-[#888899] mt-0.5">{r.label}</div>
+                        <div
+                          key={r.label}
+                          className="p-3 rounded-xl"
+                          style={{ background: 'var(--bg2)', border: '1px solid var(--border2)' }}
+                        >
+                          <div
+                            className="stat-number grad-gold-text"
+                            style={{ fontSize: '1.35rem', lineHeight: 1, marginBottom: '0.35rem' }}
+                          >
+                            {r.metric}
+                          </div>
+                          <div style={{
+                            fontFamily: "'DM Sans', system-ui, sans-serif",
+                            fontSize: '0.7rem',
+                            fontWeight: 300,
+                            color: 'var(--muted)',
+                          }}>
+                            {r.label}
+                          </div>
                         </div>
                       ))}
                     </div>
 
-                    <blockquote className="border-l-2 border-[#4f46e5]/40 pl-4 mb-4">
-                      <p className="text-sm text-[#c8c8d8] leading-relaxed italic">
+                    <blockquote
+                      className="pl-4 mb-4"
+                      style={{ borderLeft: '2px solid rgba(201,169,110,0.4)' }}
+                    >
+                      <p style={{
+                        fontFamily: "'Playfair Display', Georgia, serif",
+                        fontStyle: 'italic',
+                        fontWeight: 400,
+                        fontSize: '0.9rem',
+                        color: 'var(--muted2)',
+                        lineHeight: 1.75,
+                        marginBottom: '0.5rem',
+                      }}>
                         "{cs.quote}"
                       </p>
-                      <cite className="text-xs text-[#888899] mt-2 block not-italic">{cs.author}</cite>
+                      <cite style={{
+                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontWeight: 300,
+                        fontSize: '0.75rem',
+                        color: 'var(--muted)',
+                        fontStyle: 'normal',
+                      }}>
+                        {cs.author}
+                      </cite>
                     </blockquote>
 
                     <div className="mt-6 space-y-3">
                       <details className="group">
-                        <summary className="text-xs font-medium text-[#888899] cursor-pointer hover:text-white transition-colors list-none flex items-center gap-1.5">
+                        <summary
+                          className="list-none flex items-center gap-1.5 cursor-pointer"
+                          style={{
+                            fontFamily: "'DM Sans', system-ui, sans-serif",
+                            fontSize: '0.75rem',
+                            fontWeight: 400,
+                            color: 'var(--muted)',
+                            transition: 'color 0.2s ease',
+                          }}
+                        >
                           <span className="group-open:rotate-90 transition-transform inline-block">▶</span>
                           The challenge
                         </summary>
-                        <p className="text-xs text-[#888899] leading-relaxed mt-2 pl-4">{cs.challenge}</p>
+                        <p
+                          className="mt-2 pl-4"
+                          style={{
+                            fontFamily: "'DM Sans', system-ui, sans-serif",
+                            fontWeight: 300,
+                            fontSize: '0.8rem',
+                            color: 'var(--muted)',
+                            lineHeight: 1.75,
+                          }}
+                        >
+                          {cs.challenge}
+                        </p>
                       </details>
                       <details className="group">
-                        <summary className="text-xs font-medium text-[#888899] cursor-pointer hover:text-white transition-colors list-none flex items-center gap-1.5">
+                        <summary
+                          className="list-none flex items-center gap-1.5 cursor-pointer"
+                          style={{
+                            fontFamily: "'DM Sans', system-ui, sans-serif",
+                            fontSize: '0.75rem',
+                            fontWeight: 400,
+                            color: 'var(--muted)',
+                          }}
+                        >
                           <span className="group-open:rotate-90 transition-transform inline-block">▶</span>
                           What we built
                         </summary>
-                        <p className="text-xs text-[#888899] leading-relaxed mt-2 pl-4">{cs.solution}</p>
+                        <p
+                          className="mt-2 pl-4"
+                          style={{
+                            fontFamily: "'DM Sans', system-ui, sans-serif",
+                            fontWeight: 300,
+                            fontSize: '0.8rem',
+                            color: 'var(--muted)',
+                            lineHeight: 1.75,
+                          }}
+                        >
+                          {cs.solution}
+                        </p>
                       </details>
                     </div>
                   </div>
@@ -202,30 +348,86 @@ export default function ResultsPage() {
         </div>
       </section>
 
-      {/* Lead-in */}
-      <section className="py-24 border-t border-white/5">
+      {/* Note about real screenshots */}
+      <section className="py-8">
+        <div className="max-w-7xl mx-auto px-6">
+          <AnimatedSection>
+            <div
+              className="px-6 py-4 rounded-xl"
+              style={{
+                background: 'rgba(201,169,110,0.05)',
+                border: '1px solid rgba(201,169,110,0.2)',
+              }}
+            >
+              <p style={{
+                fontFamily: "'DM Sans', system-ui, sans-serif",
+                fontWeight: 300,
+                fontSize: '0.8rem',
+                color: 'var(--gold)',
+                letterSpacing: '0.03em',
+                lineHeight: 1.6,
+              }}>
+                Real client screenshots and project visuals coming soon. Results above are from actual client engagements.
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Lead-in CTA */}
+      <section className="py-24" style={{ borderTop: '1px solid rgba(201,169,110,0.15)' }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <AnimatedSection direction="left">
-              <h2 className="font-syne font-bold text-4xl mb-4">
-                Your business could be
-                <span className="grad-text"> next</span>
+              <h2 style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontWeight: 700,
+                fontSize: 'clamp(1.75rem, 4vw, 3rem)',
+                lineHeight: 1.15,
+                letterSpacing: '-0.02em',
+                marginBottom: '1rem',
+                color: 'var(--text)',
+              }}>
+                Your business could be{' '}
+                <span className="grad-gold-text" style={{ fontStyle: 'italic' }}>next</span>
               </h2>
-              <p className="text-[#888899] leading-relaxed mb-6">
+              <p style={{
+                fontFamily: "'DM Sans', system-ui, sans-serif",
+                fontWeight: 300,
+                fontSize: '0.95rem',
+                color: 'var(--muted)',
+                lineHeight: 1.8,
+                marginBottom: '1rem',
+              }}>
                 Every business in these case studies started with the same thing: a 30-minute conversation about what was actually costing them money.
                 Not a proposal. Not a quote. Just an honest assessment.
               </p>
-              <p className="text-[#888899] leading-relaxed">
+              <p style={{
+                fontFamily: "'DM Sans', system-ui, sans-serif",
+                fontWeight: 300,
+                fontSize: '0.95rem',
+                color: 'var(--muted)',
+                lineHeight: 1.8,
+              }}>
                 If you are missing calls, spending hours on admin, or watching clients not come back, there is a fix.
                 And it usually pays for itself within the first month.
               </p>
             </AnimatedSection>
             <AnimatedSection direction="right" delay={0.2}>
               <div
-                className="p-8 rounded-2xl border border-white/10 relative overflow-hidden"
-                style={{ background: 'linear-gradient(135deg, rgba(79,70,229,0.1), rgba(6,182,212,0.08))' }}
+                className="p-8 rounded-2xl relative overflow-hidden"
+                style={{
+                  border: '1px solid var(--border2)',
+                  background: 'linear-gradient(135deg, rgba(99,102,241,0.08), rgba(167,139,250,0.05))',
+                }}
               >
-                <h3 className="font-syne font-bold text-2xl text-white mb-6">
+                <h3 style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontWeight: 700,
+                  fontSize: '1.5rem',
+                  color: 'var(--text)',
+                  marginBottom: '1.5rem',
+                }}>
                   Start with a free audit
                 </h3>
                 <ul className="space-y-3 mb-8">
@@ -235,7 +437,7 @@ export default function ResultsPage() {
                     'Show exactly what automation would fix them',
                     'Give you a clear price and timeline',
                   ].map((item) => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm text-[#c8c8d8]">
+                    <li key={item} className="flex items-start gap-2.5">
                       <span
                         className="w-4 h-4 rounded-full flex-shrink-0 mt-0.5 flex items-center justify-center"
                         style={{ background: 'var(--grad)' }}
@@ -244,13 +446,34 @@ export default function ResultsPage() {
                           <path d="M1 3l2 2 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
                       </span>
-                      {item}
+                      <span style={{
+                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontWeight: 300,
+                        fontSize: '0.875rem',
+                        color: 'var(--muted2)',
+                      }}>
+                        {item}
+                      </span>
                     </li>
                   ))}
                 </ul>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-semibold text-white grad-bg hover:opacity-90 transition-opacity"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '12px 24px',
+                    borderRadius: '999px',
+                    background: 'var(--grad)',
+                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontSize: '0.7rem',
+                    fontWeight: 500,
+                    letterSpacing: '0.15em',
+                    textTransform: 'uppercase',
+                    color: '#fff',
+                    textDecoration: 'none',
+                  }}
                 >
                   Book your free strategy call
                 </Link>

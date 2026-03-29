@@ -81,13 +81,33 @@ export default function HomePage() {
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
         {/* Gradient orbs */}
         <div
-          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full opacity-10 blur-3xl pointer-events-none"
-          style={{ background: 'var(--indigo)' }}
+          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full opacity-8 blur-3xl pointer-events-none"
+          style={{ background: 'var(--accent)' }}
         />
         <div
-          className="absolute bottom-1/4 right-1/4 w-72 h-72 rounded-full opacity-10 blur-3xl pointer-events-none"
-          style={{ background: 'var(--cyan)' }}
+          className="absolute bottom-1/4 right-1/4 w-72 h-72 rounded-full opacity-8 blur-3xl pointer-events-none"
+          style={{ background: 'var(--accent2)' }}
         />
+
+        {/* AIGA watermark */}
+        <div
+          className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
+          style={{ zIndex: 0 }}
+        >
+          <span style={{
+            fontFamily: "'Playfair Display', Georgia, serif",
+            fontStyle: 'italic',
+            fontWeight: 700,
+            fontSize: 'clamp(8rem, 28vw, 28rem)',
+            letterSpacing: '-0.03em',
+            color: 'transparent',
+            WebkitTextStroke: '1px rgba(99,102,241,0.07)',
+            userSelect: 'none',
+            lineHeight: 1,
+          }}>
+            AIGA
+          </span>
+        </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-6 py-24 text-center">
           <motion.div
@@ -95,9 +115,17 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs text-[#888899] mb-8">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#06b6d4] animate-pulse" />
-              AI automation for Australian businesses
+            <div
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-8"
+              style={{ border: '1px solid var(--border)', background: 'rgba(255,255,255,0.03)' }}
+            >
+              <span
+                className="w-1.5 h-1.5 rounded-full animate-pulse"
+                style={{ background: 'var(--gold)' }}
+              />
+              <span className="overline-muted" style={{ fontSize: '0.6rem' }}>
+                AI automation for Australian businesses
+              </span>
             </div>
           </motion.div>
 
@@ -105,18 +133,35 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="font-syne font-bold text-5xl md:text-7xl lg:text-8xl leading-none mb-6 tracking-tight"
+            style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontStyle: 'italic',
+              fontWeight: 700,
+              fontSize: 'clamp(3rem, 8vw, 6.5rem)',
+              lineHeight: 1.05,
+              letterSpacing: '-0.03em',
+              marginBottom: '1.5rem',
+              color: 'var(--text)',
+            }}
           >
             Your business,
             <br />
-            <span className="grad-text">running on autopilot</span>
+            <span className="grad-gold-text">running on autopilot</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-            className="text-[#888899] text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+            style={{
+              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontWeight: 300,
+              fontSize: '1.1rem',
+              color: 'var(--muted2)',
+              maxWidth: '36rem',
+              margin: '0 auto 2.5rem',
+              lineHeight: 1.8,
+            }}
           >
             AIGA builds AI-powered systems that handle your phones, bookings, website, and client follow-up.
             Professional automation without the enterprise price tag.
@@ -130,30 +175,65 @@ export default function HomePage() {
           >
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-base font-semibold text-white grad-bg hover:opacity-90 transition-opacity"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                padding: '14px 28px',
+                borderRadius: '999px',
+                background: 'var(--grad)',
+                fontFamily: "'DM Sans', system-ui, sans-serif",
+                fontSize: '0.75rem',
+                fontWeight: 500,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: '#fff',
+                textDecoration: 'none',
+                transition: 'opacity 0.2s ease',
+              }}
             >
               Book a free strategy call
             </Link>
             <Link
               href="/services"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-base font-medium text-[#888899] border border-white/10 hover:border-white/20 hover:text-white transition-all"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                padding: '14px 28px',
+                borderRadius: '999px',
+                fontFamily: "'DM Sans', system-ui, sans-serif",
+                fontSize: '0.75rem',
+                fontWeight: 400,
+                letterSpacing: '0.15em',
+                textTransform: 'uppercase',
+                color: 'var(--muted2)',
+                textDecoration: 'none',
+                border: '1px solid var(--border)',
+                transition: 'all 0.2s ease',
+              }}
             >
               See all services
             </Link>
           </motion.div>
 
-          {/* Hero image */}
+          {/* Hero image — analytics dashboard, no people */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
             className="mt-20 relative mx-auto max-w-5xl"
           >
-            <div className="relative rounded-2xl overflow-hidden border border-white/10">
-              <div className="absolute inset-0 bg-gradient-to-t from-[#04040a] via-transparent to-transparent z-10" />
+            <div
+              className="relative rounded-2xl overflow-hidden"
+              style={{ border: '1px solid var(--border)' }}
+            >
+              <div className="absolute inset-0 bg-gradient-to-t from-[#060608] via-transparent to-transparent z-10" />
               <Image
                 src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80"
-                alt="Business analytics dashboard"
+                alt="Analytics dashboard"
                 width={1200}
                 height={600}
                 className="w-full h-auto object-cover opacity-60"
@@ -165,15 +245,28 @@ export default function HomePage() {
       </section>
 
       {/* Stats */}
-      <section className="py-20 border-y border-white/5">
+      <section className="py-20" style={{ borderTop: '1px solid rgba(201,169,110,0.15)', borderBottom: '1px solid rgba(201,169,110,0.15)' }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, i) => (
               <AnimatedSection key={stat.value} delay={i * 0.1} className="text-center">
-                <div className="font-syne font-bold text-4xl md:text-5xl grad-text mb-2">
+                <div
+                  className="stat-number grad-text mb-2"
+                  style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', lineHeight: 1 }}
+                >
                   {stat.value}
                 </div>
-                <div className="text-sm text-[#888899]">{stat.label}</div>
+                <div
+                  style={{
+                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontSize: '0.8rem',
+                    fontWeight: 300,
+                    color: 'var(--muted)',
+                    letterSpacing: '0.02em',
+                  }}
+                >
+                  {stat.label}
+                </div>
               </AnimatedSection>
             ))}
           </div>
@@ -185,25 +278,58 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <AnimatedSection direction="left">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-[#888899] mb-6">
-                The reality for most small businesses
-              </div>
-              <h2 className="font-syne font-bold text-4xl md:text-5xl leading-tight mb-6">
-                A 3-hour response to a lead is
-                <span className="grad-text"> lost business</span>
+              <div className="overline mb-6">The reality for most small businesses</div>
+              <h2 style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontWeight: 600,
+                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                lineHeight: 1.2,
+                letterSpacing: '-0.02em',
+                marginBottom: '1.5rem',
+                color: 'var(--text)',
+              }}>
+                A 3-hour response to a lead is{' '}
+                <span className="grad-gold-text" style={{ fontStyle: 'italic' }}>lost business</span>
               </h2>
-              <p className="text-[#888899] leading-relaxed mb-6">
+              <p style={{
+                fontFamily: "'DM Sans', system-ui, sans-serif",
+                fontWeight: 300,
+                fontSize: '1rem',
+                color: 'var(--muted2)',
+                lineHeight: 1.8,
+                marginBottom: '1rem',
+              }}>
                 Most Australian small businesses still rely on missed calls, manual bookings, and sporadic follow-ups.
                 While you sleep, your competitors are capturing every lead automatically.
               </p>
-              <p className="text-[#888899] leading-relaxed">
+              <p style={{
+                fontFamily: "'DM Sans', system-ui, sans-serif",
+                fontWeight: 300,
+                fontSize: '1rem',
+                color: 'var(--muted2)',
+                lineHeight: 1.8,
+              }}>
                 AIGA changes that. We build systems that respond instantly, book automatically, and follow up persistently.
                 No extra staff needed.
               </p>
               <div className="mt-8">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold text-white grad-bg hover:opacity-90 transition-opacity"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    padding: '12px 24px',
+                    borderRadius: '999px',
+                    background: 'var(--grad)',
+                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontSize: '0.7rem',
+                    fontWeight: 500,
+                    letterSpacing: '0.15em',
+                    textTransform: 'uppercase',
+                    color: '#fff',
+                    textDecoration: 'none',
+                  }}
                 >
                   Fix this for my business
                 </Link>
@@ -211,15 +337,18 @@ export default function HomePage() {
             </AnimatedSection>
 
             <AnimatedSection direction="right" delay={0.2}>
-              <div className="relative rounded-2xl overflow-hidden border border-white/10">
+              <div
+                className="relative rounded-2xl overflow-hidden"
+                style={{ border: '1px solid var(--border)' }}
+              >
                 <Image
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
-                  alt="Business owner on phone"
+                  src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80"
+                  alt="Data center infrastructure"
                   width={800}
                   height={600}
                   className="w-full h-auto object-cover opacity-70"
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#04040a]/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-[#060608]/60 to-transparent" />
               </div>
             </AnimatedSection>
           </div>
@@ -227,18 +356,32 @@ export default function HomePage() {
       </section>
 
       {/* Services overview */}
-      <section className="py-24 border-t border-white/5">
+      <section className="py-24" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs text-[#888899] mb-6">
-              What we build
-            </div>
-            <h2 className="font-syne font-bold text-4xl md:text-5xl mb-4">
+            <div className="overline mb-6">What we build</div>
+            <h2 style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontWeight: 600,
+              fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
+              lineHeight: 1.15,
+              letterSpacing: '-0.02em',
+              marginBottom: '1rem',
+              color: 'var(--text)',
+            }}>
               Everything your business needs,
               <br />
-              <span className="grad-text">done for you</span>
+              <span className="grad-text" style={{ fontStyle: 'italic' }}>done for you</span>
             </h2>
-            <p className="text-[#888899] max-w-xl mx-auto">
+            <p style={{
+              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontWeight: 300,
+              fontSize: '1rem',
+              color: 'var(--muted)',
+              maxWidth: '36rem',
+              margin: '0 auto',
+              lineHeight: 1.8,
+            }}>
               From your first Google review to a fully automated operation. We handle the tech so you handle the growth.
             </p>
           </AnimatedSection>
@@ -248,19 +391,45 @@ export default function HomePage() {
               <AnimatedSection key={service.id} delay={i * 0.08}>
                 <Link
                   href={`/services#${service.id}`}
-                  className="group block p-6 rounded-2xl bg-[#0d0d1a] border border-white/5 hover:border-white/10 transition-all duration-300 h-full"
+                  className="group block h-full"
+                  style={{
+                    padding: '1.5rem',
+                    borderRadius: '1rem',
+                    background: 'var(--bg3)',
+                    border: '1px solid var(--border)',
+                    textDecoration: 'none',
+                    display: 'block',
+                    transition: 'border-color 0.3s ease',
+                  }}
+                  onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--border2)'; }}
+                  onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'var(--border)'; }}
                 >
                   <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center text-white text-lg mb-4 opacity-80"
-                    style={{ background: 'var(--grad)' }}
+                    className="w-10 h-10 rounded-xl flex items-center justify-center text-white text-lg mb-4"
+                    style={{ background: 'var(--grad)', opacity: 0.9 }}
                   >
                     {service.icon}
                   </div>
-                  <h3 className="font-syne font-semibold text-lg text-white mb-2 group-hover:grad-text transition-colors">
+                  <h3 style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontWeight: 600,
+                    fontSize: '1.1rem',
+                    color: 'var(--text)',
+                    marginBottom: '0.5rem',
+                  }}>
                     {service.title}
                   </h3>
-                  <p className="text-sm text-[#888899] leading-relaxed mb-4">{service.desc}</p>
-                  <div className="text-sm font-medium" style={{ color: 'var(--cyan)' }}>
+                  <p style={{
+                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontWeight: 300,
+                    fontSize: '0.875rem',
+                    color: 'var(--muted)',
+                    lineHeight: 1.7,
+                    marginBottom: '1rem',
+                  }}>
+                    {service.desc}
+                  </p>
+                  <div className="stat-number" style={{ fontSize: '0.8rem', color: 'var(--gold)' }}>
                     From {service.from}
                   </div>
                 </Link>
@@ -271,17 +440,49 @@ export default function HomePage() {
             <AnimatedSection delay={services.length * 0.08}>
               <Link
                 href="/pricing"
-                className="group block p-6 rounded-2xl border border-white/10 hover:border-[#4f46e5]/50 transition-all duration-300 h-full relative overflow-hidden"
-                style={{ background: 'linear-gradient(135deg, rgba(79,70,229,0.1), rgba(6,182,212,0.1))' }}
+                className="group block h-full"
+                style={{
+                  padding: '1.5rem',
+                  borderRadius: '1rem',
+                  background: 'linear-gradient(135deg, rgba(99,102,241,0.08), rgba(167,139,250,0.06))',
+                  border: '1px solid var(--border2)',
+                  textDecoration: 'none',
+                  display: 'block',
+                  position: 'relative',
+                  overflow: 'hidden',
+                }}
               >
                 <div className="relative z-10">
-                  <h3 className="font-syne font-semibold text-xl text-white mb-2">
+                  <h3 style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontWeight: 600,
+                    fontSize: '1.25rem',
+                    color: 'var(--text)',
+                    marginBottom: '0.5rem',
+                  }}>
                     See all pricing
                   </h3>
-                  <p className="text-sm text-[#888899] leading-relaxed mb-4">
+                  <p style={{
+                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontWeight: 300,
+                    fontSize: '0.875rem',
+                    color: 'var(--muted)',
+                    lineHeight: 1.7,
+                    marginBottom: '1rem',
+                  }}>
                     Transparent pricing with monthly and one-time options. No lock-in surprises.
                   </p>
-                  <div className="inline-flex items-center gap-1.5 text-sm font-medium text-white">
+                  <div
+                    className="inline-flex items-center gap-1.5"
+                    style={{
+                      fontFamily: "'DM Sans', system-ui, sans-serif",
+                      fontSize: '0.7rem',
+                      fontWeight: 500,
+                      letterSpacing: '0.15em',
+                      textTransform: 'uppercase',
+                      color: 'var(--text)',
+                    }}
+                  >
                     View pricing
                     <span className="group-hover:translate-x-1 transition-transform">→</span>
                   </div>
@@ -293,14 +494,31 @@ export default function HomePage() {
       </section>
 
       {/* How it works */}
-      <section className="py-24 border-t border-white/5">
+      <section className="py-24" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="font-syne font-bold text-4xl md:text-5xl mb-4">
-              Up and running in
-              <span className="grad-text"> 2 weeks</span>
+            <h2 style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontWeight: 700,
+              fontStyle: 'italic',
+              fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
+              lineHeight: 1.1,
+              letterSpacing: '-0.03em',
+              marginBottom: '1rem',
+              color: 'var(--text)',
+            }}>
+              Up and running in{' '}
+              <span className="grad-gold-text">2 weeks</span>
             </h2>
-            <p className="text-[#888899] max-w-lg mx-auto">
+            <p style={{
+              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontWeight: 300,
+              fontSize: '1rem',
+              color: 'var(--muted)',
+              maxWidth: '32rem',
+              margin: '0 auto',
+              lineHeight: 1.8,
+            }}>
               No lengthy onboarding. No technical skills required on your end. We handle the entire setup.
             </p>
           </AnimatedSection>
@@ -324,10 +542,34 @@ export default function HomePage() {
               },
             ].map((item, i) => (
               <AnimatedSection key={item.step} delay={i * 0.15}>
-                <div className="p-6 rounded-2xl bg-[#0d0d1a] border border-white/5 h-full">
-                  <div className="font-syne font-bold text-4xl grad-text mb-4 opacity-60">{item.step}</div>
-                  <h3 className="font-syne font-semibold text-lg text-white mb-2">{item.title}</h3>
-                  <p className="text-sm text-[#888899] leading-relaxed">{item.desc}</p>
+                <div
+                  className="p-6 rounded-2xl h-full"
+                  style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}
+                >
+                  <div
+                    className="stat-number grad-text mb-4"
+                    style={{ fontSize: '2.5rem', opacity: 0.55 }}
+                  >
+                    {item.step}
+                  </div>
+                  <h3 style={{
+                    fontFamily: "'Playfair Display', Georgia, serif",
+                    fontWeight: 600,
+                    fontSize: '1.1rem',
+                    color: 'var(--text)',
+                    marginBottom: '0.5rem',
+                  }}>
+                    {item.title}
+                  </h3>
+                  <p style={{
+                    fontFamily: "'DM Sans', system-ui, sans-serif",
+                    fontWeight: 300,
+                    fontSize: '0.875rem',
+                    color: 'var(--muted)',
+                    lineHeight: 1.7,
+                  }}>
+                    {item.desc}
+                  </p>
                 </div>
               </AnimatedSection>
             ))}
@@ -336,32 +578,80 @@ export default function HomePage() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 border-t border-white/5">
+      <section className="py-24" style={{ borderTop: '1px solid var(--border)' }}>
         <div className="max-w-7xl mx-auto px-6">
           <AnimatedSection className="text-center mb-16">
-            <h2 className="font-syne font-bold text-4xl md:text-5xl mb-4">
+            <h2 style={{
+              fontFamily: "'Playfair Display', Georgia, serif",
+              fontWeight: 700,
+              fontSize: 'clamp(2rem, 4.5vw, 3.5rem)',
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em',
+              marginBottom: '1rem',
+              color: 'var(--text)',
+            }}>
               What our clients say
             </h2>
-            <p className="text-[#888899]">Real businesses, real results.</p>
+            <p style={{
+              fontFamily: "'DM Sans', system-ui, sans-serif",
+              fontWeight: 300,
+              color: 'var(--muted)',
+            }}>
+              Real businesses, real results.
+            </p>
           </AnimatedSection>
 
           <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((t, i) => (
               <AnimatedSection key={t.name} delay={i * 0.1}>
-                <div className="p-6 rounded-2xl bg-[#0d0d1a] border border-white/5 h-full flex flex-col">
-                  <blockquote className="text-[#c8c8d8] text-sm leading-relaxed flex-1 mb-6">
+                <div
+                  className="p-6 rounded-2xl h-full flex flex-col"
+                  style={{ background: 'var(--bg3)', border: '1px solid var(--border)' }}
+                >
+                  {/* Gold accent line */}
+                  <div style={{ height: '1px', background: 'rgba(201,169,110,0.3)', marginBottom: '1.5rem' }} />
+                  <blockquote
+                    className="flex-1 mb-6"
+                    style={{
+                      fontFamily: "'Playfair Display', Georgia, serif",
+                      fontStyle: 'italic',
+                      fontWeight: 400,
+                      fontSize: '0.95rem',
+                      color: 'var(--muted2)',
+                      lineHeight: 1.75,
+                    }}
+                  >
                     "{t.quote}"
                   </blockquote>
                   <div className="flex items-center gap-3">
                     <div
                       className="w-9 h-9 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0"
-                      style={{ background: 'var(--grad)' }}
+                      style={{
+                        background: 'var(--grad)',
+                        fontFamily: "'Space Mono', monospace",
+                        fontSize: '0.6rem',
+                        letterSpacing: '0.05em',
+                      }}
                     >
                       {t.avatar}
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-white">{t.name}</div>
-                      <div className="text-xs text-[#888899]">{t.title}</div>
+                      <div style={{
+                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontSize: '0.875rem',
+                        fontWeight: 500,
+                        color: 'var(--text)',
+                      }}>
+                        {t.name}
+                      </div>
+                      <div style={{
+                        fontFamily: "'DM Sans', system-ui, sans-serif",
+                        fontSize: '0.75rem',
+                        fontWeight: 300,
+                        color: 'var(--muted)',
+                      }}>
+                        {t.title}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -375,20 +665,59 @@ export default function HomePage() {
       <section className="py-24">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <AnimatedSection>
-            <div className="p-12 rounded-3xl border border-white/10 relative overflow-hidden" style={{ background: 'linear-gradient(135deg, rgba(79,70,229,0.12), rgba(6,182,212,0.08))' }}>
+            <div
+              className="p-12 rounded-3xl relative overflow-hidden"
+              style={{
+                border: '1px solid var(--border2)',
+                background: 'linear-gradient(135deg, rgba(99,102,241,0.1), rgba(167,139,250,0.06))',
+              }}
+            >
               <div
-                className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-32 blur-3xl opacity-20 pointer-events-none"
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-32 blur-3xl opacity-15 pointer-events-none"
                 style={{ background: 'var(--grad)' }}
               />
-              <h2 className="font-syne font-bold text-4xl text-white mb-4 relative z-10">
+              <h2
+                className="relative z-10 mb-4"
+                style={{
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                  fontStyle: 'italic',
+                  fontWeight: 700,
+                  fontSize: 'clamp(1.75rem, 4vw, 3rem)',
+                  letterSpacing: '-0.02em',
+                  color: 'var(--text)',
+                }}
+              >
                 Ready to automate your business?
               </h2>
-              <p className="text-[#888899] mb-8 relative z-10">
+              <p
+                className="relative z-10 mb-8"
+                style={{
+                  fontFamily: "'DM Sans', system-ui, sans-serif",
+                  fontWeight: 300,
+                  color: 'var(--muted)',
+                  lineHeight: 1.8,
+                }}
+              >
                 Book a free 30-minute strategy call. We'll map out exactly what automation can do for your specific business.
               </p>
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl text-base font-semibold text-white grad-bg hover:opacity-90 transition-opacity relative z-10"
+                className="relative z-10"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '14px 32px',
+                  borderRadius: '999px',
+                  background: 'var(--grad)',
+                  fontFamily: "'DM Sans', system-ui, sans-serif",
+                  fontSize: '0.75rem',
+                  fontWeight: 500,
+                  letterSpacing: '0.15em',
+                  textTransform: 'uppercase',
+                  color: '#fff',
+                  textDecoration: 'none',
+                }}
               >
                 Book a free strategy call
               </Link>
