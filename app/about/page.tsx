@@ -111,7 +111,7 @@ export default function AboutPage() {
 
           <AnimatedSection delay={0.15}>
             <p style={{ fontSize: '16px', lineHeight: 1.75, color: 'var(--muted-light)', marginBottom: '1.5rem' }}>
-              AIGA was built with a straightforward mission: make the automation tools that large corporations use accessible to small businesses across Australia.
+              To Be Seen was built with a clear mission: close the gap between the quality of a business and its visibility in the world.
             </p>
             <p style={{ fontSize: '16px', lineHeight: 1.75, color: 'var(--muted-light)', marginBottom: '1.5rem' }}>
               We watched restaurants, salons, health clinics, and retail stores struggle not because they weren't good at what they did, but because the systems supporting their business were broken. Missed calls. Manual bookings. No follow-up. Websites built years ago that no longer served them.

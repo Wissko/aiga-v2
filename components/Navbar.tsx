@@ -194,7 +194,7 @@ export default function Navbar() {
                 color: 'var(--white)',
               }}
             >
-              AIGA
+              TBS
             </motion.div>
 
             {/* Nav links */}
@@ -256,7 +256,7 @@ export default function Navbar() {
                 color: 'rgba(255,255,255,0.35)',
                 fontWeight: 400,
               }}>
-                AI Automation · Brisbane, Australia
+                To Be Seen · Brisbane, Australia
               </p>
               <Link
                 href="/contact"

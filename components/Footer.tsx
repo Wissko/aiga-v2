@@ -73,7 +73,7 @@ export default function Footer() {
               color: 'var(--white)',
               marginBottom: '1rem',
             }}>
-              AIGA
+              TBS
             </div>
             <p style={{
               fontFamily: 'Satoshi, sans-serif',
@@ -84,7 +84,7 @@ export default function Footer() {
               maxWidth: '320px',
               marginBottom: '1.5rem',
             }}>
-              Artificial Intelligence Growth Agency. Making AI automation accessible for Australian small businesses.
+              Excellence deserves an audience.
             </p>
             <Link href="/contact" className="cta-btn">
               Book a free strategy call →
@@ -146,7 +146,7 @@ export default function Footer() {
             fontWeight: 300,
             color: 'rgba(255,255,255,0.3)',
           }}>
-            2024 AIGA. All rights reserved. Brisbane, Australia.
+            © 2026 To Be Seen. All rights reserved.
           </p>
           <p style={{
             fontFamily: 'Satoshi, sans-serif',
@@ -154,7 +154,7 @@ export default function Footer() {
             fontWeight: 300,
             color: 'rgba(255,255,255,0.3)',
           }}>
-            Powered by caffeine ☕ and n8n
+            Powered by caffeine and conviction.
           </p>
           <p style={{
             fontFamily: 'Satoshi, sans-serif',

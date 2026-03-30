@@ -6,17 +6,17 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: {
-    default: 'AIGA — AI Growth Agency for Australian Businesses',
-    template: '%s | AIGA',
+    default: 'To Be Seen — Digital Presence for Australian Businesses',
+    template: '%s | To Be Seen',
   },
   description:
-    'AIGA helps Australian small businesses grow with AI-powered automation: websites, phone bots, booking systems, and CRM. Accessible and affordable.',
-  keywords: ['AI agency', 'small business automation', 'Australia', 'website creation', 'phone bot', 'booking automation'],
-  authors: [{ name: 'AIGA' }],
+    'In every city, every street, every industry — there are businesses doing exceptional work in relative obscurity. TO BE SEEN exists to close that gap. We build brand presence that converts interest into loyalty.',
+  keywords: ['digital presence', 'brand visibility', 'small business Australia', 'website creation', 'marketing automation', 'Brisbane'],
+  authors: [{ name: 'To Be Seen' }],
   openGraph: {
     type: 'website',
     locale: 'en_AU',
-    siteName: 'AIGA',
+    siteName: 'To Be Seen',
   },
 };
 

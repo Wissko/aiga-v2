@@ -12,7 +12,7 @@ const services = [
     num: '01.',
     title: 'WEBSITE CREATION',
     tagline: 'Your digital shopfront, built to convert.',
-    desc: `Your website is often the first impression a potential customer gets. Most small business websites are slow, outdated, and built on templates that look like every other competitor. AIGA builds modern, fast, and conversion-focused websites tailored to your business.`,
+    desc: `Your website is often the first impression a potential customer gets. Most small business websites are slow, outdated, and built on templates that look like every other competitor. To Be Seen builds modern, fast, and conversion-focused websites tailored to your business.`,
     bullets: [
       'Custom design aligned to your brand',
       'Mobile-first, Google-optimised (Core Web Vitals)',
@@ -66,7 +66,7 @@ const services = [
     num: '04.',
     title: 'CLIENT FOLLOW-UP CRM',
     tagline: 'Keep clients coming back, automatically.',
-    desc: `Most businesses spend all their energy acquiring new customers and neglect the gold mine sitting in their existing client list. AIGA builds personalised automated sequences that re-engage past clients, request reviews, offer seasonal promotions, and keep your business top of mind.`,
+    desc: `Most businesses spend all their energy acquiring new customers and neglect the gold mine sitting in their existing client list. To Be Seen builds personalised automated sequences that re-engage past clients, request reviews, offer seasonal promotions, and keep your business top of mind.`,
     bullets: [
       'Automated post-visit follow-up sequences',
       'AI-personalised re-engagement messages',

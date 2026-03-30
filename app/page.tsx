@@ -120,18 +120,18 @@ export default function HomePage() {
         <ParticleWaves />
 
         <div style={{ position: 'relative', zIndex: 1 }}>
-          {/* H1 — AIGA oversized */}
+          {/* H1 — TO BE SEEN oversized */}
           <h1 style={{
             fontFamily: 'Satoshi, sans-serif',
             fontWeight: 900,
-            fontSize: 'clamp(80px, 18vw, 220px)',
+            fontSize: 'clamp(40px, 8vw, 100px)',
             letterSpacing: '-0.03em',
             lineHeight: 0.85,
             textTransform: 'uppercase',
             color: 'var(--white)',
             margin: '0 0 1.5rem',
           }}>
-            AIGA
+            TO BE SEEN
           </h1>
 
           {/* Bottom row */}
@@ -154,7 +154,7 @@ export default function HomePage() {
                 lineHeight: 1.4,
                 marginBottom: '1.5rem',
               }}>
-                Artificial Intelligence<br />Growth Agency
+                Digital Presence<br />for Australian Businesses
               </p>
               <p style={{
                 fontFamily: 'Satoshi, sans-serif',
@@ -165,7 +165,7 @@ export default function HomePage() {
                 maxWidth: '460px',
                 marginBottom: '2rem',
               }}>
-                We automate the work that slows your business down.
+                We build the kind of brand presence that converts interest into loyalty.
               </p>
               <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                 <Link href="/contact" className="cta-btn">
@@ -206,7 +206,7 @@ export default function HomePage() {
             marginBottom: '3rem',
             maxWidth: '800px',
           }}>
-            Hi. We're AIGA. We help Australian businesses work smarter: not harder.
+            Hi. We're To Be Seen. We build the brand presence exceptional businesses deserve.
           </h2>
         </AnimatedSection>
 
@@ -359,7 +359,7 @@ export default function HomePage() {
               marginBottom: '1.25rem',
               maxWidth: '680px',
             }}>
-              We started AIGA because we watched great businesses struggle with the basics: missed calls, manual scheduling, no follow-up, and websites built on templates from 2018. Not because the owners weren't capable: because they were too busy running the business to fix the systems that should be running for them.
+              In every city, every street, every industry — there are businesses doing exceptional work in relative obscurity. Not from lack of quality. Not from lack of ambition. From lack of visibility. TO BE SEEN exists to close that gap.
             </p>
             <p style={{
               fontSize: '16px',
