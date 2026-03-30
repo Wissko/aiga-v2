@@ -120,33 +120,32 @@ export default function HomePage() {
         <ParticleWaves />
 
         <div style={{ position: 'relative', zIndex: 1 }}>
-          {/* H1 — TO BE SEEN split typographique */}
-          <h1 style={{ margin: '0 0 1.5rem', lineHeight: 1 }}>
-            {/* "to be" — murmure */}
+          {/* H1 — TO BE SEEN */}
+          <h1 style={{ margin: '0 0 1.5rem', lineHeight: 0.88 }}>
+            {/* "TO BE" — outline stroke, recule */}
             <span style={{
               display: 'block',
               fontFamily: 'Satoshi, sans-serif',
-              fontWeight: 300,
-              fontSize: 'clamp(14px, 2.2vw, 26px)',
-              letterSpacing: '0.38em',
+              fontWeight: 900,
+              fontSize: 'clamp(60px, 13vw, 160px)',
+              letterSpacing: '-0.03em',
               textTransform: 'uppercase',
-              color: 'rgba(255,255,255,0.38)',
-              marginBottom: '0.2em',
+              color: 'transparent',
+              WebkitTextStroke: '1.5px rgba(255,255,255,0.4)',
             }}>
-              to be
+              TO BE
             </span>
-            {/* "SEEN" — révélation */}
+            {/* "SEEN" — plein, dominant */}
             <span style={{
               display: 'block',
-              fontFamily: '"Cormorant Garamond", serif',
-              fontWeight: 300,
-              fontStyle: 'italic',
-              fontSize: 'clamp(90px, 18vw, 220px)',
+              fontFamily: 'Satoshi, sans-serif',
+              fontWeight: 900,
+              fontSize: 'clamp(80px, 18vw, 220px)',
               letterSpacing: '-0.04em',
-              lineHeight: 0.82,
+              textTransform: 'uppercase',
               color: 'var(--white)',
             }}>
-              Seen.
+              SEEN
             </span>
           </h1>
 
