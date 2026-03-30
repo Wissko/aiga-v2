@@ -120,18 +120,34 @@ export default function HomePage() {
         <ParticleWaves />
 
         <div style={{ position: 'relative', zIndex: 1 }}>
-          {/* H1 — TO BE SEEN oversized */}
-          <h1 style={{
-            fontFamily: 'Satoshi, sans-serif',
-            fontWeight: 900,
-            fontSize: 'clamp(40px, 8vw, 100px)',
-            letterSpacing: '-0.03em',
-            lineHeight: 0.85,
-            textTransform: 'uppercase',
-            color: 'var(--white)',
-            margin: '0 0 1.5rem',
-          }}>
-            TO BE SEEN
+          {/* H1 — TO BE SEEN split typographique */}
+          <h1 style={{ margin: '0 0 1.5rem', lineHeight: 1 }}>
+            {/* "to be" — murmure */}
+            <span style={{
+              display: 'block',
+              fontFamily: 'Satoshi, sans-serif',
+              fontWeight: 300,
+              fontSize: 'clamp(14px, 2.2vw, 26px)',
+              letterSpacing: '0.38em',
+              textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.38)',
+              marginBottom: '0.2em',
+            }}>
+              to be
+            </span>
+            {/* "SEEN" — révélation */}
+            <span style={{
+              display: 'block',
+              fontFamily: '"Cormorant Garamond", serif',
+              fontWeight: 300,
+              fontStyle: 'italic',
+              fontSize: 'clamp(90px, 18vw, 220px)',
+              letterSpacing: '-0.04em',
+              lineHeight: 0.82,
+              color: 'var(--white)',
+            }}>
+              Seen.
+            </span>
           </h1>
 
           {/* Bottom row */}
