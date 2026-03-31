@@ -15,7 +15,7 @@ const services = [
     desc: 'Your website is often the first impression a customer gets. We build fast, modern, conversion-focused sites tailored to your business.',
     tag: '[WEB DESIGN]',
     href: '/services#websites',
-    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&q=80',
     imageAlt: 'Web interface on dark screen',
   },
   {
@@ -24,7 +24,7 @@ const services = [
     desc: 'Your AI receptionist answers calls 24/7, books appointments, handles enquiries, and never takes a sick day.',
     tag: '[AI VOICE]',
     href: '/services#phone-ai',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80',
     imageAlt: 'Circuit board technology abstract',
   },
   {
@@ -33,7 +33,7 @@ const services = [
     desc: 'Let clients book online around the clock. Syncs with your existing calendar. No-shows reduced automatically.',
     tag: '[SCHEDULING]',
     href: '/services#bookings',
-    image: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=800&q=80',
     imageAlt: 'Technology interface abstract',
   },
   {
@@ -42,7 +42,7 @@ const services = [
     desc: 'Personalised sequences that re-engage past clients, remind upcoming appointments, and drive repeat business.',
     tag: '[CRM]',
     href: '/services#crm',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=800&q=80',
     imageAlt: 'Analytics dashboard',
   },
   {
@@ -51,7 +51,7 @@ const services = [
     desc: 'From zero to fully operational online. Everything built, integrated, and running as one cohesive system.',
     tag: '[BUNDLE]',
     href: '/services#bundle',
-    image: 'https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80',
     imageAlt: 'City lights at night',
   },
 ];
@@ -445,7 +445,7 @@ export default function HomePage() {
         }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1600&q=70"
+            src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1600&q=70"
             alt="Data center technology"
             style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.08 }}
           />
