@@ -292,52 +292,190 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Section 5: Services ── */}
+      {/* ── Section 5: Services — Editorial Typography ── */}
       <section
         className="section-light"
-        style={{ padding: '0 0 clamp(4rem, 8vw, 8rem)' }}
+        style={{ padding: '0 0 clamp(4rem, 8vw, 8rem)', overflow: 'hidden' }}
       >
         <Marquee text="Our Services" separator="·" dark={false} size="md" speed={25} />
 
-        <div style={{ padding: 'clamp(3rem, 6vw, 6rem) clamp(1.5rem, 6vw, 5rem) 0' }}>
+        <div style={{ padding: 'clamp(4rem, 8vw, 8rem) clamp(1.5rem, 6vw, 5rem) 0' }}>
+          {/* Hero statement */}
           <AnimatedSection>
-            <h2 style={{
-              fontFamily: 'Satoshi, sans-serif',
-              fontWeight: 700,
-              fontSize: 'clamp(36px, 6vw, 80px)',
-              letterSpacing: '-0.02em',
-              lineHeight: 1.0,
-              color: 'var(--black)',
-              marginBottom: '3rem',
-            }}>
-              Everything your<br />business needs.
-            </h2>
+            <div style={{ marginBottom: 'clamp(4rem, 8vw, 7rem)' }}>
+              <p style={{
+                fontFamily: 'Satoshi, sans-serif',
+                fontWeight: 400,
+                fontSize: '13px',
+                letterSpacing: '0.25em',
+                textTransform: 'uppercase',
+                color: 'var(--muted-light)',
+                marginBottom: '2rem',
+              }}>
+                What we build
+              </p>
+              <h2 style={{
+                fontFamily: 'Satoshi, sans-serif',
+                fontWeight: 800,
+                fontSize: 'clamp(48px, 8vw, 120px)',
+                letterSpacing: '-0.04em',
+                lineHeight: 0.9,
+                color: 'var(--black)',
+              }}>
+                Everything
+                <br />
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 'clamp(12px, 2vw, 24px)' }}>
+                  your
+                  <span style={{
+                    display: 'inline-block',
+                    width: 'clamp(60px, 10vw, 140px)',
+                    height: '3px',
+                    background: 'var(--accent)',
+                    borderRadius: '2px',
+                  }} />
+                  business
+                </span>
+                <br />
+                <span style={{ fontWeight: 300, fontStyle: 'italic', color: 'rgba(0,0,0,0.25)' }}>
+                  needs.
+                </span>
+              </h2>
+            </div>
           </AnimatedSection>
 
-          <div style={{ borderTop: '1px solid var(--border-light)' }}>
+          {/* Service items — editorial, no images */}
+          <div>
             {services.map((svc, i) => (
-              <AnimatedSection key={svc.num} delay={i * 0.07}>
-                <div className="service-item">
-                  <span className="service-number">{svc.num}</span>
-                  <div className="service-content">
-                    <h3><Link href={svc.href}>{svc.title}</Link></h3>
-                    <p>{svc.desc}</p>
-                    <Link href={svc.href} className="service-tag">{svc.tag}</Link>
+              <AnimatedSection key={svc.num} delay={i * 0.06}>
+                <Link href={svc.href} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
+                  <div
+                    className="service-item-v2"
+                    style={{
+                      borderTop: i === 0 ? '1px solid var(--border-light)' : 'none',
+                      borderBottom: '1px solid var(--border-light)',
+                      padding: 'clamp(1.5rem, 3vw, 2.5rem) 0',
+                      display: 'grid',
+                      gridTemplateColumns: 'auto 1fr auto',
+                      alignItems: 'center',
+                      gap: 'clamp(1rem, 3vw, 3rem)',
+                      cursor: 'pointer',
+                      transition: 'all 0.5s cubic-bezier(0.22, 1, 0.36, 1)',
+                    }}
+                    onMouseEnter={(e) => {
+                      const el = e.currentTarget;
+                      el.style.paddingLeft = 'clamp(1rem, 2vw, 2rem)';
+                      el.style.background = 'rgba(200, 240, 0, 0.04)';
+                      const num = el.querySelector('.svc-num') as HTMLElement;
+                      if (num) num.style.color = 'var(--accent)';
+                      const arrow = el.querySelector('.svc-arrow') as HTMLElement;
+                      if (arrow) { arrow.style.opacity = '1'; arrow.style.transform = 'translateX(0)'; }
+                      const title = el.querySelector('.svc-title') as HTMLElement;
+                      if (title) title.style.letterSpacing = '0.02em';
+                    }}
+                    onMouseLeave={(e) => {
+                      const el = e.currentTarget;
+                      el.style.paddingLeft = '0';
+                      el.style.background = 'transparent';
+                      const num = el.querySelector('.svc-num') as HTMLElement;
+                      if (num) num.style.color = 'var(--muted-light)';
+                      const arrow = el.querySelector('.svc-arrow') as HTMLElement;
+                      if (arrow) { arrow.style.opacity = '0'; arrow.style.transform = 'translateX(-8px)'; }
+                      const title = el.querySelector('.svc-title') as HTMLElement;
+                      if (title) title.style.letterSpacing = '-0.02em';
+                    }}
+                  >
+                    {/* Number */}
+                    <span
+                      className="svc-num"
+                      style={{
+                        fontFamily: 'Satoshi, sans-serif',
+                        fontWeight: 300,
+                        fontSize: '14px',
+                        letterSpacing: '0.1em',
+                        color: 'var(--muted-light)',
+                        transition: 'color 0.4s ease',
+                        minWidth: '40px',
+                      }}
+                    >
+                      {svc.num}
+                    </span>
+
+                    {/* Title + Description */}
+                    <div>
+                      <h3
+                        className="svc-title"
+                        style={{
+                          fontFamily: 'Satoshi, sans-serif',
+                          fontWeight: 700,
+                          fontSize: 'clamp(20px, 3.5vw, 42px)',
+                          letterSpacing: '-0.02em',
+                          lineHeight: 1.1,
+                          color: 'var(--black)',
+                          transition: 'letter-spacing 0.5s cubic-bezier(0.22, 1, 0.36, 1)',
+                        }}
+                      >
+                        {svc.title}
+                      </h3>
+                      <p style={{
+                        fontFamily: 'Satoshi, sans-serif',
+                        fontWeight: 400,
+                        fontSize: '14px',
+                        color: 'var(--muted-light)',
+                        marginTop: '0.5rem',
+                        maxWidth: '480px',
+                        lineHeight: 1.6,
+                      }}>
+                        {svc.desc}
+                      </p>
+                    </div>
+
+                    {/* Arrow + Tag */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                      <span style={{
+                        fontFamily: 'Satoshi, sans-serif',
+                        fontWeight: 400,
+                        fontSize: '11px',
+                        letterSpacing: '0.15em',
+                        textTransform: 'uppercase',
+                        color: 'var(--accent)',
+                        opacity: 0.6,
+                      }}>
+                        {svc.tag.replace('[', '').replace(']', '')}
+                      </span>
+                      <span
+                        className="svc-arrow"
+                        style={{
+                          fontSize: '20px',
+                          color: 'var(--accent)',
+                          opacity: 0,
+                          transform: 'translateX(-8px)',
+                          transition: 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)',
+                        }}
+                      >
+                        &rarr;
+                      </span>
+                    </div>
                   </div>
-                  <div className="service-image img-hover">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={svc.image} alt={svc.imageAlt} />
-                  </div>
-                </div>
+                </Link>
               </AnimatedSection>
             ))}
           </div>
 
-          <div style={{ marginTop: '3rem' }}>
-            <Link href="/services" className="cta-btn-light">
-              View all services →
-            </Link>
-          </div>
+          <AnimatedSection delay={0.4}>
+            <div style={{ marginTop: 'clamp(2.5rem, 4vw, 4rem)', display: 'flex', alignItems: 'center', gap: '2rem' }}>
+              <Link href="/services" className="cta-btn-light">
+                View all services &rarr;
+              </Link>
+              <span style={{
+                fontFamily: 'Satoshi, sans-serif',
+                fontSize: '13px',
+                color: 'var(--muted-light)',
+                letterSpacing: '0.05em',
+              }}>
+                5 core solutions
+              </span>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
