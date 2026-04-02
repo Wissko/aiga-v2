@@ -400,3 +400,9 @@ body {
   color: var(--muted-dark);
   margin-top: 12px;
 }
+
+/* Shimmer gloss effect */
+@keyframes shimmer {
+  0%, 100% { transform: translateX(-30%); }
+  50% { transform: translateX(30%); }
+}
