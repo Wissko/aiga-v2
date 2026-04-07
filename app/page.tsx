@@ -2,10 +2,9 @@
 
 import { useState, useRef } from 'react';
 import Link from 'next/link';
+import { motion, useMotionTemplate, useScroll, useTransform } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
 import Marquee from '@/components/Marquee';
-import LiquidBackground from '@/components/LiquidBackground';
-import ParticleWaves from '@/components/ParticleWaves';
 
 const services = [
   {
@@ -93,129 +92,100 @@ const faqs = [
   },
   {
     num: '02.',
-    q: "What if I already have systems in place?",
+    q: 'What if I already have systems in place?',
     a: "We work with what you have. Our tools integrate with most booking platforms, calendars, CRMs, and phone systems. If a replacement would genuinely serve you better, we'll tell you why and make the transition smooth.",
   },
   {
     num: '03.',
-    q: "I found a cheaper option online.",
+    q: 'I found a cheaper option online.',
     a: "You can absolutely find a cheaper tool. What usually costs more is the time lost setting it up badly, stitching it into your business, and fixing what never quite works. We build the whole system properly, make it fit how you operate, and stay involved so it actually delivers results.",
   },
   {
     num: '04.',
-    q: "How long does implementation take?",
-    a: "Most clients are live within two weeks. Complex setups with full integration across multiple systems can take up to four weeks. We set clear timelines upfront and stick to them.",
+    q: 'How long does implementation take?',
+    a: 'Most clients are live within two weeks. Complex setups with full integration across multiple systems can take up to four weeks. We set clear timelines upfront and stick to them.',
   },
   {
     num: '05.',
-    q: "Will you support us after launch?",
+    q: 'Will you support us after launch?',
     a: "Yes. Monthly plans include ongoing support, updates, and monitoring. We don't disappear after go-live. You'll have a real contact who knows your setup and responds within hours.",
   },
 ];
 
+function HeroSection() {
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start'],
+  });
+
+  const titleScale = useTransform(scrollYProgress, [0, 0.45, 0.8], [1, 0.68, 0.44]);
+  const titleY = useTransform(scrollYProgress, [0, 0.5, 0.8], ['0vh', '-8vh', '-18vh']);
+  const titleZ = useTransform(scrollYProgress, [0, 0.8], [0, -420]);
+  const titleOpacity = useTransform(scrollYProgress, [0, 0.45, 0.75], [1, 0.5, 0]);
+  const titleBlur = useTransform(scrollYProgress, [0, 0.4, 0.75], ['0px', '5px', '18px']);
+
+  const contentY = useTransform(scrollYProgress, [0, 0.55, 0.8], ['0vh', '4vh', '10vh']);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.3, 0.55], [1, 0.88, 0]);
+  const contentBlur = useTransform(scrollYProgress, [0, 0.45, 0.65], ['0px', '3px', '10px']);
+  const titleFilter = useMotionTemplate`blur(${titleBlur})`;
+  const contentFilter = useMotionTemplate`blur(${contentBlur})`;
+
+  return (
+    <section ref={heroRef} className="hero-section">
+      <div className="hero-sticky-shell">
+        <div className="hero-stage">
+          <motion.div
+            className="hero-stack"
+            style={{
+              scale: titleScale,
+              y: titleY,
+              opacity: titleOpacity,
+              filter: titleFilter,
+              transformPerspective: 1400,
+              z: titleZ,
+            }}
+          >
+            <h1 className="hero-title" aria-label="TO BE SEEN">
+              <span className="hero-title-line hero-title-line-top">TO BE</span>
+              <span className="hero-title-line hero-title-line-bottom">SEEN</span>
+            </h1>
+          </motion.div>
+
+          <motion.div
+            className="hero-copy"
+            style={{
+              y: contentY,
+              opacity: contentOpacity,
+              filter: contentFilter,
+            }}
+          >
+            <p className="hero-subtitle">
+              We build the kind of brand presence that converts interest into loyalty.
+            </p>
+
+            <div className="hero-actions">
+              <Link href="/contact" className="cta-btn hero-btn-primary">
+                BOOK A FREE STRATEGY CALL →
+              </Link>
+              <Link href="/services" className="hero-btn-secondary">
+                OUR SERVICES
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function HomePage() {
   return (
     <>
-      {/* ── Section 1: Hero ── */}
-      <section
-        className="section-dark"
-        style={{
-          minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: 'clamp(6rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem) clamp(3rem, 5vw, 5rem)',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Background grid texture */}
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          backgroundImage: 'linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)',
-          backgroundSize: '80px 80px',
-          pointerEvents: 'none',
-        }} />
+      <HeroSection />
 
-        {/* Liquid WebGL background — base layer */}
-        <LiquidBackground />
-        {/* Particle waves — overlay layer */}
-        <ParticleWaves />
-
-        <div style={{ position: 'relative', zIndex: 1 }}>
-          {/* H1 — TO BE SEEN */}
-          <h1 style={{ margin: '0 0 1.5rem', lineHeight: 0.88 }}>
-            {/* "TO BE" — outline stroke, recule */}
-            <span style={{
-              display: 'block',
-              fontFamily: 'Satoshi, sans-serif',
-              fontWeight: 900,
-              fontSize: 'clamp(60px, 13vw, 160px)',
-              letterSpacing: '-0.03em',
-              textTransform: 'uppercase',
-              color: 'transparent',
-              WebkitTextStroke: '1.5px rgba(255,255,255,0.4)',
-            }}>
-              TO BE
-            </span>
-            {/* "SEEN" — plein, dominant */}
-            <span style={{
-              display: 'block',
-              fontFamily: 'Satoshi, sans-serif',
-              fontWeight: 900,
-              fontSize: 'clamp(80px, 18vw, 220px)',
-              letterSpacing: '-0.04em',
-              textTransform: 'uppercase',
-              color: 'var(--white)',
-            }}>
-              SEEN
-            </span>
-          </h1>
-
-          {/* Bottom row */}
-          <div style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-end',
-            flexWrap: 'wrap',
-            gap: '2rem',
-          }}>
-            {/* Left: subtitle + tagline */}
-            <div>
-              <p style={{
-                fontFamily: 'Satoshi, sans-serif',
-                fontWeight: 400,
-                fontSize: 'clamp(16px, 2.2vw, 22px)',
-                color: 'var(--white)',
-                lineHeight: 1.5,
-                maxWidth: '460px',
-                marginBottom: '2rem',
-              }}>
-                We build the kind of brand presence that converts interest into loyalty.
-              </p>
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <Link href="/contact" className="cta-btn">
-                  Book a free strategy call →
-                </Link>
-                <Link href="/services" className="cta-btn">
-                  Our services
-                </Link>
-              </div>
-            </div>
-
-            {/* Right: meta */}
-            <p className="label" style={{ color: 'var(--muted-dark)' }}>
-              Brisbane, Australia
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Section 2: Marquee ── */}
       <Marquee text="AI AUTOMATION" separator="·" dark={true} size="md" speed={20} />
 
-      {/* ── Section 3: Statement editorial ── */}
       <section
         className="section-light"
         style={{
@@ -275,7 +245,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Section 4: Featured Projects ── */}
       <section
         className="section-dark"
         style={{
@@ -377,7 +346,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Section 5: Services — Editorial Typography ── */}
       <section
         className="section-light"
         style={{ padding: '0 0 clamp(4rem, 8vw, 8rem)', overflow: 'hidden' }}
@@ -385,7 +353,6 @@ export default function HomePage() {
         <Marquee text="Our Services" separator="·" dark={false} size="md" speed={25} />
 
         <div style={{ padding: 'clamp(4rem, 8vw, 8rem) clamp(1.5rem, 6vw, 5rem) 0' }}>
-          {/* Hero statement */}
           <AnimatedSection>
             <div style={{ marginBottom: 'clamp(4rem, 8vw, 7rem)' }}>
               <p style={{
@@ -420,7 +387,6 @@ export default function HomePage() {
             </div>
           </AnimatedSection>
 
-          {/* Service items — editorial, no images */}
           <div>
             {services.map((svc, i) => (
               <AnimatedSection key={svc.num} delay={i * 0.06}>
@@ -461,7 +427,6 @@ export default function HomePage() {
                       if (title) title.style.letterSpacing = '-0.02em';
                     }}
                   >
-                    {/* Number */}
                     <span
                       className="svc-num"
                       style={{
@@ -477,7 +442,6 @@ export default function HomePage() {
                       {svc.num}
                     </span>
 
-                    {/* Title + Description */}
                     <div>
                       <h3
                         className="svc-title"
@@ -506,7 +470,6 @@ export default function HomePage() {
                       </p>
                     </div>
 
-                    {/* Arrow + Tag */}
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                       <span style={{
                         fontFamily: 'Satoshi, sans-serif',
@@ -556,7 +519,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Section 6: Philosophy ── */}
       <section
         className="section-dark"
         style={{
@@ -606,7 +568,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Section 7: FAQ ── */}
       <section
         className="section-light"
         style={{
@@ -634,7 +595,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Section 8: CTA Final ── */}
       <section
         className="section-dark"
         style={{
@@ -643,13 +603,11 @@ export default function HomePage() {
           overflow: 'hidden',
         }}
       >
-        {/* Background image */}
         <div style={{
           position: 'absolute',
           inset: 0,
           zIndex: 0,
         }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=1600&q=70"
             alt="Data center technology"
