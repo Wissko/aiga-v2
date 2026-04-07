@@ -162,18 +162,6 @@ export default function HomePage() {
               <p style={{
                 fontFamily: 'Satoshi, sans-serif',
                 fontWeight: 400,
-                fontSize: 'clamp(14px, 2vw, 20px)',
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-                color: 'var(--muted-dark)',
-                lineHeight: 1.4,
-                marginBottom: '1.5rem',
-              }}>
-                Digital Presence<br />for Australian Businesses
-              </p>
-              <p style={{
-                fontFamily: 'Satoshi, sans-serif',
-                fontWeight: 400,
                 fontSize: 'clamp(16px, 2.2vw, 22px)',
                 color: 'var(--white)',
                 lineHeight: 1.5,
@@ -221,7 +209,7 @@ export default function HomePage() {
             marginBottom: '3rem',
             maxWidth: '800px',
           }}>
-            Hi. We're To Be Seen. We build the brand presence exceptional businesses deserve.
+            We’re To Be Seen. We build the brand presence your business deserves.
           </h2>
         </AnimatedSection>
 
@@ -233,12 +221,12 @@ export default function HomePage() {
         }}>
           <AnimatedSection delay={0.1}>
             <p style={{ fontSize: '16px', lineHeight: 1.75, color: 'var(--muted-light)' }}>
-              We're an AI automation agency built for Australian small businesses: restaurants, salons, clinics, retail, and trades. We take the systems that large companies use to scale and make them accessible, affordable, and genuinely useful for the businesses that keep our communities running.
+              We're an AI automation agency built for Australian small businesses across every industry. We understand that you’re juggling a lot and don’t have time for solutions that don’t deliver. That's why we take the time to understand your business first, so what we build is practical, tested, and ready to make a difference from day one.
             </p>
           </AnimatedSection>
           <AnimatedSection delay={0.2}>
             <p style={{ fontSize: '16px', lineHeight: 1.75, color: 'var(--muted-light)' }}>
-              No jargon. No endless onboarding docs. No disappearing after launch. Just systems that work, measurable results, and a team that's invested in your growth as much as you are.
+              We’re not just here to sell a service, we’re here to grow with you. Real systems, real results and a team that is just as invested in the growth of your business as you are.
             </p>
             <div style={{ marginTop: '1.5rem' }}>
               <Link href="/services" style={{
