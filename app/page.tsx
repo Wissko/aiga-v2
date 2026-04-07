@@ -121,7 +121,6 @@ function HeroSection() {
 
   const heroOpacity = useTransform(scrollYProgress, [0, 0.62, 0.82, 1], [1, 1, 0.84, 0.12]);
   const heroBlur = useTransform(scrollYProgress, [0, 0.68, 1], ['0px', '0px', '12px']);
-  const heroY = useTransform(scrollYProgress, [0, 0.66, 1], ['0%', '-3%', '-15%']);
   const heroMaskStop = useTransform(scrollYProgress, [0, 0.56, 0.78, 1], ['100%', '100%', '42%', '6%']);
   const heroClipBottom = useTransform(scrollYProgress, [0, 0.56, 0.8, 1], ['0%', '4%', '48%', '96%']);
   const heroVeilOpacity = useTransform(scrollYProgress, [0.5, 0.72, 1], [0, 0.38, 0.96]);
@@ -148,7 +147,6 @@ function HeroSection() {
             style={{
               opacity: heroOpacity,
               filter: heroFilter,
-              y: heroY,
               clipPath: heroClipPath,
               WebkitMaskImage: heroMaskImage,
               maskImage: heroMaskImage,
