@@ -44,9 +44,9 @@ body {
   position: relative;
   min-height: 220vh;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.72)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.48)),
     radial-gradient(circle at top, rgba(255, 255, 255, 0.06), transparent 38%),
-    url('/croc-texture.png') center / cover no-repeat,
+    url('/crocodile-leather-texture.jpg') center / cover no-repeat,
     linear-gradient(180deg, #060606 0%, #010101 34%, #000 100%);
 }
 
@@ -59,7 +59,7 @@ body {
 }
 
 .hero-section::before {
-  opacity: 0.7;
+  opacity: 0.4;
   background:
     radial-gradient(120% 80% at 50% 0%, rgba(255, 255, 255, 0.085), transparent 55%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.025), transparent 34%, rgba(255, 255, 255, 0.02) 55%, transparent 75%);
@@ -67,7 +67,7 @@ body {
 }
 
 .hero-section::after {
-  opacity: 0.45;
+  opacity: 0.22;
   background:
     linear-gradient(180deg, rgba(0, 0, 0, 0.04) 0%, transparent 20%, transparent 76%, rgba(0, 0, 0, 0.3) 100%),
     linear-gradient(125deg, transparent 32%, rgba(255, 255, 255, 0.05) 50%, transparent 68%);
