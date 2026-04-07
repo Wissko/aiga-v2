@@ -152,7 +152,7 @@ export default function ContactPage() {
             <div style={{
               padding: '2rem',
               border: '1px solid var(--border-light)',
-              background: 'rgba(0,0,0,0.02)',
+              background: 'var(--surface-light)',
             }}>
               <p className="label" style={{ marginBottom: '0.75rem' }}>What to expect</p>
               <ul style={{ listStyle: 'none' }}>

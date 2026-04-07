@@ -498,7 +498,7 @@ export default function PricingPage() {
             justifyContent: 'space-between',
             flexWrap: 'wrap',
             gap: '1.5rem',
-            background: 'rgba(0,0,0,0.02)',
+            background: 'var(--surface-light)',
           }}>
             <div>
               <p style={{
