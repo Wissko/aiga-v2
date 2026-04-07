@@ -119,9 +119,14 @@ function HeroSection() {
     offset: ['start start', 'end start'],
   });
 
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.62, 0.82, 0.98], [1, 1, 0.42, 0]);
-  const heroBlur = useTransform(scrollYProgress, [0, 0.72, 1], ['0px', '0px', '10px']);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.68, 0.86, 1], [1, 1, 0.92, 0.3]);
+  const heroBlur = useTransform(scrollYProgress, [0, 0.78, 1], ['0px', '0px', '8px']);
+  const heroY = useTransform(scrollYProgress, [0, 0.72, 1], ['0%', '-2%', '-10%']);
+  const heroMaskStop = useTransform(scrollYProgress, [0, 0.62, 0.86, 1], ['100%', '100%', '52%', '18%']);
+  const heroClipBottom = useTransform(scrollYProgress, [0, 0.62, 0.86, 1], ['0%', '0%', '34%', '88%']);
   const heroFilter = useMotionTemplate`blur(${heroBlur})`;
+  const heroMaskImage = useMotionTemplate`linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) ${heroMaskStop}, rgba(0,0,0,0) 100%)`;
+  const heroClipPath = useMotionTemplate`inset(0 0 ${heroClipBottom} 0)`;
 
   return (
     <section ref={heroRef} className="hero-section">
@@ -132,9 +137,18 @@ function HeroSection() {
             style={{
               opacity: heroOpacity,
               filter: heroFilter,
+              y: heroY,
+              clipPath: heroClipPath,
+              WebkitMaskImage: heroMaskImage,
+              maskImage: heroMaskImage,
             }}
           >
             <div className="hero-stack">
+              <div className="hero-title-meta" aria-hidden="true">
+                <span className="hero-title-meta-line" />
+                <span className="hero-title-kicker">Editorial AI systems for ambitious brands</span>
+              </div>
+
               <h1 className="hero-title" aria-label="TO BE SEEN">
                 <span className="hero-title-line hero-title-line-top">TO BE</span>
                 <span className="hero-title-line hero-title-line-bottom">SEEN</span>
