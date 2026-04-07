@@ -136,10 +136,11 @@ export default function Footer() {
             transition={{ duration: 0.7, ease: EASE }}
           >
             <div style={{
-              fontFamily: 'Satoshi, sans-serif',
-              fontWeight: 900,
-              fontSize: '2.5rem',
-              letterSpacing: '-0.03em',
+              fontFamily: 'var(--font-logo)',
+              fontWeight: 600,
+              fontSize: '3rem',
+              letterSpacing: '0.03em',
+              lineHeight: 0.9,
               textTransform: 'uppercase',
               color: 'var(--white)',
               marginBottom: '1rem',

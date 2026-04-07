@@ -6,6 +6,7 @@
   --white: #ffffff;
   --off-white: #ded9cc;
   --surface-light: rgba(0, 0, 0, 0.035);
+  --font-logo: 'Teko', 'Satoshi', system-ui, sans-serif;
   --muted-dark: rgba(255, 255, 255, 0.45);
   --muted-light: rgba(0, 0, 0, 0.4);
   --border-dark: rgba(255, 255, 255, 0.1);
