@@ -101,6 +101,19 @@ body {
   will-change: opacity, filter, transform, clip-path, mask-image;
 }
 
+.hero-swallow-veil {
+  position: absolute;
+  inset: auto 0 -12vh;
+  z-index: 2;
+  height: clamp(16rem, 34vh, 28rem);
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(244, 240, 232, 0) 0%, rgba(244, 240, 232, 0.14) 22%, rgba(244, 240, 232, 0.62) 58%, rgba(244, 240, 232, 0.94) 82%, rgba(244, 240, 232, 1) 100%),
+    radial-gradient(100% 120% at 50% 100%, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0) 58%);
+  mix-blend-mode: screen;
+  will-change: opacity, transform;
+}
+
 .hero-stack {
   display: flex;
   flex-direction: column;
@@ -246,7 +259,7 @@ body {
 .hero-overlay-stack {
   position: relative;
   z-index: 4;
-  margin-top: -18vh;
+  margin-top: -22vh;
 }
 
 .hero-overlay-stack .marquee-wrap,
@@ -267,11 +280,14 @@ body {
 .hero-reveal-section::before {
   content: '';
   position: absolute;
-  top: clamp(-4.5rem, -8vw, -2.5rem);
+  top: clamp(-6rem, -10vw, -3.25rem);
   left: 0;
   right: 0;
-  height: clamp(5rem, 10vw, 7.5rem);
-  background: linear-gradient(180deg, rgba(244, 240, 232, 0) 0%, rgba(244, 240, 232, 0.4) 24%, rgba(244, 240, 232, 0.82) 58%, rgba(244, 240, 232, 1) 100%);
+  height: clamp(6.5rem, 14vw, 10rem);
+  background:
+    linear-gradient(180deg, rgba(244, 240, 232, 0) 0%, rgba(244, 240, 232, 0.3) 18%, rgba(244, 240, 232, 0.72) 44%, rgba(244, 240, 232, 0.94) 72%, rgba(244, 240, 232, 1) 100%),
+    radial-gradient(90% 140% at 50% 100%, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 62%);
+  box-shadow: 0 -24px 48px rgba(244, 240, 232, 0.16);
   pointer-events: none;
 }
 
