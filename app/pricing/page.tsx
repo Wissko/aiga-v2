@@ -225,13 +225,9 @@ export default function PricingPage() {
         <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
           Simple pricing
         </p>
-        <h1 style={{
-          fontFamily: 'Satoshi, sans-serif',
-          fontWeight: 900,
+        <h1 className="heading-display" style={{
           fontSize: 'clamp(64px, 12vw, 140px)',
-          letterSpacing: '-0.03em',
-          lineHeight: 0.9,
-          textTransform: 'uppercase',
+          letterSpacing: '0.03em',
           color: 'var(--white)',
           marginBottom: '2rem',
         }}>
@@ -317,11 +313,9 @@ export default function PricingPage() {
               marginTop: '1rem',
             }}>
               <div>
-                <h2 style={{
-                  fontFamily: 'Satoshi, sans-serif',
-                  fontWeight: 700,
+                <h2 className="heading-section" style={{
                   fontSize: 'clamp(20px, 3vw, 36px)',
-                  letterSpacing: '-0.02em',
+                  letterSpacing: '0.02em',
                   color: 'var(--black)',
                   marginBottom: '0.5rem',
                 }}>
@@ -424,14 +418,11 @@ export default function PricingPage() {
                   <span className="label" style={{ display: 'block', marginBottom: '0.75rem' }}>
                     {plan.num}
                   </span>
-                  <h3 style={{
-                    fontFamily: 'Satoshi, sans-serif',
-                    fontWeight: 700,
+                  <h3 className="heading-card" style={{
                     fontSize: 'clamp(16px, 2vw, 22px)',
-                    letterSpacing: '-0.01em',
+                    letterSpacing: '0.02em',
                     color: 'var(--black)',
                     marginBottom: '0.5rem',
-                    textTransform: 'uppercase',
                   }}>
                     {plan.title}
                   </h3>
@@ -525,12 +516,9 @@ export default function PricingPage() {
       <section className="section-dark" style={{ padding: 'clamp(4rem, 8vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
         <AnimatedSection>
           <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1rem' }}>Common questions</p>
-          <h2 style={{
-            fontFamily: 'Satoshi, sans-serif',
-            fontWeight: 700,
+          <h2 className="heading-section" style={{
             fontSize: 'clamp(28px, 5vw, 60px)',
-            letterSpacing: '-0.02em',
-            lineHeight: 1.0,
+            letterSpacing: '0.02em',
             color: 'var(--white)',
             marginBottom: '3rem',
           }}>
@@ -616,12 +604,9 @@ export default function PricingPage() {
         borderTop: '1px solid rgba(255,255,255,0.08)',
       }}>
         <AnimatedSection>
-          <h2 style={{
-            fontFamily: 'Satoshi, sans-serif',
-            fontWeight: 700,
+          <h2 className="heading-section" style={{
             fontSize: 'clamp(36px, 6vw, 80px)',
-            letterSpacing: '-0.02em',
-            lineHeight: 1.0,
+            letterSpacing: '0.02em',
             color: 'var(--white)',
             marginBottom: '1rem',
           }}>

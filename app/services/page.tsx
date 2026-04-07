@@ -151,14 +151,10 @@ export default function ServicesPage() {
           <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
             What we do
           </p>
-          <h1
+          <h1 className="heading-display"
             style={{
-              fontFamily: 'Satoshi, sans-serif',
-              fontWeight: 900,
               fontSize: 'clamp(64px, 12vw, 140px)',
-              letterSpacing: '-0.03em',
-              lineHeight: 0.9,
-              textTransform: 'uppercase',
+              letterSpacing: '0.03em',
               color: 'var(--white)',
               marginBottom: '2rem',
             }}
@@ -190,13 +186,10 @@ export default function ServicesPage() {
                 <p className="label" style={{ marginBottom: '1rem' }}>
                   Service structure
                 </p>
-                <h2
+                <h2 className="heading-section"
                   style={{
-                    fontFamily: 'Satoshi, sans-serif',
-                    fontWeight: 700,
                     fontSize: 'clamp(34px, 5vw, 68px)',
-                    letterSpacing: '-0.03em',
-                    lineHeight: 0.95,
+                    letterSpacing: '0.02em',
                     color: 'var(--black)',
                   }}
                 >
@@ -243,14 +236,11 @@ export default function ServicesPage() {
                         <span className="label" style={{ display: 'block', color: muted, marginBottom: '1.25rem' }}>
                           {svc.num} {svc.tag}
                         </span>
-                        <h2
+                        <h2 className="heading-section"
                           style={{
-                            fontFamily: 'var(--font-logo)',
-                            fontWeight: 600,
                             fontSize: 'clamp(56px, 9vw, 112px)',
-                            letterSpacing: '-0.02em',
-                            lineHeight: 0.9,
-                            textTransform: 'uppercase',
+                            letterSpacing: '0.02em',
+                            
                             color: textColor,
                             marginBottom: '1rem',
                           }}
@@ -310,14 +300,10 @@ export default function ServicesPage() {
                       <span className="label" style={{ display: 'block', color: muted, marginBottom: '1.25rem' }}>
                         {svc.num} {svc.tag}
                       </span>
-                      <h2
+                      <h2 className="heading-section"
                         style={{
-                          fontFamily: 'Satoshi, sans-serif',
-                          fontWeight: 700,
                           fontSize: 'clamp(30px, 4.5vw, 58px)',
-                          letterSpacing: '-0.03em',
-                          lineHeight: 0.98,
-                          textTransform: 'uppercase',
+                          letterSpacing: '0.02em',
                           color: textColor,
                           marginBottom: '1rem',
                         }}
@@ -374,13 +360,10 @@ export default function ServicesPage() {
       <section className="section-dark" style={{ padding: 'clamp(4rem, 8vw, 7rem) clamp(1.5rem, 6vw, 5rem)', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
         <div className="editorial-shell" style={{ textAlign: 'center' }}>
           <AnimatedSection>
-            <h2
+            <h2 className="heading-section"
               style={{
-                fontFamily: 'Satoshi, sans-serif',
-                fontWeight: 700,
                 fontSize: 'clamp(32px, 5vw, 64px)',
-                letterSpacing: '-0.02em',
-                lineHeight: 1,
+                letterSpacing: '0.02em',
                 color: 'var(--white)',
                 marginBottom: '1rem',
               }}

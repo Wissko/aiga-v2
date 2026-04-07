@@ -191,7 +191,7 @@ export default function HomePage() {
           }}
         >
           <AnimatedSection>
-            <h2 style={{
+            <h2 className="heading-section" style={{
               fontFamily: 'Satoshi, sans-serif',
               fontWeight: 500,
               fontSize: 'clamp(28px, 4vw, 52px)',
@@ -255,7 +255,7 @@ export default function HomePage() {
             <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1rem' }}>
               Projects we've made.
             </p>
-            <h2 style={{
+            <h2 className="heading-section" style={{
               fontFamily: 'Satoshi, sans-serif',
               fontWeight: 500,
               fontSize: 'clamp(28px, 4vw, 52px)',
@@ -308,7 +308,7 @@ export default function HomePage() {
                   </span>
 
                   <div>
-                    <h3 style={{
+                    <h3 className="heading-card" style={{
                       fontFamily: 'Satoshi, sans-serif',
                       fontWeight: 700,
                       fontSize: 'clamp(22px, 3vw, 34px)',
@@ -365,7 +365,7 @@ export default function HomePage() {
               }}>
                 What we build
               </p>
-              <h2 style={{
+              <h2 className="heading-section" style={{
                 fontFamily: 'Satoshi, sans-serif',
                 fontWeight: 800,
                 fontSize: 'clamp(48px, 8vw, 120px)',
@@ -442,8 +442,7 @@ export default function HomePage() {
                     </span>
 
                     <div>
-                      <h3
-                        className="svc-title"
+                      <h3 className="svc-title heading-card"
                         style={{
                           fontFamily: 'Satoshi, sans-serif',
                           fontWeight: 700,
@@ -529,7 +528,7 @@ export default function HomePage() {
             <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
               What success looks like.
             </p>
-            <h2 style={{
+            <h2 className="heading-section" style={{
               fontFamily: 'Satoshi, sans-serif',
               fontWeight: 500,
               fontSize: 'clamp(28px, 4vw, 52px)',
@@ -574,12 +573,9 @@ export default function HomePage() {
         }}
       >
         <AnimatedSection>
-          <h2 style={{
-            fontFamily: 'Satoshi, sans-serif',
-            fontWeight: 700,
+          <h2 className="heading-section" style={{
             fontSize: 'clamp(36px, 6vw, 80px)',
-            letterSpacing: '-0.02em',
-            lineHeight: 1.0,
+            letterSpacing: '0.02em',
             color: 'var(--black)',
             marginBottom: '4rem',
           }}>
@@ -616,12 +612,9 @@ export default function HomePage() {
 
         <div style={{ position: 'relative', zIndex: 1 }}>
           <AnimatedSection>
-            <h2 style={{
-              fontFamily: 'Satoshi, sans-serif',
-              fontWeight: 700,
+            <h2 className="heading-section" style={{
               fontSize: 'clamp(48px, 8vw, 120px)',
-              letterSpacing: '-0.03em',
-              lineHeight: 0.9,
+              letterSpacing: '0.02em',
               color: 'var(--white)',
               textTransform: 'uppercase',
               marginBottom: '1.5rem',

@@ -73,13 +73,9 @@ export default function ContactPage() {
         <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
           Get in touch
         </p>
-        <h1 style={{
-          fontFamily: 'Satoshi, sans-serif',
-          fontWeight: 900,
+        <h1 className="heading-display" style={{
           fontSize: 'clamp(64px, 12vw, 140px)',
-          letterSpacing: '-0.03em',
-          lineHeight: 0.9,
-          textTransform: 'uppercase',
+          letterSpacing: '0.03em',
           color: 'var(--white)',
           marginBottom: '2rem',
         }}>
@@ -112,12 +108,9 @@ export default function ContactPage() {
         }}>
           {/* Left: info */}
           <AnimatedSection>
-            <h2 style={{
-              fontFamily: 'Satoshi, sans-serif',
-              fontWeight: 700,
+            <h2 className="heading-section" style={{
               fontSize: 'clamp(28px, 4vw, 48px)',
-              letterSpacing: '-0.02em',
-              lineHeight: 1.0,
+              letterSpacing: '0.02em',
               color: 'var(--black)',
               marginBottom: '2rem',
             }}>
@@ -188,10 +181,9 @@ export default function ContactPage() {
                 textAlign: 'center',
               }}>
                 <span style={{ color: 'var(--accent)', filter: 'brightness(0.7)', fontSize: '2rem', display: 'block', marginBottom: '1rem' }}>✦</span>
-                <h3 style={{
-                  fontFamily: 'Satoshi, sans-serif',
-                  fontWeight: 700,
+                <h3 className="heading-card" style={{
                   fontSize: '24px',
+                  letterSpacing: '0.02em',
                   color: 'var(--black)',
                   marginBottom: '0.75rem',
                 }}>

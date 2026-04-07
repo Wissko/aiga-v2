@@ -55,13 +55,9 @@ export default function AboutPage() {
         <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
           Who we are
         </p>
-        <h1 style={{
-          fontFamily: 'Satoshi, sans-serif',
-          fontWeight: 900,
+        <h1 className="heading-display" style={{
           fontSize: 'clamp(64px, 12vw, 140px)',
-          letterSpacing: '-0.03em',
-          lineHeight: 0.9,
-          textTransform: 'uppercase',
+          letterSpacing: '0.03em',
           color: 'var(--white)',
           marginBottom: '2rem',
         }}>
@@ -96,12 +92,9 @@ export default function AboutPage() {
           margin: '0 auto',
         }}>
           <AnimatedSection>
-            <h2 style={{
-              fontFamily: 'Satoshi, sans-serif',
-              fontWeight: 700,
+            <h2 className="heading-section" style={{
               fontSize: 'clamp(32px, 5vw, 64px)',
-              letterSpacing: '-0.02em',
-              lineHeight: 1.0,
+              letterSpacing: '0.02em',
               color: 'var(--black)',
               marginBottom: '2rem',
             }}>
@@ -135,12 +128,9 @@ export default function AboutPage() {
           <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
             What we believe
           </p>
-          <h2 style={{
-            fontFamily: 'Satoshi, sans-serif',
-            fontWeight: 700,
+          <h2 className="heading-section" style={{
             fontSize: 'clamp(32px, 5vw, 64px)',
-            letterSpacing: '-0.02em',
-            lineHeight: 1.0,
+            letterSpacing: '0.02em',
             color: 'var(--white)',
             marginBottom: '4rem',
           }}>
@@ -164,11 +154,9 @@ export default function AboutPage() {
                 <span className="label" style={{ color: 'var(--muted-dark)', display: 'block', marginBottom: '1rem' }}>
                   {v.num}
                 </span>
-                <h3 style={{
-                  fontFamily: 'Satoshi, sans-serif',
-                  fontWeight: 500,
+                <h3 className="heading-card" style={{
                   fontSize: 'clamp(20px, 2.5vw, 28px)',
-                  lineHeight: 1.2,
+                  letterSpacing: '0.02em',
                   color: 'var(--white)',
                   marginBottom: '1rem',
                 }}>
@@ -190,13 +178,10 @@ export default function AboutPage() {
       >
         <AnimatedSection>
           <p className="label" style={{ marginBottom: '1.5rem' }}>Tools we use</p>
-          <h2 style={{
-            fontFamily: 'Satoshi, sans-serif',
-            fontWeight: 700,
-            fontSize: 'clamp(32px, 5vw, 64px)',
-            letterSpacing: '-0.02em',
-            lineHeight: 1.0,
-            color: 'var(--black)',
+          <h2 className="heading-section" style={{
+              fontSize: 'clamp(32px, 5vw, 64px)',
+              letterSpacing: '0.02em',
+              color: 'var(--black)',
             marginBottom: '3rem',
           }}>
             Built on proven platforms.
@@ -229,12 +214,9 @@ export default function AboutPage() {
         style={{ padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)' }}
       >
         <AnimatedSection>
-          <h2 style={{
-            fontFamily: 'Satoshi, sans-serif',
-            fontWeight: 700,
+          <h2 className="heading-section" style={{
             fontSize: 'clamp(36px, 6vw, 80px)',
-            letterSpacing: '-0.02em',
-            lineHeight: 1.0,
+            letterSpacing: '0.02em',
             color: 'var(--white)',
             marginBottom: '1.5rem',
           }}>
