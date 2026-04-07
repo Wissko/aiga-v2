@@ -155,11 +155,6 @@ function HeroSection() {
             }}
           >
             <div className="hero-stack">
-              <div className="hero-title-meta" aria-hidden="true">
-                <span className="hero-title-meta-line" />
-                <span className="hero-title-kicker">Editorial AI systems for ambitious brands</span>
-              </div>
-
               <h1 className="hero-title" aria-label="TO BE SEEN">
                 <span className="hero-title-line hero-title-line-top">TO BE</span>
                 <span className="hero-title-line hero-title-line-bottom">SEEN</span>
@@ -167,10 +162,6 @@ function HeroSection() {
             </div>
 
             <div className="hero-copy">
-              <p className="hero-subtitle">
-                We build the kind of brand presence that converts interest into loyalty.
-              </p>
-
               <div className="hero-actions">
                 <Link href="/contact" className="cta-btn hero-btn-primary">
                   BOOK A FREE STRATEGY CALL →
