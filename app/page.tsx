@@ -1,9 +1,8 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 import AnimatedSection from '@/components/AnimatedSection';
-import CountUp from '@/components/CountUp';
 import Marquee from '@/components/Marquee';
 import LiquidBackground from '@/components/LiquidBackground';
 import ParticleWaves from '@/components/ParticleWaves';
@@ -56,6 +55,27 @@ const services = [
   },
 ];
 
+const featuredProjects = [
+  {
+    num: '01.',
+    title: 'WEBSITE CREATION',
+    summary: 'Fast, modern websites designed to turn first impressions into enquiries.',
+    href: '/services#websites',
+  },
+  {
+    num: '02.',
+    title: 'PHONE AI AUTOMATION',
+    summary: 'AI call handling systems that answer, qualify, and book around the clock.',
+    href: '/services#phone-ai',
+  },
+  {
+    num: '03.',
+    title: 'FULL DIGITALISATION BUNDLE',
+    summary: 'Connected websites, bookings, follow-up, and operations built as one system.',
+    href: '/services#bundle',
+  },
+];
+
 const faqs = [
   {
     num: '01.',
@@ -64,26 +84,21 @@ const faqs = [
   },
   {
     num: '02.',
-    q: "How technical do I need to be?",
-    a: "Not technical at all. We handle everything: setup, configuration, integration, testing, and training. You get a system that works. You don't need to understand how it works to benefit from it.",
-  },
-  {
-    num: '03.',
     q: "What if I already have systems in place?",
     a: "We work with what you have. Our tools integrate with most booking platforms, calendars, CRMs, and phone systems. If a replacement would genuinely serve you better, we'll tell you why and make the transition smooth.",
   },
   {
-    num: '04.',
+    num: '03.',
     q: "I found a cheaper option online.",
-    a: "There are plenty of DIY tools out there. What they don't include: setup, integration, customisation, support, and the knowledge of what actually works for Australian small businesses. We're not just software: we're implementation and results.",
+    a: "You can absolutely find a cheaper tool. What usually costs more is the time lost setting it up badly, stitching it into your business, and fixing what never quite works. We build the whole system properly, make it fit how you operate, and stay involved so it actually delivers results.",
   },
   {
-    num: '05.',
+    num: '04.',
     q: "How long does implementation take?",
     a: "Most clients are live within two weeks. Complex setups with full integration across multiple systems can take up to four weeks. We set clear timelines upfront and stick to them.",
   },
   {
-    num: '06.',
+    num: '05.',
     q: "Will you support us after launch?",
     a: "Yes. Monthly plans include ongoing support, updates, and monitoring. We don't disappear after go-live. You'll have a real contact who knows your setup and responds within hours.",
   },
@@ -251,30 +266,103 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── Section 4: Stats ── */}
+      {/* ── Section 4: Featured Projects ── */}
       <section
         className="section-dark"
         style={{
           padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)',
         }}
       >
+        <AnimatedSection>
+          <div style={{ marginBottom: 'clamp(2.5rem, 5vw, 4rem)', maxWidth: '680px' }}>
+            <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1rem' }}>
+              Projects we've made.
+            </p>
+            <h2 style={{
+              fontFamily: 'Satoshi, sans-serif',
+              fontWeight: 500,
+              fontSize: 'clamp(28px, 4vw, 52px)',
+              letterSpacing: '-0.01em',
+              lineHeight: 1.15,
+              color: 'var(--white)',
+            }}>
+              A few of the systems we build for Australian businesses.
+            </h2>
+          </div>
+        </AnimatedSection>
+
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
+          gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
           gap: '2rem',
         }}>
-          {[
-            { value: '500+', label: 'Automations deployed' },
-            { value: '98%', label: 'Client retention rate' },
-            { value: '3x', label: 'Average revenue growth' },
-          ].map((stat, i) => (
-            <AnimatedSection key={stat.label} delay={i * 0.1}>
-              <div>
-                <div className="stat-number">
-                  <CountUp value={stat.value} duration={1500} />
+          {featuredProjects.map((project, i) => (
+            <AnimatedSection key={project.title} delay={i * 0.1}>
+              <Link href={project.href} style={{ textDecoration: 'none', color: 'inherit', display: 'block', height: '100%' }}>
+                <div style={{
+                  height: '100%',
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  padding: 'clamp(1.5rem, 3vw, 2rem)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  gap: '1.25rem',
+                  background: 'rgba(255,255,255,0.02)',
+                  transition: 'transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease, background 0.4s ease',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-6px)';
+                  e.currentTarget.style.borderColor = 'rgba(200, 240, 0, 0.45)';
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.04)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.borderColor = 'rgba(255,255,255,0.12)';
+                  e.currentTarget.style.background = 'rgba(255,255,255,0.02)';
+                }}>
+                  <span style={{
+                    fontFamily: 'Satoshi, sans-serif',
+                    fontSize: '13px',
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    color: 'var(--accent)',
+                  }}>
+                    {project.num}
+                  </span>
+
+                  <div>
+                    <h3 style={{
+                      fontFamily: 'Satoshi, sans-serif',
+                      fontWeight: 700,
+                      fontSize: 'clamp(22px, 3vw, 34px)',
+                      letterSpacing: '-0.02em',
+                      lineHeight: 1.05,
+                      color: 'var(--white)',
+                      marginBottom: '0.75rem',
+                    }}>
+                      {project.title}
+                    </h3>
+                    <p style={{
+                      fontSize: '15px',
+                      lineHeight: 1.7,
+                      color: 'var(--muted-dark)',
+                      maxWidth: '28ch',
+                    }}>
+                      {project.summary}
+                    </p>
+                  </div>
+
+                  <span style={{
+                    fontFamily: 'Satoshi, sans-serif',
+                    fontSize: '12px',
+                    letterSpacing: '0.12em',
+                    textTransform: 'uppercase',
+                    color: 'var(--muted-dark)',
+                  }}>
+                    View service →
+                  </span>
                 </div>
-                <p className="stat-label">{stat.label}</p>
-              </div>
+              </Link>
             </AnimatedSection>
           ))}
         </div>
@@ -313,15 +401,7 @@ export default function HomePage() {
                 Everything
                 <br />
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: 'clamp(12px, 2vw, 24px)' }}>
-                  your
-                  <span style={{
-                    display: 'inline-block',
-                    width: 'clamp(60px, 10vw, 140px)',
-                    height: '3px',
-                    background: 'var(--accent)',
-                    borderRadius: '2px',
-                  }} />
-                  business
+                  your business
                 </span>
                 <br />
                 <span style={{ fontWeight: 300, fontStyle: 'italic', color: 'rgba(0,0,0,0.25)' }}>
@@ -488,7 +568,7 @@ export default function HomePage() {
               color: 'var(--white)',
               marginBottom: '2.5rem',
             }}>
-              Fueled by automation obsession<br />and flat whites.
+              We handle the digital backbone of your business.<br />You focus on what you do best.
             </h2>
           </AnimatedSection>
 
@@ -500,16 +580,7 @@ export default function HomePage() {
               marginBottom: '1.25rem',
               maxWidth: '680px',
             }}>
-              In every city, every street, every industry — there are businesses doing exceptional work in relative obscurity. Not from lack of quality. Not from lack of ambition. From lack of visibility. TO BE SEEN exists to close that gap.
-            </p>
-            <p style={{
-              fontSize: '16px',
-              lineHeight: 1.75,
-              color: 'var(--muted-dark)',
-              marginBottom: '3rem',
-              maxWidth: '680px',
-            }}>
-              Our job is to change that. We build and maintain automation systems that take the repetitive, revenue-leaking tasks off your plate. You focus on delivery. We focus on everything that supports it. No outsourced teams, no generic playbooks. Just hands-on, results-first work with businesses we actually care about.
+              In every city, every street, every industry, there are businesses doing exceptional work in relative obscurity. Not from lack of quality. Not from lack of ambition. From lack of visibility. TO BE SEEN exists to close that gap.
             </p>
           </AnimatedSection>
 
