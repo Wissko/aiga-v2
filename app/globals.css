@@ -43,7 +43,34 @@ body {
 .hero-section {
   position: relative;
   min-height: 220vh;
-  background: #000;
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.05), transparent 42%),
+    linear-gradient(180deg, #050505 0%, #000 38%, #020202 100%);
+}
+
+.hero-section::before,
+.hero-section::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero-section::before {
+  opacity: 0.14;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.045), transparent 28%),
+    radial-gradient(circle at 78% 32%, rgba(255, 255, 255, 0.03), transparent 24%),
+    radial-gradient(circle at 50% 78%, rgba(255, 255, 255, 0.02), transparent 30%);
+}
+
+.hero-section::after {
+  opacity: 0.035;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.9) 0.5px, transparent 0.5px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.9) 0.5px, transparent 0.5px);
+  background-size: 3px 3px;
+  mix-blend-mode: soft-light;
 }
 
 .hero-sticky-shell {
@@ -51,11 +78,12 @@ body {
   top: 0;
   height: 100vh;
   overflow: clip;
-  background: #000;
+  background: transparent;
 }
 
 .hero-stage {
   position: relative;
+  z-index: 1;
   height: 100%;
   display: grid;
   place-items: center;
@@ -79,12 +107,14 @@ body {
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: clamp(0.6rem, 1.4vw, 1.15rem);
   font-family: 'Satoshi', system-ui, sans-serif;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: -0.06em;
-  line-height: 0.82;
+  letter-spacing: -0.05em;
+  line-height: 0.9;
   color: #fff;
+  text-shadow: 0 0 26px rgba(255, 255, 255, 0.06);
 }
 
 .hero-title-line {
@@ -93,33 +123,33 @@ body {
 }
 
 .hero-title-line-top {
-  font-size: clamp(5.2rem, 12vw, 11rem);
+  font-size: clamp(5.2rem, 11.4vw, 10.25rem);
 }
 
 .hero-title-line-bottom {
-  font-size: clamp(5.8rem, 14.8vw, 13.75rem);
-  margin-top: -0.08em;
-  margin-left: clamp(2.4rem, 7vw, 7rem);
+  font-size: clamp(5.7rem, 13.8vw, 12.8rem);
+  margin-top: 0;
+  margin-left: clamp(3.4rem, 8.6vw, 8.75rem);
 }
 
 .hero-copy {
   position: relative;
   z-index: 1;
   width: min(100%, 54rem);
-  margin-top: clamp(19rem, 33vw, 28rem);
+  margin-top: clamp(21.5rem, 36vw, 31rem);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: clamp(2rem, 4vw, 3rem);
+  gap: clamp(2.75rem, 4.6vw, 3.75rem);
   will-change: transform, opacity, filter;
 }
 
 .hero-subtitle {
-  max-width: 28ch;
+  max-width: 30ch;
   font-size: clamp(1.5rem, 2.2vw, 2rem);
-  line-height: 1.4;
+  line-height: 1.5;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.88);
+  color: rgba(255, 255, 255, 0.84);
 }
 
 .hero-actions {
@@ -299,26 +329,28 @@ body {
   }
 
   .hero-title {
-    line-height: 0.86;
+    gap: 0.5rem;
+    line-height: 0.92;
   }
 
   .hero-title-line-top {
-    font-size: clamp(4rem, 14vw, 7rem);
+    font-size: clamp(4rem, 13vw, 6.5rem);
   }
 
   .hero-title-line-bottom {
-    font-size: clamp(4.75rem, 17vw, 8rem);
-    margin-left: clamp(1.25rem, 6vw, 3rem);
+    font-size: clamp(4.65rem, 15.8vw, 7.5rem);
+    margin-left: clamp(1.8rem, 8vw, 3.8rem);
   }
 
   .hero-copy {
-    margin-top: clamp(15rem, 45vw, 20rem);
-    gap: 2rem;
+    margin-top: clamp(16.5rem, 49vw, 22rem);
+    gap: 2.5rem;
   }
 
   .hero-subtitle {
     font-size: clamp(1.2rem, 4.8vw, 1.65rem);
-    max-width: 22ch;
+    max-width: 24ch;
+    line-height: 1.55;
   }
 
   .hero-actions {
