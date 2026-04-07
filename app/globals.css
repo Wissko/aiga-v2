@@ -248,6 +248,94 @@ body {
   transform: scale(1.04);
 }
 
+/* ─── Editorial services layout ─── */
+.editorial-shell {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.services-intro-grid,
+.service-split-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+.service-panel {
+  border: 1px solid;
+}
+
+.service-bullet-list {
+  list-style: none;
+}
+
+.service-bullet-list li {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 12px;
+  padding: 1rem 0;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.service-bullet-list li:last-child {
+  border-bottom: none !important;
+}
+
+.service-panel-footer,
+.service-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem;
+  padding-top: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.service-panel-footer p,
+.service-meta-row p {
+  max-width: 52ch;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.service-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.service-card {
+  min-height: 160px;
+  border: 1px solid;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.service-card p {
+  font-family: 'Satoshi', sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+@media (max-width: 900px) {
+  .services-intro-grid,
+  .service-split-grid,
+  .service-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-panel-footer,
+  .service-meta-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
 /* ─── FAQ Accordion ─── */
 .faq-item {
   border-bottom: 1px solid var(--border-light);

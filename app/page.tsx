@@ -46,6 +46,15 @@ const services = [
   },
   {
     num: '05.',
+    title: 'SEO & PERFORMANCE INSIGHTS',
+    desc: 'Technical SEO, conversion tracking, and monthly reporting that help the right clients find you.',
+    tag: '[SEO]',
+    href: '/services#seo-performance',
+    image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80',
+    imageAlt: 'Search and performance analytics',
+  },
+  {
+    num: '06.',
     title: 'FULL DIGITALISATION BUNDLE',
     desc: 'From zero to fully operational online. Everything built, integrated, and running as one cohesive system.',
     tag: '[BUNDLE]',
@@ -540,7 +549,7 @@ export default function HomePage() {
                 color: 'var(--muted-light)',
                 letterSpacing: '0.05em',
               }}>
-                5 core solutions
+                6 core solutions
               </span>
             </div>
           </AnimatedSection>
