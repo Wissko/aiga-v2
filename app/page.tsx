@@ -119,58 +119,41 @@ function HeroSection() {
     offset: ['start start', 'end start'],
   });
 
-  const titleScale = useTransform(scrollYProgress, [0, 0.45, 0.8], [1, 0.68, 0.44]);
-  const titleY = useTransform(scrollYProgress, [0, 0.5, 0.8], ['0vh', '-8vh', '-18vh']);
-  const titleZ = useTransform(scrollYProgress, [0, 0.8], [0, -420]);
-  const titleOpacity = useTransform(scrollYProgress, [0, 0.45, 0.75], [1, 0.5, 0]);
-  const titleBlur = useTransform(scrollYProgress, [0, 0.4, 0.75], ['0px', '5px', '18px']);
-
-  const contentY = useTransform(scrollYProgress, [0, 0.55, 0.8], ['0vh', '4vh', '10vh']);
-  const contentOpacity = useTransform(scrollYProgress, [0, 0.3, 0.55], [1, 0.88, 0]);
-  const contentBlur = useTransform(scrollYProgress, [0, 0.45, 0.65], ['0px', '3px', '10px']);
-  const titleFilter = useMotionTemplate`blur(${titleBlur})`;
-  const contentFilter = useMotionTemplate`blur(${contentBlur})`;
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.62, 0.82, 0.98], [1, 1, 0.42, 0]);
+  const heroBlur = useTransform(scrollYProgress, [0, 0.72, 1], ['0px', '0px', '10px']);
+  const heroFilter = useMotionTemplate`blur(${heroBlur})`;
 
   return (
     <section ref={heroRef} className="hero-section">
       <div className="hero-sticky-shell">
         <div className="hero-stage">
           <motion.div
-            className="hero-stack"
+            className="hero-content-lockup"
             style={{
-              scale: titleScale,
-              y: titleY,
-              opacity: titleOpacity,
-              filter: titleFilter,
-              transformPerspective: 1400,
-              z: titleZ,
+              opacity: heroOpacity,
+              filter: heroFilter,
             }}
           >
-            <h1 className="hero-title" aria-label="TO BE SEEN">
-              <span className="hero-title-line hero-title-line-top">TO BE</span>
-              <span className="hero-title-line hero-title-line-bottom">SEEN</span>
-            </h1>
-          </motion.div>
+            <div className="hero-stack">
+              <h1 className="hero-title" aria-label="TO BE SEEN">
+                <span className="hero-title-line hero-title-line-top">TO BE</span>
+                <span className="hero-title-line hero-title-line-bottom">SEEN</span>
+              </h1>
+            </div>
 
-          <motion.div
-            className="hero-copy"
-            style={{
-              y: contentY,
-              opacity: contentOpacity,
-              filter: contentFilter,
-            }}
-          >
-            <p className="hero-subtitle">
-              We build the kind of brand presence that converts interest into loyalty.
-            </p>
+            <div className="hero-copy">
+              <p className="hero-subtitle">
+                We build the kind of brand presence that converts interest into loyalty.
+              </p>
 
-            <div className="hero-actions">
-              <Link href="/contact" className="cta-btn hero-btn-primary">
-                BOOK A FREE STRATEGY CALL →
-              </Link>
-              <Link href="/services" className="hero-btn-secondary">
-                OUR SERVICES
-              </Link>
+              <div className="hero-actions">
+                <Link href="/contact" className="cta-btn hero-btn-primary">
+                  BOOK A FREE STRATEGY CALL →
+                </Link>
+                <Link href="/services" className="hero-btn-secondary">
+                  OUR SERVICES
+                </Link>
+              </div>
             </div>
           </motion.div>
         </div>
@@ -184,66 +167,68 @@ export default function HomePage() {
     <>
       <HeroSection />
 
-      <Marquee text="AI AUTOMATION" separator="·" dark={true} size="md" speed={20} />
+      <div className="hero-overlay-stack">
+        <Marquee text="AI AUTOMATION" separator="·" dark={true} size="md" speed={20} />
 
-      <section
-        className="section-light"
-        style={{
-          padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)',
-        }}
-      >
-        <AnimatedSection>
-          <h2 style={{
-            fontFamily: 'Satoshi, sans-serif',
-            fontWeight: 500,
-            fontSize: 'clamp(28px, 4vw, 52px)',
-            letterSpacing: '-0.01em',
-            lineHeight: 1.15,
-            color: 'var(--black)',
-            marginBottom: '3rem',
-            maxWidth: '800px',
+        <section
+          className="section-light hero-reveal-section"
+          style={{
+            padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)',
+          }}
+        >
+          <AnimatedSection>
+            <h2 style={{
+              fontFamily: 'Satoshi, sans-serif',
+              fontWeight: 500,
+              fontSize: 'clamp(28px, 4vw, 52px)',
+              letterSpacing: '-0.01em',
+              lineHeight: 1.15,
+              color: 'var(--black)',
+              marginBottom: '3rem',
+              maxWidth: '800px',
+            }}>
+              We’re To Be Seen. We build the brand presence your business deserves.
+            </h2>
+          </AnimatedSection>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            gap: '3rem',
+            maxWidth: '900px',
           }}>
-            We’re To Be Seen. We build the brand presence your business deserves.
-          </h2>
-        </AnimatedSection>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '3rem',
-          maxWidth: '900px',
-        }}>
-          <AnimatedSection delay={0.1}>
-            <p style={{ fontSize: '16px', lineHeight: 1.75, color: 'var(--muted-light)' }}>
-              We're an AI automation agency built for Australian small businesses across every industry. We understand that you’re juggling a lot and don’t have time for solutions that don’t deliver. That's why we take the time to understand your business first, so what we build is practical, tested, and ready to make a difference from day one.
-            </p>
-          </AnimatedSection>
-          <AnimatedSection delay={0.2}>
-            <p style={{ fontSize: '16px', lineHeight: 1.75, color: 'var(--muted-light)' }}>
-              We’re not just here to sell a service, we’re here to grow with you. Real systems, real results and a team that is just as invested in the growth of your business as you are.
-            </p>
-            <div style={{ marginTop: '1.5rem' }}>
-              <Link href="/services" style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                fontFamily: 'Satoshi, sans-serif',
-                fontSize: '14px',
-                fontWeight: 600,
-                letterSpacing: '0.05em',
-                color: 'var(--black)',
-                textDecoration: 'none',
-                transition: 'gap 0.2s ease',
-              }}
-              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.gap = '14px'; }}
-              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.gap = '8px'; }}
-              >
-                Our services <span style={{ color: 'var(--accent)', filter: 'brightness(0.7)' }}>✦</span>
-              </Link>
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
+            <AnimatedSection delay={0.1}>
+              <p style={{ fontSize: '16px', lineHeight: 1.75, color: 'var(--muted-light)' }}>
+                We're an AI automation agency built for Australian small businesses across every industry. We understand that you’re juggling a lot and don’t have time for solutions that don’t deliver. That's why we take the time to understand your business first, so what we build is practical, tested, and ready to make a difference from day one.
+              </p>
+            </AnimatedSection>
+            <AnimatedSection delay={0.2}>
+              <p style={{ fontSize: '16px', lineHeight: 1.75, color: 'var(--muted-light)' }}>
+                We’re not just here to sell a service, we’re here to grow with you. Real systems, real results and a team that is just as invested in the growth of your business as you are.
+              </p>
+              <div style={{ marginTop: '1.5rem' }}>
+                <Link href="/services" style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  fontFamily: 'Satoshi, sans-serif',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  letterSpacing: '0.05em',
+                  color: 'var(--black)',
+                  textDecoration: 'none',
+                  transition: 'gap 0.2s ease',
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.gap = '14px'; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.gap = '8px'; }}
+                >
+                  Our services <span style={{ color: 'var(--accent)', filter: 'brightness(0.7)' }}>✦</span>
+                </Link>
+              </div>
+            </AnimatedSection>
+          </div>
+        </section>
+      </div>
 
       <section
         className="section-dark"
