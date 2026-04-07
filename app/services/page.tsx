@@ -236,61 +236,68 @@ export default function ServicesPage() {
           >
             <div className="editorial-shell">
               {svc.layout === 'split' ? (
-                <div className="service-split-grid">
+                <div className="service-sticky-grid">
                   <AnimatedSection delay={0.04}>
-                    <div>
-                      <span className="label" style={{ display: 'block', color: muted, marginBottom: '1.25rem' }}>
-                        {svc.num} {svc.tag}
-                      </span>
-                      <h2
-                        style={{
-                          fontFamily: 'Satoshi, sans-serif',
-                          fontWeight: 700,
-                          fontSize: 'clamp(30px, 4.5vw, 58px)',
-                          letterSpacing: '-0.03em',
-                          lineHeight: 0.98,
-                          textTransform: 'uppercase',
-                          color: textColor,
-                          marginBottom: '1rem',
-                        }}
-                      >
-                        {svc.title}
-                      </h2>
-                      <p
-                        style={{
-                          fontFamily: 'Satoshi, sans-serif',
-                          fontWeight: 500,
-                          fontSize: 'clamp(18px, 2vw, 22px)',
-                          lineHeight: 1.45,
-                          color: muted,
-                          marginBottom: '1.5rem',
-                        }}
-                      >
-                        {svc.tagline}
-                      </p>
-                      <p style={{ fontSize: '15px', lineHeight: 1.8, color: muted, maxWidth: '56ch' }}>{svc.intro}</p>
+                    <div className="service-sticky-rail">
+                      <div className="service-sticky-inner">
+                        <span className="label" style={{ display: 'block', color: muted, marginBottom: '1.25rem' }}>
+                          {svc.num} {svc.tag}
+                        </span>
+                        <h2
+                          style={{
+                            fontFamily: 'var(--font-logo)',
+                            fontWeight: 600,
+                            fontSize: 'clamp(56px, 9vw, 112px)',
+                            letterSpacing: '-0.02em',
+                            lineHeight: 0.9,
+                            textTransform: 'uppercase',
+                            color: textColor,
+                            marginBottom: '1rem',
+                          }}
+                        >
+                          {svc.title}
+                        </h2>
+                        <p
+                          style={{
+                            fontFamily: 'Satoshi, sans-serif',
+                            fontWeight: 500,
+                            fontSize: 'clamp(18px, 2vw, 22px)',
+                            lineHeight: 1.45,
+                            color: muted,
+                            marginBottom: '1.5rem',
+                            maxWidth: '24rem',
+                          }}
+                        >
+                          {svc.tagline}
+                        </p>
+                      </div>
                     </div>
                   </AnimatedSection>
 
                   <AnimatedSection delay={0.12}>
-                    <div className="service-panel" style={{ background: panelBg, borderColor: border }}>
-                      <ul className="service-bullet-list">
-                        {svc.bullets.map((bullet) => (
-                          <li key={bullet} style={{ borderBottom: `1px solid ${border}`, color: muted }}>
-                            <span style={{ color: 'var(--accent)' }}>✦</span>
-                            <span>{bullet}</span>
-                          </li>
-                        ))}
-                      </ul>
-                      <div className="service-panel-footer" style={{ borderTop: `1px solid ${border}` }}>
-                        <p style={{ color: muted }}>{svc.note}</p>
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                          <Link href="/contact" className={isLight ? 'cta-btn-light' : 'cta-btn'}>
-                            Get started →
-                          </Link>
-                          <span className="label" style={{ color: muted }}>
-                            from {svc.from}
-                          </span>
+                    <div className="service-sticky-content">
+                      <div className="service-panel" style={{ background: panelBg, borderColor: border }}>
+                        <p style={{ fontSize: '15px', lineHeight: 1.8, color: muted, maxWidth: '56ch', marginBottom: '2rem' }}>{svc.intro}</p>
+                        <ul className="service-bullet-list service-bullet-list-featured">
+                          {svc.bullets.map((bullet) => (
+                            <li key={bullet} style={{ borderBottom: `1px solid ${border}`, color: textColor }}>
+                              <span style={{ color: 'var(--accent)' }}>✦</span>
+                              <span style={{ fontFamily: 'var(--font-logo)', fontWeight: 500, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1 }}>
+                                {bullet}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                        <div className="service-panel-footer" style={{ borderTop: `1px solid ${border}` }}>
+                          <p style={{ color: muted }}>{svc.note}</p>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+                            <Link href="/contact" className={isLight ? 'cta-btn-light' : 'cta-btn'}>
+                              Get started →
+                            </Link>
+                            <span className="label" style={{ color: muted }}>
+                              from {svc.from}
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
