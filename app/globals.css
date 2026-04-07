@@ -114,12 +114,12 @@ body {
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: clamp(1.25rem, 3.4vw, 2.5rem);
-  font-family: 'Satoshi', system-ui, sans-serif;
-  font-weight: 900;
+  gap: clamp(0.65rem, 2vw, 1.2rem);
+  font-family: 'Teko', 'Satoshi', system-ui, sans-serif;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: -0.05em;
-  line-height: 0.84;
+  letter-spacing: 0.015em;
+  line-height: 0.76;
   color: #fff;
   text-shadow: 0 10px 40px rgba(0, 0, 0, 0.38);
 }
@@ -130,13 +130,13 @@ body {
 }
 
 .hero-title-line-top {
-  font-size: clamp(5rem, 11vw, 10rem);
+  font-size: clamp(5.8rem, 11.8vw, 11rem);
 }
 
 .hero-title-line-bottom {
-  font-size: clamp(5.6rem, 13.6vw, 12.6rem);
-  margin-top: 0;
-  margin-left: clamp(2.2rem, 7vw, 7.2rem);
+  font-size: clamp(6.5rem, 14.4vw, 13.8rem);
+  margin-top: -0.08em;
+  margin-left: clamp(1.4rem, 5.4vw, 5.6rem);
 }
 
 .hero-copy {
@@ -357,17 +357,18 @@ body {
   }
 
   .hero-title {
-    gap: clamp(1rem, 5vw, 1.8rem);
-    line-height: 0.88;
+    gap: clamp(0.55rem, 3vw, 1rem);
+    line-height: 0.8;
   }
 
   .hero-title-line-top {
-    font-size: clamp(3.9rem, 13vw, 6.5rem);
+    font-size: clamp(4.8rem, 14vw, 7.4rem);
   }
 
   .hero-title-line-bottom {
-    font-size: clamp(4.4rem, 15.8vw, 7.5rem);
-    margin-left: clamp(1.35rem, 7vw, 3.4rem);
+    font-size: clamp(5.5rem, 16.8vw, 8.8rem);
+    margin-top: -0.08em;
+    margin-left: clamp(0.85rem, 4.5vw, 2.2rem);
   }
 
   .hero-copy {
