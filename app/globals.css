@@ -14,7 +14,7 @@
   --accent-strong: #684d74;
   --accent-soft: rgba(122, 99, 134, 0.12);
   --accent-line: rgba(122, 99, 134, 0.28);
-  --hero-title-image: url('/fontsite.png');
+  --hero-surface-image: url('/fontsite.png');
 }
 
 @theme inline {
@@ -40,9 +40,9 @@ body {
   z-index: 0;
   min-height: 220vh;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.58)),
-    radial-gradient(circle at top, rgba(122, 99, 134, 0.12), transparent 38%),
-    url('/crocodile-leather-texture.jpg') center / cover no-repeat,
+    linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.68)),
+    radial-gradient(circle at top, rgba(122, 99, 134, 0.14), transparent 42%),
+    var(--hero-surface-image) center top / cover no-repeat,
     linear-gradient(180deg, #070607 0%, #030203 34%, #000 100%);
 }
 .hero-section::before,
@@ -80,38 +80,23 @@ body {
 }
 .hero-title-line { display: block; white-space: nowrap; }
 .hero-image-fill {
-  color: rgba(255, 255, 255, 0.14);
-  background-image:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.02) 100%),
-    var(--hero-title-image);
-  background-size: cover, 160% auto;
-  background-position: center, center;
-  background-repeat: no-repeat;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 16px 30px rgba(0, 0, 0, 0.32));
+  color: inherit;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+  filter: none;
 }
 .hero-title-line-top {
-  font-size: clamp(8rem, 18vw, 18rem); letter-spacing: 0.05em;
-  -webkit-text-stroke: clamp(1.35px, 0.12vw, 2.2px) rgba(255, 255, 255, 0.82);
-  text-stroke: clamp(1.35px, 0.12vw, 2.2px) rgba(255, 255, 255, 0.82);
+  font-size: clamp(8rem, 18vw, 18rem); letter-spacing: 0.05em; color: rgba(255, 255, 255, 0.96);
+  -webkit-text-stroke: clamp(1.35px, 0.12vw, 2.2px) rgba(255, 255, 255, 0.2);
+  text-stroke: clamp(1.35px, 0.12vw, 2.2px) rgba(255, 255, 255, 0.2);
 }
 .hero-title-line-bottom {
-  font-size: clamp(9rem, 22vw, 22rem); margin-top: -0.17em; margin-left: clamp(1rem, 3vw, 3.5rem); letter-spacing: 0.025em;
-  -webkit-text-stroke: clamp(0.6px, 0.08vw, 1.25px) rgba(255, 255, 255, 0.26);
-  text-stroke: clamp(0.6px, 0.08vw, 1.25px) rgba(255, 255, 255, 0.26);
+  font-size: clamp(9rem, 22vw, 22rem); margin-top: -0.17em; margin-left: clamp(1rem, 3vw, 3.5rem); letter-spacing: 0.025em; color: rgba(255, 255, 255, 0.96);
+  -webkit-text-stroke: clamp(0.6px, 0.08vw, 1.25px) rgba(255, 255, 255, 0.14);
+  text-stroke: clamp(0.6px, 0.08vw, 1.25px) rgba(255, 255, 255, 0.14);
 }
 .heading-hero-font { font-family: var(--font-logo); text-transform: uppercase; line-height: 0.92; }
-.heading-display { font-family: var(--font-logo) !important; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; line-height: 0.88; }
-.heading-display.hero-image-fill {
-  display: inline-block;
-  text-wrap: balance;
-  background-size: cover, 220% auto;
-  background-position: center, center 42%;
-  -webkit-text-stroke: clamp(0.6px, 0.06vw, 1px) rgba(255, 255, 255, 0.18);
-  text-stroke: clamp(0.6px, 0.06vw, 1px) rgba(255, 255, 255, 0.18);
-}
+.heading-display { font-family: var(--font-logo) !important; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; line-height: 0.88; text-wrap: balance; text-shadow: 0 18px 45px rgba(0, 0, 0, 0.28); }
 .heading-section { font-family: var(--font-logo) !important; font-weight: 600; text-transform: uppercase; letter-spacing: 0.015em; line-height: 0.96; }
 .heading-card { font-family: var(--font-logo) !important; font-weight: 500; text-transform: uppercase; letter-spacing: 0.025em; line-height: 1; }
 .hero-copy { width: min(100%, 40rem); margin-top: clamp(1.25rem, 3vw, 2.25rem); display: flex; flex-direction: column; align-items: center; gap: 0; }
@@ -203,9 +188,9 @@ body {
   overflow: hidden;
   isolation: isolate;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.72)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.76)),
     radial-gradient(circle at 18% 12%, rgba(122, 99, 134, 0.18), transparent 34%),
-    url('/crocodile-leather-texture.jpg') center 24% / cover no-repeat,
+    var(--hero-surface-image) center 20% / cover no-repeat,
     linear-gradient(180deg, #070607 0%, #020202 42%, #000 100%);
 }
 .page-hero-shell::before,
@@ -299,8 +284,6 @@ body {
   .hero-title { width: 100%; line-height: 0.8; }
   .hero-title-line-top { font-size: clamp(6.4rem, 20vw, 10rem); letter-spacing: 0.04em; -webkit-text-stroke: clamp(1.05px, 0.34vw, 1.8px) rgba(255, 255, 255, 0.78); text-stroke: clamp(1.05px, 0.34vw, 1.8px) rgba(255, 255, 255, 0.78); }
   .hero-title-line-bottom { font-size: clamp(7.6rem, 24vw, 12rem); margin-top: -0.18em; margin-left: clamp(0.6rem, 2vw, 1.4rem); }
-  .hero-image-fill { background-size: cover, 185% auto; background-position: center, center 40%; }
-  .heading-display.hero-image-fill { background-size: cover, 250% auto; background-position: center, center 38%; }
   .hero-copy { width: min(100%, 28rem); margin-top: clamp(1rem, 5vw, 1.75rem); }
   .hero-actions { width: 100%; flex-direction: column; }
   .hero-btn-primary, .hero-btn-secondary { width: min(100%, 24rem); }

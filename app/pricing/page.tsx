@@ -1,7 +1,4 @@
 'use client';
-import LiquidBackground from '@/components/LiquidBackground';
-import ParticleWaves from '@/components/ParticleWaves';
-
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -209,7 +206,7 @@ export default function PricingPage() {
     <>
       {/* Hero */}
       <section
-        className="section-dark"
+        className="section-dark page-hero-shell"
         style={{
           minHeight: '60vh',
           display: 'flex',
@@ -220,28 +217,29 @@ export default function PricingPage() {
           overflow: 'hidden',
         }}
       >
-        <LiquidBackground />
-        <ParticleWaves />
-        <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
-          Simple pricing
-        </p>
-        <h1 className="heading-display hero-image-fill" style={{
+        <div className="page-hero-gradient" />
+        <div className="editorial-shell" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
+          <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
+            Simple pricing
+          </p>
+          <h1 className="heading-display" style={{
           fontSize: 'clamp(64px, 12vw, 140px)',
           letterSpacing: '0.03em',
           color: 'var(--white)',
           marginBottom: '2rem',
-        }}>
-          PRICING
-        </h1>
-        <p style={{
-          fontFamily: 'Satoshi, sans-serif',
-          fontSize: 'clamp(16px, 2vw, 22px)',
-          color: 'var(--muted-dark)',
-          maxWidth: '520px',
-          lineHeight: 1.6,
-        }}>
-          Monthly plans or one-time setup. All prices in AUD. GST may apply.
-        </p>
+          }}>
+            PRICING
+          </h1>
+          <p style={{
+            fontFamily: 'Satoshi, sans-serif',
+            fontSize: 'clamp(16px, 2vw, 22px)',
+            color: 'var(--muted-dark)',
+            maxWidth: '520px',
+            lineHeight: 1.6,
+          }}>
+            Monthly plans or one-time setup. All prices in AUD. GST may apply.
+          </p>
+        </div>
       </section>
 
       <Marquee text="Transparent Pricing" separator="·" dark={true} size="sm" speed={28} />

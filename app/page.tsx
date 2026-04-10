@@ -114,8 +114,8 @@ function HeroSection() {
           <motion.div className="hero-content-lockup" style={{ opacity: heroOpacity, filter: heroFilter, clipPath: heroClipPath, WebkitMaskImage: heroMaskImage, maskImage: heroMaskImage }}>
             <div className="hero-stack">
               <h1 className="hero-title" aria-label="TO BE SEEN">
-                <span className="hero-title-line hero-title-line-top hero-image-fill">TO BE</span>
-                <span className="hero-title-line hero-title-line-bottom hero-image-fill">SEEN</span>
+                <span className="hero-title-line hero-title-line-top">TO BE</span>
+                <span className="hero-title-line hero-title-line-bottom">SEEN</span>
               </h1>
             </div>
             <div className="hero-copy">
