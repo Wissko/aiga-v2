@@ -2,389 +2,173 @@
 
 import Link from 'next/link';
 import AnimatedSection from '@/components/AnimatedSection';
-import LiquidBackground from '@/components/LiquidBackground';
 import Marquee from '@/components/Marquee';
-import ParticleWaves from '@/components/ParticleWaves';
 
 const services = [
   {
     id: 'websites',
-    num: '01.',
-    title: 'WEBSITE CREATION',
-    tagline: 'Your digital shopfront, built to convert.',
-    intro:
-      'Your website is often the first impression a potential customer gets. Most small business websites are slow, outdated, and built on templates that look like every other competitor. We design modern, high-conviction websites that feel premium, load fast, and guide people toward an enquiry.',
-    bullets: [
-      'Custom design aligned to your brand and positioning',
-      'Mobile-first builds with strong speed foundations',
-      'Integrated booking and enquiry journeys',
-      'E-commerce ready when your business needs it',
-      'Hosting, updates, and support available on monthly plans',
-    ],
-    note: 'Built to feel sharp on day one and useful every day after.',
-    tag: '[WEB DESIGN]',
-    from: '$299/mo',
+    number: '01',
+    title: 'Website Creation',
+    summary: 'Fast, premium websites designed to establish trust quickly and move visitors toward a clear next step.',
+    why: 'For businesses that do strong work offline but still look inconsistent, dated, or generic online.',
+    includes: ['Custom conversion-led design', 'Mobile-first build quality', 'Enquiry and booking pathways', 'Clean launch-ready performance setup'],
+    outcome: 'Your brand feels more established, more credible, and easier to choose from the first visit.',
     tone: 'light',
-    layout: 'split',
   },
   {
     id: 'phone-ai',
-    num: '02.',
-    title: 'PHONE AI AUTOMATION',
-    tagline: 'Never miss a call. Never lose an enquiry to silence.',
-    intro:
-      'Most small businesses lose revenue in the gaps: after hours, during busy service windows, or when no one can get to the phone. Our AI voice system answers instantly, handles common questions, qualifies the caller, and books the next step without making your operation feel robotic.',
-    bullets: [
-      '24/7 call answering with a tailored voice and script',
-      'Appointment booking directly into your calendar',
-      'Lead qualification before the enquiry hits your team',
-      'Escalation paths for urgent or complex calls',
-      'Transcripts and daily visibility on what is coming in',
-    ],
-    note: 'A front desk that stays on, even when you do not.',
-    tag: '[AI VOICE]',
-    from: '$199/mo',
+    number: '02',
+    title: 'Phone AI Automation',
+    summary: 'An AI receptionist that answers immediately, handles common questions, qualifies intent, and books the next action.',
+    why: 'For businesses where missed calls are equivalent to missed revenue.',
+    includes: ['24/7 call answering', 'Qualification logic by service type', 'Escalation for urgent calls', 'Calendar booking or lead capture'],
+    outcome: 'Your business feels responsive even when the team is busy, off-site, or closed.',
     tone: 'dark',
-    layout: 'cards',
   },
   {
     id: 'bookings',
-    num: '03.',
-    title: 'AUTOMATED BOOKINGS',
-    tagline: 'Let clients book when they are ready, not when you are free.',
-    intro:
-      'Manual booking systems create friction at the exact moment people are ready to commit. We build streamlined booking flows that make scheduling simple, reduce admin, and keep your calendar moving without the back-and-forth.',
-    bullets: [
-      'Online booking from your website, Google, and social channels',
-      'Automated reminders to reduce missed appointments',
-      'Rescheduling flows that protect your time',
-      'Syncing with the calendars and tools you already use',
-      'Waitlist logic and cancellation fill-ins where needed',
-    ],
-    note: 'Less admin. Fewer drop-offs. A smoother path to confirmed revenue.',
-    tag: '[SCHEDULING]',
-    from: '$99/mo',
+    number: '03',
+    title: 'Automated Bookings',
+    summary: 'A cleaner scheduling journey built to reduce friction, remove admin loops, and protect the calendar from unnecessary gaps.',
+    why: 'For businesses that are losing conversions between interest and confirmed appointment.',
+    includes: ['Website booking flows', 'Reminder sequences', 'Reschedule and cancellation logic', 'Calendar sync with existing tools'],
+    outcome: 'Clients can book faster, and your team spends less time coordinating simple appointments.',
     tone: 'light',
-    layout: 'split',
   },
   {
     id: 'crm',
-    num: '04.',
-    title: 'CLIENT FOLLOW-UP CRM',
-    tagline: 'Keep your client base warm, active, and easier to grow.',
-    intro:
-      'Most businesses spend all their energy chasing the next customer and underuse the people who already know, trust, and would happily return to them. We build follow-up systems that keep your brand present after the first booking and turn good service into repeat revenue.',
-    bullets: [
-      'Automated follow-up sequences after every enquiry or booking',
-      'AI-personalised re-engagement messages for past clients',
-      'Automated review request automation to build your reputation on Google',
-      'Seasonal promotion and offer automations',
-      'Birthday and anniversary automations',
-      'Dashboard showing revenue attributed to automated follow-ups',
-    ],
-    note: 'A CRM that behaves more like a revenue engine than a contact list.',
-    tag: '[CRM]',
-    from: '$149/mo',
+    number: '04',
+    title: 'Client Follow-Up CRM',
+    summary: 'Structured follow-up systems that keep past clients warm, encourage repeat bookings, and build stronger retention.',
+    why: 'For businesses with a valuable client base that is not being reactivated consistently.',
+    includes: ['Post-visit follow-up', 'Review requests', 'Reactivation campaigns', 'Segmented messaging journeys'],
+    outcome: 'The database becomes a growth channel rather than a static contact list.',
     tone: 'dark',
-    layout: 'cards',
   },
   {
     id: 'seo-performance',
-    num: '05.',
-    title: 'SEO & PERFORMANCE INSIGHTS',
-    tagline: 'Get found earlier. Understand what is actually driving enquiries.',
-    intro:
-      'Your next client is already searching, we just make sure they find you. We optimise everything behind the scenes so your site ranks, earns trust, and converts visitors into enquiries.',
-    bullets: [
-      'Technical SEO (Search Engine Optimisation) — We keep your site fast, clean, and built to rank across all devices',
-      'On-Page optimisation — Every page is optimised so the right customers find you for the right searches',
-      'Keyword & Competitor Review specific to your industry — We find the opportunities your competitors are missing and build your strategy around them',
-      "Conversion Tracking — We track what visitors do on your site so you know exactly what's driving enquiries",
-      'Monthly Insights and Reporting — Clear, simple reports every month showing what is working and what could be tweaked next',
-    ],
-    note: 'Search visibility, site health, and decision-making clarity in one layer.',
-    tag: '[SEO]',
-    from: '$129/mo',
-    tone: 'light',
-    layout: 'split',
+    number: '05',
+    title: 'SEO & Performance Insights',
+    summary: 'Technical visibility, performance tuning, and reporting that help the right clients find you and trust the experience.',
+    why: 'For businesses that need better discovery and cleaner data before they invest more heavily in growth.',
+    includes: ['Technical SEO foundations', 'Core performance optimisation', 'Conversion tracking setup', 'Reporting that stays commercially useful'],
+    outcome: 'Search visibility improves, site friction drops, and decisions get easier because the signal is clearer.',
+    tone: 'dark',
   },
   {
     id: 'bundle',
-    num: '06.',
-    title: 'FULL DIGITALISATION BUNDLE',
-    tagline: 'Everything connected. One system, one direction, one team.',
-    intro:
-      'For businesses ready to stop stitching tools together, this is the full operating layer. Website, phone system, bookings, follow-up, and performance insight are planned as a cohesive system so every piece reinforces the next.',
-    bullets: [
-      'Website, bookings, CRM, phone AI, and SEO aligned together',
-      'Integrated journeys from first visit to repeat booking',
-      'One account lead and one strategic direction',
-      'Cross-system reporting on activity and revenue',
-      'Priority support and ongoing optimisation',
-    ],
-    note: 'Best for owners who want the whole setup to finally feel intentional.',
-    tag: '[BUNDLE]',
-    from: '$599/mo',
-    tone: 'dark',
-    layout: 'cards',
+    number: '06',
+    title: 'Full Digitalisation Bundle',
+    summary: 'A fully connected setup where website, calls, bookings, follow-up, and reporting are designed as one coherent system.',
+    why: 'For owners who want a complete front-end and back-end digital layer instead of isolated fixes.',
+    includes: ['Website and conversion path', 'Phone AI and bookings', 'CRM follow-up logic', 'Reporting and optimisation rhythm'],
+    outcome: 'Your operation feels more premium, more organised, and much easier to scale with confidence.',
+    tone: 'light',
   },
 ];
 
 export default function ServicesPage() {
   return (
     <>
-      <section
-        className="section-dark"
-        style={{
-          minHeight: '70vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: 'clamp(6rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem) clamp(3rem, 5vw, 5rem)',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        <LiquidBackground />
-        <ParticleWaves />
-        <div style={{ position: 'relative', zIndex: 2, width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
-          <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
-            What we do
-          </p>
-          <h1 className="heading-display"
-            style={{
-              fontSize: 'clamp(64px, 12vw, 140px)',
-              letterSpacing: '0.03em',
-              color: 'var(--white)',
-              marginBottom: '2rem',
-            }}
-          >
-            SERVICES
-          </h1>
-          <p
-            style={{
-              fontFamily: 'Satoshi, sans-serif',
-              fontWeight: 400,
-              fontSize: 'clamp(16px, 2vw, 22px)',
-              color: 'var(--muted-dark)',
-              maxWidth: '640px',
-              lineHeight: 1.6,
-            }}
-          >
-            A clear, single-column service page built around the systems that make a modern business easier to run, easier to trust, and easier to choose.
+      <section className="section-dark page-hero-shell" style={{ minHeight: '72vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(6rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem) clamp(3rem, 5vw, 5rem)' }}>
+        <div className="page-hero-gradient" />
+        <div className="editorial-shell" style={{ position: 'relative', zIndex: 2 }}>
+          <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Services</p>
+          <h1 className="heading-display" style={{ fontSize: 'clamp(72px, 12vw, 150px)', color: 'var(--white)', marginBottom: '1.5rem', maxWidth: '10.5em' }}>Built around clear business outcomes.</h1>
+          <p className="page-hero-copy">
+            Each offer now sits on the same luxury visual language as the home hero, using the crocodile leather image as the real base so the page feels premium, coherent, and immediately readable.
           </p>
         </div>
       </section>
 
-      <Marquee text="Our Services" separator="·" dark={true} size="md" speed={22} />
+      <Marquee text="Website · AI Reception · Bookings · CRM · Digital Systems" separator="·" dark={true} size="md" speed={22} />
 
-      <section className="section-light" style={{ padding: 'clamp(4rem, 8vw, 7rem) clamp(1.5rem, 6vw, 5rem)' }}>
-        <div className="editorial-shell">
+      <section className="section-light" style={{ padding: 'clamp(4rem, 8vw, 6rem) clamp(1.5rem, 6vw, 5rem)' }}>
+        <div className="editorial-shell premium-grid-2" style={{ alignItems: 'start' }}>
           <AnimatedSection>
-            <div className="services-intro-grid">
-              <div>
-                <p className="label" style={{ marginBottom: '1rem' }}>
-                  Service structure
-                </p>
-                <h2 className="heading-section"
-                  style={{
-                    fontSize: 'clamp(34px, 5vw, 68px)',
-                    letterSpacing: '0.02em',
-                    color: 'var(--black)',
-                  }}
-                >
-                  Designed to read clearly. Built to sell clearly.
-                </h2>
-              </div>
-              <div>
-                <p style={{ fontSize: '16px', lineHeight: 1.8, color: 'var(--muted-light)', marginBottom: '1rem' }}>
-                  Instead of a noisy feature dump, each service is laid out like an offer: what it does, why it matters, and what sits inside it.
-                </p>
-                <p style={{ fontSize: '16px', lineHeight: 1.8, color: 'var(--muted-light)' }}>
-                  The result is more editorial, more personal, and easier for a client to move through without losing the premium tone of the site.
-                </p>
-              </div>
+            <div>
+              <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>How to read this</p>
+              <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 68px)', color: 'var(--black)' }}>
+                Less noise. Better hierarchy. Faster understanding.
+              </h2>
+            </div>
+          </AnimatedSection>
+          <AnimatedSection delay={0.08}>
+            <div className="premium-card premium-card-light">
+              <p style={{ color: 'var(--muted-light)', marginBottom: '0.85rem' }}>
+                Each offer now follows the same editorial structure so a prospect can scan it in seconds without guessing what is actually being delivered.
+              </p>
+              <ul className="premium-list">
+                {['What the service is', 'Why a business buys it', 'What sits inside the offer', 'What result to expect'].map((item) => (
+                  <li key={item}><span className="premium-dot" /><span style={{ color: 'var(--black)' }}>{item}</span></li>
+                ))}
+              </ul>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {services.map((svc, i) => {
-        const isLight = svc.tone === 'light';
-        const sectionClass = isLight ? 'section-light' : 'section-dark';
-        const textColor = isLight ? 'var(--black)' : 'var(--white)';
-        const muted = isLight ? 'var(--muted-light)' : 'var(--muted-dark)';
-        const border = isLight ? 'var(--border-light)' : 'var(--border-dark)';
-        const panelBg = isLight ? 'rgba(0,0,0,0.025)' : 'rgba(255,255,255,0.03)';
+      {services.map((service, index) => {
+        const light = service.tone === 'light';
+        const text = light ? 'var(--black)' : 'var(--white)';
+        const muted = light ? 'var(--muted-light)' : 'var(--muted-dark)';
+        const border = light ? 'var(--border-light)' : 'var(--border-dark)';
+        const panelBg = light ? 'rgba(255,255,255,0.58)' : 'rgba(255,255,255,0.03)';
 
         return (
-          <section
-            key={svc.id}
-            id={svc.id}
-            className={sectionClass}
-            style={{
-              padding: 'clamp(4rem, 8vw, 7rem) clamp(1.5rem, 6vw, 5rem)',
-              borderTop: `1px solid ${border}`,
-            }}
-          >
-            <div className="editorial-shell">
-              {svc.layout === 'split' ? (
-                <div className="service-sticky-grid">
-                  <AnimatedSection delay={0.04}>
-                    <div className="service-sticky-rail">
-                      <div className="service-sticky-inner">
-                        <span className="label" style={{ display: 'block', color: muted, marginBottom: '1.25rem' }}>
-                          {svc.num} {svc.tag}
-                        </span>
-                        <h2 className="heading-section"
-                          style={{
-                            fontSize: 'clamp(56px, 9vw, 112px)',
-                            letterSpacing: '0.02em',
-                            
-                            color: textColor,
-                            marginBottom: '1rem',
-                          }}
-                        >
-                          {svc.title}
-                        </h2>
-                        <p
-                          style={{
-                            fontFamily: 'Satoshi, sans-serif',
-                            fontWeight: 500,
-                            fontSize: 'clamp(18px, 2vw, 22px)',
-                            lineHeight: 1.45,
-                            color: muted,
-                            marginBottom: '1.5rem',
-                            maxWidth: '24rem',
-                          }}
-                        >
-                          {svc.tagline}
-                        </p>
-                      </div>
-                    </div>
-                  </AnimatedSection>
-
-                  <AnimatedSection delay={0.12}>
-                    <div className="service-sticky-content">
-                      <div className="service-panel" style={{ background: panelBg, borderColor: border }}>
-                        <p style={{ fontSize: '15px', lineHeight: 1.8, color: muted, maxWidth: '56ch', marginBottom: '2rem' }}>{svc.intro}</p>
-                        <ul className="service-bullet-list service-bullet-list-featured">
-                          {svc.bullets.map((bullet) => (
-                            <li key={bullet} style={{ borderBottom: `1px solid ${border}`, color: textColor }}>
-                              <span style={{ color: 'var(--accent)' }}>✦</span>
-                              <span style={{ fontFamily: 'var(--font-logo)', fontWeight: 500, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1 }}>
-                                {bullet}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                        <div className="service-panel-footer" style={{ borderTop: `1px solid ${border}` }}>
-                          <p style={{ color: muted }}>{svc.note}</p>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                            <Link href="/contact" className={isLight ? 'cta-btn-light' : 'cta-btn'}>
-                              Get started →
-                            </Link>
-                            <span className="label" style={{ color: muted }}>
-                              from {svc.from}
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </AnimatedSection>
-                </div>
-              ) : (
+          <section key={service.id} id={service.id} className={light ? 'section-light service-band' : 'section-dark service-band'} style={{ padding: 'clamp(4rem, 8vw, 6.5rem) clamp(1.5rem, 6vw, 5rem)', borderTopColor: border }}>
+            <div className="editorial-shell service-layout">
+              <AnimatedSection delay={0.04}>
                 <div>
-                  <AnimatedSection delay={0.04}>
-                    <div style={{ marginBottom: 'clamp(2rem, 4vw, 3rem)', maxWidth: '760px' }}>
-                      <span className="label" style={{ display: 'block', color: muted, marginBottom: '1.25rem' }}>
-                        {svc.num} {svc.tag}
-                      </span>
-                      <h2 className="heading-section"
-                        style={{
-                          fontSize: 'clamp(30px, 4.5vw, 58px)',
-                          letterSpacing: '0.02em',
-                          color: textColor,
-                          marginBottom: '1rem',
-                        }}
-                      >
-                        {svc.title}
-                      </h2>
-                      <p
-                        style={{
-                          fontFamily: 'Satoshi, sans-serif',
-                          fontWeight: 500,
-                          fontSize: 'clamp(18px, 2vw, 22px)',
-                          lineHeight: 1.45,
-                          color: muted,
-                          marginBottom: '1rem',
-                        }}
-                      >
-                        {svc.tagline}
-                      </p>
-                      <p style={{ fontSize: '15px', lineHeight: 1.8, color: muted }}>{svc.intro}</p>
-                    </div>
-                  </AnimatedSection>
+                  <span className="premium-number" style={{ display: 'block', marginBottom: '1rem' }}>{service.number}</span>
+                  <h2 className="heading-section" style={{ fontSize: 'clamp(42px, 6vw, 82px)', color: text, marginBottom: '1rem' }}>{service.title}</h2>
+                  <p style={{ fontSize: '18px', lineHeight: 1.6, color: muted, maxWidth: '32rem', marginBottom: '1.5rem' }}>{service.summary}</p>
+                  <div className={light ? 'premium-card premium-card-light' : 'premium-card premium-card-dark'}>
+                    <p className="premium-kicker" style={{ color: light ? 'var(--accent)' : 'var(--accent)', marginBottom: '0.5rem' }}>Why clients choose this</p>
+                    <p style={{ color: text }}>{service.why}</p>
+                  </div>
+                </div>
+              </AnimatedSection>
 
-                  <AnimatedSection delay={0.12}>
-                    <div className="service-card-grid">
-                      {svc.bullets.map((bullet) => (
-                        <div key={bullet} className="service-card" style={{ background: panelBg, borderColor: border }}>
-                          <span style={{ color: 'var(--accent)', fontSize: '18px', lineHeight: 1 }}>✦</span>
-                          <p style={{ color: muted }}>{bullet}</p>
+              <AnimatedSection delay={0.1}>
+                <div className="service-panel" style={{ borderColor: border, background: panelBg }}>
+                  <div style={{ marginBottom: '1.5rem' }}>
+                    <p className="premium-kicker" style={{ color: 'var(--accent)', marginBottom: '0.6rem' }}>Included</p>
+                    <div className="service-feature-grid">
+                      {service.includes.map((item) => (
+                        <div key={item} className="service-feature-card" style={{ borderColor: border, background: light ? 'rgba(255,255,255,0.64)' : 'rgba(255,255,255,0.02)' }}>
+                          <span className="premium-dot" style={{ marginBottom: '1rem', display: 'block' }} />
+                          <p style={{ color: text, lineHeight: 1.65 }}>{item}</p>
                         </div>
                       ))}
                     </div>
-                  </AnimatedSection>
-
-                  <AnimatedSection delay={0.16}>
-                    <div className="service-meta-row" style={{ borderTop: `1px solid ${border}` }}>
-                      <p style={{ color: muted }}>{svc.note}</p>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                        <Link href="/contact" className={isLight ? 'cta-btn-light' : 'cta-btn'}>
-                          Get started →
-                        </Link>
-                        <span className="label" style={{ color: muted }}>
-                          from {svc.from}
-                        </span>
-                      </div>
+                  </div>
+                  <div style={{ paddingTop: '1.5rem', borderTop: `1px solid ${border}`, display: 'grid', gap: '1.25rem' }}>
+                    <div>
+                      <p className="premium-kicker" style={{ color: 'var(--accent)', marginBottom: '0.5rem' }}>Expected outcome</p>
+                      <p style={{ color: muted }}>{service.outcome}</p>
                     </div>
-                  </AnimatedSection>
+                    <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                      <Link href="/contact" className={light ? 'cta-btn-light' : 'cta-btn'}>Book a strategy call</Link>
+                      {index < services.length - 1 ? <Link href={`#${services[index + 1].id}`} className="link-arrow">Next service</Link> : <Link href="/contact" className="link-arrow">Discuss the full scope</Link>}
+                    </div>
+                  </div>
                 </div>
-              )}
+              </AnimatedSection>
             </div>
           </section>
         );
       })}
 
-      <section className="section-dark" style={{ padding: 'clamp(4rem, 8vw, 7rem) clamp(1.5rem, 6vw, 5rem)', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-        <div className="editorial-shell" style={{ textAlign: 'center' }}>
+      <section className="section-dark" style={{ padding: 'clamp(4rem, 8vw, 6.5rem) clamp(1.5rem, 6vw, 5rem)' }}>
+        <div className="editorial-shell premium-card premium-card-dark" style={{ padding: 'clamp(2rem, 4vw, 3rem)' }}>
           <AnimatedSection>
-            <h2 className="heading-section"
-              style={{
-                fontSize: 'clamp(32px, 5vw, 64px)',
-                letterSpacing: '0.02em',
-                color: 'var(--white)',
-                marginBottom: '1rem',
-              }}
-            >
-              Not sure where to start?
-            </h2>
-            <p
-              style={{
-                fontFamily: 'Satoshi, sans-serif',
-                fontSize: '16px',
-                color: 'var(--muted-dark)',
-                margin: '0 auto 2.5rem',
-                maxWidth: '520px',
-                lineHeight: 1.7,
-              }}
-            >
-              Book a free strategy call. We will look at your setup, identify the gaps, and tell you which service will make the biggest difference first.
+            <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Unsure where to begin</p>
+            <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 68px)', color: 'var(--white)', marginBottom: '1rem' }}>We can map the right first move with you.</h2>
+            <p style={{ maxWidth: '36rem', color: 'var(--muted-dark)', marginBottom: '1.8rem' }}>
+              If you are deciding between calls, bookings, CRM, or a full build, start with the strategy call. We will identify the highest-value bottleneck before recommending anything.
             </p>
-            <Link href="/contact" className="cta-btn">
-              Book a free strategy call →
-            </Link>
+            <Link href="/contact" className="cta-btn">Book a free strategy call</Link>
           </AnimatedSection>
         </div>
       </section>

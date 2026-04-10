@@ -1,240 +1,124 @@
 'use client';
-import LiquidBackground from '@/components/LiquidBackground';
-import ParticleWaves from '@/components/ParticleWaves';
 
 import Link from 'next/link';
 import AnimatedSection from '@/components/AnimatedSection';
 import Marquee from '@/components/Marquee';
 
-const values = [
+const principles = [
   {
-    num: '01.',
-    title: 'Accessible by design',
-    desc: 'AI automation should not be reserved for companies with dedicated tech teams. We build systems that any small business owner can understand and rely on.',
+    number: '01',
+    title: 'Clarity before complexity',
+    text: 'We design systems so owners can understand what is happening, what is working, and what the next step should be.',
   },
   {
-    num: '02.',
-    title: 'Results, not reports',
-    desc: 'We measure success by what shows up in your bank account, your calendar, and your review count. Not vanity metrics.',
+    number: '02',
+    title: 'Premium does not mean excessive',
+    text: 'The visual and operational goal is composure: cleaner journeys, stronger trust, and fewer moving parts that confuse people.',
   },
   {
-    num: '03.',
-    title: 'Done for you',
-    desc: 'You run your business. We run your systems. No training manuals, no config spreadsheets. We set it up, you benefit.',
-  },
-  {
-    num: '04.',
-    title: 'Built to last',
-    desc: 'We use reliable, proven platforms. No fragile custom code that breaks when someone leaves. Systems that work whether we are involved or not.',
+    number: '03',
+    title: 'Technology should support reputation',
+    text: 'Every touchpoint should reinforce the quality of the business behind it, not undermine it with friction or inconsistency.',
   },
 ];
 
-const techPartners = [
-  'n8n', 'Make', 'Vapi.ai', 'ElevenLabs', 'Cal.com', 'Calendly', 'HubSpot', 'Airtable', 'Next.js', 'Webflow',
-];
+const partners = ['Next.js', 'n8n', 'Vapi', 'ElevenLabs', 'Calendly', 'HubSpot', 'Airtable', 'Stripe'];
 
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
-      <section
-        className="section-dark"
-        style={{
-          minHeight: '70vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: 'clamp(6rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem) clamp(3rem, 5vw, 5rem)',
-        
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        <LiquidBackground />
-        <ParticleWaves />
-        <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
-          Who we are
-        </p>
-        <h1 className="heading-display" style={{
-          fontSize: 'clamp(64px, 12vw, 140px)',
-          letterSpacing: '0.03em',
-          color: 'var(--white)',
-          marginBottom: '2rem',
-        }}>
-          ABOUT
-        </h1>
-        <p style={{
-          fontFamily: 'Satoshi, sans-serif',
-          fontWeight: 400,
-          fontSize: 'clamp(16px, 2vw, 22px)',
-          color: 'var(--muted-dark)',
-          maxWidth: '560px',
-          lineHeight: 1.6,
-        }}>
-          Built for the businesses that keep Australia running.
-        </p>
+      <section className="section-dark page-hero-shell" style={{ minHeight: '72vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(6rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem) clamp(3rem, 5vw, 5rem)' }}>
+        <div className="page-hero-gradient" />
+        <div className="editorial-shell" style={{ position: 'relative', zIndex: 2 }}>
+          <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>About</p>
+          <h1 className="heading-display" style={{ fontSize: 'clamp(72px, 12vw, 150px)', color: 'var(--white)', marginBottom: '1.5rem', maxWidth: '10.25em' }}>A digital studio for businesses that deserve better systems.</h1>
+          <p className="page-hero-copy">
+            The same crocodile leather image now anchors this hero too, so the studio story inherits the same luxury texture, darker depth, and calm readability as the rest of the premium pages.
+          </p>
+        </div>
       </section>
 
-      {/* Marquee */}
-      <Marquee text="Our Story" separator="·" dark={true} size="md" speed={25} />
+      <Marquee text="Strategy · Systems · Visibility · Conversion" separator="·" dark={true} size="md" speed={25} />
 
-      {/* Mission */}
-      <section
-        className="section-light"
-        style={{ padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)' }}
-      >
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: 'clamp(3rem, 6vw, 6rem)',
-          alignItems: 'start',
-          maxWidth: '1400px',
-          margin: '0 auto',
-        }}>
+      <section className="section-light" style={{ padding: 'clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
+        <div className="editorial-shell premium-grid-2" style={{ alignItems: 'start' }}>
           <AnimatedSection>
-            <h2 className="heading-section" style={{
-              fontSize: 'clamp(32px, 5vw, 64px)',
-              letterSpacing: '0.02em',
-              color: 'var(--black)',
-              marginBottom: '2rem',
-            }}>
-              We exist to make AI work for the businesses that need it most.
-            </h2>
+            <div>
+              <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>What the studio stands for</p>
+              <h2 className="heading-section" style={{ fontSize: 'clamp(36px, 5vw, 74px)', color: 'var(--black)', marginBottom: '1.25rem' }}>
+                Good businesses should not look disorganised online.
+              </h2>
+            </div>
           </AnimatedSection>
-
-          <AnimatedSection delay={0.15}>
-            <p style={{ fontSize: '16px', lineHeight: 1.75, color: 'var(--muted-light)', marginBottom: '1.5rem' }}>
-              To Be Seen was built with a clear mission: close the gap between the quality of a business and its visibility in the world.
-            </p>
-            <p style={{ fontSize: '16px', lineHeight: 1.75, color: 'var(--muted-light)', marginBottom: '1.5rem' }}>
-              We watched restaurants, salons, health clinics, and retail stores struggle not because they weren't good at what they did, but because the systems supporting their business were broken. Missed calls. Manual bookings. No follow-up. Websites built years ago that no longer served them.
-            </p>
-            <p style={{ fontSize: '16px', lineHeight: 1.75, color: 'var(--muted-light)', marginBottom: '2rem' }}>
-              Every system we build is designed to work without requiring you to become a tech expert. You run your business. We run everything that supports it.
-            </p>
-            <Link href="/contact" className="cta-btn-light">
-              Partner with us →
-            </Link>
+          <AnimatedSection delay={0.08}>
+            <div style={{ maxWidth: '36rem', justifySelf: 'end' }}>
+              <p style={{ color: 'var(--muted-light)', marginBottom: '1rem' }}>
+                AIGA builds the systems that sit between reputation and revenue: the website, the response layer, the booking flow, and the follow-up rhythm.
+              </p>
+              <p style={{ color: 'var(--muted-light)', marginBottom: '1.75rem' }}>
+                We care about premium presentation because it shapes trust. We care about automation because it protects time. The strongest setup does both.
+              </p>
+              <Link href="/services" className="cta-btn-light">See the service model</Link>
+            </div>
           </AnimatedSection>
         </div>
       </section>
 
-      {/* Values */}
-      <section
-        className="section-dark"
-        style={{ padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)' }}
-      >
-        <AnimatedSection>
-          <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
-            What we believe
-          </p>
-          <h2 className="heading-section" style={{
-            fontSize: 'clamp(32px, 5vw, 64px)',
-            letterSpacing: '0.02em',
-            color: 'var(--white)',
-            marginBottom: '4rem',
-          }}>
-            Our values.
-          </h2>
-        </AnimatedSection>
+      <section className="section-dark" style={{ padding: 'clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
+        <div className="editorial-shell premium-grid-3">
+          {principles.map((item, index) => (
+            <AnimatedSection key={item.title} delay={index * 0.08}>
+              <article className="premium-card premium-card-dark" style={{ height: '100%' }}>
+                <span className="premium-number" style={{ display: 'block', marginBottom: '1rem' }}>{item.number}</span>
+                <h3 className="heading-card" style={{ fontSize: 'clamp(28px, 4vw, 42px)', color: 'var(--white)', marginBottom: '0.75rem' }}>{item.title}</h3>
+                <p style={{ color: 'var(--muted-dark)' }}>{item.text}</p>
+              </article>
+            </AnimatedSection>
+          ))}
+        </div>
+      </section>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          gap: '0',
-          borderTop: '1px solid var(--border-dark)',
-        }}>
-          {values.map((v, i) => (
-            <AnimatedSection key={v.num} delay={i * 0.1}>
-              <div style={{
-                padding: 'clamp(2rem, 4vw, 3rem)',
-                borderBottom: '1px solid var(--border-dark)',
-                borderRight: i % 2 === 0 ? '1px solid var(--border-dark)' : 'none',
-              }}>
-                <span className="label" style={{ color: 'var(--muted-dark)', display: 'block', marginBottom: '1rem' }}>
-                  {v.num}
-                </span>
-                <h3 className="heading-card" style={{
-                  fontSize: 'clamp(20px, 2.5vw, 28px)',
-                  letterSpacing: '0.02em',
-                  color: 'var(--white)',
-                  marginBottom: '1rem',
-                }}>
-                  {v.title}
-                </h3>
-                <p style={{ fontSize: '15px', lineHeight: 1.75, color: 'var(--muted-dark)' }}>
-                  {v.desc}
-                </p>
+      <section className="section-light" style={{ padding: 'clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
+        <div className="editorial-shell premium-grid-2" style={{ alignItems: 'center' }}>
+          <AnimatedSection>
+            <div className="premium-card premium-card-light">
+              <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>How we work</p>
+              <ul className="premium-list">
+                {[
+                  'We audit the current setup before suggesting anything.',
+                  'We simplify the client journey rather than adding layers for the sake of automation.',
+                  'We build with platforms that are stable, maintainable, and realistic for growing businesses.',
+                ].map((item) => (
+                  <li key={item}><span className="premium-dot" /><span style={{ color: 'var(--black)' }}>{item}</span></li>
+                ))}
+              </ul>
+            </div>
+          </AnimatedSection>
+          <AnimatedSection delay={0.08}>
+            <div>
+              <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Platform stack</p>
+              <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 68px)', color: 'var(--black)', marginBottom: '1rem' }}>Built on proven tools, arranged with intent.</h2>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem' }}>
+                {partners.map((partner) => (
+                  <span key={partner} className="premium-card premium-card-light" style={{ padding: '0.8rem 1rem', borderRadius: '999px' }}>{partner}</span>
+                ))}
               </div>
-            </AnimatedSection>
-          ))}
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
-      {/* Tech stack */}
-      <section
-        className="section-light"
-        style={{ padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)' }}
-      >
-        <AnimatedSection>
-          <p className="label" style={{ marginBottom: '1.5rem' }}>Tools we use</p>
-          <h2 className="heading-section" style={{
-              fontSize: 'clamp(32px, 5vw, 64px)',
-              letterSpacing: '0.02em',
-              color: 'var(--black)',
-            marginBottom: '3rem',
-          }}>
-            Built on proven platforms.
-          </h2>
-        </AnimatedSection>
-
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem' }}>
-          {techPartners.map((tech, i) => (
-            <AnimatedSection key={tech} delay={i * 0.05}>
-              <span style={{
-                display: 'inline-block',
-                padding: '10px 20px',
-                border: '1px solid var(--border-light)',
-                fontFamily: 'Satoshi, sans-serif',
-                fontSize: '13px',
-                fontWeight: 500,
-                letterSpacing: '0.08em',
-                color: 'var(--muted-light)',
-              }}>
-                {tech}
-              </span>
-            </AnimatedSection>
-          ))}
+      <section className="section-dark" style={{ padding: 'clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
+        <div className="editorial-shell premium-card premium-card-dark" style={{ padding: 'clamp(2rem, 4vw, 3rem)' }}>
+          <AnimatedSection>
+            <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Start here</p>
+            <h2 className="heading-section" style={{ fontSize: 'clamp(36px, 5vw, 72px)', color: 'var(--white)', marginBottom: '1rem' }}>If the business is strong, the digital layer should feel equally considered.</h2>
+            <p style={{ color: 'var(--muted-dark)', maxWidth: '36rem', marginBottom: '1.75rem' }}>
+              We can assess where the current experience is leaking trust or losing efficiency, then recommend the clearest next move.
+            </p>
+            <Link href="/contact" className="cta-btn">Book a strategy call</Link>
+          </AnimatedSection>
         </div>
-      </section>
-
-      {/* CTA */}
-      <section
-        className="section-dark"
-        style={{ padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)' }}
-      >
-        <AnimatedSection>
-          <h2 className="heading-section" style={{
-            fontSize: 'clamp(36px, 6vw, 80px)',
-            letterSpacing: '0.02em',
-            color: 'var(--white)',
-            marginBottom: '1.5rem',
-          }}>
-            Ready to work together?
-          </h2>
-          <p style={{
-            fontSize: '16px',
-            color: 'var(--muted-dark)',
-            marginBottom: '2.5rem',
-            maxWidth: '460px',
-            lineHeight: 1.7,
-          }}>
-            Free strategy call. No pressure. We'll tell you honestly what would make the biggest difference for your business.
-          </p>
-          <Link href="/contact" className="cta-btn">
-            Book a free call →
-          </Link>
-        </AnimatedSection>
       </section>
     </>
   );
