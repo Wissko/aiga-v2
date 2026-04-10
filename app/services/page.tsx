@@ -74,7 +74,7 @@ export default function ServicesPage() {
         <div className="page-hero-gradient" />
         <div className="editorial-shell" style={{ position: 'relative', zIndex: 2 }}>
           <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Services</p>
-          <h1 className="heading-display" style={{ fontSize: 'clamp(72px, 12vw, 150px)', color: 'var(--white)', marginBottom: '1.5rem', maxWidth: '10.5em' }}>Built around clear business outcomes.</h1>
+          <h1 className="heading-display hero-image-fill" style={{ fontSize: 'clamp(72px, 12vw, 150px)', color: 'var(--white)', marginBottom: '1.5rem', maxWidth: '10.5em' }}>Built around clear business outcomes.</h1>
           <p className="page-hero-copy">
             Each offer now sits on the same luxury visual language as the home hero, using the crocodile leather image as the real base so the page feels premium, coherent, and immediately readable.
           </p>

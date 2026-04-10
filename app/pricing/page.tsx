@@ -225,7 +225,7 @@ export default function PricingPage() {
         <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
           Simple pricing
         </p>
-        <h1 className="heading-display" style={{
+        <h1 className="heading-display hero-image-fill" style={{
           fontSize: 'clamp(64px, 12vw, 140px)',
           letterSpacing: '0.03em',
           color: 'var(--white)',
