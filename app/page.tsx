@@ -136,7 +136,7 @@ export default function HomePage() {
     <>
       <HeroSection />
       <div className="hero-overlay-stack">
-        <Marquee text="AI Automation for Australian Businesses" separator="·" dark={true} size="md" speed={20} />
+        <Marquee text="AI Automation for Ambitious Businesses" separator="·" dark={true} size="md" speed={20} />
 
         <section className="section-light hero-reveal-section" style={{ padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)' }}>
           <div className="editorial-shell premium-grid-2" style={{ alignItems: 'end' }}>
@@ -170,7 +170,7 @@ export default function HomePage() {
               <div>
                 <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Selected systems</p>
                 <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 72px)', color: 'var(--white)', maxWidth: '12ch' }}>
-                  A few of the systems we build for Australian businesses.
+                  A few of the systems we build for ambitious businesses.
                 </h2>
               </div>
               <p style={{ maxWidth: '34rem', justifySelf: 'end', color: 'var(--muted-dark)', fontSize: '16px', lineHeight: 1.7 }}>

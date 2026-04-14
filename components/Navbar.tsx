@@ -259,7 +259,7 @@ export default function Navbar() {
                 color: 'rgba(255,255,255,0.35)',
                 fontWeight: 400,
               }}>
-                To Be Seen · Brisbane, Australia
+                To Be Seen · Independent Studio
               </p>
               <Link
                 href="/contact"

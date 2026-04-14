@@ -6,12 +6,12 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: {
-    default: 'To Be Seen — Digital Presence for Australian Businesses',
+    default: 'To Be Seen — Premium Digital Presence',
     template: '%s | To Be Seen',
   },
   description:
     'In every city, every street, every industry — there are businesses doing exceptional work in relative obscurity. TO BE SEEN exists to close that gap. We build brand presence that converts interest into loyalty.',
-  keywords: ['digital presence', 'brand visibility', 'small business Australia', 'website creation', 'marketing automation', 'Brisbane'],
+  keywords: ['digital presence', 'brand visibility', 'premium branding', 'website creation', 'marketing automation', 'growth'],
   authors: [{ name: 'To Be Seen' }],
   openGraph: {
     type: 'website',

@@ -6,7 +6,7 @@ import Marquee from '@/components/Marquee';
 
 const details = [
   ['Email', 'hello@aiga.au'],
-  ['Location', 'Brisbane, Australia'],
+  ['Location', 'International Operations'],
   ['Response window', 'Within 24 hours'],
   ['Call format', 'Free strategy session'],
 ];
@@ -98,7 +98,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <label className="contact-label">Email address</label>
-                    <input className="contact-input" name="email" type="email" value={form.email} onChange={handleChange} placeholder="hello@yourbusiness.com.au" required />
+                    <input className="contact-input" name="email" type="email" value={form.email} onChange={handleChange} placeholder="hello@yourbusiness.com" required />
                   </div>
                   <div>
                     <label className="contact-label">Business name</label>
