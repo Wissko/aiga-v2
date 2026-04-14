@@ -9,10 +9,10 @@ import Marquee from '@/components/Marquee';
 const featuredSystems = [
   {
     number: '01',
-    title: 'AI Reception & Call Capture',
-    summary: 'Answers enquiries, qualifies intent, and books the next step without leaving callers in voicemail.',
-    details: 'Best for service businesses losing work after hours or during peak times.',
-    href: '/services#phone-ai',
+    title: 'Wallet-First Digital Loyalty',
+    summary: 'Captures customers directly in their native Apple and Google Wallets to track visits and manage rewards.',
+    details: 'Best for businesses losing retention and missing out on repeat revenue from invisible customers.',
+    href: '/services#wallet-loyalty',
   },
   {
     number: '02',
@@ -40,10 +40,10 @@ const services = [
   },
   {
     num: '02.',
-    title: 'PHONE AI AUTOMATION',
-    desc: 'An always-on call layer that answers, qualifies, and books without losing tone or clarity.',
-    tag: 'AI voice',
-    href: '/services#phone-ai',
+    title: 'WALLET-FIRST LOYALTY',
+    desc: 'A direct connection in Apple and Google Wallets to track visits and drive predictable repeat revenue.',
+    tag: 'Retention',
+    href: '/services#wallet-loyalty',
   },
   {
     num: '03.',
@@ -69,7 +69,7 @@ const services = [
   {
     num: '06.',
     title: 'FULL DIGITALISATION BUNDLE',
-    desc: 'A complete operating layer where website, calls, bookings, and follow-up work as one system.',
+    desc: 'A complete operating layer where website, loyalty, bookings, and follow-up work as one system.',
     tag: 'Bundle',
     href: '/services#bundle',
   },
@@ -79,7 +79,7 @@ const faqs = [
   {
     num: '01.',
     q: 'How do we know which service to start with?',
-    a: 'We start with the commercial bottleneck. For some businesses that is missed calls. For others it is weak follow-up, poor booking flow, or a website that does not build trust. The strategy call is used to prioritise what will move revenue first.',
+    a: 'We start with the commercial bottleneck. For some businesses that is lack of retention. For others it is weak follow-up, poor booking flow, or a website that does not build trust. The strategy call is used to prioritise what will move revenue first.',
   },
   {
     num: '02.',
@@ -151,7 +151,7 @@ export default function HomePage() {
             <AnimatedSection delay={0.1}>
               <div style={{ maxWidth: '36rem', justifySelf: 'end' }}>
                 <p style={{ fontSize: '16px', color: 'var(--muted-light)', marginBottom: '1rem' }}>
-                  Websites, call handling, bookings, and follow-up should not feel like disconnected tools. We design them as one coherent system so your business is easier to trust, easier to contact, and easier to choose.
+                  Websites, wallet loyalty, bookings, and follow-up should not feel like disconnected tools. We design them as one coherent system so your business is easier to trust, easier to contact, and easier to choose.
                 </p>
                 <p style={{ fontSize: '16px', color: 'var(--muted-light)', marginBottom: '1.75rem' }}>
                   The result is a cleaner experience for your clients and a calmer operation for your team.
@@ -246,7 +246,7 @@ export default function HomePage() {
             </AnimatedSection>
             <AnimatedSection delay={0.08}>
               <p style={{ color: 'var(--muted-dark)', maxWidth: '38rem' }}>
-                Missed calls, old websites, manual booking loops, and absent follow-up all create leakage. We tighten those points so your business feels more responsive, more credible, and easier to buy from.
+                Low retention, old websites, manual booking loops, and absent follow-up all create leakage. We tighten those points so your business feels more responsive, more credible, and easier to buy from.
               </p>
             </AnimatedSection>
           </div>
@@ -263,12 +263,25 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="section-light" style={{ padding: 'clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
-        <div className="editorial-shell" style={{ maxWidth: '860px' }}>
+      <section className="section-light faq-premium-section" style={{ padding: 'clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
+        <div className="editorial-shell faq-premium-shell">
           <AnimatedSection>
-            <h2 className="heading-section" style={{ fontSize: 'clamp(36px, 6vw, 80px)', color: 'var(--black)', marginBottom: '2rem' }}>Questions.</h2>
+            <div className="faq-premium-header">
+              <div>
+                <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Questions</p>
+                <h2 className="heading-section" style={{ fontSize: 'clamp(38px, 6vw, 88px)', color: 'var(--black)', marginBottom: '1rem' }}>
+                  Clarity before we build.
+                </h2>
+              </div>
+              <p className="faq-premium-intro">
+                A few practical answers on fit, integration, and where to begin. The section has been rebuilt for legibility first: cleaner contrast, stronger spacing, clearer open states, and a rhythm that feels properly premium.
+              </p>
+            </div>
           </AnimatedSection>
-          {faqs.map((faq, i) => <FAQItem key={faq.q} {...faq} delay={i * 0.05} />)}
+
+          <div className="faq-premium-list">
+            {faqs.map((faq, i) => <FAQItem key={faq.q} {...faq} delay={i * 0.05} />)}
+          </div>
         </div>
       </section>
 
@@ -294,14 +307,16 @@ function FAQItem({ num, q, a, delay = 0 }: { num: string; q: string; a: string; 
 
   return (
     <AnimatedSection delay={delay}>
-      <div className="faq-item">
-        <button className="faq-question" onClick={() => setOpen(!open)} aria-expanded={open}>
-          <span className="faq-q-num">{num}</span>
-          <span className="faq-q-text">{q}</span>
-          <span className={`faq-icon${open ? ' open' : ''}`}>+</span>
+      <div className={`faq-premium-item${open ? ' open' : ''}`}>
+        <button className="faq-premium-question" onClick={() => setOpen(!open)} aria-expanded={open}>
+          <div className="faq-premium-question-main">
+            <span className="faq-premium-num">{num}</span>
+            <span className="faq-premium-text">{q}</span>
+          </div>
+          <span className={`faq-premium-icon${open ? ' open' : ''}`}>+</span>
         </button>
-        <div className="faq-answer" ref={contentRef} style={{ maxHeight: open ? `${contentRef.current?.scrollHeight || 300}px` : '0' }}>
-          <div className="faq-answer-inner">{a}</div>
+        <div className="faq-premium-answer" ref={contentRef} style={{ maxHeight: open ? `${contentRef.current?.scrollHeight || 320}px` : '0' }}>
+          <div className="faq-premium-answer-inner">{a}</div>
         </div>
       </div>
     </AnimatedSection>

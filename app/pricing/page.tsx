@@ -1,4 +1,5 @@
 'use client';
+
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -7,15 +8,15 @@ import Marquee from '@/components/Marquee';
 
 const CheckIcon = () => (
   <svg
-    width="14"
-    height="14"
-    viewBox="0 0 14 14"
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     style={{ flexShrink: 0, marginTop: '2px' }}
   >
-    <circle cx="7" cy="7" r="6.5" stroke="#c8f000" strokeWidth="1" />
-    <path d="M4 7L6.2 9.5L10 5" stroke="#c8f000" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="8" cy="8" r="7.25" stroke="currentColor" strokeWidth="1.1" opacity="0.32" />
+    <path d="M4.6 8.2L6.95 10.55L11.45 5.85" stroke="currentColor" strokeWidth="1.45" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -24,57 +25,55 @@ const plans = [
     id: 'websites',
     num: '01.',
     title: 'WEBSITE CREATION',
+    summary: 'A sharp first impression, structured clearly for trust, enquiries, and conversion.',
     monthly: {
       price: 199,
-      desc: '12-month min · hosting + updates + support included',
+      desc: '12-month minimum · hosting, updates, and support included',
       includes: [
-        'Custom design, mobile-first',
-        'Up to 8 pages',
-        'Contact form + Google Analytics',
-        'Hosting & monthly updates',
-        '1 month free support',
-        'SEO foundations included',
+        'Custom design with mobile-first layouts',
+        'Up to 8 premium pages',
+        'Contact forms, analytics, and SEO foundations',
+        'Hosting, maintenance, and monthly updates',
+        'Post-launch support and refinement',
       ],
     },
     onetime: {
       price: 1490,
-      desc: 'Full ownership · source code handed over',
+      desc: 'Single build fee · full handover and ownership',
       includes: [
-        'Custom design, mobile-first',
-        'Up to 8 pages',
-        'Contact form + Google Analytics',
-        'Full source code ownership',
-        '1 month free support',
-        'Training session',
+        'Custom design with mobile-first layouts',
+        'Up to 8 premium pages',
+        'Contact forms, analytics, and SEO foundations',
+        'Full source code handover and ownership',
+        'Training session and launch support',
       ],
     },
   },
   {
-    id: 'phone-ai',
+    id: 'wallet-loyalty',
     num: '02.',
-    title: 'PHONE AI AUTOMATION',
+    title: 'WALLET-FIRST LOYALTY',
+    summary: 'A direct connection to your customers via Apple and Google Wallets to drive retention and repeat revenue.',
     monthly: {
       price: 149,
-      desc: 'Up to 300 calls/mo · 24/7 coverage',
+      desc: 'Active wallet passes · seamless tracking and rewards',
       includes: [
-        'AI answers calls 24/7',
-        'Books appointments automatically',
-        'Handles FAQs with custom script',
-        'Custom voice profile',
-        'Integrates with your calendar',
-        'Call summaries & transcripts',
+        'Native Apple and Google Wallet passes',
+        'Automated point and reward tracking',
+        'Direct push notification access',
+        'Customer behavior and visit analytics',
+        'Ongoing strategy and campaign support',
       ],
     },
     onetime: {
       price: 1890,
-      desc: 'Setup + 12 months support included',
+      desc: 'Setup fee · full system integration included',
       includes: [
-        'Full AI receptionist setup',
-        'Custom voice & script',
-        '12 months support included',
-        'Calendar integration',
-        'Full ownership',
-        'Training & handover session',
+        'Full loyalty system architecture and setup',
+        'Custom pass design and branding',
+        'Integration with existing point of sale',
+        'Staff training and rollout strategy',
+        '12 months of technical support',
       ],
     },
   },
@@ -82,28 +81,27 @@ const plans = [
     id: 'bookings',
     num: '03.',
     title: 'AUTOMATED BOOKINGS',
+    summary: 'A calmer scheduling experience that reduces friction, no-shows, and manual back-and-forth.',
     monthly: {
       price: 79,
-      desc: 'Unlimited bookings · calendar sync',
+      desc: 'Unlimited bookings · reminders and calendar sync',
       includes: [
-        'Works with Cal.com / Calendly / Google',
-        'Automated SMS reminders',
-        'No-show reduction sequences',
-        'Calendar sync & rescheduling',
-        'Waitlist management',
-        'Monthly booking report',
+        'Booking system setup and optimisation',
+        'Calendar sync and rescheduling flows',
+        'Automated reminders and confirmations',
+        'Waitlist logic and no-show reduction',
+        'Monthly visibility into booking performance',
       ],
     },
     onetime: {
       price: 690,
-      desc: 'Setup + integration',
+      desc: 'Setup fee · integration and training included',
       includes: [
-        'Booking system setup',
-        'Calendar integration',
-        'SMS reminder sequences',
-        'Waitlist configuration',
-        '3 months support',
-        'Training session',
+        'Booking system setup and optimisation',
+        'Calendar sync and rescheduling flows',
+        'Automated reminder sequences',
+        'Waitlist configuration and support',
+        'Training and handover session',
       ],
     },
   },
@@ -111,28 +109,27 @@ const plans = [
     id: 'crm',
     num: '04.',
     title: 'CLIENT FOLLOW-UP CRM',
+    summary: 'Structured follow-up that keeps leads warm, revives past clients, and drives repeat revenue.',
     monthly: {
       price: 119,
-      desc: 'Automated sequences · monthly report',
+      desc: 'Automated flows · reporting included each month',
       includes: [
-        'Lead capture & automated follow-ups',
-        'Email & SMS sequences',
-        'CRM dashboard',
-        'Re-engagement campaigns',
-        'Review generation flows',
-        'Monthly performance report',
+        'Lead capture and follow-up automations',
+        'Email and SMS client journeys',
+        'Review request and reactivation campaigns',
+        'CRM dashboard and reporting view',
+        'Monthly performance review',
       ],
     },
     onetime: {
       price: 990,
-      desc: 'Full setup + 1 training session',
+      desc: 'Full setup fee · training and support included',
       includes: [
-        'CRM configuration',
-        'Follow-up sequence building',
-        'Review campaigns',
-        'Re-engagement flows',
-        '1 training session included',
-        '3 months support',
+        'CRM structure and automation build',
+        'Email and SMS client journeys',
+        'Review request and reactivation campaigns',
+        'Training session for your team',
+        'Support during rollout',
       ],
     },
   },
@@ -140,481 +137,346 @@ const plans = [
 
 const bundle = {
   title: 'FULL GROWTH BUNDLE',
-  badge: 'Most Popular',
+  badge: 'Preferred setup',
+  summary: 'The full operating layer for businesses that want website, wallet loyalty, bookings, and follow-up working as one premium client journey.',
   monthly: {
     price: 449,
-    desc: 'All 4 services · priority support · dedicated account manager',
-    saving: 'Save $97/mo vs buying individually',
+    desc: 'All 4 services · priority support · strategic oversight',
+    saving: 'Save $97/mo compared with buying separately',
     includes: [
       'Everything in all four services',
-      'Dedicated account manager',
-      'Monthly strategy call',
-      'Monthly performance report',
-      'Priority Slack support',
-      'Full cross-system integration',
-      'Proactive optimisation',
+      'Shared strategy across website, loyalty, bookings, and CRM',
+      'Priority support and monthly optimisation reviews',
+      'Cross-system integration and reporting visibility',
+      'A stronger, more coherent client experience end-to-end',
     ],
   },
   onetime: {
     price: 4490,
-    desc: 'Complete setup · everything included · saves $580',
-    saving: 'Save $580 vs buying individually',
+    desc: 'Complete delivery fee · full system setup and handover',
+    saving: 'Save $580 compared with buying separately',
     includes: [
       'Everything in all four services',
-      'Full system integration',
-      'Dedicated account manager (12 months)',
-      'Priority support SLA',
-      'Full source code & ownership',
-      'Team training sessions',
-      'Analytics & reporting setup',
+      'Full build, integration, and premium implementation',
+      'Ownership handover and staff training sessions',
+      'Priority support during rollout',
+      'A cohesive operating layer built to scale with you',
     ],
   },
 };
 
 const faqs = [
   {
-    q: 'Are there any setup fees?',
-    a: 'No setup fees on monthly plans. What you see is what you pay from day one. One-time plans include everything — setup, configuration, and handover.',
+    q: 'How should we choose between monthly and one-time pricing?',
+    a: 'Monthly suits businesses that want a lower entry point with ongoing support included. One-time suits teams that prefer to invest upfront and own the full setup immediately.',
   },
   {
-    q: "What's your contract length?",
-    a: 'Monthly plans run on a 12-month minimum, then roll to month-to-month automatically. One-time plans have zero lock-in — you own it outright.',
+    q: 'Can you tailor a package if we do not need every service?',
+    a: 'Yes. The listed pricing creates clarity, but we can shape a custom combination when your business only needs certain systems or a phased rollout.',
   },
   {
-    q: 'What if I want to cancel?',
-    a: "We make it easy. Give us 30 days notice after your minimum term and you're done. No penalties, no hoops.",
+    q: 'What makes the bundle the best-value option?',
+    a: 'The bundle is not only cheaper than buying each service separately. It also creates better commercial results because the website, call handling, booking flow, and follow-up logic are designed together.',
   },
   {
-    q: 'Why are your prices lower than other AI agencies?',
-    a: "We're new, hungry, and efficient. No bloated teams. No office overheads. You get the same tech, better service — and we publish our prices, unlike everyone else.",
+    q: 'Are there hidden fees, software markups, or surprise extras?',
+    a: 'No hidden fees. If a third-party tool is required, we explain it clearly before anything is approved. The goal is clarity, not inflated retainers.',
   },
   {
-    q: 'Do you offer a free trial?',
-    a: "We offer a free 30-minute strategy call. We will assess your business, identify quick wins, and recommend the right plan. No obligation, no pitch deck.",
+    q: 'What happens after the initial build or setup?',
+    a: 'We either continue supporting and refining the system on a monthly basis, or we hand everything over cleanly if you choose a one-time engagement. Both paths are designed to feel straightforward.',
   },
   {
-    q: "What's included in 'support'?",
-    a: 'Email and chat support during business hours (AEST). Bundle clients get priority Slack access with faster response times and a dedicated account manager.',
+    q: 'Do these prices include strategy and guidance?',
+    a: 'Yes. This is not template work dropped into your business. The pricing includes direction on structure, positioning, and the flow that will be most commercially useful for your stage.',
   },
+];
+
+const valuePoints = [
+  'Clear scope and published pricing',
+  'Premium build quality without agency bloat',
+  'Systems designed to work together, not in silos',
 ];
 
 export default function PricingPage() {
   const [billing, setBilling] = useState<'monthly' | 'onetime'>('monthly');
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const bundlePlan = billing === 'monthly' ? bundle.monthly : bundle.onetime;
 
   return (
     <>
-      {/* Hero */}
       <section
         className="section-dark page-hero-shell"
         style={{
-          minHeight: '60vh',
+          minHeight: '72vh',
           display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
+          alignItems: 'flex-end',
           padding: 'clamp(6rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem) clamp(3rem, 5vw, 5rem)',
           position: 'relative',
           overflow: 'hidden',
         }}
       >
         <div className="page-hero-gradient" />
-        <div className="editorial-shell" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
-          <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1.5rem' }}>
-            Simple pricing
-          </p>
-          <h1 className="heading-display" style={{
-          fontSize: 'clamp(64px, 12vw, 140px)',
-          letterSpacing: '0.03em',
-          color: 'var(--white)',
-          marginBottom: '2rem',
-          }}>
-            PRICING
-          </h1>
-          <p style={{
-            fontFamily: 'Satoshi, sans-serif',
-            fontSize: 'clamp(16px, 2vw, 22px)',
-            color: 'var(--muted-dark)',
-            maxWidth: '520px',
-            lineHeight: 1.6,
-          }}>
-            Monthly plans or one-time setup. All prices in AUD. GST may apply.
-          </p>
+        <div className="editorial-shell pricing-hero-grid" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
+          <AnimatedSection>
+            <div>
+              <p className="premium-eyebrow" style={{ marginBottom: '1rem', color: 'rgba(222, 217, 204, 0.78)' }}>Investment</p>
+              <h1
+                className="heading-display"
+                style={{
+                  fontSize: 'clamp(68px, 13vw, 156px)',
+                  color: 'var(--white)',
+                  marginBottom: '1.5rem',
+                }}
+              >
+                Pricing
+              </h1>
+              <p className="page-hero-copy" style={{ maxWidth: '36rem' }}>
+                Premium systems for businesses that want a stronger first impression, faster response, and a more valuable client journey. All prices in AUD.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.08}>
+            <div className="pricing-hero-panel">
+              <span className="pricing-panel-label">What this page is designed to show</span>
+              <ul className="pricing-hero-points">
+                {valuePoints.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              <p className="pricing-hero-note">
+                Choose between a lower-entry monthly model or a one-time implementation. Either way, the emphasis stays on clarity, polish, and commercial usefulness.
+              </p>
+            </div>
+          </AnimatedSection>
         </div>
       </section>
 
-      <Marquee text="Transparent Pricing" separator="·" dark={true} size="sm" speed={28} />
+      <Marquee text="Premium Systems · Published Pricing · Built for Growth" separator="·" dark={true} size="sm" speed={28} />
 
-      {/* Plans */}
       <section className="section-light" style={{ padding: 'clamp(4rem, 8vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
-        <AnimatedSection>
-          {/* Billing toggle */}
-          <div style={{
-            display: 'inline-flex',
-            border: '1px solid var(--border-light)',
-            marginBottom: '4rem',
-          }}>
-            {(['monthly', 'onetime'] as const).map((opt) => (
-              <button
-                key={opt}
-                onClick={() => setBilling(opt)}
-                style={{
-                  padding: '10px 24px',
-                  fontFamily: 'Satoshi, sans-serif',
-                  fontSize: '12px',
-                  fontWeight: 600,
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                  background: billing === opt ? 'var(--black)' : 'transparent',
-                  color: billing === opt ? 'var(--white)' : 'var(--muted-light)',
-                  border: 'none',
-                  cursor: 'pointer',
-                  transition: 'background 0.2s ease, color 0.2s ease',
-                }}
-              >
-                {opt === 'monthly' ? 'Monthly' : 'One-time setup'}
-              </button>
-            ))}
-          </div>
-        </AnimatedSection>
-
-        {/* Bundle highlight */}
-        <AnimatedSection delay={0.1}>
-          <div style={{
-            padding: 'clamp(2rem, 4vw, 4rem)',
-            border: '2px solid #c8f000',
-            marginBottom: '3rem',
-            position: 'relative',
-            background: 'rgba(200, 240, 0, 0.03)',
-          }}>
-            <span style={{
-              position: 'absolute',
-              top: '-1px',
-              left: '2rem',
-              background: '#c8f000',
-              color: 'var(--black)',
-              fontFamily: 'Satoshi, sans-serif',
-              fontSize: '11px',
-              fontWeight: 700,
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              padding: '4px 12px',
-            }}>
-              ⭐ {bundle.badge}
-            </span>
-
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              flexWrap: 'wrap',
-              gap: '2rem',
-              marginTop: '1rem',
-            }}>
+        <div className="editorial-shell">
+          <AnimatedSection>
+            <div className="pricing-overview-header">
               <div>
-                <h2 className="heading-section" style={{
-                  fontSize: 'clamp(20px, 3vw, 36px)',
-                  letterSpacing: '0.02em',
-                  color: 'var(--black)',
-                  marginBottom: '0.5rem',
-                }}>
-                  {bundle.title}
+                <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Choose your structure</p>
+                <h2 className="heading-section" style={{ fontSize: 'clamp(38px, 6vw, 96px)', color: 'var(--black)' }}>
+                  Built to feel premium before the work even begins.
                 </h2>
-                <p style={{ fontFamily: 'Satoshi, sans-serif', fontSize: '14px', color: 'var(--muted-light)' }}>
-                  {billing === 'monthly' ? bundle.monthly.desc : bundle.onetime.desc}
-                </p>
               </div>
-              <div style={{ textAlign: 'right' }}>
+              <div>
+                <p className="pricing-intro-copy">
+                  The redesign here is intentional: stronger hierarchy, warmer tones, clearer value framing, and a layout that feels closer to a high-end studio proposal than a generic pricing table.
+                </p>
+                <div className="pricing-toggle-shell" role="tablist" aria-label="Billing choice">
+                  {(['monthly', 'onetime'] as const).map((opt) => (
+                    <button
+                      key={opt}
+                      onClick={() => setBilling(opt)}
+                      className={`pricing-toggle-btn${billing === opt ? ' active' : ''}`}
+                      role="tab"
+                      aria-selected={billing === opt}
+                    >
+                      {opt === 'monthly' ? 'Monthly support model' : 'One-time implementation'}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </AnimatedSection>
+
+          <AnimatedSection delay={0.08}>
+            <div className="pricing-bundle-card">
+              <div className="pricing-bundle-topline">
+                <span className="pricing-bundle-badge">{bundle.badge}</span>
+                <span className="pricing-bundle-saving">{bundlePlan.saving}</span>
+              </div>
+
+              <div className="pricing-bundle-grid">
+                <div>
+                  <p className="pricing-plan-number">Bundle</p>
+                  <h3 className="heading-section" style={{ fontSize: 'clamp(32px, 4vw, 56px)', color: 'var(--black)', marginBottom: '0.85rem' }}>
+                    {bundle.title}
+                  </h3>
+                  <p className="pricing-bundle-summary">{bundle.summary}</p>
+                  <p className="pricing-bundle-desc">{bundlePlan.desc}</p>
+                </div>
+
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={billing}
-                    initial={{ opacity: 0, y: 8 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.2 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.24 }}
+                    className="pricing-bundle-priceblock"
                   >
-                    <div style={{
-                      fontFamily: 'Satoshi, sans-serif',
-                      fontWeight: 900,
-                      fontSize: 'clamp(40px, 6vw, 72px)',
-                      letterSpacing: '-0.03em',
-                      lineHeight: 1,
-                      color: 'var(--black)',
-                    }}>
-                      ${billing === 'monthly' ? bundle.monthly.price : bundle.onetime.price}
-                      {billing === 'monthly' && (
-                        <span style={{ fontFamily: 'Satoshi, sans-serif', fontSize: '18px', fontWeight: 400, color: 'var(--muted-light)' }}>/mo</span>
-                      )}
+                    <div className="pricing-price-hero">
+                      ${bundlePlan.price}
+                      {billing === 'monthly' && <span>/mo</span>}
                     </div>
-                    <div style={{
-                      fontFamily: 'Satoshi, sans-serif',
-                      fontSize: '12px',
-                      color: '#6a7c00',
-                      marginTop: '4px',
-                      letterSpacing: '0.05em',
-                      fontWeight: 600,
-                    }}>
-                      {billing === 'monthly' ? bundle.monthly.saving : bundle.onetime.saving}
-                    </div>
+                    <p className="pricing-price-caption">
+                      {billing === 'monthly'
+                        ? 'For businesses wanting continuous support and refinement.'
+                        : 'For businesses wanting a full premium implementation upfront.'}
+                    </p>
+                    <Link href="/contact" className="cta-btn-light">
+                      Book the bundle
+                    </Link>
                   </motion.div>
                 </AnimatePresence>
               </div>
+
+              <div className="pricing-bundle-includes">
+                {(billing === 'monthly' ? bundle.monthly.includes : bundle.onetime.includes).map((item) => (
+                  <div key={item} className="pricing-feature-row">
+                    <span className="pricing-feature-icon"><CheckIcon /></span>
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
             </div>
+          </AnimatedSection>
 
-            <ul style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-              gap: '0.5rem 2rem',
-              marginTop: '2rem',
-              marginBottom: '2rem',
-              listStyle: 'none',
-              padding: 0,
-            }}>
-              {(billing === 'monthly' ? bundle.monthly.includes : bundle.onetime.includes).map((item) => (
-                <li key={item} style={{
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '8px',
-                  fontFamily: 'Satoshi, sans-serif',
-                  fontSize: '14px',
-                  color: 'rgba(0,0,0,0.65)',
-                  lineHeight: 1.6,
-                  padding: '4px 0',
-                }}>
-                  <CheckIcon />
-                  {item}
-                </li>
-              ))}
-            </ul>
+          <AnimatedSection delay={0.12}>
+            <div className="pricing-section-label-row">
+              <p className="premium-eyebrow">Individual services</p>
+              <p className="pricing-section-meta">For teams starting with one high-impact bottleneck first.</p>
+            </div>
+          </AnimatedSection>
 
-            <Link href="/contact" className="cta-btn-light">
-              Get the bundle →
-            </Link>
+          <div className="pricing-plan-grid">
+            {plans.map((plan, i) => {
+              const current = billing === 'monthly' ? plan.monthly : plan.onetime;
+
+              return (
+                <AnimatedSection key={plan.id} delay={i * 0.06}>
+                  <article className="pricing-plan-card">
+                    <div className="pricing-plan-head">
+                      <span className="pricing-plan-number">{plan.num}</span>
+                      <h3 className="heading-card" style={{ fontSize: 'clamp(24px, 3vw, 34px)', color: 'var(--black)' }}>
+                        {plan.title}
+                      </h3>
+                      <p className="pricing-plan-summary">{plan.summary}</p>
+                    </div>
+
+                    <div className="pricing-plan-divider" />
+
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        key={`${plan.id}-${billing}`}
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        transition={{ duration: 0.22 }}
+                      >
+                        <div className="pricing-price-row">
+                          <div className="pricing-plan-price">
+                            ${current.price}
+                            {billing === 'monthly' && <span>/mo</span>}
+                          </div>
+                          <p className="pricing-plan-desc">{current.desc}</p>
+                        </div>
+
+                        <div className="pricing-plan-features">
+                          {current.includes.map((item) => (
+                            <div key={item} className="pricing-feature-row subtle">
+                              <span className="pricing-feature-icon"><CheckIcon /></span>
+                              <span>{item}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
+
+                    <Link href="/contact" className="cta-btn-light" style={{ width: 'fit-content' }}>
+                      Enquire now
+                    </Link>
+                  </article>
+                </AnimatedSection>
+              );
+            })}
           </div>
-        </AnimatedSection>
 
-        {/* Individual plans */}
-        <AnimatedSection delay={0.15}>
-          <p className="label" style={{ marginBottom: '2rem' }}>Or choose individual services</p>
-        </AnimatedSection>
+          <AnimatedSection delay={0.2}>
+            <div className="pricing-guidance-card">
+              <div>
+                <p className="pricing-guidance-title">Not sure which structure fits your business?</p>
+                <p className="pricing-guidance-copy">
+                  We will tell you what is worth doing first, what can wait, and whether a monthly or one-time setup makes more sense commercially.
+                </p>
+              </div>
+              <Link href="/contact" className="cta-btn-light">
+                Book a free strategy call
+              </Link>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(2, 1fr)',
-          gap: '1px',
-          border: '1px solid var(--border-light)',
-        }}>
-          {plans.map((plan, i) => {
-            const current = billing === 'monthly' ? plan.monthly : plan.onetime;
-            return (
-              <AnimatedSection key={plan.id} delay={i * 0.08}>
-                <div style={{
-                  padding: 'clamp(1.5rem, 3vw, 2.5rem)',
-                  borderRight: i % 2 === 0 ? '1px solid var(--border-light)' : 'none',
-                  borderBottom: i < 2 ? '1px solid var(--border-light)' : 'none',
-                  height: '100%',
-                }}>
-                  <span className="label" style={{ display: 'block', marginBottom: '0.75rem' }}>
-                    {plan.num}
-                  </span>
-                  <h3 className="heading-card" style={{
-                    fontSize: 'clamp(16px, 2vw, 22px)',
-                    letterSpacing: '0.02em',
-                    color: 'var(--black)',
-                    marginBottom: '0.5rem',
-                  }}>
-                    {plan.title}
-                  </h3>
-                  <p style={{ fontFamily: 'Satoshi, sans-serif', fontSize: '13px', color: 'var(--muted-light)', marginBottom: '1.5rem' }}>
-                    {current.desc}
-                  </p>
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={billing}
-                      initial={{ opacity: 0, y: 6 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -6 }}
-                      transition={{ duration: 0.2 }}
-                      style={{ marginBottom: '1.5rem' }}
-                    >
-                      <span style={{
-                        fontFamily: 'Satoshi, sans-serif',
-                        fontWeight: 900,
-                        fontSize: 'clamp(28px, 4vw, 48px)',
-                        letterSpacing: '-0.02em',
-                        color: 'var(--black)',
-                      }}>
-                        ${current.price}
-                      </span>
-                      {billing === 'monthly' && (
-                        <span style={{ fontFamily: 'Satoshi, sans-serif', fontSize: '14px', color: 'var(--muted-light)' }}>/mo</span>
-                      )}
-                    </motion.div>
+      <section className="section-dark" style={{ padding: 'clamp(4rem, 8vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
+        <div className="editorial-shell pricing-faq-shell">
+          <AnimatedSection>
+            <div className="pricing-faq-header">
+              <div>
+                <p className="premium-eyebrow" style={{ marginBottom: '1rem', color: 'rgba(222, 217, 204, 0.72)' }}>Common questions</p>
+                <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 72px)', color: 'var(--white)' }}>
+                  Clear answers before you commit.
+                </h2>
+              </div>
+              <p className="pricing-faq-intro">
+                The pricing is designed to be transparent, but the decision still matters. These are the questions most businesses ask before choosing a model.
+              </p>
+            </div>
+          </AnimatedSection>
+
+          <div className="pricing-faq-list">
+            {faqs.map((faq, i) => (
+              <AnimatedSection key={faq.q} delay={i * 0.05}>
+                <div className={`pricing-faq-item${openFaq === i ? ' open' : ''}`}>
+                  <button
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    className="pricing-faq-button"
+                    aria-expanded={openFaq === i}
+                  >
+                    <span className="pricing-faq-question">{faq.q}</span>
+                    <span className="pricing-faq-icon">+</span>
+                  </button>
+                  <AnimatePresence initial={false}>
+                    {openFaq === i && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.26, ease: 'easeInOut' }}
+                      >
+                        <p className="pricing-faq-answer">{faq.a}</p>
+                      </motion.div>
+                    )}
                   </AnimatePresence>
-                  <ul style={{ marginBottom: '1.5rem', listStyle: 'none', padding: 0 }}>
-                    {current.includes.map((item) => (
-                      <li key={item} style={{
-                        display: 'flex',
-                        alignItems: 'flex-start',
-                        gap: '8px',
-                        padding: '5px 0',
-                        borderBottom: '1px solid var(--border-light)',
-                        fontFamily: 'Satoshi, sans-serif',
-                        fontSize: '13px',
-                        color: 'rgba(0,0,0,0.6)',
-                      }}>
-                        <CheckIcon />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                  <Link href="/contact" className="cta-btn-light" style={{ fontSize: '11px', padding: '10px 20px' }}>
-                    Get started →
-                  </Link>
                 </div>
               </AnimatedSection>
-            );
-          })}
-        </div>
-
-        {/* Not sure CTA */}
-        <AnimatedSection delay={0.2}>
-          <div style={{
-            marginTop: '3rem',
-            padding: 'clamp(1.5rem, 3vw, 2.5rem)',
-            border: '1px solid var(--border-light)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: '1.5rem',
-            background: 'var(--surface-light)',
-          }}>
-            <div>
-              <p style={{
-                fontFamily: 'Satoshi, sans-serif',
-                fontWeight: 700,
-                fontSize: 'clamp(16px, 2vw, 22px)',
-                color: 'var(--black)',
-                marginBottom: '0.25rem',
-              }}>
-                Not sure which plan?
-              </p>
-              <p style={{ fontFamily: 'Satoshi, sans-serif', fontSize: '14px', color: 'var(--muted-light)' }}>
-                We'll figure out what fits your business in 30 minutes.
-              </p>
-            </div>
-            <Link href="/contact" className="cta-btn-light">
-              Book a free call →
-            </Link>
+            ))}
           </div>
-        </AnimatedSection>
-      </section>
-
-      {/* FAQ */}
-      <section className="section-dark" style={{ padding: 'clamp(4rem, 8vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
-        <AnimatedSection>
-          <p className="label" style={{ color: 'var(--muted-dark)', marginBottom: '1rem' }}>Common questions</p>
-          <h2 className="heading-section" style={{
-            fontSize: 'clamp(28px, 5vw, 60px)',
-            letterSpacing: '0.02em',
-            color: 'var(--white)',
-            marginBottom: '3rem',
-          }}>
-            FAQ
-          </h2>
-        </AnimatedSection>
-
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-          {faqs.map((faq, i) => (
-            <AnimatedSection key={i} delay={i * 0.06}>
-              <div
-                style={{
-                  borderBottom: '1px solid rgba(255,255,255,0.1)',
-                  overflow: 'hidden',
-                }}
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  style={{
-                    width: '100%',
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    padding: 'clamp(1rem, 2vw, 1.5rem) 0',
-                    background: 'none',
-                    border: 'none',
-                    cursor: 'pointer',
-                    textAlign: 'left',
-                    gap: '2rem',
-                  }}
-                >
-                  <span style={{
-                    fontFamily: 'Satoshi, sans-serif',
-                    fontWeight: 600,
-                    fontSize: 'clamp(15px, 2vw, 20px)',
-                    color: 'var(--white)',
-                  }}>
-                    {faq.q}
-                  </span>
-                  <span style={{
-                    fontFamily: 'Satoshi, sans-serif',
-                    fontSize: '22px',
-                    color: '#c8f000',
-                    fontWeight: 300,
-                    flexShrink: 0,
-                    transition: 'transform 0.2s ease',
-                    transform: openFaq === i ? 'rotate(45deg)' : 'rotate(0deg)',
-                    display: 'inline-block',
-                  }}>
-                    +
-                  </span>
-                </button>
-                <AnimatePresence initial={false}>
-                  {openFaq === i && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: 'easeInOut' }}
-                    >
-                      <p style={{
-                        fontFamily: 'Satoshi, sans-serif',
-                        fontSize: 'clamp(14px, 1.5vw, 16px)',
-                        color: 'var(--muted-dark)',
-                        paddingBottom: 'clamp(1rem, 2vw, 1.5rem)',
-                        maxWidth: '640px',
-                        lineHeight: 1.7,
-                      }}>
-                        {faq.a}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            </AnimatedSection>
-          ))}
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="section-dark" style={{
-        padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)',
-        borderTop: '1px solid rgba(255,255,255,0.08)',
-      }}>
-        <AnimatedSection>
-          <h2 className="heading-section" style={{
-            fontSize: 'clamp(36px, 6vw, 80px)',
-            letterSpacing: '0.02em',
-            color: 'var(--white)',
-            marginBottom: '1rem',
-          }}>
-            Questions about pricing?
-          </h2>
-          <p style={{ fontSize: '16px', color: 'var(--muted-dark)', marginBottom: '2.5rem', maxWidth: '480px', lineHeight: 1.7 }}>
-            We'll build a custom quote based on your actual needs. No upsells. No hidden fees.
-          </p>
-          <Link href="/contact" className="cta-btn">Book a free strategy call →</Link>
-        </AnimatedSection>
+      <section className="section-dark" style={{ padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+        <div className="editorial-shell premium-card premium-card-dark" style={{ padding: 'clamp(2rem, 4vw, 3rem)' }}>
+          <AnimatedSection>
+            <p className="premium-eyebrow" style={{ marginBottom: '1rem', color: 'rgba(222, 217, 204, 0.72)' }}>Next step</p>
+            <h2 className="heading-section" style={{ fontSize: 'clamp(40px, 7vw, 110px)', color: 'var(--white)', marginBottom: '1rem' }}>
+              Want a clearer recommendation than a generic quote?
+            </h2>
+            <p style={{ color: 'var(--muted-dark)', maxWidth: '38rem', marginBottom: '2rem' }}>
+              Book the strategy call and we will tell you where the commercial leverage is, which service to prioritise, and which pricing structure fits your stage best.
+            </p>
+            <Link href="/contact" className="cta-btn">
+              Book a free strategy call
+            </Link>
+          </AnimatedSection>
+        </div>
       </section>
     </>
   );

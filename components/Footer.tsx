@@ -9,7 +9,7 @@ const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 const footerLinks = {
   Services: [
     { label: 'Website Creation', href: '/services#websites' },
-    { label: 'Phone AI', href: '/services#phone-ai' },
+    { label: 'Wallet Loyalty', href: '/services#wallet-loyalty' },
     { label: 'Automated Bookings', href: '/services#bookings' },
     { label: 'Client Follow-up', href: '/services#crm' },
     { label: 'Full Digitalisation', href: '/services#bundle' },

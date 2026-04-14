@@ -16,13 +16,13 @@ const services = [
     tone: 'light',
   },
   {
-    id: 'phone-ai',
+    id: 'wallet-loyalty',
     number: '02',
-    title: 'Phone AI Automation',
-    summary: 'An AI receptionist that answers immediately, handles common questions, qualifies intent, and books the next action.',
-    why: 'For businesses where missed calls are equivalent to missed revenue.',
-    includes: ['24/7 call answering', 'Qualification logic by service type', 'Escalation for urgent calls', 'Calendar booking or lead capture'],
-    outcome: 'Your business feels responsive even when the team is busy, off-site, or closed.',
+    title: 'Wallet-First Loyalty',
+    summary: 'Capture customers directly in their native Apple and Google Wallets to track visits, issue rewards, and drive repeat revenue.',
+    why: 'For businesses losing invisible customers and missing out on the massive retention opportunity of direct wallet connection.',
+    includes: ['Native Apple and Google Wallet integration', 'Seamless point and visit tracking', 'Automated reward management', 'Direct push notification access'],
+    outcome: 'Your business stays in the pocket of every customer, turning casual visits into predictable, repeat revenue.',
     tone: 'dark',
   },
   {
@@ -61,7 +61,7 @@ const services = [
     title: 'Full Digitalisation Bundle',
     summary: 'A fully connected setup where website, calls, bookings, follow-up, and reporting are designed as one coherent system.',
     why: 'For owners who want a complete front-end and back-end digital layer instead of isolated fixes.',
-    includes: ['Website and conversion path', 'Phone AI and bookings', 'CRM follow-up logic', 'Reporting and optimisation rhythm'],
+    includes: ['Website and conversion path', 'Wallet loyalty and bookings', 'CRM follow-up logic', 'Reporting and optimisation rhythm'],
     outcome: 'Your operation feels more premium, more organised, and much easier to scale with confidence.',
     tone: 'light',
   },
@@ -81,7 +81,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <Marquee text="Website · AI Reception · Bookings · CRM · Digital Systems" separator="·" dark={true} size="md" speed={22} />
+      <Marquee text="Website · Wallet Loyalty · Bookings · CRM · Digital Systems" separator="·" dark={true} size="md" speed={22} />
 
       <section className="section-light" style={{ padding: 'clamp(4rem, 8vw, 6rem) clamp(1.5rem, 6vw, 5rem)' }}>
         <div className="editorial-shell premium-grid-2" style={{ alignItems: 'start' }}>

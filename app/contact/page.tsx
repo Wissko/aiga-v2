@@ -109,7 +109,7 @@ export default function ContactPage() {
                     <select className="contact-input" name="service" value={form.service} onChange={handleChange}>
                       <option value="">Select a service</option>
                       <option value="website">Website Creation</option>
-                      <option value="phone-ai">Phone AI Automation</option>
+                      <option value="wallet-loyalty">Wallet-First Loyalty</option>
                       <option value="bookings">Automated Bookings</option>
                       <option value="crm">Client Follow-Up CRM</option>
                       <option value="bundle">Full Digitalisation Bundle</option>
