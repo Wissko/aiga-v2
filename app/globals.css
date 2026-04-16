@@ -277,6 +277,36 @@ body {
 }
 .contact-input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(122,99,134,0.12); background: #fff; }
 .contact-label { display: block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-light); margin-bottom: 8px; }
+.language-gate {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: rgba(2, 2, 2, 0.72);
+  backdrop-filter: blur(18px);
+}
+.language-gate-card {
+  width: min(100%, 42rem);
+  padding: clamp(1.6rem, 4vw, 2.4rem);
+  border-radius: 1.75rem;
+  border: 1px solid rgba(255,255,255,0.1);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
+    linear-gradient(180deg, #090909, #111111);
+  box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+}
+.language-gate-copy {
+  color: rgba(255,255,255,0.68);
+  max-width: 34rem;
+  margin-bottom: 1.5rem;
+}
+.language-gate-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
 
 .faq-premium-section {
   position: relative;

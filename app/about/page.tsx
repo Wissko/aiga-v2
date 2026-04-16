@@ -3,8 +3,10 @@
 import Link from 'next/link';
 import AnimatedSection from '@/components/AnimatedSection';
 import Marquee from '@/components/Marquee';
+import { useLanguage } from '@/components/LanguageProvider';
+import { getCopy } from '@/lib/site-copy';
 
-const principles = [
+const defaultPrinciples = [
   {
     number: '01',
     title: 'Clarity before complexity',
@@ -25,40 +27,56 @@ const principles = [
 const partners = ['Next.js', 'n8n', 'Vapi', 'ElevenLabs', 'Calendly', 'HubSpot', 'Airtable', 'Stripe'];
 
 export default function AboutPage() {
+  const { locale } = useLanguage();
+  const copy = getCopy(locale).about;
+  const localizedPrinciples = locale === 'fr' ? [
+    { number: '01', title: 'La clarté avant la complexité', text: 'Nous concevons des systèmes que les dirigeants comprennent rapidement : ce qui se passe, ce qui fonctionne, et ce qu’il faut faire ensuite.' },
+    { number: '02', title: 'Premium ne veut pas dire excessif', text: 'Le but visuel et opérationnel reste la maîtrise : un parcours plus net, plus crédible, avec moins d’éléments qui brouillent la lecture.' },
+    { number: '03', title: 'La technologie doit soutenir la réputation', text: 'Chaque point de contact doit renforcer la qualité perçue du business, pas l’affaiblir par de la friction ou de l’incohérence.' },
+  ] : defaultPrinciples;
+  const workList = locale === 'fr' ? [
+    'Nous auditons toujours l’existant avant de recommander quoi que ce soit.',
+    'Nous simplifions le parcours client au lieu d’ajouter des couches inutiles.',
+    'Nous construisons avec des outils stables, maintenables et réalistes pour une entreprise en croissance.',
+  ] : [
+    'We audit the current setup before suggesting anything.',
+    'We simplify the client journey rather than adding layers for the sake of automation.',
+    'We build with platforms that are stable, maintainable, and realistic for growing businesses.',
+  ];
   return (
     <>
       <section className="section-dark page-hero-shell" style={{ minHeight: '72vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(6rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem) clamp(3rem, 5vw, 5rem)' }}>
         <div className="page-hero-gradient" />
         <div className="editorial-shell" style={{ position: 'relative', zIndex: 2 }}>
-          <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>About</p>
-          <h1 className="heading-display" style={{ fontSize: 'clamp(72px, 12vw, 150px)', color: 'var(--white)', marginBottom: '1.5rem', maxWidth: '10.25em' }}>A digital studio for businesses that deserve better systems.</h1>
+          <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.heroEyebrow}</p>
+          <h1 className="heading-display" style={{ fontSize: 'clamp(72px, 12vw, 150px)', color: 'var(--white)', marginBottom: '1.5rem', maxWidth: '10.25em' }}>{copy.heroTitle}</h1>
           <p className="page-hero-copy">
-            Built for businesses that need a cleaner presence, stronger trust, and a system that supports growth without adding noise.
+            {copy.heroBody}
           </p>
         </div>
       </section>
 
-      <Marquee text="Strategy · Systems · Visibility · Conversion" separator="·" dark={true} size="md" speed={25} />
+      <Marquee text={locale === 'fr' ? 'Stratégie · Systèmes · Visibilité · Conversion' : 'Strategy · Systems · Visibility · Conversion'} separator="·" dark={true} size="md" speed={25} />
 
       <section className="section-light" style={{ padding: 'clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
         <div className="editorial-shell premium-grid-2" style={{ alignItems: 'start' }}>
           <AnimatedSection>
             <div>
-              <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>What the studio stands for</p>
+              <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.standsEyebrow}</p>
               <h2 className="heading-section" style={{ fontSize: 'clamp(36px, 5vw, 74px)', color: 'var(--black)', marginBottom: '1.25rem' }}>
-                Good businesses should not look disorganised online.
+                {copy.standsTitle}
               </h2>
             </div>
           </AnimatedSection>
           <AnimatedSection delay={0.08}>
             <div style={{ maxWidth: '36rem', justifySelf: 'end' }}>
               <p style={{ color: 'var(--muted-light)', marginBottom: '1rem' }}>
-                TO BE SEEN builds the systems that sit between reputation and revenue: the website, the response layer, the booking flow, and the follow-up rhythm.
+                {copy.body1}
               </p>
               <p style={{ color: 'var(--muted-light)', marginBottom: '1.75rem' }}>
-                We care about premium presentation because it shapes trust. We care about automation because it protects time. The strongest setup does both.
+                {copy.body2}
               </p>
-              <Link href="/services" className="cta-btn-light">See the service model</Link>
+              <Link href="/services" className="cta-btn-light">{copy.cta}</Link>
             </div>
           </AnimatedSection>
         </div>
@@ -66,7 +84,7 @@ export default function AboutPage() {
 
       <section className="section-dark" style={{ padding: 'clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
         <div className="editorial-shell premium-grid-3">
-          {principles.map((item, index) => (
+          {localizedPrinciples.map((item, index) => (
             <AnimatedSection key={item.title} delay={index * 0.08}>
               <article className="premium-card premium-card-dark" style={{ height: '100%' }}>
                 <span className="premium-number" style={{ display: 'block', marginBottom: '1rem' }}>{item.number}</span>
@@ -82,13 +100,9 @@ export default function AboutPage() {
         <div className="editorial-shell premium-grid-2" style={{ alignItems: 'center' }}>
           <AnimatedSection>
             <div className="premium-card premium-card-light">
-              <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>How we work</p>
+              <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.howEyebrow}</p>
               <ul className="premium-list">
-                {[
-                  'We audit the current setup before suggesting anything.',
-                  'We simplify the client journey rather than adding layers for the sake of automation.',
-                  'We build with platforms that are stable, maintainable, and realistic for growing businesses.',
-                ].map((item) => (
+                {workList.map((item) => (
                   <li key={item}><span className="premium-dot" /><span style={{ color: 'var(--black)' }}>{item}</span></li>
                 ))}
               </ul>
@@ -96,8 +110,8 @@ export default function AboutPage() {
           </AnimatedSection>
           <AnimatedSection delay={0.08}>
             <div>
-              <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Platform stack</p>
-              <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 68px)', color: 'var(--black)', marginBottom: '1rem' }}>Built on proven tools, arranged with intent.</h2>
+              <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.stackEyebrow}</p>
+              <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 68px)', color: 'var(--black)', marginBottom: '1rem' }}>{copy.stackTitle}</h2>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem' }}>
                 {partners.map((partner) => (
                   <span key={partner} className="premium-card premium-card-light" style={{ padding: '0.8rem 1rem', borderRadius: '999px' }}>{partner}</span>
@@ -111,12 +125,12 @@ export default function AboutPage() {
       <section className="section-dark" style={{ padding: 'clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
         <div className="editorial-shell premium-card premium-card-dark" style={{ padding: 'clamp(2rem, 4vw, 3rem)' }}>
           <AnimatedSection>
-            <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Start here</p>
-            <h2 className="heading-section" style={{ fontSize: 'clamp(36px, 5vw, 72px)', color: 'var(--white)', marginBottom: '1rem' }}>If the business is strong, the digital layer should feel equally considered.</h2>
+            <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.startEyebrow}</p>
+            <h2 className="heading-section" style={{ fontSize: 'clamp(36px, 5vw, 72px)', color: 'var(--white)', marginBottom: '1rem' }}>{copy.startTitle}</h2>
             <p style={{ color: 'var(--muted-dark)', maxWidth: '36rem', marginBottom: '1.75rem' }}>
-              We can assess where the current experience is leaking trust or losing efficiency, then recommend the clearest next move.
+              {copy.startBody}
             </p>
-            <Link href="/contact" className="cta-btn">Book a strategy call</Link>
+            <Link href="/contact" className="cta-btn">{copy.startCta}</Link>
           </AnimatedSection>
         </div>
       </section>

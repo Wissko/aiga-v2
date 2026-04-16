@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
 import Marquee from '@/components/Marquee';
+import { useLanguage } from '@/components/LanguageProvider';
+import { getCopy } from '@/lib/site-copy';
 
 const CheckIcon = () => (
   <svg
@@ -199,6 +201,8 @@ const valuePoints = [
 ];
 
 export default function PricingPage() {
+  const { locale } = useLanguage();
+  const copy = getCopy(locale).pricing;
   const [billing, setBilling] = useState<'monthly' | 'onetime'>('monthly');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const bundlePlan = billing === 'monthly' ? bundle.monthly : bundle.onetime;
@@ -220,7 +224,7 @@ export default function PricingPage() {
         <div className="editorial-shell pricing-hero-grid" style={{ position: 'relative', zIndex: 2, width: '100%' }}>
           <AnimatedSection>
             <div>
-              <p className="premium-eyebrow" style={{ marginBottom: '1rem', color: 'rgba(222, 217, 204, 0.78)' }}>Investment</p>
+              <p className="premium-eyebrow" style={{ marginBottom: '1rem', color: 'rgba(222, 217, 204, 0.78)' }}>{copy.heroEyebrow}</p>
               <h1
                 className="heading-display"
                 style={{
@@ -232,42 +236,42 @@ export default function PricingPage() {
                 Pricing
               </h1>
               <p className="page-hero-copy" style={{ maxWidth: '36rem' }}>
-                Premium systems for businesses that want a stronger first impression, faster response, and a more valuable client journey. All prices in AUD.
+                {copy.heroBody}
               </p>
             </div>
           </AnimatedSection>
 
           <AnimatedSection delay={0.08}>
             <div className="pricing-hero-panel">
-              <span className="pricing-panel-label">What this page is designed to show</span>
+              <span className="pricing-panel-label">{copy.panelLabel}</span>
               <ul className="pricing-hero-points">
-                {valuePoints.map((item) => (
+                {copy.panelPoints.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
               </ul>
               <p className="pricing-hero-note">
-                Choose between a lower-entry monthly model or a one-time implementation. Either way, the emphasis stays on clarity, polish, and commercial usefulness.
+                {copy.panelNote}
               </p>
             </div>
           </AnimatedSection>
         </div>
       </section>
 
-      <Marquee text="Premium Systems · Published Pricing · Built for Growth" separator="·" dark={true} size="sm" speed={28} />
+      <Marquee text="{locale === 'fr' ? 'Systèmes premium · Tarifs publiés · Pensés pour la croissance' : 'Premium Systems · Published Pricing · Built for Growth'}" separator="·" dark={true} size="sm" speed={28} />
 
       <section className="section-light" style={{ padding: 'clamp(4rem, 8vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
         <div className="editorial-shell">
           <AnimatedSection>
             <div className="pricing-overview-header">
               <div>
-                <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Choose your structure</p>
+                <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.chooseEyebrow}</p>
                 <h2 className="heading-section" style={{ fontSize: 'clamp(38px, 6vw, 96px)', color: 'var(--black)' }}>
                   Built to feel premium before the work even begins.
                 </h2>
               </div>
               <div>
                 <p className="pricing-intro-copy">
-                  Clear pricing, calm presentation, and a structure that makes it easy to compare the right level of support.
+                  {copy.chooseBody}
                 </p>
                 <div className="pricing-toggle-shell" role="tablist" aria-label="Billing choice">
                   {(['monthly', 'onetime'] as const).map((opt) => (
@@ -341,8 +345,8 @@ export default function PricingPage() {
 
           <AnimatedSection delay={0.12}>
             <div className="pricing-section-label-row">
-              <p className="premium-eyebrow">Individual services</p>
-              <p className="pricing-section-meta">For teams starting with one high-impact bottleneck first.</p>
+              <p className="premium-eyebrow">{copy.servicesLabel}</p>
+              <p className="pricing-section-meta">{copy.servicesMeta}</p>
             </div>
           </AnimatedSection>
 
@@ -402,9 +406,9 @@ export default function PricingPage() {
           <AnimatedSection delay={0.2}>
             <div className="pricing-guidance-card">
               <div>
-                <p className="pricing-guidance-title">Not sure which structure fits your business?</p>
+                <p className="pricing-guidance-title">{copy.guidanceTitle}</p>
                 <p className="pricing-guidance-copy">
-                  We will tell you what is worth doing first, what can wait, and whether a monthly or one-time setup makes more sense commercially.
+                  {copy.guidanceBody}
                 </p>
               </div>
               <Link href="/contact" className="cta-btn-light">
@@ -420,13 +424,13 @@ export default function PricingPage() {
           <AnimatedSection>
             <div className="pricing-faq-header">
               <div>
-                <p className="premium-eyebrow" style={{ marginBottom: '1rem', color: 'rgba(222, 217, 204, 0.72)' }}>Common questions</p>
+                <p className="premium-eyebrow" style={{ marginBottom: '1rem', color: 'rgba(222, 217, 204, 0.72)' }}>{copy.faqEyebrow}</p>
                 <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 72px)', color: 'var(--white)' }}>
                   Clear answers before you commit.
                 </h2>
               </div>
               <p className="pricing-faq-intro">
-                The pricing is designed to be transparent, but the decision still matters. These are the questions most businesses ask before choosing a model.
+                {copy.faqBody}
               </p>
             </div>
           </AnimatedSection>
@@ -465,12 +469,12 @@ export default function PricingPage() {
       <section className="section-dark" style={{ padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)', borderTop: '1px solid rgba(255,255,255,0.08)' }}>
         <div className="editorial-shell premium-card premium-card-dark" style={{ padding: 'clamp(2rem, 4vw, 3rem)' }}>
           <AnimatedSection>
-            <p className="premium-eyebrow" style={{ marginBottom: '1rem', color: 'rgba(222, 217, 204, 0.72)' }}>Next step</p>
+            <p className="premium-eyebrow" style={{ marginBottom: '1rem', color: 'rgba(222, 217, 204, 0.72)' }}>{copy.nextEyebrow}</p>
             <h2 className="heading-section" style={{ fontSize: 'clamp(40px, 7vw, 110px)', color: 'var(--white)', marginBottom: '1rem' }}>
               Want a clearer recommendation than a generic quote?
             </h2>
             <p style={{ color: 'var(--muted-dark)', maxWidth: '38rem', marginBottom: '2rem' }}>
-              Book the strategy call and we will tell you where the commercial leverage is, which service to prioritise, and which pricing structure fits your stage best.
+              {copy.nextBody}
             </p>
             <Link href="/contact" className="cta-btn">
               Book a free strategy call

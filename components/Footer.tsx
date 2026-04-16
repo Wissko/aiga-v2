@@ -2,27 +2,26 @@
 
 import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
+import { useLanguage } from './LanguageProvider';
 import { useRef } from 'react';
 
 const EASE = [0.22, 1, 0.36, 1] as [number, number, number, number];
 
 const footerLinks = {
-  Services: [
-    { label: 'Website Creation', href: '/services#websites' },
-    { label: 'Wallet Loyalty', href: '/services#wallet-loyalty' },
-    { label: 'Automated Bookings', href: '/services#bookings' },
-    { label: 'Client Follow-up', href: '/services#crm' },
-    { label: 'Full Digitalisation', href: '/services#bundle' },
+  services: [
+    { href: '/services#websites' },
+    { href: '/services#wallet-loyalty' },
+    { href: '/services#bookings' },
+    { href: '/services#crm' },
+    { href: '/services#bundle' },
   ],
-  Company: [
-    { label: 'About', href: '/about' },
-    { label: 'Results', href: '/results' },
-    { label: 'Pricing', href: '/pricing' },
-    { label: 'Contact', href: '/contact' },
+  company: [
+    { href: '/about' },
+    { href: '/results' },
+    { href: '/pricing' },
+    { href: '/contact' },
   ],
 };
-
-const tickerItems = Array(12).fill('Built to be trusted');
 
 function AnimatedLine({ delay = 0 }: { delay?: number }) {
   const ref = useRef(null);
@@ -42,6 +41,7 @@ function AnimatedLine({ delay = 0 }: { delay?: number }) {
 export default function Footer() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
+  const { t } = useLanguage();
 
   return (
     <footer ref={ref} style={{ background: 'var(--black)', position: 'relative', overflow: 'hidden' }}>
@@ -100,7 +100,7 @@ export default function Footer() {
             '--marquee-speed': '25s',
           } as React.CSSProperties}
         >
-          {tickerItems.concat(tickerItems).map((item, i) => (
+          {Array(12).fill(t.footer.ticker).concat(Array(12).fill(t.footer.ticker)).map((item, i) => (
             <span
               key={i}
               style={{
@@ -169,15 +169,18 @@ export default function Footer() {
               maxWidth: '320px',
               marginBottom: '1.5rem',
             }}>
-              Excellence deserves an audience.
+              {t.footer.excellence}
             </p>
             <Link href="/contact" className="cta-btn">
-              Book a strategy call
+              {t.footer.cta}
             </Link>
           </motion.div>
 
           {/* Links */}
-          {Object.entries(footerLinks).map(([category, items], ci) => (
+          {([
+            { category: 'Services', items: footerLinks.services, labels: t.footer.services },
+            { category: 'Company', items: footerLinks.company, labels: t.footer.company },
+          ] as const).map(({ category, items, labels }, ci) => (
             <motion.div
               key={category}
               initial={{ opacity: 0, y: 20 }}
@@ -196,7 +199,7 @@ export default function Footer() {
                 {category}
               </h3>
               <ul style={{ listStyle: 'none' }}>
-                {items.map((item) => (
+                {items.map((item, index) => (
                   <li key={item.href} style={{ marginBottom: '0.75rem' }}>
                     <Link
                       href={item.href}
@@ -211,7 +214,7 @@ export default function Footer() {
                       onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--accent)'; }}
                       onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.color = 'var(--muted-dark)'; }}
                     >
-                      {item.label}
+                      {labels[index]}
                     </Link>
                   </li>
                 ))}
@@ -250,7 +253,7 @@ export default function Footer() {
             fontWeight: 300,
             color: 'rgba(255,255,255,0.2)',
           }}>
-            Structured for better growth.
+            {t.footer.growth}
           </p>
           <p style={{
             fontFamily: 'Satoshi, sans-serif',
@@ -258,7 +261,7 @@ export default function Footer() {
             fontWeight: 300,
             color: 'rgba(255,255,255,0.2)',
           }}>
-            hello@tobeseen.studio
+            {t.footer.email}
           </p>
         </motion.div>
       </div>

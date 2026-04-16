@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import AnimatedSection from '@/components/AnimatedSection';
 import Marquee from '@/components/Marquee';
+import { useLanguage } from '@/components/LanguageProvider';
+import { getCopy } from '@/lib/site-copy';
 
 const details = [
   ['Email', 'hello@tobeseen.studio'],
@@ -18,6 +20,8 @@ const expectations = [
 ];
 
 export default function ContactPage() {
+  const { locale } = useLanguage();
+  const copy = getCopy(locale).contact;
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
   const [form, setForm] = useState({ name: '', email: '', business: '', service: '', message: '' });
 
@@ -37,30 +41,30 @@ export default function ContactPage() {
       <section className="section-dark page-hero-shell" style={{ minHeight: '68vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(6rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem) clamp(3rem, 5vw, 5rem)' }}>
         <div className="page-hero-gradient" />
         <div className="editorial-shell" style={{ position: 'relative', zIndex: 2 }}>
-          <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Contact</p>
-          <h1 className="heading-display" style={{ fontSize: 'clamp(72px, 12vw, 150px)', color: 'var(--white)', marginBottom: '1.5rem', maxWidth: '10em' }}>A calmer, more premium way to start the conversation.</h1>
+          <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.heroEyebrow}</p>
+          <h1 className="heading-display" style={{ fontSize: 'clamp(72px, 12vw, 150px)', color: 'var(--white)', marginBottom: '1.5rem', maxWidth: '10em' }}>{copy.heroTitle}</h1>
           <p className="page-hero-copy">
-            Start with a short conversation. We will review the current setup, identify the main point of friction, and recommend the clearest next move.
+            {copy.heroBody}
           </p>
         </div>
       </section>
 
-      <Marquee text="Strategy Call · Project Scope · Business Systems" separator="·" dark={true} size="md" speed={22} />
+      <Marquee text="{copy.marquee}" separator="·" dark={true} size="md" speed={22} />
 
       <section className="section-light" style={{ padding: 'clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
         <div className="editorial-shell premium-grid-2" style={{ alignItems: 'start' }}>
           <AnimatedSection>
             <div style={{ display: 'grid', gap: '1.25rem' }}>
               <div>
-                <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Before we speak</p>
-                <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 68px)', color: 'var(--black)', marginBottom: '1rem' }}>Tell us where the current setup is slowing the business down.</h2>
+                <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.beforeEyebrow}</p>
+                <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 68px)', color: 'var(--black)', marginBottom: '1rem' }}>{copy.beforeTitle}</h2>
                 <p style={{ color: 'var(--muted-light)', maxWidth: '34rem' }}>
-                  That might be missed calls, inconsistent bookings, weak follow-up, an outdated website, or the need for a full digital reset. We will use that context to guide the call.
+                  {copy.beforeBody}
                 </p>
               </div>
 
               <div className="premium-card premium-card-light">
-                <p className="premium-kicker" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>Business details</p>
+                <p className="premium-kicker" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>{copy.detailsTitle}</p>
                 <div style={{ display: 'grid', gap: '0.9rem' }}>
                   {details.map(([label, value]) => (
                     <div key={label} style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', paddingBottom: '0.9rem', borderBottom: '1px solid rgba(10,10,10,0.08)' }}>
@@ -72,7 +76,7 @@ export default function ContactPage() {
               </div>
 
               <div className="premium-card premium-card-light">
-                <p className="premium-kicker" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>What to expect</p>
+                <p className="premium-kicker" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>{copy.expectTitle}</p>
                 <ul className="premium-list">
                   {expectations.map((item) => (
                     <li key={item}><span className="premium-dot" /><span style={{ color: 'var(--black)' }}>{item}</span></li>
@@ -86,42 +90,42 @@ export default function ContactPage() {
             <div className="contact-form-shell">
               {status === 'sent' ? (
                 <div>
-                  <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Message received</p>
-                  <h3 className="heading-card" style={{ fontSize: 'clamp(28px, 4vw, 44px)', color: 'var(--black)', marginBottom: '0.75rem' }}>We will be in touch shortly.</h3>
-                  <p style={{ color: 'var(--muted-light)' }}>A response should reach you within 24 hours to arrange the next conversation.</p>
+                  <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.sentEyebrow}</p>
+                  <h3 className="heading-card" style={{ fontSize: 'clamp(28px, 4vw, 44px)', color: 'var(--black)', marginBottom: '0.75rem' }}>{copy.sentTitle}</h3>
+                  <p style={{ color: 'var(--muted-light)' }}>{copy.sentBody}</p>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1.25rem' }}>
                   <div>
-                    <label className="contact-label">Your name</label>
-                    <input className="contact-input" name="name" type="text" value={form.name} onChange={handleChange} placeholder="Sarah Mitchell" required />
+                    <label className="contact-label">{copy.labels.name}</label>
+                    <input className="contact-input" name="name" type="text" value={form.name} onChange={handleChange} placeholder={copy.placeholders.name} required />
                   </div>
                   <div>
-                    <label className="contact-label">Email address</label>
-                    <input className="contact-input" name="email" type="email" value={form.email} onChange={handleChange} placeholder="hello@yourbusiness.com" required />
+                    <label className="contact-label">{copy.labels.email}</label>
+                    <input className="contact-input" name="email" type="email" value={form.email} onChange={handleChange} placeholder={copy.placeholders.email} required />
                   </div>
                   <div>
-                    <label className="contact-label">Business name</label>
-                    <input className="contact-input" name="business" type="text" value={form.business} onChange={handleChange} placeholder="Your Business" />
+                    <label className="contact-label">{copy.labels.business}</label>
+                    <input className="contact-input" name="business" type="text" value={form.business} onChange={handleChange} placeholder={copy.placeholders.business} />
                   </div>
                   <div>
-                    <label className="contact-label">Service of interest</label>
+                    <label className="contact-label">{copy.labels.service}</label>
                     <select className="contact-input" name="service" value={form.service} onChange={handleChange}>
-                      <option value="">Select a service</option>
-                      <option value="website">Website Creation</option>
-                      <option value="wallet-loyalty">Wallet-First Loyalty</option>
-                      <option value="bookings">Automated Bookings</option>
-                      <option value="crm">Client Follow-Up CRM</option>
-                      <option value="bundle">Full Digitalisation Bundle</option>
-                      <option value="unsure">Not sure yet</option>
+                      <option value="">{copy.select}</option>
+                      <option value="website">{copy.options[0]}</option>
+                      <option value="wallet-loyalty">{copy.options[1]}</option>
+                      <option value="bookings">{copy.options[2]}</option>
+                      <option value="crm">{copy.options[3]}</option>
+                      <option value="bundle">{copy.options[4]}</option>
+                      <option value="unsure">{copy.options[5]}</option>
                     </select>
                   </div>
                   <div>
-                    <label className="contact-label">Brief project context</label>
-                    <textarea className="contact-input" name="message" rows={6} value={form.message} onChange={handleChange} placeholder="Tell us what currently feels inefficient, unclear, or underperforming in the business." />
+                    <label className="contact-label">{copy.labels.message}</label>
+                    <textarea className="contact-input" name="message" rows={6} value={form.message} onChange={handleChange} placeholder={copy.placeholders.message} />
                   </div>
                   <button type="submit" className="cta-btn-light" disabled={status === 'sending'} style={{ justifyContent: 'center', width: '100%' }}>
-                    {status === 'sending' ? 'Sending...' : 'Send enquiry'}
+                    {status === 'sending' ? copy.sending : copy.send}
                   </button>
                 </form>
               )}

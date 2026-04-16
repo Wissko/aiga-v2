@@ -3,6 +3,8 @@ import './globals.css';
 import { Suspense } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { LanguageProvider } from '@/components/LanguageProvider';
+import LanguageGate from '@/components/LanguageGate';
 
 export const metadata: Metadata = {
   title: {
@@ -32,9 +34,12 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet" />
       </head>
       <body className="min-h-screen flex flex-col">
-        <Suspense fallback={null}><Navbar /></Suspense>
-        <main className="flex-1">{children}</main>
-        <Suspense fallback={null}><Footer /></Suspense>
+        <LanguageProvider>
+          <LanguageGate />
+          <Suspense fallback={null}><Navbar /></Suspense>
+          <main className="flex-1">{children}</main>
+          <Suspense fallback={null}><Footer /></Suspense>
+        </LanguageProvider>
       </body>
     </html>
   );

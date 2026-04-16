@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { motion, useMotionTemplate, useScroll, useTransform } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
 import Marquee from '@/components/Marquee';
+import { useLanguage } from '@/components/LanguageProvider';
+import { getCopy } from '@/lib/site-copy';
 
 const featuredSystems = [
   {
@@ -93,7 +95,7 @@ const faqs = [
   },
 ];
 
-function HeroSection() {
+function HeroSection({ ctaLabel, exploreLabel }: { ctaLabel: string; exploreLabel: string }) {
   const heroRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
   const heroOpacity = useTransform(scrollYProgress, [0, 0.62, 0.82, 1], [1, 1, 0.84, 0.12]);
@@ -120,8 +122,8 @@ function HeroSection() {
             </div>
             <div className="hero-copy">
               <div className="hero-actions">
-                <Link href="/contact" className="cta-btn hero-btn-primary">Book a free strategy call</Link>
-                <Link href="/services" className="hero-btn-secondary">Explore services</Link>
+                <Link href="/contact" className="cta-btn hero-btn-primary">{ctaLabel}</Link>
+                <Link href="/services" className="hero-btn-secondary">{exploreLabel}</Link>
               </div>
             </div>
           </motion.div>
@@ -132,31 +134,35 @@ function HeroSection() {
 }
 
 export default function HomePage() {
+  const { locale } = useLanguage();
+  const copy = getCopy(locale).home;
+  const localizedFaqs = copy.faqs.map(([q, a], index) => ({ ...faqs[index], q, a }));
+
   return (
     <>
-      <HeroSection />
+      <HeroSection ctaLabel={copy.nextCta} exploreLabel={locale === 'fr' ? 'Découvrir les services' : 'Explore services'} />
       <div className="hero-overlay-stack">
-        <Marquee text="Website · Wallet Loyalty · Bookings · Follow-Up" separator="·" dark={true} size="md" speed={20} />
+        <Marquee text={copy.marquee} separator="·" dark={true} size="md" speed={20} />
 
         <section className="section-light hero-reveal-section" style={{ padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)' }}>
           <div className="editorial-shell premium-grid-2" style={{ alignItems: 'end' }}>
             <AnimatedSection>
               <div>
-                <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Positioning with substance</p>
+                <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.positioningEyebrow}</p>
                 <h2 className="heading-section" style={{ fontSize: 'clamp(42px, 7vw, 104px)', color: 'var(--black)', marginBottom: '1.5rem' }}>
-                  We build the operating layer behind a business that looks established.
+                  {copy.positioningTitle}
                 </h2>
               </div>
             </AnimatedSection>
             <AnimatedSection delay={0.1}>
               <div style={{ maxWidth: '36rem', justifySelf: 'end' }}>
                 <p style={{ fontSize: '16px', color: 'var(--muted-light)', marginBottom: '1rem' }}>
-                  Websites, wallet loyalty, bookings, and follow-up should not feel like disconnected tools. We design them as one coherent system so your business is easier to trust, easier to contact, and easier to choose.
+                  {copy.positioningBody1}
                 </p>
                 <p style={{ fontSize: '16px', color: 'var(--muted-light)', marginBottom: '1.75rem' }}>
-                  The result is a cleaner experience for your clients and a calmer operation for your team.
+                  {copy.positioningBody2}
                 </p>
-                <Link href="/about" className="link-arrow">About the studio</Link>
+                <Link href="/about" className="link-arrow">{copy.aboutLink}</Link>
               </div>
             </AnimatedSection>
           </div>
@@ -168,13 +174,13 @@ export default function HomePage() {
           <AnimatedSection>
             <div className="selected-systems-intro">
               <div>
-                <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Selected systems</p>
+                <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.selectedEyebrow}</p>
                 <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 72px)', color: 'var(--white)', maxWidth: '12ch' }}>
-                  A few of the systems we build for ambitious businesses.
+                  {copy.selectedTitle}
                 </h2>
               </div>
               <p style={{ maxWidth: '34rem', justifySelf: 'end', color: 'var(--muted-dark)', fontSize: '16px', lineHeight: 1.7 }}>
-                Each system is designed to reduce friction, improve trust, and make the next step feel obvious.
+                {copy.selectedBody}
               </p>
             </div>
           </AnimatedSection>
@@ -200,18 +206,18 @@ export default function HomePage() {
       </section>
 
       <section className="section-light" style={{ padding: '0 0 clamp(4rem, 8vw, 8rem)', overflow: 'hidden' }}>
-        <Marquee text="Services" separator="·" dark={false} size="md" speed={24} />
+        <Marquee text={copy.servicesMarquee} separator="·" dark={false} size="md" speed={24} />
         <div className="editorial-shell" style={{ padding: 'clamp(4rem, 8vw, 8rem) clamp(1.5rem, 6vw, 5rem) 0' }}>
           <AnimatedSection>
             <div className="premium-grid-2" style={{ marginBottom: 'clamp(3rem, 5vw, 5rem)', alignItems: 'end' }}>
               <div>
-                <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Core offers</p>
+                <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.servicesEyebrow}</p>
                 <h2 className="heading-section" style={{ fontSize: 'clamp(40px, 7vw, 110px)', color: 'var(--black)' }}>
-                  Built to feel coherent from first click to repeat booking.
+                  {copy.servicesTitle}
                 </h2>
               </div>
               <p style={{ color: 'var(--muted-light)', maxWidth: '36rem', justifySelf: 'end' }}>
-                Every service is framed around one business outcome: stronger visibility, faster response, smoother scheduling, better follow-up, or a fully connected client journey.
+                {copy.servicesBody}
               </p>
             </div>
           </AnimatedSection>
@@ -239,20 +245,20 @@ export default function HomePage() {
         <div className="editorial-shell premium-grid-2" style={{ alignItems: 'start' }}>
           <div>
             <AnimatedSection>
-              <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Why it works</p>
+              <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.whyEyebrow}</p>
               <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 72px)', color: 'var(--white)', marginBottom: '1.25rem' }}>
-                We remove the digital weak points that quietly cost businesses revenue.
+                {copy.whyTitle}
               </h2>
             </AnimatedSection>
             <AnimatedSection delay={0.08}>
               <p style={{ color: 'var(--muted-dark)', maxWidth: '38rem' }}>
-                Low retention, old websites, manual booking loops, and absent follow-up all create leakage. We tighten those points so your business feels more responsive, more credible, and easier to buy from.
+                {copy.whyBody}
               </p>
             </AnimatedSection>
           </div>
           <AnimatedSection delay={0.15}>
             <div className="premium-grid-3">
-              {['Better first impression', 'Faster response time', 'Less admin drag'].map((item) => (
+              {copy.metrics.map((item) => (
                 <div key={item} className="metric-card">
                   <div className="metric-value">01</div>
                   <div className="stat-label" style={{ marginTop: '0.75rem' }}>{item}</div>
@@ -268,19 +274,19 @@ export default function HomePage() {
           <AnimatedSection>
             <div className="faq-premium-header">
               <div>
-                <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Questions</p>
+                <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.faqEyebrow}</p>
                 <h2 className="heading-section" style={{ fontSize: 'clamp(38px, 6vw, 88px)', color: 'var(--black)', marginBottom: '1rem' }}>
-                  Clarity before we build.
+                  {copy.faqTitle}
                 </h2>
               </div>
               <p className="faq-premium-intro">
-                A few practical answers on fit, integration, and where to begin. Short, clear, and easy to scan.
+                {copy.faqBody}
               </p>
             </div>
           </AnimatedSection>
 
           <div className="faq-premium-list">
-            {faqs.map((faq, i) => <FAQItem key={faq.q} {...faq} delay={i * 0.05} />)}
+            {localizedFaqs.map((faq, i) => <FAQItem key={faq.q} {...faq} delay={i * 0.05} />)}
           </div>
         </div>
       </section>
@@ -288,12 +294,12 @@ export default function HomePage() {
       <section className="section-dark" style={{ padding: 'clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
         <div className="editorial-shell premium-card premium-card-dark" style={{ padding: 'clamp(2rem, 4vw, 3rem)' }}>
           <AnimatedSection>
-            <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Next step</p>
-            <h2 className="heading-section" style={{ fontSize: 'clamp(40px, 7vw, 110px)', color: 'var(--white)', marginBottom: '1rem' }}>Ready to grow with more structure?</h2>
+            <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.nextEyebrow}</p>
+            <h2 className="heading-section" style={{ fontSize: 'clamp(40px, 7vw, 110px)', color: 'var(--white)', marginBottom: '1rem' }}>{copy.nextTitle}</h2>
             <p style={{ color: 'var(--muted-dark)', maxWidth: '36rem', marginBottom: '2rem' }}>
-              Start with a strategy call. We will assess the gaps in your current setup and recommend the most commercially useful next move.
+              {copy.nextBody}
             </p>
-            <Link href="/contact" className="cta-btn">Book a free strategy call</Link>
+            <Link href="/contact" className="cta-btn">{copy.nextCta}</Link>
           </AnimatedSection>
         </div>
       </section>

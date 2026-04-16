@@ -4,22 +4,24 @@ import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from './LanguageProvider';
 
 const EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/services', label: 'Services' },
-  { href: '/pricing', label: 'Pricing' },
-  { href: '/results', label: 'Results' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
-];
+  { href: '/', key: 'home' },
+  { href: '/services', key: 'services' },
+  { href: '/pricing', key: 'pricing' },
+  { href: '/results', key: 'results' },
+  { href: '/about', key: 'about' },
+  { href: '/contact', key: 'contact' },
+] as const;
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const { t } = useLanguage();
 
   const close = useCallback(() => setOpen(false), []);
 
@@ -87,7 +89,7 @@ export default function Navbar() {
           color: 'rgba(255,255,255,0.6)',
           userSelect: 'none',
         }}>
-          Menu
+          {t.nav.menu}
         </span>
       </motion.button>
 
@@ -133,7 +135,7 @@ export default function Navbar() {
             el.style.borderColor = 'rgba(255,255,255,0.12)';
           }}
         >
-          Book a free call
+          {t.nav.bookCall}
         </Link>
       </motion.div>
 
@@ -227,7 +229,7 @@ export default function Navbar() {
                     transition={{ duration: 0.85, delay: i * 0.06, ease: EASE }}
                   >
                     <NavLink
-                      label={link.label}
+                      label={t.nav[link.key]}
                       href={link.href}
                       active={pathname === link.href}
                       onClick={handleNav}
@@ -260,7 +262,7 @@ export default function Navbar() {
                 color: 'rgba(255,255,255,0.35)',
                 fontWeight: 400,
               }}>
-                To Be Seen · Independent Studio
+                {t.nav.studioTag}
               </p>
               <Link
                 href="/contact"
@@ -283,7 +285,7 @@ export default function Navbar() {
                 onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.opacity = '0.85'; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.opacity = '1'; }}
               >
-                Book a free call
+                {t.nav.bookCall}
               </Link>
             </motion.div>
           </motion.div>
