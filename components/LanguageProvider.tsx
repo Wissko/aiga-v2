@@ -6,7 +6,7 @@ type Locale = 'en' | 'fr';
 
 type Dictionary = {
   nav: { home: string; services: string; pricing: string; results: string; about: string; contact: string; menu: string; bookCall: string; studioTag: string };
-  footer: { ticker: string; excellence: string; cta: string; growth: string; email: string; services: string[]; company: string[] };
+  footer: { ticker: string; excellence: string; cta: string; growth: string; email: string; services: string[]; company: string[]; servicesLabel: string; companyLabel: string };
   launcher: { eyebrow: string; title: string; body: string; en: string; fr: string };
 };
 
@@ -18,7 +18,9 @@ const dictionaries: Record<Locale, Dictionary> = {
     footer: {
       ticker: 'Built to be trusted', excellence: 'Excellence deserves an audience.', cta: 'Book a strategy call', growth: 'Structured for better growth.', email: 'hello@tobeseen.studio',
       services: ['Website Creation', 'Wallet Loyalty', 'Automated Bookings', 'Client Follow-up', 'Full Digitalisation'],
-      company: ['About', 'Results', 'Pricing', 'Contact']
+      company: ['About', 'Results', 'Pricing', 'Contact'],
+      servicesLabel: 'Services',
+      companyLabel: 'Company'
     },
     launcher: {
       eyebrow: 'Choose language',
@@ -35,7 +37,9 @@ const dictionaries: Record<Locale, Dictionary> = {
     footer: {
       ticker: 'Conçu pour inspirer confiance', excellence: 'L’excellence mérite d’être vue.', cta: 'Réserver un appel stratégique', growth: 'Structuré pour une meilleure croissance.', email: 'hello@tobeseen.studio',
       services: ['Création de site', 'Fidélité Wallet', 'Réservations automatisées', 'Suivi client', 'Digitalisation complète'],
-      company: ['À propos', 'Résultats', 'Tarifs', 'Contact']
+      company: ['À propos', 'Résultats', 'Tarifs', 'Contact'],
+      servicesLabel: 'Services',
+      companyLabel: 'Studio'
     },
     launcher: {
       eyebrow: 'Choix de langue',

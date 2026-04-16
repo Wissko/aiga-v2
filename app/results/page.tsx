@@ -73,7 +73,7 @@ export default function ResultsPage() {
         <div className="editorial-shell" style={{ position: 'relative', zIndex: 2 }}>
           <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.heroEyebrow}</p>
           <h1 className="heading-display" style={{ fontSize: 'clamp(72px, 12vw, 150px)', color: 'var(--white)', marginBottom: '1.5rem', maxWidth: '9.5em' }}>
-            Clearer systems. Better outcomes.
+            {copy.heroTitle}
           </h1>
           <p className="page-hero-copy">
             {copy.heroBody}
@@ -81,7 +81,7 @@ export default function ResultsPage() {
         </div>
       </section>
 
-      <Marquee text="{copy.marquee}" separator="·" dark={true} size="md" speed={24} />
+      <Marquee text={copy.marquee} separator="·" dark={true} size="md" speed={24} />
 
       <section className="section-light" style={{ padding: 'clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
         <div className="editorial-shell premium-grid-2" style={{ alignItems: 'start' }}>
@@ -138,7 +138,7 @@ export default function ResultsPage() {
           <AnimatedSection>
             <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.nextEyebrow}</p>
             <h2 className="heading-section" style={{ fontSize: 'clamp(36px, 5vw, 72px)', color: 'var(--white)', marginBottom: '1rem' }}>
-              Ready to build something more structured?
+              {copy.nextTitle}
             </h2>
             <p style={{ color: 'var(--muted-dark)', maxWidth: '36rem', marginBottom: '1.75rem' }}>
               {copy.nextBody}

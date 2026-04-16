@@ -192,7 +192,7 @@ export default function HomePage() {
                   <article className="premium-card premium-card-dark selected-system-card">
                     <div className="selected-system-meta">
                       <span className="premium-number">{system.number}</span>
-                      <span className="premium-kicker" style={{ color: 'var(--muted-dark)' }}>View service</span>
+                      <span className="premium-kicker" style={{ color: 'var(--muted-dark)' }}>{locale === 'fr' ? 'Voir le service' : 'View service'}</span>
                     </div>
                     <h3 className="heading-card" style={{ fontSize: 'clamp(28px, 4vw, 44px)', color: 'var(--white)', marginBottom: '0.15rem', maxWidth: '12ch' }}>{system.title}</h3>
                     <p className="selected-system-summary">{system.summary}</p>

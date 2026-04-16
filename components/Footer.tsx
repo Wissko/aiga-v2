@@ -178,8 +178,8 @@ export default function Footer() {
 
           {/* Links */}
           {([
-            { category: 'Services', items: footerLinks.services, labels: t.footer.services },
-            { category: 'Company', items: footerLinks.company, labels: t.footer.company },
+            { category: t.footer.servicesLabel, items: footerLinks.services, labels: t.footer.services },
+            { category: t.footer.companyLabel, items: footerLinks.company, labels: t.footer.company },
           ] as const).map(({ category, items, labels }, ci) => (
             <motion.div
               key={category}

@@ -116,7 +116,7 @@ export default function ServicesPage() {
             <div>
               <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.introEyebrow}</p>
               <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 68px)', color: 'var(--black)' }}>
-                Less noise. Better hierarchy. Faster understanding.
+                {copy.introTitle}
               </h2>
             </div>
           </AnimatedSection>

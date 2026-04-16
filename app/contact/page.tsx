@@ -49,7 +49,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <Marquee text="{copy.marquee}" separator="·" dark={true} size="md" speed={22} />
+      <Marquee text={copy.marquee} separator="·" dark={true} size="md" speed={22} />
 
       <section className="section-light" style={{ padding: 'clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
         <div className="editorial-shell premium-grid-2" style={{ alignItems: 'start' }}>

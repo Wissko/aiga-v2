@@ -233,7 +233,7 @@ export default function PricingPage() {
                   marginBottom: '1.5rem',
                 }}
               >
-                Pricing
+                {copy.heroTitle}
               </h1>
               <p className="page-hero-copy" style={{ maxWidth: '36rem' }}>
                 {copy.heroBody}
@@ -257,7 +257,7 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <Marquee text="{locale === 'fr' ? 'Systèmes premium · Tarifs publiés · Pensés pour la croissance' : 'Premium Systems · Published Pricing · Built for Growth'}" separator="·" dark={true} size="sm" speed={28} />
+      <Marquee text={locale === 'fr' ? 'Systèmes premium · Tarifs publiés · Pensés pour la croissance' : 'Premium Systems · Published Pricing · Built for Growth'} separator="·" dark={true} size="sm" speed={28} />
 
       <section className="section-light" style={{ padding: 'clamp(4rem, 8vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
         <div className="editorial-shell">
@@ -395,7 +395,7 @@ export default function PricingPage() {
                     </AnimatePresence>
 
                     <Link href="/contact" className="cta-btn-light" style={{ width: 'fit-content' }}>
-                      Enquire now
+                      {locale === 'fr' ? 'Faire une demande' : 'Enquire now'}
                     </Link>
                   </article>
                 </AnimatedSection>
@@ -412,7 +412,7 @@ export default function PricingPage() {
                 </p>
               </div>
               <Link href="/contact" className="cta-btn-light">
-                Book a free strategy call
+                {copy.guidanceCta}
               </Link>
             </div>
           </AnimatedSection>
@@ -426,7 +426,7 @@ export default function PricingPage() {
               <div>
                 <p className="premium-eyebrow" style={{ marginBottom: '1rem', color: 'rgba(222, 217, 204, 0.72)' }}>{copy.faqEyebrow}</p>
                 <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 72px)', color: 'var(--white)' }}>
-                  Clear answers before you commit.
+                  {copy.faqTitle}
                 </h2>
               </div>
               <p className="pricing-faq-intro">
@@ -471,13 +471,13 @@ export default function PricingPage() {
           <AnimatedSection>
             <p className="premium-eyebrow" style={{ marginBottom: '1rem', color: 'rgba(222, 217, 204, 0.72)' }}>{copy.nextEyebrow}</p>
             <h2 className="heading-section" style={{ fontSize: 'clamp(40px, 7vw, 110px)', color: 'var(--white)', marginBottom: '1rem' }}>
-              Want a clearer recommendation than a generic quote?
+              {copy.nextTitle}
             </h2>
             <p style={{ color: 'var(--muted-dark)', maxWidth: '38rem', marginBottom: '2rem' }}>
               {copy.nextBody}
             </p>
             <Link href="/contact" className="cta-btn">
-              Book a free strategy call
+              {copy.nextCta}
             </Link>
           </AnimatedSection>
         </div>
