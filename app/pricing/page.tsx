@@ -266,7 +266,7 @@ export default function PricingPage() {
               <div>
                 <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.chooseEyebrow}</p>
                 <h2 className="heading-section" style={{ fontSize: 'clamp(38px, 6vw, 96px)', color: 'var(--black)' }}>
-                  Built to feel premium before the work even begins.
+                  {copy.chooseTitle}
                 </h2>
               </div>
               <div>
@@ -426,7 +426,7 @@ export default function PricingPage() {
               <div>
                 <p className="premium-eyebrow" style={{ marginBottom: '1rem', color: 'rgba(222, 217, 204, 0.72)' }}>{copy.faqEyebrow}</p>
                 <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 72px)', color: 'var(--white)' }}>
-                  {copy.faqTitle}
+                  {locale === 'fr' ? 'Des réponses claires avant de vous engager.' : copy.faqTitle}
                 </h2>
               </div>
               <p className="pricing-faq-intro">

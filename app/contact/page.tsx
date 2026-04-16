@@ -7,7 +7,7 @@ import { useLanguage } from '@/components/LanguageProvider';
 import { getCopy } from '@/lib/site-copy';
 
 const details = [
-  ['Email', 'hello@tobeseen.studio'],
+  ['Email', 'Agency.tobeseen@gmail.com'],
   ['Location', 'International Operations'],
   ['Response window', 'Within 24 hours'],
   ['Call format', 'Free strategy session'],

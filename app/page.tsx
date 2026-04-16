@@ -176,7 +176,7 @@ export default function HomePage() {
               <div>
                 <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.selectedEyebrow}</p>
                 <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 72px)', color: 'var(--white)', maxWidth: '12ch' }}>
-                  {copy.selectedTitle}
+                  {locale === 'fr' ? 'Quelques systèmes conçus pour des entreprises ambitieuses.' : copy.selectedTitle}
                 </h2>
               </div>
               <p style={{ maxWidth: '34rem', justifySelf: 'end', color: 'var(--muted-dark)', fontSize: '16px', lineHeight: 1.7 }}>
@@ -213,7 +213,7 @@ export default function HomePage() {
               <div>
                 <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.servicesEyebrow}</p>
                 <h2 className="heading-section" style={{ fontSize: 'clamp(40px, 7vw, 110px)', color: 'var(--black)' }}>
-                  {copy.servicesTitle}
+                  {locale === 'fr' ? 'Conçu pour rester cohérent du premier clic à la réservation suivante.' : copy.servicesTitle}
                 </h2>
               </div>
               <p style={{ color: 'var(--muted-light)', maxWidth: '36rem', justifySelf: 'end' }}>

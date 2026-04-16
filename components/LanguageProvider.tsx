@@ -16,7 +16,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       home: 'Home', services: 'Services', pricing: 'Pricing', results: 'Results', about: 'About', contact: 'Contact', menu: 'Menu', bookCall: 'Book a free call', studioTag: 'To Be Seen · Independent Studio'
     },
     footer: {
-      ticker: 'Built to be trusted', excellence: 'Excellence deserves an audience.', cta: 'Book a strategy call', growth: 'Structured for better growth.', email: 'hello@tobeseen.studio',
+      ticker: 'Built to be trusted', excellence: 'Excellence deserves an audience.', cta: 'Book a strategy call', growth: 'Structured for better growth.', email: 'Agency.tobeseen@gmail.com',
       services: ['Website Creation', 'Wallet Loyalty', 'Automated Bookings', 'Client Follow-up', 'Full Digitalisation'],
       company: ['About', 'Results', 'Pricing', 'Contact'],
       servicesLabel: 'Services',
@@ -35,7 +35,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       home: 'Accueil', services: 'Services', pricing: 'Tarifs', results: 'Résultats', about: 'À propos', contact: 'Contact', menu: 'Menu', bookCall: 'Réserver un appel gratuit', studioTag: 'To Be Seen · Studio indépendant'
     },
     footer: {
-      ticker: 'Conçu pour inspirer confiance', excellence: 'L’excellence mérite d’être vue.', cta: 'Réserver un appel stratégique', growth: 'Structuré pour une meilleure croissance.', email: 'hello@tobeseen.studio',
+      ticker: 'Conçu pour inspirer confiance', excellence: 'L’excellence mérite d’être vue.', cta: 'Réserver un appel stratégique', growth: 'Structuré pour une meilleure croissance.', email: 'Agency.tobeseen@gmail.com',
       services: ['Création de site', 'Fidélité Wallet', 'Réservations automatisées', 'Suivi client', 'Digitalisation complète'],
       company: ['À propos', 'Résultats', 'Tarifs', 'Contact'],
       servicesLabel: 'Services',
