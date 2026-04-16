@@ -59,6 +59,8 @@ type LanguageContextValue = {
   needsChoice: boolean;
 };
 
+export type { Locale };
+
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {

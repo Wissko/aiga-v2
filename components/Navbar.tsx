@@ -21,7 +21,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
-  const { t } = useLanguage();
+  const { t, locale, setLocale } = useLanguage();
 
   const close = useCallback(() => setOpen(false), []);
 
@@ -254,16 +254,45 @@ export default function Navbar() {
                 gap: '0.75rem',
               }}
             >
-              <p style={{
-                fontFamily: 'Satoshi, sans-serif',
-                fontSize: '11px',
-                letterSpacing: '0.18em',
-                textTransform: 'uppercase',
-                color: 'rgba(255,255,255,0.35)',
-                fontWeight: 400,
-              }}>
-                {t.nav.studioTag}
-              </p>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem', flexWrap: 'wrap' }}>
+                <p style={{
+                  fontFamily: 'Satoshi, sans-serif',
+                  fontSize: '11px',
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  color: 'rgba(255,255,255,0.35)',
+                  fontWeight: 400,
+                }}>
+                  {t.nav.studioTag}
+                </p>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem', padding: '0.28rem', borderRadius: '999px', border: '1px solid rgba(255,255,255,0.08)', background: 'rgba(255,255,255,0.03)' }}>
+                  {(['en', 'fr'] as const).map((lang) => {
+                    const active = locale === lang;
+                    return (
+                      <button
+                        key={lang}
+                        onClick={() => setLocale(lang)}
+                        aria-pressed={active}
+                        style={{
+                          border: 'none',
+                          background: active ? 'rgba(222,217,204,0.92)' : 'transparent',
+                          color: active ? 'var(--black)' : 'rgba(255,255,255,0.58)',
+                          borderRadius: '999px',
+                          padding: '0.42rem 0.72rem',
+                          fontFamily: 'Satoshi, sans-serif',
+                          fontSize: '10px',
+                          letterSpacing: '0.14em',
+                          textTransform: 'uppercase',
+                          cursor: 'pointer',
+                          transition: 'all 0.22s ease',
+                        }}
+                      >
+                        {lang}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
               <Link
                 href="/contact"
                 onClick={close}
