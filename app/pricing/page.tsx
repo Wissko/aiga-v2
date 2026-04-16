@@ -267,7 +267,7 @@ export default function PricingPage() {
               </div>
               <div>
                 <p className="pricing-intro-copy">
-                  The redesign here is intentional: stronger hierarchy, warmer tones, clearer value framing, and a layout that feels closer to a high-end studio proposal than a generic pricing table.
+                  Clear pricing, calm presentation, and a structure that makes it easy to compare the right level of support.
                 </p>
                 <div className="pricing-toggle-shell" role="tablist" aria-label="Billing choice">
                   {(['monthly', 'onetime'] as const).map((opt) => (

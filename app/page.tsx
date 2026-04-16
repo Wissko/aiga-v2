@@ -136,7 +136,7 @@ export default function HomePage() {
     <>
       <HeroSection />
       <div className="hero-overlay-stack">
-        <Marquee text="AI Automation for Ambitious Businesses" separator="·" dark={true} size="md" speed={20} />
+        <Marquee text="Website · Wallet Loyalty · Bookings · Follow-Up" separator="·" dark={true} size="md" speed={20} />
 
         <section className="section-light hero-reveal-section" style={{ padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)' }}>
           <div className="editorial-shell premium-grid-2" style={{ alignItems: 'end' }}>
@@ -174,7 +174,7 @@ export default function HomePage() {
                 </h2>
               </div>
               <p style={{ maxWidth: '34rem', justifySelf: 'end', color: 'var(--muted-dark)', fontSize: '16px', lineHeight: 1.7 }}>
-                Reworked specifically for phone readability: tighter copy, stronger separation between number, title and detail, and a card rhythm that feels deliberate instead of stacked by default.
+                Each system is designed to reduce friction, improve trust, and make the next step feel obvious.
               </p>
             </div>
           </AnimatedSection>
@@ -274,7 +274,7 @@ export default function HomePage() {
                 </h2>
               </div>
               <p className="faq-premium-intro">
-                A few practical answers on fit, integration, and where to begin. The section has been rebuilt for legibility first: cleaner contrast, stronger spacing, clearer open states, and a rhythm that feels properly premium.
+                A few practical answers on fit, integration, and where to begin. Short, clear, and easy to scan.
               </p>
             </div>
           </AnimatedSection>

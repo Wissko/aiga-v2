@@ -76,7 +76,7 @@ export default function ServicesPage() {
           <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Services</p>
           <h1 className="heading-display" style={{ fontSize: 'clamp(72px, 12vw, 150px)', color: 'var(--white)', marginBottom: '1.5rem', maxWidth: '10.5em' }}>Built around clear business outcomes.</h1>
           <p className="page-hero-copy">
-            Each offer now sits on the same luxury visual language as the home hero, with the textured brand image placed behind the typography so the page feels premium, coherent, and immediately readable.
+            Each service is framed to show what it improves, why it matters, and where it fits in the wider system.
           </p>
         </div>
       </section>

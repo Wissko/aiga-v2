@@ -5,7 +5,7 @@ import AnimatedSection from '@/components/AnimatedSection';
 import Marquee from '@/components/Marquee';
 
 const details = [
-  ['Email', 'hello@aiga.au'],
+  ['Email', 'hello@tobeseen.studio'],
   ['Location', 'International Operations'],
   ['Response window', 'Within 24 hours'],
   ['Call format', 'Free strategy session'],
@@ -40,7 +40,7 @@ export default function ContactPage() {
           <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>Contact</p>
           <h1 className="heading-display" style={{ fontSize: 'clamp(72px, 12vw, 150px)', color: 'var(--white)', marginBottom: '1.5rem', maxWidth: '10em' }}>A calmer, more premium way to start the conversation.</h1>
           <p className="page-hero-copy">
-            The briefed brand texture is now genuinely integrated here as a true hero background, giving the contact entry the same black, beige, and accent balance instead of a generic animated treatment.
+            Start with a short conversation. We will review the current setup, identify the main point of friction, and recommend the clearest next move.
           </p>
         </div>
       </section>

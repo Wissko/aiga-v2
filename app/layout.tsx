@@ -6,12 +6,12 @@ import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
   title: {
-    default: 'To Be Seen — Premium Digital Presence',
+    default: 'TO BE SEEN | Premium Business Systems',
     template: '%s | To Be Seen',
   },
   description:
-    'In every city, every street, every industry — there are businesses doing exceptional work in relative obscurity. TO BE SEEN exists to close that gap. We build brand presence that converts interest into loyalty.',
-  keywords: ['digital presence', 'brand visibility', 'premium branding', 'website creation', 'marketing automation', 'growth'],
+    'TO BE SEEN builds premium business systems: websites, wallet loyalty, bookings, follow-up, and digital structure designed to convert cleanly.',
+  keywords: ['TO BE SEEN', 'premium business systems', 'website creation', 'wallet loyalty', 'bookings', 'follow-up'],
   authors: [{ name: 'To Be Seen' }],
   openGraph: {
     type: 'website',

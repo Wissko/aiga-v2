@@ -22,7 +22,7 @@ const footerLinks = {
   ],
 };
 
-const tickerItems = Array(12).fill("Let's work together");
+const tickerItems = Array(12).fill('Built to be trusted');
 
 function AnimatedLine({ delay = 0 }: { delay?: number }) {
   const ref = useRef(null);
@@ -115,7 +115,7 @@ export default function Footer() {
                 gap: '1rem',
               }}
             >
-              <span style={{ color: 'var(--accent)' }}>✦</span>
+              <span style={{ color: 'var(--accent)' }}>•</span>
               {item}
               <span style={{ color: 'var(--accent)', marginLeft: '0.5rem' }}>·</span>
             </span>
@@ -172,7 +172,7 @@ export default function Footer() {
               Excellence deserves an audience.
             </p>
             <Link href="/contact" className="cta-btn">
-              Book a free strategy call &rarr;
+              Book a strategy call
             </Link>
           </motion.div>
 
@@ -250,7 +250,7 @@ export default function Footer() {
             fontWeight: 300,
             color: 'rgba(255,255,255,0.2)',
           }}>
-            Powered by caffeine and conviction.
+            Structured for better growth.
           </p>
           <p style={{
             fontFamily: 'Satoshi, sans-serif',
@@ -258,7 +258,7 @@ export default function Footer() {
             fontWeight: 300,
             color: 'rgba(255,255,255,0.2)',
           }}>
-            hello@aiga.au
+            hello@tobeseen.studio
           </p>
         </motion.div>
       </div>

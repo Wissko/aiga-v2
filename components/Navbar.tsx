@@ -11,6 +11,7 @@ const links = [
   { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
   { href: '/pricing', label: 'Pricing' },
+  { href: '/results', label: 'Results' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
@@ -179,7 +180,7 @@ export default function Navbar() {
               </svg>
             </button>
 
-            {/* AIGA wordmark */}
+            {/* TBS wordmark */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

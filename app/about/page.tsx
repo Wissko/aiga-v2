@@ -33,7 +33,7 @@ export default function AboutPage() {
           <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>About</p>
           <h1 className="heading-display" style={{ fontSize: 'clamp(72px, 12vw, 150px)', color: 'var(--white)', marginBottom: '1.5rem', maxWidth: '10.25em' }}>A digital studio for businesses that deserve better systems.</h1>
           <p className="page-hero-copy">
-            The same textured brand background now anchors this hero too, so the studio story inherits the same darker depth, premium feel, and calm readability as the rest of the site.
+            Built for businesses that need a cleaner presence, stronger trust, and a system that supports growth without adding noise.
           </p>
         </div>
       </section>
@@ -53,7 +53,7 @@ export default function AboutPage() {
           <AnimatedSection delay={0.08}>
             <div style={{ maxWidth: '36rem', justifySelf: 'end' }}>
               <p style={{ color: 'var(--muted-light)', marginBottom: '1rem' }}>
-                AIGA builds the systems that sit between reputation and revenue: the website, the response layer, the booking flow, and the follow-up rhythm.
+                TO BE SEEN builds the systems that sit between reputation and revenue: the website, the response layer, the booking flow, and the follow-up rhythm.
               </p>
               <p style={{ color: 'var(--muted-light)', marginBottom: '1.75rem' }}>
                 We care about premium presentation because it shapes trust. We care about automation because it protects time. The strongest setup does both.
