@@ -101,12 +101,29 @@ body {
 .heading-card { font-family: var(--font-logo) !important; font-weight: 500; text-transform: uppercase; letter-spacing: 0.025em; line-height: 1; }
 .hero-copy { width: min(100%, 40rem); margin-top: clamp(1.25rem, 3vw, 2.25rem); display: flex; flex-direction: column; align-items: center; gap: 0; }
 .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem; }
-.hero-btn-primary { background: #fff; color: #000; border-color: #fff; }
+.hero-btn-primary,
+.hero-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 14px 24px;
+  border-radius: 999px;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 1;
+  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+}
+.hero-btn-primary { background: #fff; color: #000; border: 1px solid #fff; }
 .hero-btn-primary:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 .hero-btn-secondary {
-  display: inline-flex; align-items: center; justify-content: center; min-height: 54px; padding: 14px 24px; border: 1px solid rgba(255, 255, 255, 0.16);
-  color: rgba(255, 255, 255, 0.78); font-family: 'Satoshi', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
-  transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.78);
+  background: transparent;
 }
 .hero-btn-secondary:hover { color: #fff; border-color: rgba(122, 99, 134, 0.5); background: rgba(122, 99, 134, 0.08); }
 .hero-overlay-stack { position: relative; z-index: 6; margin-top: -100vh; padding-top: 100vh; }
