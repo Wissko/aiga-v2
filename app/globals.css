@@ -79,14 +79,18 @@ body.hero-scroll-locked {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.72)),
-    radial-gradient(circle at top, rgba(122, 99, 134, 0.16), transparent 42%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.46)),
+    radial-gradient(circle at top, rgba(122, 99, 134, 0.1), transparent 40%),
     var(--hero-surface-image) center top / cover no-repeat;
   background-attachment: local;
   background-position: center top;
   background-size: cover;
-  transform: translateZ(0);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: saturate(1.02) contrast(1.06);
+  transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 .hero-swallow-veil {
   position: absolute; inset: auto 0 -12vh; z-index: 2; height: clamp(16rem, 34vh, 28rem); pointer-events: none;
