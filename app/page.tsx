@@ -133,7 +133,7 @@ function HeroSection({ ctaLabel, exploreLabel }: { ctaLabel: string; exploreLabe
               </h1>
             </div>
           </motion.div>
-          <motion.div className="hero-copy hero-copy-floating" style={{ opacity: heroCopyOpacity, y: heroCopyY }}>
+          <motion.div className="hero-copy hero-copy-floating" style={{ opacity: heroCopyOpacity, x: '-50%', y: heroCopyY }}>
             <div className="hero-actions">
               <Link href="/contact" className="cta-btn hero-btn-primary">{ctaLabel}</Link>
               <Link href="/services" className="hero-btn-secondary">{exploreLabel}</Link>

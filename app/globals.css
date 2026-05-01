@@ -65,7 +65,7 @@ body.hero-scroll-locked {
 .hero-stage { position: relative; z-index: 1; height: 100%; display: grid; place-items: center; padding: clamp(6rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem); text-align: center; overflow: hidden; }
 .hero-content-lockup { position: absolute; inset: 0; z-index: 2; display: grid; place-items: center; padding: clamp(4.5rem, 7vw, 7rem) clamp(1.25rem, 4vw, 3.5rem); will-change: opacity, filter, transform, clip-path, mask-image; transform-origin: 50% 56%; }
 .hero-content-lockup-zoom { pointer-events: none; }
-.hero-copy-floating { position: absolute; left: 50%; bottom: clamp(3rem, 7vh, 5rem); transform: translateX(-50%); z-index: 4; width: min(calc(100% - 2rem), 40rem); }
+.hero-copy-floating { position: absolute; left: 50%; bottom: clamp(3rem, 7vh, 5rem); z-index: 4; width: min(calc(100% - 2rem), 40rem); margin-left: auto; margin-right: auto; }
 .hero-texture-overlay {
   position: absolute;
   inset: 0;
@@ -118,7 +118,14 @@ body.hero-scroll-locked {
 .hero-copy-floating .hero-actions {
   backdrop-filter: blur(10px);
 }
-.hero-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem; }
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
 .hero-btn-primary,
 .hero-btn-secondary {
   display: inline-flex;
