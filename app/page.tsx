@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
-import { motion, useMotionTemplate, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
 import Marquee from '@/components/Marquee';
 import { useLanguage } from '@/components/LanguageProvider';
@@ -97,31 +97,27 @@ const faqs = [
 
 function HeroSection({ ctaLabel, exploreLabel }: { ctaLabel: string; exploreLabel: string }) {
   const heroRef = useRef<HTMLElement>(null);
-  const [heroComplete, setHeroComplete] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
-
-  const heroZoom = useTransform(scrollYProgress, [0, 0.18, 0.46, 0.74, 1], [1, 2.2, 5.4, 11.5, 22]);
-  const heroTitleX = useTransform(scrollYProgress, [0, 0.18, 0.46, 0.74, 1], ['0%', '-1.5%', '-3.4%', '-5.8%', '-8.7%']);
-  const heroTitleY = useTransform(scrollYProgress, [0, 0.18, 0.46, 0.74, 1], ['0%', '0.4%', '1.1%', '2.2%', '3.1%']);
-  const heroCopyOpacity = useTransform(scrollYProgress, [0, 0.08, 0.16], [1, 0.55, 0]);
-  const heroCopyY = useTransform(scrollYProgress, [0, 0.16], ['0%', '20%']);
-  const heroVeilOpacity = useTransform(scrollYProgress, [0.78, 0.93, 1], [0, 0.32, 0.92]);
-  const heroVeilY = useTransform(scrollYProgress, [0.78, 1], ['12%', '-2%']);
-  const heroTextureOpacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0.97, 0.9]);
-
-  useMotionValueEvent(scrollYProgress, 'change', (value) => {
-    setHeroComplete(value >= 0.995);
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: shouldReduceMotion ? 260 : 110,
+    damping: shouldReduceMotion ? 38 : 24,
+    mass: shouldReduceMotion ? 0.22 : 0.32,
+    restDelta: 0.0008,
   });
 
-  useEffect(() => {
-    if (typeof document === 'undefined') return;
-    document.body.classList.toggle('hero-scroll-locked', !heroComplete);
-    return () => document.body.classList.remove('hero-scroll-locked');
-  }, [heroComplete]);
+  const heroZoom = useTransform(smoothProgress, [0, 0.2, 0.48, 0.76, 1], shouldReduceMotion ? [1, 1.08, 1.16, 1.2, 1.24] : [1, 1.85, 4.6, 10.8, 18]);
+  const heroTitleY = useTransform(smoothProgress, [0, 1], shouldReduceMotion ? ['0%', '1%'] : ['0%', '2.8%']);
+  const heroTitleX = useTransform(smoothProgress, [0, 1], shouldReduceMotion ? ['0%', '-0.5%'] : ['0%', '-6%']);
+  const heroCopyOpacity = useTransform(smoothProgress, [0, 0.08, 0.16], [1, 0.45, 0]);
+  const heroCopyY = useTransform(smoothProgress, [0, 0.16], ['0%', '18%']);
+  const heroVeilOpacity = useTransform(smoothProgress, [0.72, 0.92, 1], [0, 0.22, 0.86]);
+  const heroVeilY = useTransform(smoothProgress, [0.72, 1], ['10%', '0%']);
+  const heroGlowOpacity = useTransform(smoothProgress, [0, 0.7, 1], [0.85, 0.72, 0.5]);
 
   return (
     <section ref={heroRef} className="hero-section">
-      <motion.div className="hero-texture-overlay" aria-hidden="true" style={{ opacity: heroTextureOpacity }} />
+      <motion.div className="hero-texture-overlay" aria-hidden="true" style={{ opacity: heroGlowOpacity }} />
       <div className="hero-sticky-shell">
         <div className="hero-stage">
           <motion.div className="hero-swallow-veil" aria-hidden="true" style={{ opacity: heroVeilOpacity, y: heroVeilY }} />
