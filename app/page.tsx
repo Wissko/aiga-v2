@@ -107,7 +107,7 @@ function HeroSection({ ctaLabel, exploreLabel }: { ctaLabel: string; exploreLabe
   const heroCopyY = useTransform(scrollYProgress, [0, 0.16], ['0%', '20%']);
   const heroVeilOpacity = useTransform(scrollYProgress, [0.78, 0.93, 1], [0, 0.32, 0.92]);
   const heroVeilY = useTransform(scrollYProgress, [0.78, 1], ['12%', '-2%']);
-  const heroTextureOpacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0.94, 0.78]);
+  const heroTextureOpacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0.97, 0.9]);
 
   useMotionValueEvent(scrollYProgress, 'change', (value) => {
     setHeroComplete(value >= 0.995);

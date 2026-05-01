@@ -71,6 +71,13 @@ body.hero-scroll-locked {
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  overflow: hidden;
+  will-change: opacity;
+}
+.hero-texture-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
   background:
     linear-gradient(180deg, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.72)),
     radial-gradient(circle at top, rgba(122, 99, 134, 0.16), transparent 42%),
@@ -78,7 +85,8 @@ body.hero-scroll-locked {
   background-attachment: local;
   background-position: center top;
   background-size: cover;
-  will-change: opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 .hero-swallow-veil {
   position: absolute; inset: auto 0 -12vh; z-index: 2; height: clamp(16rem, 34vh, 28rem); pointer-events: none;
