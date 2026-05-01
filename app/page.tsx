@@ -4,7 +4,6 @@ import { useRef, useState } from 'react';
 import Link from 'next/link';
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
-import HeroWordmark from '@/components/HeroWordmark';
 import Marquee from '@/components/Marquee';
 import { useLanguage } from '@/components/LanguageProvider';
 import { getCopy } from '@/lib/site-copy';
@@ -107,9 +106,9 @@ function HeroSection({ ctaLabel, exploreLabel }: { ctaLabel: string; exploreLabe
     restDelta: 0.0008,
   });
 
-  const heroZoom = useTransform(smoothProgress, [0, 0.2, 0.48, 0.76, 1], shouldReduceMotion ? [1, 1.08, 1.14, 1.18, 1.22] : [1, 1.65, 3.9, 8.6, 14]);
-  const heroTitleY = useTransform(smoothProgress, [0, 1], shouldReduceMotion ? ['0%', '1%'] : ['0%', '2.2%']);
-  const heroTitleX = useTransform(smoothProgress, [0, 1], shouldReduceMotion ? ['0%', '-0.35%'] : ['0%', '-4.5%']);
+  const heroZoom = useTransform(smoothProgress, [0, 0.2, 0.48, 0.76, 1], shouldReduceMotion ? [1, 1.08, 1.16, 1.2, 1.24] : [1, 1.85, 4.6, 10.8, 18]);
+  const heroTitleY = useTransform(smoothProgress, [0, 1], shouldReduceMotion ? ['0%', '1%'] : ['0%', '2.8%']);
+  const heroTitleX = useTransform(smoothProgress, [0, 1], shouldReduceMotion ? ['0%', '-0.5%'] : ['0%', '-6%']);
   const heroCopyOpacity = useTransform(smoothProgress, [0, 0.08, 0.16], [1, 0.45, 0]);
   const heroCopyY = useTransform(smoothProgress, [0, 0.16], ['0%', '18%']);
   const heroVeilOpacity = useTransform(smoothProgress, [0.72, 0.92, 1], [0, 0.22, 0.86]);
@@ -124,7 +123,10 @@ function HeroSection({ ctaLabel, exploreLabel }: { ctaLabel: string; exploreLabe
           <motion.div className="hero-swallow-veil" aria-hidden="true" style={{ opacity: heroVeilOpacity, y: heroVeilY }} />
           <motion.div className="hero-content-lockup hero-content-lockup-zoom" style={{ scale: heroZoom, x: heroTitleX, y: heroTitleY }}>
             <div className="hero-stack">
-              <HeroWordmark />
+              <h1 className="hero-title" aria-label="TO BE SEEN">
+                <span className="hero-title-line hero-title-line-top">TO BE</span>
+                <span className="hero-title-line hero-title-line-bottom">SEEN</span>
+              </h1>
             </div>
           </motion.div>
           <motion.div className="hero-copy hero-copy-floating" style={{ opacity: heroCopyOpacity, x: '-50%', y: heroCopyY }}>
