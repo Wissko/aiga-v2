@@ -270,9 +270,9 @@ export default function HomePage() {
           </div>
           <AnimatedSection delay={0.15}>
             <div className="premium-grid-3">
-              {copy.metrics.map((item) => (
+              {copy.metrics.map((item, index) => (
                 <div key={item} className="metric-card">
-                  <div className="metric-value">01</div>
+                  <div className="metric-value">{String(index + 1).padStart(2, '0')}</div>
                   <div className="stat-label" style={{ marginTop: '0.75rem' }}>{item}</div>
                 </div>
               ))}
