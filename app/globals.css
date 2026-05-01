@@ -14,7 +14,7 @@
   --accent-strong: #684d74;
   --accent-soft: rgba(122, 99, 134, 0.12);
   --accent-line: rgba(122, 99, 134, 0.28);
-  --hero-surface-image: url('/crocodile-leather-texture.jpg');
+  --hero-surface-image: url('/Fondtexture.jpg');
 }
 
 @theme inline {
