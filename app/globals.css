@@ -35,17 +35,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 body.hero-scroll-locked {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .hero-section {
   position: relative;
   z-index: 0;
   min-height: 600vh;
-  background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.52)),
-    radial-gradient(circle at top, rgba(122, 99, 134, 0.14), transparent 42%),
-    linear-gradient(180deg, #070607 0%, #030203 34%, #000 100%);
+  background: linear-gradient(180deg, #070607 0%, #030203 34%, #000 100%);
 }
 .hero-section::before,
 .hero-section::after { content: ''; position: absolute; inset: 0; pointer-events: none; }
@@ -68,7 +65,7 @@ body.hero-scroll-locked {
 .hero-stage { position: relative; z-index: 1; height: 100%; display: grid; place-items: center; padding: clamp(6rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem); text-align: center; overflow: hidden; }
 .hero-content-lockup { position: absolute; inset: 0; z-index: 2; display: grid; place-items: center; padding: clamp(4.5rem, 7vw, 7rem) clamp(1.25rem, 4vw, 3.5rem); will-change: opacity, filter, transform, clip-path, mask-image; transform-origin: 50% 56%; }
 .hero-content-lockup-zoom { pointer-events: none; }
-.hero-copy-floating { position: absolute; left: 50%; bottom: clamp(3rem, 7vh, 5rem); transform: translateX(-50%); z-index: 4; }
+.hero-copy-floating { position: absolute; left: 50%; bottom: clamp(3rem, 7vh, 5rem); transform: translateX(-50%); z-index: 4; width: min(calc(100% - 2rem), 40rem); }
 .hero-texture-overlay {
   position: absolute;
   inset: 0;
@@ -78,6 +75,9 @@ body.hero-scroll-locked {
     linear-gradient(180deg, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.72)),
     radial-gradient(circle at top, rgba(122, 99, 134, 0.16), transparent 42%),
     var(--hero-surface-image) center top / cover no-repeat;
+  background-attachment: local;
+  background-position: center top;
+  background-size: cover;
   will-change: opacity;
 }
 .hero-swallow-veil {
@@ -811,14 +811,17 @@ body.hero-scroll-locked {
 }
 
 @media (max-width: 900px) {
-  .hero-section { min-height: 420vh; background-position: center; }
-  .hero-stage, .hero-content-lockup { padding: 6.5rem 1rem 3rem; }
-  .hero-title { width: 100%; line-height: 0.8; }
-  .hero-title-line-top { font-size: clamp(6.4rem, 20vw, 10rem); letter-spacing: 0.04em; -webkit-text-stroke: clamp(1.05px, 0.34vw, 1.8px) rgba(255, 255, 255, 0.78); text-stroke: clamp(1.05px, 0.34vw, 1.8px) rgba(255, 255, 255, 0.78); }
-  .hero-title-line-bottom { font-size: clamp(7.6rem, 24vw, 12rem); margin-top: -0.18em; margin-left: clamp(0.6rem, 2vw, 1.4rem); }
-  .hero-copy { width: min(100%, 28rem); margin-top: clamp(1rem, 5vw, 1.75rem); }
+  .hero-section { min-height: 320vh; }
+  .hero-stage, .hero-content-lockup { padding: 5.5rem 1rem 2.5rem; }
+  .hero-content-lockup { transform-origin: 50% 54%; }
+  .hero-title { width: 100%; line-height: 0.82; }
+  .hero-title-line-top { font-size: clamp(4.6rem, 18vw, 8rem); letter-spacing: 0.035em; -webkit-text-stroke: clamp(0.8px, 0.24vw, 1.4px) rgba(255, 255, 255, 0.72); text-stroke: clamp(0.8px, 0.24vw, 1.4px) rgba(255, 255, 255, 0.72); }
+  .hero-title-line-bottom { font-size: clamp(5.5rem, 21vw, 9rem); margin-top: -0.16em; margin-left: clamp(0.35rem, 1.5vw, 0.85rem); letter-spacing: 0.01em; }
+  .hero-copy,
+  .hero-copy-floating { width: min(calc(100% - 2rem), 24rem); }
+  .hero-copy-floating { bottom: 2rem; }
   .hero-actions { width: 100%; flex-direction: column; }
-  .hero-btn-primary, .hero-btn-secondary { width: min(100%, 24rem); }
+  .hero-btn-primary, .hero-btn-secondary { width: 100%; }
   .hero-overlay-stack { margin-top: -100vh; padding-top: 100vh; }
   .hero-overlay-stack::before { height: clamp(5.5rem, 18vw, 7rem); }
   .premium-grid-2, .premium-grid-3, .premium-grid-4, .service-layout, .service-feature-grid, .selected-systems-intro,
