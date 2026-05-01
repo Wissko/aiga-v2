@@ -14,7 +14,7 @@
   --accent-strong: #684d74;
   --accent-soft: rgba(122, 99, 134, 0.12);
   --accent-line: rgba(122, 99, 134, 0.28);
-  --hero-surface-image: url('/VirtualBackground.jpg');
+  --hero-surface-image: none;
 }
 
 @theme inline {
@@ -79,15 +79,9 @@ body.hero-scroll-locked {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.46)),
-    radial-gradient(circle at top, rgba(122, 99, 134, 0.1), transparent 40%),
-    var(--hero-surface-image) center top / cover no-repeat;
-  background-attachment: local;
-  background-position: center top;
-  background-size: cover;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  filter: saturate(1.02) contrast(1.06);
+    linear-gradient(180deg, rgba(0, 0, 0, 0.04), rgba(0, 0, 0, 0.16)),
+    radial-gradient(circle at top, rgba(122, 99, 134, 0.08), transparent 38%),
+    linear-gradient(180deg, #090909 0%, #040404 52%, #000000 100%);
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
