@@ -1,8 +1,8 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
-import { motion, useMotionTemplate, useScroll, useTransform } from 'framer-motion';
+import { motion, useMotionTemplate, useScroll, useTransform, useMotionValueEvent } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
 import Marquee from '@/components/Marquee';
 import { useLanguage } from '@/components/LanguageProvider';
@@ -97,34 +97,46 @@ const faqs = [
 
 function HeroSection({ ctaLabel, exploreLabel }: { ctaLabel: string; exploreLabel: string }) {
   const heroRef = useRef<HTMLElement>(null);
+  const [heroComplete, setHeroComplete] = useState(false);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.62, 0.82, 1], [1, 1, 0.84, 0.12]);
-  const heroBlur = useTransform(scrollYProgress, [0, 0.68, 1], ['0px', '0px', '12px']);
-  const heroMaskStop = useTransform(scrollYProgress, [0, 0.56, 0.78, 1], ['100%', '100%', '42%', '6%']);
-  const heroClipBottom = useTransform(scrollYProgress, [0, 0.56, 0.8, 1], ['0%', '4%', '48%', '96%']);
-  const heroVeilOpacity = useTransform(scrollYProgress, [0.5, 0.72, 1], [0, 0.38, 0.96]);
-  const heroVeilY = useTransform(scrollYProgress, [0.5, 1], ['16%', '-6%']);
-  const heroFilter = useMotionTemplate`blur(${heroBlur})`;
-  const heroMaskImage = useMotionTemplate`linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) ${heroMaskStop}, rgba(0,0,0,0.72) calc(${heroMaskStop} + 10%), rgba(0,0,0,0) 100%)`;
-  const heroClipPath = useMotionTemplate`inset(0 0 ${heroClipBottom} 0)`;
+
+  const heroZoom = useTransform(scrollYProgress, [0, 0.18, 0.46, 0.74, 1], [1, 2.2, 5.4, 11.5, 22]);
+  const heroTitleX = useTransform(scrollYProgress, [0, 0.18, 0.46, 0.74, 1], ['0%', '-1.5%', '-3.4%', '-5.8%', '-8.7%']);
+  const heroTitleY = useTransform(scrollYProgress, [0, 0.18, 0.46, 0.74, 1], ['0%', '0.4%', '1.1%', '2.2%', '3.1%']);
+  const heroCopyOpacity = useTransform(scrollYProgress, [0, 0.08, 0.16], [1, 0.55, 0]);
+  const heroCopyY = useTransform(scrollYProgress, [0, 0.16], ['0%', '20%']);
+  const heroVeilOpacity = useTransform(scrollYProgress, [0.78, 0.93, 1], [0, 0.32, 0.92]);
+  const heroVeilY = useTransform(scrollYProgress, [0.78, 1], ['12%', '-2%']);
+  const heroTextureOpacity = useTransform(scrollYProgress, [0, 0.7, 1], [1, 0.94, 0.78]);
+
+  useMotionValueEvent(scrollYProgress, 'change', (value) => {
+    setHeroComplete(value >= 0.995);
+  });
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    document.body.classList.toggle('hero-scroll-locked', !heroComplete);
+    return () => document.body.classList.remove('hero-scroll-locked');
+  }, [heroComplete]);
 
   return (
     <section ref={heroRef} className="hero-section">
+      <motion.div className="hero-texture-overlay" aria-hidden="true" style={{ opacity: heroTextureOpacity }} />
       <div className="hero-sticky-shell">
         <div className="hero-stage">
           <motion.div className="hero-swallow-veil" aria-hidden="true" style={{ opacity: heroVeilOpacity, y: heroVeilY }} />
-          <motion.div className="hero-content-lockup" style={{ opacity: heroOpacity, filter: heroFilter, clipPath: heroClipPath, WebkitMaskImage: heroMaskImage, maskImage: heroMaskImage }}>
+          <motion.div className="hero-content-lockup hero-content-lockup-zoom" style={{ scale: heroZoom, x: heroTitleX, y: heroTitleY }}>
             <div className="hero-stack">
               <h1 className="hero-title" aria-label="TO BE SEEN">
                 <span className="hero-title-line hero-title-line-top">TO BE</span>
                 <span className="hero-title-line hero-title-line-bottom">SEEN</span>
               </h1>
             </div>
-            <div className="hero-copy">
-              <div className="hero-actions">
-                <Link href="/contact" className="cta-btn hero-btn-primary">{ctaLabel}</Link>
-                <Link href="/services" className="hero-btn-secondary">{exploreLabel}</Link>
-              </div>
+          </motion.div>
+          <motion.div className="hero-copy hero-copy-floating" style={{ opacity: heroCopyOpacity, y: heroCopyY }}>
+            <div className="hero-actions">
+              <Link href="/contact" className="cta-btn hero-btn-primary">{ctaLabel}</Link>
+              <Link href="/services" className="hero-btn-secondary">{exploreLabel}</Link>
             </div>
           </motion.div>
         </div>

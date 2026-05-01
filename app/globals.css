@@ -34,15 +34,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+body.hero-scroll-locked {
+  overflow: hidden;
+}
 
 .hero-section {
   position: relative;
   z-index: 0;
-  min-height: 220vh;
+  min-height: 600vh;
   background:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.68)),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.52)),
     radial-gradient(circle at top, rgba(122, 99, 134, 0.14), transparent 42%),
-    var(--hero-surface-image) center top / cover no-repeat,
     linear-gradient(180deg, #070607 0%, #030203 34%, #000 100%);
 }
 .hero-section::before,
@@ -63,8 +65,21 @@ body {
   box-shadow: inset 0 -14rem 10rem rgba(0, 0, 0, 0.42);
 }
 .hero-sticky-shell { position: sticky; top: 0; z-index: 1; height: 100vh; overflow: clip; background: transparent; }
-.hero-stage { position: relative; z-index: 1; height: 100%; display: grid; place-items: center; padding: clamp(6rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem); text-align: center; }
-.hero-content-lockup { position: absolute; inset: 0; z-index: 1; display: grid; place-items: center; padding: clamp(4.5rem, 7vw, 7rem) clamp(1.25rem, 4vw, 3.5rem); will-change: opacity, filter, transform, clip-path, mask-image; }
+.hero-stage { position: relative; z-index: 1; height: 100%; display: grid; place-items: center; padding: clamp(6rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem); text-align: center; overflow: hidden; }
+.hero-content-lockup { position: absolute; inset: 0; z-index: 2; display: grid; place-items: center; padding: clamp(4.5rem, 7vw, 7rem) clamp(1.25rem, 4vw, 3.5rem); will-change: opacity, filter, transform, clip-path, mask-image; transform-origin: 50% 56%; }
+.hero-content-lockup-zoom { pointer-events: none; }
+.hero-copy-floating { position: absolute; left: 50%; bottom: clamp(3rem, 7vh, 5rem); transform: translateX(-50%); z-index: 4; }
+.hero-texture-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.22), rgba(0, 0, 0, 0.72)),
+    radial-gradient(circle at top, rgba(122, 99, 134, 0.16), transparent 42%),
+    var(--hero-surface-image) center top / cover no-repeat;
+  will-change: opacity;
+}
 .hero-swallow-veil {
   position: absolute; inset: auto 0 -12vh; z-index: 2; height: clamp(16rem, 34vh, 28rem); pointer-events: none;
   background:
@@ -91,7 +106,7 @@ body {
   text-stroke: clamp(1.35px, 0.12vw, 2.2px) rgba(255, 255, 255, 0.2);
 }
 .hero-title-line-bottom {
-  font-size: clamp(9rem, 22vw, 22rem); margin-top: -0.17em; margin-left: clamp(1rem, 3vw, 3.5rem); letter-spacing: 0.025em; color: rgba(255, 255, 255, 0.96);
+  font-size: clamp(9rem, 22vw, 22rem); margin-top: -0.17em; margin-left: clamp(0.7rem, 2.25vw, 2.6rem); letter-spacing: 0.012em; color: rgba(255, 255, 255, 0.96);
   -webkit-text-stroke: clamp(0.6px, 0.08vw, 1.25px) rgba(255, 255, 255, 0.14);
   text-stroke: clamp(0.6px, 0.08vw, 1.25px) rgba(255, 255, 255, 0.14);
 }
@@ -100,6 +115,9 @@ body {
 .heading-section { font-family: var(--font-logo) !important; font-weight: 600; text-transform: uppercase; letter-spacing: 0.015em; line-height: 0.96; }
 .heading-card { font-family: var(--font-logo) !important; font-weight: 500; text-transform: uppercase; letter-spacing: 0.025em; line-height: 1; }
 .hero-copy { width: min(100%, 40rem); margin-top: clamp(1.25rem, 3vw, 2.25rem); display: flex; flex-direction: column; align-items: center; gap: 0; }
+.hero-copy-floating .hero-actions {
+  backdrop-filter: blur(10px);
+}
 .hero-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem; }
 .hero-btn-primary,
 .hero-btn-secondary {
@@ -793,7 +811,7 @@ body {
 }
 
 @media (max-width: 900px) {
-  .hero-section { min-height: 200vh; background-position: center; }
+  .hero-section { min-height: 420vh; background-position: center; }
   .hero-stage, .hero-content-lockup { padding: 6.5rem 1rem 3rem; }
   .hero-title { width: 100%; line-height: 0.8; }
   .hero-title-line-top { font-size: clamp(6.4rem, 20vw, 10rem); letter-spacing: 0.04em; -webkit-text-stroke: clamp(1.05px, 0.34vw, 1.8px) rgba(255, 255, 255, 0.78); text-stroke: clamp(1.05px, 0.34vw, 1.8px) rgba(255, 255, 255, 0.78); }
