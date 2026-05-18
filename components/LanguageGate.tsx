@@ -16,6 +16,9 @@ export default function LanguageGate() {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.3 }}
         className="language-gate"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="language-gate-title"
       >
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -25,7 +28,7 @@ export default function LanguageGate() {
           className="language-gate-card"
         >
           <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{t.launcher.eyebrow}</p>
-          <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 60px)', color: 'var(--white)', marginBottom: '1rem' }}>{t.launcher.title}</h2>
+          <h2 id="language-gate-title" className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 60px)', color: 'var(--white)', marginBottom: '1rem' }}>{t.launcher.title}</h2>
           <p className="language-gate-copy">{t.launcher.body}</p>
           <div className="language-gate-actions">
             <button className="cta-btn" onClick={() => setLocale('en')}>{t.launcher.en}</button>

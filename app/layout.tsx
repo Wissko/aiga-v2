@@ -6,19 +6,46 @@ import Footer from '@/components/Footer';
 import { LanguageProvider } from '@/components/LanguageProvider';
 import LanguageGate from '@/components/LanguageGate';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tobeseen.agency';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: 'TO BE SEEN | Premium Business Systems',
-    template: '%s | To Be Seen',
+    template: '%s | TO BE SEEN',
   },
   description:
     'TO BE SEEN builds premium business systems: websites, wallet loyalty, bookings, follow-up, and digital structure designed to convert cleanly.',
   keywords: ['TO BE SEEN', 'premium business systems', 'website creation', 'wallet loyalty', 'bookings', 'follow-up'],
-  authors: [{ name: 'To Be Seen' }],
+  authors: [{ name: 'TO BE SEEN' }],
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-AU': '/',
+      fr: '/',
+    },
+  },
   openGraph: {
     type: 'website',
     locale: 'en_AU',
-    siteName: 'To Be Seen',
+    alternateLocale: ['fr_FR'],
+    url: '/',
+    siteName: 'TO BE SEEN',
+    title: 'TO BE SEEN | Premium Business Systems',
+    description:
+      'Premium websites, wallet loyalty, bookings, follow-up, and digital systems designed for trust and conversion.',
+    images: [{ url: '/fontsite.png', width: 1200, height: 630, alt: 'TO BE SEEN' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'TO BE SEEN | Premium Business Systems',
+    description:
+      'Premium websites, wallet loyalty, bookings, follow-up, and digital systems designed for trust and conversion.',
+    images: ['/fontsite.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

@@ -22,7 +22,8 @@ const expectations = [
 export default function ContactPage() {
   const { locale } = useLanguage();
   const copy = getCopy(locale).contact;
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [error, setError] = useState('');
   const [form, setForm] = useState({ name: '', email: '', business: '', service: '', message: '' });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -32,8 +33,25 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
-    await new Promise((r) => setTimeout(r, 1200));
-    setStatus('sent');
+    setError('');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error || 'Message could not be sent.');
+      }
+
+      setStatus('sent');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Message could not be sent.');
+      setStatus('error');
+    }
   };
 
   return (
@@ -96,6 +114,11 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1.25rem' }}>
+                  {status === 'error' && (
+                    <p role="alert" style={{ color: 'var(--accent-strong)', background: 'rgba(122,99,134,0.1)', border: '1px solid rgba(122,99,134,0.2)', borderRadius: '1rem', padding: '0.9rem 1rem' }}>
+                      {error}
+                    </p>
+                  )}
                   <div>
                     <label className="contact-label">{copy.labels.name}</label>
                     <input className="contact-input" name="name" type="text" value={form.name} onChange={handleChange} placeholder={copy.placeholders.name} required />
