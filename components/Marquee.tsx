@@ -17,9 +17,9 @@ export default function Marquee({
 }: MarqueeProps) {
   const items = Array(12).fill(text);
   const sizeMap = {
-    sm: 'clamp(20px, 3vw, 36px)',
-    md: 'clamp(26px, 4.5vw, 58px)',
-    lg: 'clamp(34px, 6vw, 72px)',
+    sm: 'clamp(24px, 3vw, 36px)',
+    md: 'clamp(36px, 5vw, 64px)',
+    lg: 'clamp(48px, 7vw, 80px)',
   };
 
   const bg = dark ? 'var(--black)' : 'var(--off-white)';
@@ -32,7 +32,6 @@ export default function Marquee({
         background: bg,
         overflow: 'hidden',
         padding: '1.25rem 0',
-        maxWidth: '100vw',
         borderTop: dark ? '1px solid var(--border-dark)' : '1px solid var(--border-light)',
         borderBottom: dark ? '1px solid var(--border-dark)' : '1px solid var(--border-light)',
       }}
@@ -41,9 +40,7 @@ export default function Marquee({
         className="marquee-track"
         style={{
           display: 'flex',
-          width: 'max-content',
           whiteSpace: 'nowrap',
-          paddingLeft: 'max(1.25rem, 4vw)',
           '--marquee-speed': `${speed}s`,
         } as React.CSSProperties}
       >
@@ -56,7 +53,7 @@ export default function Marquee({
               fontWeight: 700,
               textTransform: 'uppercase',
               color: textColor,
-              paddingRight: 'clamp(1.25rem, 4vw, 2.5rem)',
+              paddingRight: '1.5rem',
               display: 'inline-flex',
               alignItems: 'center',
               gap: '0.75rem',

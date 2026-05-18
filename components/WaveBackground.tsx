@@ -57,7 +57,7 @@ export default function WaveBackground() {
         <path
           className="w1"
           d="M0,500 C200,420 400,580 600,500 C800,420 1000,580 1200,500 C1320,440 1400,480 1440,460 L1440,900 L0,900 Z"
-          fill="rgba(200,255,0,0.022)"
+          fill="rgba(200,240,0,0.022)"
         />
       </svg>
 
@@ -69,7 +69,7 @@ export default function WaveBackground() {
         transform: 'translateX(-50%)',
         width: '80vw',
         height: '60vh',
-        background: 'radial-gradient(ellipse at center, rgba(200,255,0,0.04) 0%, transparent 65%)',
+        background: 'radial-gradient(ellipse at center, rgba(200,240,0,0.04) 0%, transparent 65%)',
         pointerEvents: 'none',
       }} />
     </div>

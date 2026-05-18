@@ -60,7 +60,7 @@ export default function ContactPage() {
         <div className="page-hero-gradient" />
         <div className="editorial-shell" style={{ position: 'relative', zIndex: 2 }}>
           <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.heroEyebrow}</p>
-          <h1 className="heading-display" style={{ fontSize: 'clamp(64px, 11vw, 140px)', color: 'var(--white)', marginBottom: '1.5rem', maxWidth: '9em' }}>{copy.heroTitle}</h1>
+          <h1 className="heading-display" style={{ fontSize: 'clamp(72px, 12vw, 150px)', color: 'var(--white)', marginBottom: '1.5rem', maxWidth: '10em' }}>{copy.heroTitle}</h1>
           <p className="page-hero-copy">
             {copy.heroBody}
           </p>
@@ -69,7 +69,7 @@ export default function ContactPage() {
 
       <Marquee text={copy.marquee} separator="·" dark={true} size="md" speed={22} />
 
-      <section className="section-light" style={{ padding: 'clamp(4rem, 7vw, 6.5rem) clamp(1.5rem, 6vw, 5rem)' }}>
+      <section className="section-light" style={{ padding: 'clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
         <div className="editorial-shell premium-grid-2" style={{ alignItems: 'start' }}>
           <AnimatedSection>
             <div style={{ display: 'grid', gap: '1.25rem' }}>
@@ -115,7 +115,7 @@ export default function ContactPage() {
               ) : (
                 <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1.25rem' }}>
                   {status === 'error' && (
-                    <p role="alert" style={{ color: 'var(--accent-strong)', background: 'rgba(200,255,0,0.1)', border: '1px solid rgba(200,255,0,0.2)', borderRadius: '1rem', padding: '0.9rem 1rem' }}>
+                    <p role="alert" style={{ color: 'var(--accent-strong)', background: 'rgba(122,99,134,0.1)', border: '1px solid rgba(122,99,134,0.2)', borderRadius: '1rem', padding: '0.9rem 1rem' }}>
                       {error}
                     </p>
                   )}
