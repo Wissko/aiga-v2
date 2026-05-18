@@ -40,11 +40,11 @@ function AnimatedLine({ delay = 0 }: { delay?: number }) {
 
 export default function Footer() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: '-100px' });
+  const inView = useInView(ref, { once: true, margin: '200px 0px' });
   const { t } = useLanguage();
 
   return (
-    <footer ref={ref} style={{ background: 'var(--black)', position: 'relative', overflow: 'hidden' }}>
+    <footer ref={ref} className="site-footer" style={{ background: 'var(--black)', position: 'relative', overflow: 'hidden' }}>
 
       {/* Wave SVG separator — gloss effect */}
       <div style={{ position: 'relative', marginBottom: '-1px' }}>
@@ -90,7 +90,7 @@ export default function Footer() {
       }} />
 
       {/* Ticker */}
-      <div className="ticker-wrap" style={{ overflow: 'hidden', padding: '2rem 0' }}>
+      <div className="ticker-wrap footer-ticker" style={{ overflow: 'hidden', padding: '2rem 0' }}>
         <div
           className="marquee-track"
           style={{
@@ -126,13 +126,13 @@ export default function Footer() {
       <AnimatedLine />
 
       {/* Footer body */}
-      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '4rem 2rem 2rem' }}>
+      <div className="site-footer-body" style={{ maxWidth: '1400px', margin: '0 auto', padding: '4rem 2rem 2rem' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: '3rem', marginBottom: '3rem' }}>
 
           {/* Brand */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            initial={false}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: EASE }}
           >
             <div style={{
@@ -183,8 +183,8 @@ export default function Footer() {
           ] as const).map(({ category, items, labels }, ci) => (
             <motion.div
               key={category}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              initial={false}
+              animate={inView ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.1 + ci * 0.1, ease: EASE }}
             >
               <h3 className="heading-card" style={{
@@ -227,8 +227,8 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
+          initial={false}
+          animate={inView ? { opacity: 1 } : { opacity: 1 }}
           transition={{ duration: 0.7, delay: 0.4, ease: EASE }}
           style={{
             paddingTop: '1.5rem',
