@@ -19,7 +19,7 @@ const featuredSystems = [
   {
     number: '02',
     title: 'Booking Flows That Remove Friction',
-    summary: 'Online scheduling designed to reduce back-and-forth, absences, and admin drag.',
+    summary: 'Online scheduling designed to reduce back-and-forth, no-shows, and admin drag.',
     details: 'Built to feel simple for clients and dependable for your team.',
     href: '/services#bookings',
   },
@@ -72,7 +72,7 @@ const services = [
     num: '06.',
     title: 'FULL DIGITALISATION BUNDLE',
     desc: 'A complete operating layer where website, loyalty, bookings, and follow-up work as one system.',
-    tag: 'Offre complète',
+    tag: 'Bundle',
     href: '/services#bundle',
   },
 ];
@@ -95,7 +95,7 @@ const faqs = [
   },
 ];
 
-function HeroSection({ ctaLabel, exploreLabel, manifesto, leftRail, rightRail }: { ctaLabel: string; exploreLabel: string; manifesto: string; leftRail: string; rightRail: string }) {
+function HeroSection({ ctaLabel, exploreLabel, manifesto }: { ctaLabel: string; exploreLabel: string; manifesto: string }) {
   const heroRef = useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
@@ -120,8 +120,8 @@ function HeroSection({ ctaLabel, exploreLabel, manifesto, leftRail, rightRail }:
       <motion.div className="hero-texture-overlay" aria-hidden="true" style={{ opacity: heroGlowOpacity }} />
       <div className="hero-sticky-shell">
         <div className="hero-stage">
-          <div className="hero-poster-rail hero-poster-rail-left" aria-hidden="true">{leftRail}</div>
-          <div className="hero-poster-rail hero-poster-rail-right" aria-hidden="true">{rightRail}</div>
+          <div className="hero-poster-rail hero-poster-rail-left" aria-hidden="true">AIGA SYSTEMS</div>
+          <div className="hero-poster-rail hero-poster-rail-right" aria-hidden="true">VISIBILITY / RETENTION / RESPONSE</div>
           <motion.div className="hero-swallow-veil" aria-hidden="true" style={{ opacity: heroVeilOpacity, y: heroVeilY }} />
           <motion.div className="hero-content-lockup hero-content-lockup-zoom" style={{ scale: heroZoom, x: heroTitleX, y: heroTitleY }}>
             <div className="hero-stack">
@@ -148,41 +148,6 @@ export default function HomePage() {
   const { locale } = useLanguage();
   const copy = getCopy(locale).home;
   const localizedFaqs = copy.faqs.map(([q, a], index) => ({ ...faqs[index], q, a }));
-  const localizedFeaturedSystems = locale === 'fr'
-    ? [
-        {
-          number: '01',
-          title: 'Fidélité digitale Wallet',
-          summary: 'Capture les clients directement dans Apple Wallet et Google Wallet pour suivre les visites et gérer les récompenses.',
-          details: 'Idéal pour les entreprises qui perdent de la rétention et du revenu récurrent faute de lien direct avec leurs clients.',
-          href: '/services#wallet-loyalty',
-        },
-        {
-          number: '02',
-          title: 'Parcours de réservation sans friction',
-          summary: 'Une prise de rendez-vous en ligne pensée pour réduire les allers-retours, les absences et la charge administrative.',
-          details: 'Construit pour rester simple côté client et fiable côté équipe.',
-          href: '/services#bookings',
-        },
-        {
-          number: '03',
-          title: 'Systèmes de suivi qui font revenir',
-          summary: 'Des parcours CRM qui réactivent les anciens clients, demandent des avis et génèrent du revenu récurrent.',
-          details: 'Parfait quand la croissance existe déjà dans la base client mais qu’aucun système ne déclenche l’action.',
-          href: '/services#crm',
-        },
-      ]
-    : featuredSystems;
-  const localizedServices = locale === 'fr'
-    ? [
-        { num: '01.', title: 'CRÉATION DE SITE', desc: 'Des sites rapides et premium conçus pour inspirer confiance et guider vers une demande claire.', tag: 'Conception digitale', href: '/services#websites' },
-        { num: '02.', title: 'FIDÉLITÉ WALLET', desc: 'Une connexion directe dans Apple et Google Wallet pour suivre les visites et créer du revenu récurrent.', tag: 'Rétention', href: '/services#wallet-loyalty' },
-        { num: '03.', title: 'RÉSERVATIONS AUTOMATISÉES', desc: 'Une expérience de réservation plus claire sur votre site, vos fiches de recherche et votre agenda existant.', tag: 'Réservation', href: '/services#bookings' },
-        { num: '04.', title: 'CRM DE SUIVI CLIENT', desc: 'Des messages et rappels structurés qui transforment les clients ponctuels en clients réguliers.', tag: 'CRM', href: '/services#crm' },
-        { num: '05.', title: 'SEO & PERFORMANCE', desc: 'Des fondations techniques, de la visibilité search et du reporting pour prendre de meilleures décisions.', tag: 'SEO', href: '/services#seo-performance' },
-        { num: '06.', title: 'DIGITALISATION COMPLÈTE', desc: 'Une couche opérationnelle complète où site, fidélité, réservations et suivi fonctionnent ensemble.', tag: 'Offre complète', href: '/services#bundle' },
-      ]
-    : services;
 
   return (
     <>
@@ -190,8 +155,6 @@ export default function HomePage() {
         ctaLabel={copy.nextCta}
         exploreLabel={locale === 'fr' ? 'Découvrir les services' : 'Explore services'}
         manifesto={locale === 'fr' ? 'Des systèmes digitaux conçus pour rendre les bonnes entreprises impossibles à ignorer.' : 'Digital systems built to make strong businesses impossible to ignore.'}
-        leftRail={locale === 'fr' ? 'SYSTÈMES AIGA' : 'AIGA SYSTEMS'}
-        rightRail={locale === 'fr' ? 'VISIBILITÉ / RÉTENTION / RÉPONSE' : 'VISIBILITY / RETENTION / RESPONSE'}
       />
       <div className="hero-overlay-stack">
         <Marquee text={copy.marquee} separator="·" dark={true} size="md" speed={20} />
@@ -238,7 +201,7 @@ export default function HomePage() {
           </AnimatedSection>
 
           <div className="premium-grid-3">
-            {localizedFeaturedSystems.map((system, index) => (
+            {featuredSystems.map((system, index) => (
               <AnimatedSection key={system.title} delay={index * 0.08}>
                 <Link href={system.href} style={{ textDecoration: 'none', color: 'inherit', display: 'block', height: '100%' }}>
                   <article className="premium-card premium-card-dark selected-system-card">
@@ -275,7 +238,7 @@ export default function HomePage() {
           </AnimatedSection>
 
           <div style={{ display: 'grid', gap: '1rem' }}>
-            {localizedServices.map((service, index) => (
+            {services.map((service, index) => (
               <AnimatedSection key={service.num} delay={index * 0.05}>
                 <Link href={service.href} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
                   <div className="premium-card premium-card-light service-row-card">
