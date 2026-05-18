@@ -10,10 +10,10 @@
   --muted-light: rgba(5, 5, 6, 0.62);
   --border-dark: rgba(255, 255, 255, 0.14);
   --border-light: rgba(0, 0, 0, 0.14);
-  --accent: #eaff00;
-  --accent-strong: #f6ff35;
-  --accent-soft: rgba(234, 255, 0, 0.18);
-  --accent-line: rgba(234, 255, 0, 0.48);
+  --accent: #c8ff00;
+  --accent-strong: #e4ff46;
+  --accent-soft: rgba(200, 255, 0, 0.14);
+  --accent-line: rgba(200, 255, 0, 0.36);
   --poster-black: #030304;
   --poster-cream: #efe9dd;
   --hero-surface-image: none;
@@ -71,7 +71,7 @@ body {
 .hero-section::before {
   opacity: 0.9;
   background:
-    radial-gradient(44vw 44vw at 50% 48%, rgba(234, 255, 0, 0.24), transparent 58%),
+    radial-gradient(44vw 44vw at 50% 48%, rgba(200, 255, 0, 0.18), transparent 58%),
     radial-gradient(70vw 58vw at 50% 8%, rgba(255, 255, 255, 0.1), transparent 54%);
 }
 .hero-section::after {
@@ -85,9 +85,9 @@ body {
   position: absolute;
   width: min(78vw, 74rem);
   aspect-ratio: 1;
-  border: clamp(12px, 2.2vw, 28px) solid rgba(234, 255, 0, 0.98);
+  border: clamp(12px, 2.2vw, 28px) solid rgba(200, 255, 0, 0.92);
   border-radius: 50%;
-  opacity: 0.38;
+  opacity: 0.28;
   filter: blur(0.2px);
   transform: translateY(2vh);
   pointer-events: none;
@@ -115,9 +115,9 @@ body {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(135deg, transparent 0 46%, rgba(234,255,0,0.18) 46.2% 46.5%, transparent 46.7%),
+    linear-gradient(135deg, transparent 0 46%, rgba(200,255,0,0.12) 46.2% 46.5%, transparent 46.7%),
     radial-gradient(58vw 58vw at 50% 42%, rgba(255, 255, 255, 0.12), transparent 46%),
-    radial-gradient(70vw 70vw at 50% 42%, rgba(234, 255, 0, 0.18), transparent 54%);
+    radial-gradient(70vw 70vw at 50% 42%, rgba(200, 255, 0, 0.12), transparent 54%);
   transform: translateZ(0);
 }
 .hero-swallow-veil {
@@ -158,10 +158,10 @@ body {
   text-stroke: clamp(1.35px, 0.12vw, 2.2px) rgba(255, 255, 255, 0.32);
 }
 .hero-title-line-bottom {
-  font-size: clamp(9rem, 22vw, 22rem); margin-top: -0.17em; margin-left: clamp(0.7rem, 2.25vw, 2.6rem); letter-spacing: 0.012em; color: var(--accent-strong);
-  text-shadow: 0 0 18px rgba(234,255,0,0.58), 0 0 66px rgba(234,255,0,0.32), 0 22px 68px rgba(0,0,0,0.64);
-  -webkit-text-stroke: clamp(0.75px, 0.09vw, 1.45px) rgba(0, 0, 0, 0.34);
-  text-stroke: clamp(0.75px, 0.09vw, 1.45px) rgba(0, 0, 0, 0.34);
+  font-size: clamp(9rem, 22vw, 22rem); margin-top: -0.17em; margin-left: clamp(0.7rem, 2.25vw, 2.6rem); letter-spacing: 0.012em; color: var(--accent);
+  text-shadow: 0 0 34px rgba(200,255,0,0.22), 0 20px 62px rgba(0,0,0,0.55);
+  -webkit-text-stroke: clamp(0.6px, 0.08vw, 1.25px) rgba(255, 255, 255, 0.08);
+  text-stroke: clamp(0.6px, 0.08vw, 1.25px) rgba(255, 255, 255, 0.08);
 }
 .heading-hero-font { font-family: var(--font-logo); text-transform: uppercase; line-height: 0.92; }
 .heading-display { font-family: var(--font-logo) !important; font-weight: 700; text-transform: uppercase; letter-spacing: -0.015em; line-height: 0.82; text-wrap: balance; text-shadow: 0 18px 45px rgba(0, 0, 0, 0.28); }
@@ -301,18 +301,6 @@ body {
 .premium-eyebrow { font-size: 12px; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
 .premium-kicker { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
 .premium-number { font-size: 12px; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); }
-.section-light .premium-eyebrow,
-.section-light .premium-kicker {
-  display: inline-flex;
-  align-items: center;
-  width: fit-content;
-  padding: 0.34rem 0.58rem 0.3rem;
-  border: 1px solid rgba(5, 5, 6, 0.12);
-  border-radius: 999px;
-  background: rgba(234, 255, 0, 0.74);
-  color: var(--black) !important;
-  box-shadow: 0 0 0 5px rgba(234, 255, 0, 0.12);
-}
 .premium-list { list-style: none; display: grid; gap: 0.9rem; }
 .premium-list li { display: grid; grid-template-columns: 10px 1fr; gap: 0.9rem; align-items: start; }
 .premium-dot { width: 10px; height: 10px; border-radius: 999px; background: var(--accent); margin-top: 0.45rem; box-shadow: 0 0 0 5px rgba(200,255,0,0.14); }
