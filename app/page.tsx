@@ -1,345 +1,189 @@
 'use client';
 
-import { useRef, useState } from 'react';
 import Link from 'next/link';
-import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import AnimatedSection from '@/components/AnimatedSection';
-import Marquee from '@/components/Marquee';
 import { useLanguage } from '@/components/LanguageProvider';
-import { getCopy } from '@/lib/site-copy';
 
-const featuredSystems = [
-  {
-    number: '01',
-    title: 'Wallet-First Digital Loyalty',
-    summary: 'Captures customers directly in their native Apple and Google Wallets to track visits and manage rewards.',
-    details: 'Best for businesses losing retention and missing out on repeat revenue from invisible customers.',
-    href: '/services#wallet-loyalty',
+const machineBlocks = {
+  fr: {
+    eyebrow: 'AIGA V2 / atelier IA',
+    heroTitle: 'On rend les machines utiles.',
+    manifesto:
+      "AIGA installe des systèmes IA sobres, robustes et lisibles. Pas de magie. Pas de théâtre. Des machines qui répondent juste, travaillent proprement et soulagent vraiment l'équipe.",
+    primaryCta: 'Diagnostiquer un usage',
+    secondaryCta: 'Voir la méthode',
+    utilityTitle: 'Ce qu’on rend utile',
+    utilityIntro:
+      "On part des irritants réels du terrain, puis on construit l'outil minimum qui tient dans la durée.",
+    methodTitle: 'Une machine bien élevée se règle avant de tourner.',
+    methodBody:
+      "Chaque système est cadré, testé et documenté. L'IA reste au service du métier, avec des garde-fous clairs et une sortie humaine quand il le faut.",
+    finalTitle: 'Vous avez un process qui coince ? On peut le mettre sur établi.',
+    finalBody:
+      "En 30 minutes, on identifie ce qui mérite une machine, ce qui mérite une règle simple, et ce qu'il ne faut surtout pas automatiser.",
+    finalCta: 'Ouvrir un chantier',
+    blocks: [
+      ['Réponse client', 'Trier les demandes, préparer les réponses, réduire les oublis sans robotiser la relation.'],
+      ['Opérations internes', 'Transformer les routines floues en checklists, tableaux de bord et assistants d’exécution.'],
+      ['Vente et suivi', 'Relancer au bon moment, qualifier proprement, garder une trace exploitable.'],
+      ['Connaissance métier', 'Rendre les docs, procédures et décisions accessibles sans fouille interminable.'],
+    ],
+    method: [
+      ['01', 'Cartographier', 'Identifier les gestes répétitifs, les risques et les décisions qui doivent rester humaines.'],
+      ['02', 'Assembler', 'Brancher les bons outils, écrire les règles, simplifier le parcours avant d’ajouter de l’IA.'],
+      ['03', 'Éduquer', 'Tester les cas limites, documenter le fonctionnement et former l’équipe à reprendre la main.'],
+    ],
+    gauges: ['Utile', 'Lisible', 'Contrôlé'],
   },
-  {
-    number: '02',
-    title: 'Booking Flows That Remove Friction',
-    summary: 'Online scheduling designed to reduce back-and-forth, no-shows, and admin drag.',
-    details: 'Built to feel simple for clients and dependable for your team.',
-    href: '/services#bookings',
+  en: {
+    eyebrow: 'AIGA V2 / AI workshop',
+    heroTitle: 'We make machines useful.',
+    manifesto:
+      'AIGA installs sober, sturdy, legible AI systems. No magic. No theatre. Machines that answer correctly, work cleanly and genuinely reduce the load on the team.',
+    primaryCta: 'Diagnose a use case',
+    secondaryCta: 'See the method',
+    utilityTitle: 'What we make useful',
+    utilityIntro:
+      'We start with real operational friction, then build the smallest tool that can hold up over time.',
+    methodTitle: 'A well raised machine is tuned before it runs.',
+    methodBody:
+      'Every system is framed, tested and documented. AI stays in service of the work, with clear guardrails and a human exit when needed.',
+    finalTitle: 'Got a process that jams? Put it on the bench.',
+    finalBody:
+      'In 30 minutes, we identify what deserves a machine, what deserves a simple rule, and what should not be automated at all.',
+    finalCta: 'Open a workbench',
+    blocks: [
+      ['Customer response', 'Triage requests, prepare replies and reduce missed follow-ups without flattening the relationship.'],
+      ['Internal operations', 'Turn vague routines into checklists, dashboards and execution assistants.'],
+      ['Sales and follow-up', 'Follow up at the right moment, qualify cleanly and keep usable traces.'],
+      ['Business knowledge', 'Make documents, procedures and decisions accessible without endless digging.'],
+    ],
+    method: [
+      ['01', 'Map', 'Identify repetitive moves, risks and the decisions that must stay human.'],
+      ['02', 'Assemble', 'Connect the right tools, write the rules and simplify the path before adding AI.'],
+      ['03', 'Train', 'Test edge cases, document behaviour and teach the team how to take over.'],
+    ],
+    gauges: ['Useful', 'Legible', 'Controlled'],
   },
-  {
-    number: '03',
-    title: 'Follow-Up Systems That Bring People Back',
-    summary: 'CRM journeys that re-engage past clients, request reviews, and keep revenue active.',
-    details: 'Ideal when growth is already in your database but nothing is prompting action.',
-    href: '/services#crm',
-  },
-];
-
-const services = [
-  {
-    num: '01.',
-    title: 'WEBSITE CREATION',
-    desc: 'Fast, premium websites built to create trust and move visitors toward a clear enquiry.',
-    tag: 'Web design',
-    href: '/services#websites',
-  },
-  {
-    num: '02.',
-    title: 'WALLET-FIRST LOYALTY',
-    desc: 'A direct connection in Apple and Google Wallets to track visits and drive predictable repeat revenue.',
-    tag: 'Retention',
-    href: '/services#wallet-loyalty',
-  },
-  {
-    num: '03.',
-    title: 'AUTOMATED BOOKINGS',
-    desc: 'A cleaner scheduling experience across your site, search listings, and existing calendar.',
-    tag: 'Scheduling',
-    href: '/services#bookings',
-  },
-  {
-    num: '04.',
-    title: 'CLIENT FOLLOW-UP CRM',
-    desc: 'Structured messages and reminders that turn one-time clients into repeat business.',
-    tag: 'CRM',
-    href: '/services#crm',
-  },
-  {
-    num: '05.',
-    title: 'SEO & PERFORMANCE INSIGHTS',
-    desc: 'Technical foundations, search visibility, and reporting that make decisions easier.',
-    tag: 'SEO',
-    href: '/services#seo-performance',
-  },
-  {
-    num: '06.',
-    title: 'FULL DIGITALISATION BUNDLE',
-    desc: 'A complete operating layer where website, loyalty, bookings, and follow-up work as one system.',
-    tag: 'Bundle',
-    href: '/services#bundle',
-  },
-];
-
-const faqs = [
-  {
-    num: '01.',
-    q: 'How do we know which service to start with?',
-    a: 'We start with the commercial bottleneck. For some businesses that is lack of retention. For others it is weak follow-up, poor booking flow, or a website that does not build trust. The strategy call is used to prioritise what will move revenue first.',
-  },
-  {
-    num: '02.',
-    q: 'Can this work with our current systems?',
-    a: 'Usually yes. We prefer integrating into the tools you already rely on where that makes sense. If something needs replacing, we explain why and keep the transition simple.',
-  },
-  {
-    num: '03.',
-    q: 'Is this suitable for smaller businesses?',
-    a: 'Yes. The whole point is to give smaller operators access to systems that usually feel reserved for larger companies. The setup is tailored to your stage rather than overloaded with unnecessary complexity.',
-  },
-];
-
-function HeroSection({ ctaLabel, exploreLabel, manifesto }: { ctaLabel: string; exploreLabel: string; manifesto: string }) {
-  const heroRef = useRef<HTMLElement>(null);
-  const shouldReduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: shouldReduceMotion ? 260 : 110,
-    damping: shouldReduceMotion ? 38 : 24,
-    mass: shouldReduceMotion ? 0.22 : 0.32,
-    restDelta: 0.0008,
-  });
-
-  const heroZoom = useTransform(smoothProgress, [0, 0.2, 0.48, 0.76, 1], shouldReduceMotion ? [1, 1.08, 1.16, 1.2, 1.24] : [1, 1.85, 4.6, 10.8, 18]);
-  const heroTitleY = useTransform(smoothProgress, [0, 1], shouldReduceMotion ? ['0%', '1%'] : ['0%', '2.8%']);
-  const heroTitleX = useTransform(smoothProgress, [0, 1], shouldReduceMotion ? ['0%', '-0.5%'] : ['0%', '-6%']);
-  const heroCopyOpacity = useTransform(smoothProgress, [0, 0.08, 0.16], [1, 0.45, 0]);
-  const heroCopyY = useTransform(smoothProgress, [0, 0.16], ['0%', '18%']);
-  const heroVeilOpacity = useTransform(smoothProgress, [0.72, 0.92, 1], [0, 0.22, 0.86]);
-  const heroVeilY = useTransform(smoothProgress, [0.72, 1], ['10%', '0%']);
-  const heroGlowOpacity = useTransform(smoothProgress, [0, 0.7, 1], [0.85, 0.72, 0.5]);
-
-  return (
-    <section ref={heroRef} className="hero-section">
-      <motion.div className="hero-texture-overlay" aria-hidden="true" style={{ opacity: heroGlowOpacity }} />
-      <div className="hero-sticky-shell">
-        <div className="hero-stage">
-          <div className="hero-poster-rail hero-poster-rail-left" aria-hidden="true">AIGA SYSTEMS</div>
-          <div className="hero-poster-rail hero-poster-rail-right" aria-hidden="true">VISIBILITY / RETENTION / RESPONSE</div>
-          <motion.div className="hero-swallow-veil" aria-hidden="true" style={{ opacity: heroVeilOpacity, y: heroVeilY }} />
-          <motion.div className="hero-content-lockup hero-content-lockup-zoom" style={{ scale: heroZoom, x: heroTitleX, y: heroTitleY }}>
-            <div className="hero-stack">
-              <h1 className="hero-title" aria-label="TO BE SEEN">
-                <span className="hero-title-line hero-title-line-top">TO BE</span>
-                <span className="hero-title-line hero-title-line-bottom">SEEN</span>
-              </h1>
-            </div>
-          </motion.div>
-          <motion.div className="hero-copy hero-copy-floating" style={{ opacity: heroCopyOpacity, x: '-50%', y: heroCopyY }}>
-            <p className="hero-manifesto">{manifesto}</p>
-            <div className="hero-actions">
-              <Link href="/contact" className="cta-btn hero-btn-primary">{ctaLabel}</Link>
-              <Link href="/services" className="hero-btn-secondary">{exploreLabel}</Link>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
-}
+} as const;
 
 export default function HomePage() {
   const { locale } = useLanguage();
-  const copy = getCopy(locale).home;
-  const localizedFaqs = copy.faqs.map(([q, a], index) => ({ ...faqs[index], q, a }));
+  const copy = machineBlocks[locale];
+  const reduceMotion = useReducedMotion();
 
   return (
     <>
-      <HeroSection
-        ctaLabel={copy.nextCta}
-        exploreLabel={locale === 'fr' ? 'Découvrir les services' : 'Explore services'}
-        manifesto={locale === 'fr' ? 'Des systèmes digitaux conçus pour rendre les bonnes entreprises impossibles à ignorer.' : 'Digital systems built to make strong businesses impossible to ignore.'}
-      />
-      <div className="hero-overlay-stack">
-        <Marquee text={copy.marquee} separator="·" dark={true} size="md" speed={20} />
+      <section className="aiga-hero" aria-labelledby="aiga-hero-title">
+        <div className="aiga-grid-mask" aria-hidden="true" />
+        <div className="aiga-hero-rails" aria-hidden="true">
+          <span>SYSTEME / OUTIL / GARDE-FOU</span>
+          <span>AIGA / MACHINE BIEN ELEVEE</span>
+        </div>
 
-        <section className="section-light hero-reveal-section" style={{ padding: 'clamp(4rem, 8vw, 7rem) clamp(1.5rem, 6vw, 5rem)' }}>
-          <div className="editorial-shell premium-grid-2" style={{ alignItems: 'end' }}>
-            <AnimatedSection>
-              <div>
-                <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.positioningEyebrow}</p>
-                <h2 className="heading-section" style={{ fontSize: 'clamp(42px, 7vw, 104px)', color: 'var(--black)', marginBottom: '1.5rem' }}>
-                  {copy.positioningTitle}
-                </h2>
-              </div>
-            </AnimatedSection>
-            <AnimatedSection delay={0.1}>
-              <div style={{ maxWidth: '36rem', justifySelf: 'end' }}>
-                <p style={{ fontSize: '16px', color: 'var(--muted-light)', marginBottom: '1rem' }}>
-                  {copy.positioningBody1}
-                </p>
-                <p style={{ fontSize: '16px', color: 'var(--muted-light)', marginBottom: '1.75rem' }}>
-                  {copy.positioningBody2}
-                </p>
-                <Link href="/about" className="link-arrow">{copy.aboutLink}</Link>
-              </div>
-            </AnimatedSection>
-          </div>
-        </section>
-      </div>
-
-      <section className="section-dark" style={{ padding: 'clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
-        <div className="editorial-shell">
+        <div className="aiga-shell aiga-hero-layout">
           <AnimatedSection>
-            <div className="selected-systems-intro">
-              <div>
-                <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.selectedEyebrow}</p>
-                <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 72px)', color: 'var(--white)', maxWidth: '12ch' }}>
-                  {locale === 'fr' ? 'Quelques systèmes conçus pour des entreprises ambitieuses.' : copy.selectedTitle}
-                </h2>
-              </div>
-              <p style={{ maxWidth: '34rem', justifySelf: 'end', color: 'var(--muted-dark)', fontSize: '16px', lineHeight: 1.7 }}>
-                {copy.selectedBody}
-              </p>
-            </div>
+            <p className="aiga-eyebrow">{copy.eyebrow}</p>
+            <h1 id="aiga-hero-title" className="aiga-hero-title">{copy.heroTitle}</h1>
           </AnimatedSection>
 
-          <div className="premium-grid-3">
-            {featuredSystems.map((system, index) => (
-              <AnimatedSection key={system.title} delay={index * 0.08}>
-                <Link href={system.href} style={{ textDecoration: 'none', color: 'inherit', display: 'block', height: '100%' }}>
-                  <article className="premium-card premium-card-dark selected-system-card">
-                    <div className="selected-system-meta">
-                      <span className="premium-number">{system.number}</span>
-                      <span className="premium-kicker" style={{ color: 'var(--muted-dark)' }}>{locale === 'fr' ? 'Voir le service' : 'View service'}</span>
-                    </div>
-                    <h3 className="heading-card" style={{ fontSize: 'clamp(28px, 4vw, 44px)', color: 'var(--white)', marginBottom: '0.15rem', maxWidth: '12ch' }}>{system.title}</h3>
-                    <p className="selected-system-summary">{system.summary}</p>
-                    <p className="selected-system-detail">{system.details}</p>
-                  </article>
-                </Link>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="section-light" style={{ padding: '0 0 clamp(4rem, 8vw, 8rem)', overflow: 'hidden' }}>
-        <Marquee text={copy.servicesMarquee} separator="·" dark={false} size="md" speed={24} />
-        <div className="editorial-shell" style={{ padding: 'clamp(4rem, 8vw, 8rem) clamp(1.5rem, 6vw, 5rem) 0' }}>
-          <AnimatedSection>
-            <div className="premium-grid-2" style={{ marginBottom: 'clamp(3rem, 5vw, 5rem)', alignItems: 'end' }}>
-              <div>
-                <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.servicesEyebrow}</p>
-                <h2 className="heading-section" style={{ fontSize: 'clamp(40px, 7vw, 110px)', color: 'var(--black)' }}>
-                  {locale === 'fr' ? 'Conçu pour rester cohérent du premier clic à la réservation suivante.' : copy.servicesTitle}
-                </h2>
+          <AnimatedSection delay={0.08}>
+            <div className="aiga-control-card">
+              <div className="aiga-card-header">
+                <span>CTRL-01</span>
+                <span>MODE: UTILE</span>
               </div>
-              <p style={{ color: 'var(--muted-light)', maxWidth: '36rem', justifySelf: 'end' }}>
-                {copy.servicesBody}
-              </p>
+              <p>{copy.manifesto}</p>
+              <div className="aiga-actions">
+                <Link href="/contact" className="aiga-btn aiga-btn-primary">{copy.primaryCta}</Link>
+                <a href="#methode" className="aiga-btn aiga-btn-secondary">{copy.secondaryCta}</a>
+              </div>
             </div>
           </AnimatedSection>
-
-          <div style={{ display: 'grid', gap: '1rem' }}>
-            {services.map((service, index) => (
-              <AnimatedSection key={service.num} delay={index * 0.05}>
-                <Link href={service.href} style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}>
-                  <div className="premium-card premium-card-light service-row-card">
-                    <span className="premium-number">{service.num}</span>
-                    <div>
-                      <h3 className="heading-card" style={{ fontSize: 'clamp(24px, 4vw, 42px)', color: 'var(--black)', marginBottom: '0.25rem' }}>{service.title}</h3>
-                      <p style={{ color: 'var(--muted-light)', fontSize: '15px', lineHeight: 1.7 }}>{service.desc}</p>
-                    </div>
-                    <span className="premium-kicker" style={{ color: 'var(--accent)' }}>{service.tag}</span>
-                  </div>
-                </Link>
-              </AnimatedSection>
-            ))}
-          </div>
         </div>
+
+        <motion.div
+          className="aiga-machine-strip"
+          aria-hidden="true"
+          animate={reduceMotion ? undefined : { x: ['0%', '-33.333%'] }}
+          transition={reduceMotion ? undefined : { duration: 18, repeat: Infinity, ease: 'linear' }}
+        >
+          {Array.from({ length: 3 }).map((_, group) => (
+            <div className="aiga-strip-group" key={group}>
+              <span>BRIEF</span><span>CADRE</span><span>TEST</span><span>MAIN HUMAINE</span><span>SORTIE PROPRE</span>
+            </div>
+          ))}
+        </motion.div>
       </section>
 
-      <section className="section-dark" style={{ padding: 'clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
-        <div className="editorial-shell premium-grid-2" style={{ alignItems: 'start' }}>
-          <div>
+      <section className="aiga-section aiga-section-paper">
+        <div className="aiga-shell">
+          <div className="aiga-section-head">
             <AnimatedSection>
-              <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.whyEyebrow}</p>
-              <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 72px)', color: 'var(--white)', marginBottom: '1.25rem' }}>
-                {copy.whyTitle}
-              </h2>
+              <p className="aiga-eyebrow dark">PLAN DE TRAVAIL</p>
+              <h2 className="aiga-section-title">{copy.utilityTitle}</h2>
             </AnimatedSection>
             <AnimatedSection delay={0.08}>
-              <p style={{ color: 'var(--muted-dark)', maxWidth: '38rem' }}>
-                {copy.whyBody}
-              </p>
+              <p className="aiga-section-intro">{copy.utilityIntro}</p>
             </AnimatedSection>
           </div>
-          <AnimatedSection delay={0.15}>
-            <div className="premium-grid-3">
-              {copy.metrics.map((item, index) => (
-                <div key={item} className="metric-card">
-                  <div className="metric-value">{String(index + 1).padStart(2, '0')}</div>
-                  <div className="stat-label" style={{ marginTop: '0.75rem' }}>{item}</div>
-                </div>
-              ))}
-            </div>
-          </AnimatedSection>
-        </div>
-      </section>
 
-      <section className="section-light faq-premium-section" style={{ padding: 'clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
-        <div className="editorial-shell faq-premium-shell">
-          <AnimatedSection>
-            <div className="faq-premium-header">
-              <div>
-                <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.faqEyebrow}</p>
-                <h2 className="heading-section" style={{ fontSize: 'clamp(38px, 6vw, 88px)', color: 'var(--black)', marginBottom: '1rem' }}>
-                  {copy.faqTitle}
-                </h2>
-              </div>
-              <p className="faq-premium-intro">
-                {copy.faqBody}
-              </p>
-            </div>
-          </AnimatedSection>
-
-          <div className="faq-premium-list">
-            {localizedFaqs.map((faq, i) => <FAQItem key={faq.q} {...faq} delay={i * 0.05} />)}
+          <div className="aiga-utility-grid">
+            {copy.blocks.map(([title, body], index) => (
+              <AnimatedSection key={title} delay={index * 0.05}>
+                <article className="aiga-tool-card">
+                  <div className="aiga-tool-index">{String(index + 1).padStart(2, '0')}</div>
+                  <h3>{title}</h3>
+                  <p>{body}</p>
+                </article>
+              </AnimatedSection>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="section-dark" style={{ padding: 'clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
-        <div className="editorial-shell premium-card premium-card-dark" style={{ padding: 'clamp(2rem, 4vw, 3rem)' }}>
+      <section id="methode" className="aiga-section aiga-section-charcoal">
+        <div className="aiga-shell aiga-method-layout">
           <AnimatedSection>
-            <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.nextEyebrow}</p>
-            <h2 className="heading-section" style={{ fontSize: 'clamp(40px, 7vw, 110px)', color: 'var(--white)', marginBottom: '1rem' }}>{copy.nextTitle}</h2>
-            <p style={{ color: 'var(--muted-dark)', maxWidth: '36rem', marginBottom: '2rem' }}>
-              {copy.nextBody}
-            </p>
-            <Link href="/contact" className="cta-btn">{copy.nextCta}</Link>
+            <p className="aiga-eyebrow">METHODE</p>
+            <h2 className="aiga-section-title light aiga-method-title">{copy.methodTitle}</h2>
+            <p className="aiga-method-body">{copy.methodBody}</p>
           </AnimatedSection>
+
+          <div className="aiga-method-board">
+            {copy.method.map(([num, title, body], index) => (
+              <AnimatedSection key={num} delay={index * 0.06}>
+                <article className="aiga-step-row">
+                  <span>{num}</span>
+                  <div>
+                    <h3>{title}</h3>
+                    <p>{body}</p>
+                  </div>
+                </article>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="aiga-section aiga-section-signal">
+        <div className="aiga-shell aiga-final-card">
+          <div className="aiga-final-copy">
+            <p className="aiga-eyebrow dark">PROCHAIN REGLAGE</p>
+            <h2>{copy.finalTitle}</h2>
+            <p>{copy.finalBody}</p>
+          </div>
+          <div className="aiga-gauge-panel" aria-label={copy.gauges.join(', ')}>
+            {copy.gauges.map((gauge, index) => (
+              <div className="aiga-gauge" key={gauge} style={{ '--gauge': `${72 + index * 8}%` } as React.CSSProperties}>
+                <span>{gauge}</span>
+              </div>
+            ))}
+          </div>
+          <Link href="/contact" className="aiga-btn aiga-btn-dark aiga-final-cta">{copy.finalCta}</Link>
         </div>
       </section>
     </>
-  );
-}
-
-function FAQItem({ num, q, a, delay = 0 }: { num: string; q: string; a: string; delay?: number }) {
-  const [open, setOpen] = useState(false);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  return (
-    <AnimatedSection delay={delay}>
-      <div className={`faq-premium-item${open ? ' open' : ''}`}>
-        <button className="faq-premium-question" onClick={() => setOpen(!open)} aria-expanded={open}>
-          <div className="faq-premium-question-main">
-            <span className="faq-premium-num">{num}</span>
-            <span className="faq-premium-text">{q}</span>
-          </div>
-          <span className={`faq-premium-icon${open ? ' open' : ''}`}>+</span>
-        </button>
-        <div className="faq-premium-answer" ref={contentRef} style={{ maxHeight: open ? `${contentRef.current?.scrollHeight || 320}px` : '0' }}>
-          <div className="faq-premium-answer-inner">{a}</div>
-        </div>
-      </div>
-    </AnimatedSection>
   );
 }
