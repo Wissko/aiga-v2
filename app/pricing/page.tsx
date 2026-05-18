@@ -32,7 +32,7 @@ const plans = [
       price: 199,
       desc: '12-month minimum · hosting, updates, and support included',
       includes: [
-        'Custom design with mobile-first layouts',
+        'Custom mobile-first design',
         'Up to 8 premium pages',
         'Contact forms, analytics, and SEO foundations',
         'Hosting, maintenance, and monthly updates',
@@ -43,7 +43,7 @@ const plans = [
       price: 1490,
       desc: 'Single build fee · full handover and ownership',
       includes: [
-        'Custom design with mobile-first layouts',
+        'Custom mobile-first design',
         'Up to 8 premium pages',
         'Contact forms, analytics, and SEO foundations',
         'Full source code handover and ownership',
@@ -69,9 +69,9 @@ const plans = [
     },
     onetime: {
       price: 1890,
-      desc: 'Setup fee · full system integration included',
+      desc: 'Configuration fee · full system integration included',
       includes: [
-        'Full loyalty system architecture and setup',
+        'Full loyalty system architecture and configuration',
         'Custom pass design and branding',
         'Integration with existing point of sale',
         'Staff training and rollout strategy',
@@ -83,12 +83,12 @@ const plans = [
     id: 'bookings',
     num: '03.',
     title: 'AUTOMATED BOOKINGS',
-    summary: 'A calmer scheduling experience that reduces friction, no-shows, and manual back-and-forth.',
+    summary: 'A calmer scheduling experience that reduces friction, absences, and manual back-and-forth.',
     monthly: {
       price: 79,
       desc: 'Unlimited bookings · reminders and calendar sync',
       includes: [
-        'Booking system setup and optimisation',
+        'Booking system configuration and optimisation',
         'Calendar sync and rescheduling flows',
         'Automated reminders and confirmations',
         'Waitlist logic and no-show reduction',
@@ -97,9 +97,9 @@ const plans = [
     },
     onetime: {
       price: 690,
-      desc: 'Setup fee · integration and training included',
+      desc: 'Configuration fee · integration and training included',
       includes: [
-        'Booking system setup and optimisation',
+        'Booking system configuration and optimisation',
         'Calendar sync and rescheduling flows',
         'Automated reminder sequences',
         'Waitlist configuration and support',
@@ -111,7 +111,7 @@ const plans = [
     id: 'crm',
     num: '04.',
     title: 'CLIENT FOLLOW-UP CRM',
-    summary: 'Structured follow-up that keeps leads warm, revives past clients, and drives repeat revenue.',
+    summary: 'Structured follow-up that keeps prospects warm, revives past clients, and drives repeat revenue.',
     monthly: {
       price: 119,
       desc: 'Automated flows · reporting included each month',
@@ -125,7 +125,7 @@ const plans = [
     },
     onetime: {
       price: 990,
-      desc: 'Full setup fee · training and support included',
+      desc: 'Full configuration fee · training and support included',
       includes: [
         'CRM structure and automation build',
         'Email and SMS client journeys',
@@ -139,7 +139,7 @@ const plans = [
 
 const bundle = {
   title: 'FULL GROWTH BUNDLE',
-  badge: 'Preferred setup',
+  badge: 'Preferred configuration',
   summary: 'The full operating layer for businesses that want website, wallet loyalty, bookings, and follow-up working as one premium client journey.',
   monthly: {
     price: 449,
@@ -155,7 +155,7 @@ const bundle = {
   },
   onetime: {
     price: 4490,
-    desc: 'Complete delivery fee · full system setup and handover',
+    desc: 'Complete delivery fee · full system configuration and handover',
     saving: 'Save $580 compared with buying separately',
     includes: [
       'Everything in all four services',
@@ -170,7 +170,7 @@ const bundle = {
 const faqs = [
   {
     q: 'How should we choose between monthly and one-time pricing?',
-    a: 'Monthly suits businesses that want a lower entry point with ongoing support included. One-time suits teams that prefer to invest upfront and own the full setup immediately.',
+    a: 'Monthly suits businesses that want a lower entry point with ongoing support included. One-time suits teams that prefer to invest upfront and own the full configuration immediately.',
   },
   {
     q: 'Can you tailor a package if we do not need every service?',
@@ -194,6 +194,46 @@ const faqs = [
   },
 ];
 
+const frPlans = [
+  {
+    id: 'websites', num: '01.', title: 'CRÉATION DE SITE', summary: 'Une première impression nette, structurée pour la confiance, les demandes et la conversion.',
+    monthly: { price: 199, desc: 'Engagement 12 mois · hébergement, mises à jour et support inclus', includes: ['Design sur mesure pensé mobile', 'Jusqu’à 8 pages premium', 'Formulaires, analytics et bases SEO', 'Hébergement, maintenance et mises à jour mensuelles', 'Support et ajustements post-lancement'] },
+    onetime: { price: 1490, desc: 'Frais de création uniques · livraison et propriété complètes', includes: ['Design sur mesure pensé mobile', 'Jusqu’à 8 pages premium', 'Formulaires, analytics et bases SEO', 'Remise complète du code source et propriété', 'Session de formation et support au lancement'] },
+  },
+  {
+    id: 'wallet-loyalty', num: '02.', title: 'FIDÉLITÉ ORIENTÉE WALLET', summary: 'Une connexion directe à vos clients via Apple et Google Wallet pour renforcer la rétention et le revenu récurrent.',
+    monthly: { price: 149, desc: 'Pass Wallet actifs · suivi et récompenses fluides', includes: ['Pass Apple et Google Wallet natifs', 'Suivi automatisé des points et récompenses', 'Accès aux notifications directes', 'Analytics visites et comportement client', 'Support stratégique et campagnes en continu'] },
+    onetime: { price: 1890, desc: 'Frais de configuration · intégration complète incluse', includes: ['Architecture et configuration du système fidélité', 'Design et branding du pass', 'Intégration au point de vente existant', 'Formation équipe et stratégie de lancement', '12 mois de support technique'] },
+  },
+  {
+    id: 'bookings', num: '03.', title: 'RÉSERVATIONS AUTOMATISÉES', summary: 'Une expérience de planning plus calme qui réduit la friction, les absences et les allers-retours manuels.',
+    monthly: { price: 79, desc: 'Réservations illimitées · rappels et synchronisation calendrier', includes: ['Configuration et optimisation du système de réservation', 'Synchronisation calendrier et parcours de reprogrammation', 'Rappels et confirmations automatisés', 'Liste d’attente et réduction des absences', 'Visibilité mensuelle sur la performance des réservations'] },
+    onetime: { price: 690, desc: 'Frais de configuration · intégration et formation incluses', includes: ['Configuration et optimisation du système de réservation', 'Synchronisation calendrier et parcours de reprogrammation', 'Séquences de rappels automatisées', 'Configuration liste d’attente et support', 'Session de formation et passation'] },
+  },
+  {
+    id: 'crm', num: '04.', title: 'CRM DE SUIVI CLIENT', summary: 'Un suivi structuré qui garde les prospects actifs, réactive les anciens clients et stimule le retour.',
+    monthly: { price: 119, desc: 'Flux automatisés · suivi inclus chaque mois', includes: ['Capture de prospects et automatisations de suivi', 'Parcours e-mail et SMS client', 'Demandes d’avis et campagnes de réactivation', 'Tableau de bord CRM et vue suivi', 'Revue mensuelle des performances'] },
+    onetime: { price: 990, desc: 'Frais de configuration complets · formation et support inclus', includes: ['Structure CRM et automatisations', 'Parcours e-mail et SMS client', 'Demandes d’avis et campagnes de réactivation', 'Session de formation pour votre équipe', 'Support pendant le déploiement'] },
+  },
+];
+
+const frBundle = {
+  title: 'OFFRE CROISSANCE COMPLÈTE',
+  badge: 'Configuration recommandée',
+  summary: 'La couche opérationnelle complète pour les entreprises qui veulent un site, une fidélité Wallet, des réservations et un suivi réunis dans un parcours client premium.',
+  monthly: { price: 449, desc: '4 services · support prioritaire · pilotage stratégique', saving: 'Économisez 97 $/mois par rapport aux services séparés', includes: ['Tout ce qui est inclus dans les quatre services', 'Stratégie commune entre site, fidélité, réservations et CRM', 'Support prioritaire et optimisations mensuelles', 'Intégration inter-systèmes et visibilité du suivi', 'Une expérience client plus forte et cohérente de bout en bout'] },
+  onetime: { price: 4490, desc: 'Frais de livraison complets · configuration et passation inclus', saving: 'Économisez 580 $ par rapport aux services séparés', includes: ['Tout ce qui est inclus dans les quatre services', 'Création complète, intégration et implémentation premium', 'Transfert de propriété et formations équipe', 'Support prioritaire pendant le déploiement', 'Une couche opérationnelle cohérente, pensée pour évoluer'] },
+};
+
+const frFaqs = [
+  { q: 'Comment choisir entre le mensuel et le paiement unique ?', a: 'Le mensuel convient aux entreprises qui veulent un point d’entrée plus souple avec du support continu. Le paiement unique convient aux équipes qui préfèrent investir au départ et posséder la configuration complète immédiatement.' },
+  { q: 'Pouvez-vous adapter un package si nous n’avons pas besoin de tout ?', a: 'Oui. Les tarifs publiés apportent de la clarté, mais nous pouvons construire une combinaison sur mesure si votre entreprise a seulement besoin de certains systèmes ou d’un déploiement progressif.' },
+  { q: 'Pourquoi l’offre complète est-elle l’option la plus rentable ?', a: 'L’offre complète n’est pas seulement moins chère que des services séparés. Elle produit aussi de meilleurs résultats commerciaux car le site, les réservations et le suivi sont pensés ensemble.' },
+  { q: 'Y a-t-il des frais cachés ou des surprises ?', a: 'Non. Si un outil tiers est nécessaire, nous l’expliquons clairement avant validation. L’objectif est la clarté, pas des coûts gonflés.' },
+  { q: 'Que se passe-t-il après la création ou la configuration initiale ?', a: 'Nous pouvons continuer à soutenir et affiner le système au mois, ou tout vous remettre proprement si vous choisissez un engagement unique. Les deux options sont pensées pour rester simples.' },
+  { q: 'Les prix incluent-ils la stratégie et le conseil ?', a: 'Oui. Ce n’est pas un template déposé dans votre activité. Les tarifs incluent la direction sur la structure, le positionnement et le parcours le plus utile commercialement.' },
+];
+
 const valuePoints = [
   'Clear scope and published pricing',
   'Premium build quality without agency bloat',
@@ -205,7 +245,10 @@ export default function PricingPage() {
   const copy = getCopy(locale).pricing;
   const [billing, setBilling] = useState<'monthly' | 'onetime'>('monthly');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
-  const bundlePlan = billing === 'monthly' ? bundle.monthly : bundle.onetime;
+  const localizedPlans = locale === 'fr' ? frPlans : plans;
+  const localizedBundle = locale === 'fr' ? frBundle : bundle;
+  const localizedFaqs = locale === 'fr' ? frFaqs : faqs;
+  const bundlePlan = billing === 'monthly' ? localizedBundle.monthly : localizedBundle.onetime;
 
   return (
     <>
@@ -273,7 +316,7 @@ export default function PricingPage() {
                 <p className="pricing-intro-copy">
                   {copy.chooseBody}
                 </p>
-                <div className="pricing-toggle-shell" role="tablist" aria-label="Billing choice">
+                <div className="pricing-toggle-shell" role="tablist" aria-label={locale === 'fr' ? 'Choix de facturation' : 'Billing choice'}>
                   {(['monthly', 'onetime'] as const).map((opt) => (
                     <button
                       key={opt}
@@ -282,7 +325,7 @@ export default function PricingPage() {
                       role="tab"
                       aria-selected={billing === opt}
                     >
-                      {opt === 'monthly' ? 'Monthly support model' : 'One-time implementation'}
+                      {opt === 'monthly' ? copy.monthly : copy.onetime}
                     </button>
                   ))}
                 </div>
@@ -293,17 +336,17 @@ export default function PricingPage() {
           <AnimatedSection delay={0.08}>
             <div className="pricing-bundle-card">
               <div className="pricing-bundle-topline">
-                <span className="pricing-bundle-badge">{bundle.badge}</span>
+                <span className="pricing-bundle-badge">{localizedBundle.badge}</span>
                 <span className="pricing-bundle-saving">{bundlePlan.saving}</span>
               </div>
 
               <div className="pricing-bundle-grid">
                 <div>
-                  <p className="pricing-plan-number">Bundle</p>
+                  <p className="pricing-plan-number">{locale === 'fr' ? 'Offre complète' : 'Offre complète'}</p>
                   <h3 className="heading-section" style={{ fontSize: 'clamp(32px, 4vw, 56px)', color: 'var(--black)', marginBottom: '0.85rem' }}>
-                    {bundle.title}
+                    {localizedBundle.title}
                   </h3>
-                  <p className="pricing-bundle-summary">{bundle.summary}</p>
+                  <p className="pricing-bundle-summary">{localizedBundle.summary}</p>
                   <p className="pricing-bundle-desc">{bundlePlan.desc}</p>
                 </div>
 
@@ -318,22 +361,22 @@ export default function PricingPage() {
                   >
                     <div className="pricing-price-hero">
                       ${bundlePlan.price}
-                      {billing === 'monthly' && <span>/mo</span>}
+                      {billing === 'monthly' && <span>/mois</span>}
                     </div>
                     <p className="pricing-price-caption">
                       {billing === 'monthly'
-                        ? 'For businesses wanting continuous support and refinement.'
-                        : 'For businesses wanting a full premium implementation upfront.'}
+                        ? (locale === 'fr' ? 'Pour les entreprises qui veulent un support et des ajustements continus.' : 'For businesses wanting continuous support and refinement.')
+                        : (locale === 'fr' ? 'Pour les entreprises qui veulent une implémentation premium complète dès le départ.' : 'For businesses wanting a full premium implementation upfront.')}
                     </p>
                     <Link href="/contact" className="cta-btn-light">
-                      Book the bundle
+                      {locale === 'fr' ? 'Réserver l’offre complète' : 'Book the bundle'}
                     </Link>
                   </motion.div>
                 </AnimatePresence>
               </div>
 
               <div className="pricing-bundle-includes">
-                {(billing === 'monthly' ? bundle.monthly.includes : bundle.onetime.includes).map((item) => (
+                {(billing === 'monthly' ? localizedBundle.monthly.includes : localizedBundle.onetime.includes).map((item) => (
                   <div key={item} className="pricing-feature-row">
                     <span className="pricing-feature-icon"><CheckIcon /></span>
                     <span>{item}</span>
@@ -351,7 +394,7 @@ export default function PricingPage() {
           </AnimatedSection>
 
           <div className="pricing-plan-grid">
-            {plans.map((plan, i) => {
+            {localizedPlans.map((plan, i) => {
               const current = billing === 'monthly' ? plan.monthly : plan.onetime;
 
               return (
@@ -378,7 +421,7 @@ export default function PricingPage() {
                         <div className="pricing-price-row">
                           <div className="pricing-plan-price">
                             ${current.price}
-                            {billing === 'monthly' && <span>/mo</span>}
+                            {billing === 'monthly' && <span>/mois</span>}
                           </div>
                           <p className="pricing-plan-desc">{current.desc}</p>
                         </div>
@@ -436,7 +479,7 @@ export default function PricingPage() {
           </AnimatedSection>
 
           <div className="pricing-faq-list">
-            {faqs.map((faq, i) => (
+            {localizedFaqs.map((faq, i) => (
               <AnimatedSection key={faq.q} delay={i * 0.05}>
                 <div className={`pricing-faq-item${openFaq === i ? ' open' : ''}`}>
                   <button

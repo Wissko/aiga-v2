@@ -48,7 +48,7 @@ export default function Navbar() {
       {/* Nav pill trigger */}
       <motion.button
         onClick={() => setOpen(true)}
-        aria-label="Open navigation"
+        aria-label={locale === 'fr' ? 'Ouvrir la navigation' : 'Open navigation'}
         initial={{ opacity: 0 }}
         animate={{ opacity: open ? 0 : 1, pointerEvents: open ? 'none' : 'auto' }}
         transition={{ duration: 0.3, ease: EASE }}
@@ -160,7 +160,7 @@ export default function Navbar() {
             {/* Close */}
             <button
               onClick={close}
-              aria-label="Close navigation"
+              aria-label={locale === 'fr' ? 'Fermer la navigation' : 'Close navigation'}
               style={{
                 position: 'absolute',
                 top: 'clamp(1.5rem, 3vw, 2rem)',
@@ -205,7 +205,7 @@ export default function Navbar() {
 
             {/* Nav links */}
             <nav
-              aria-label="Main navigation"
+              aria-label={locale === 'fr' ? 'Navigation principale' : 'Main navigation'}
               style={{
                 flex: 1,
                 display: 'flex',

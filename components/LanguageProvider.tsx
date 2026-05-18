@@ -26,8 +26,8 @@ const dictionaries: Record<Locale, Dictionary> = {
       eyebrow: 'Choose language',
       title: 'Select your version of the site',
       body: 'Choose English or French before entering. Your preference will be remembered on the next visit.',
-      en: 'Enter in English',
-      fr: 'Entrer en français'
+      en: 'View English version',
+      fr: 'Voir la version française'
     }
   },
   fr: {
@@ -45,8 +45,8 @@ const dictionaries: Record<Locale, Dictionary> = {
       eyebrow: 'Choix de langue',
       title: 'Sélectionnez la version du site',
       body: 'Choisissez le français ou l’anglais avant d’entrer. Votre préférence sera mémorisée pour la prochaine visite.',
-      en: 'Enter in English',
-      fr: 'Entrer en français'
+      en: 'Entrer en anglais',
+      fr: 'Voir la version française'
     }
   }
 };
@@ -72,8 +72,10 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     const stored = window.localStorage.getItem('tbs-locale');
     if (stored === 'en' || stored === 'fr') {
       setLocaleState(stored);
+      document.documentElement.lang = stored === 'fr' ? 'fr' : 'en-AU';
       setNeedsChoice(false);
     } else {
+      document.documentElement.lang = 'en-AU';
       setNeedsChoice(true);
     }
     setIsReady(true);
