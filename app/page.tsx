@@ -95,7 +95,7 @@ const faqs = [
   },
 ];
 
-function HeroSection({ ctaLabel, exploreLabel }: { ctaLabel: string; exploreLabel: string }) {
+function HeroSection({ ctaLabel, exploreLabel, manifesto }: { ctaLabel: string; exploreLabel: string; manifesto: string }) {
   const heroRef = useRef<HTMLElement>(null);
   const shouldReduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start start', 'end start'] });
@@ -120,6 +120,8 @@ function HeroSection({ ctaLabel, exploreLabel }: { ctaLabel: string; exploreLabe
       <motion.div className="hero-texture-overlay" aria-hidden="true" style={{ opacity: heroGlowOpacity }} />
       <div className="hero-sticky-shell">
         <div className="hero-stage">
+          <div className="hero-poster-rail hero-poster-rail-left" aria-hidden="true">AIGA SYSTEMS</div>
+          <div className="hero-poster-rail hero-poster-rail-right" aria-hidden="true">VISIBILITY / RETENTION / RESPONSE</div>
           <motion.div className="hero-swallow-veil" aria-hidden="true" style={{ opacity: heroVeilOpacity, y: heroVeilY }} />
           <motion.div className="hero-content-lockup hero-content-lockup-zoom" style={{ scale: heroZoom, x: heroTitleX, y: heroTitleY }}>
             <div className="hero-stack">
@@ -130,6 +132,7 @@ function HeroSection({ ctaLabel, exploreLabel }: { ctaLabel: string; exploreLabe
             </div>
           </motion.div>
           <motion.div className="hero-copy hero-copy-floating" style={{ opacity: heroCopyOpacity, x: '-50%', y: heroCopyY }}>
+            <p className="hero-manifesto">{manifesto}</p>
             <div className="hero-actions">
               <Link href="/contact" className="cta-btn hero-btn-primary">{ctaLabel}</Link>
               <Link href="/services" className="hero-btn-secondary">{exploreLabel}</Link>
@@ -148,11 +151,15 @@ export default function HomePage() {
 
   return (
     <>
-      <HeroSection ctaLabel={copy.nextCta} exploreLabel={locale === 'fr' ? 'Découvrir les services' : 'Explore services'} />
+      <HeroSection
+        ctaLabel={copy.nextCta}
+        exploreLabel={locale === 'fr' ? 'Découvrir les services' : 'Explore services'}
+        manifesto={locale === 'fr' ? 'Des systèmes digitaux conçus pour rendre les bonnes entreprises impossibles à ignorer.' : 'Digital systems built to make strong businesses impossible to ignore.'}
+      />
       <div className="hero-overlay-stack">
         <Marquee text={copy.marquee} separator="·" dark={true} size="md" speed={20} />
 
-        <section className="section-light hero-reveal-section" style={{ padding: 'clamp(5rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem)' }}>
+        <section className="section-light hero-reveal-section" style={{ padding: 'clamp(4rem, 8vw, 7rem) clamp(1.5rem, 6vw, 5rem)' }}>
           <div className="editorial-shell premium-grid-2" style={{ alignItems: 'end' }}>
             <AnimatedSection>
               <div>
