@@ -11,12 +11,12 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://tobeseen.agency';
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'TO BE SEEN | Premium Business Systems',
+    default: 'TO BE SEEN | Systèmes digitaux premium / Premium Business Systems',
     template: '%s | TO BE SEEN',
   },
   description:
-    'TO BE SEEN builds premium business systems: websites, wallet loyalty, bookings, follow-up, and digital structure designed to convert cleanly.',
-  keywords: ['TO BE SEEN', 'premium business systems', 'website creation', 'wallet loyalty', 'bookings', 'follow-up'],
+    'TO BE SEEN conçoit des systèmes digitaux premium : sites web, fidélité Wallet, réservations, suivi client et structure digitale pensés pour inspirer confiance et convertir proprement.',
+  keywords: ['TO BE SEEN', 'systèmes digitaux premium', 'premium business systems', 'création de site', 'website creation', 'fidélité wallet', 'wallet loyalty', 'réservations', 'bookings', 'suivi client', 'follow-up'],
   authors: [{ name: 'TO BE SEEN' }],
   alternates: {
     canonical: '/',
@@ -31,16 +31,16 @@ export const metadata: Metadata = {
     alternateLocale: ['fr_FR'],
     url: '/',
     siteName: 'TO BE SEEN',
-    title: 'TO BE SEEN | Premium Business Systems',
+    title: 'TO BE SEEN | Systèmes digitaux premium / Premium Business Systems',
     description:
-      'Premium websites, wallet loyalty, bookings, follow-up, and digital systems designed for trust and conversion.',
+      'Sites web premium, fidélité Wallet, réservations, suivi client et systèmes digitaux conçus pour la confiance et la conversion.',
     images: [{ url: '/fontsite.png', width: 1200, height: 630, alt: 'TO BE SEEN' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TO BE SEEN | Premium Business Systems',
+    title: 'TO BE SEEN | Systèmes digitaux premium / Premium Business Systems',
     description:
-      'Premium websites, wallet loyalty, bookings, follow-up, and digital systems designed for trust and conversion.',
+      'Sites web premium, fidélité Wallet, réservations, suivi client et systèmes digitaux conçus pour la confiance et la conversion.',
     images: ['/fontsite.png'],
   },
   robots: {

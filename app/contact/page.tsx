@@ -22,6 +22,31 @@ const expectations = [
 export default function ContactPage() {
   const { locale } = useLanguage();
   const copy = getCopy(locale).contact;
+  const localizedDetails = locale === 'fr'
+    ? [
+        ['Courriel', 'Agency.tobeseen@gmail.com'],
+        ['Zone', 'France et international'],
+        ['Délai de réponse', 'Sous 24 heures'],
+        ['Format de l’appel', 'Appel stratégique gratuit'],
+      ]
+    : details;
+  const localizedExpectations = locale === 'fr'
+    ? [
+        'Une revue ciblée de votre système actuel',
+        'Une recommandation sur le prochain mouvement le plus utile',
+        'Un périmètre clair si vous décidez d’avancer',
+      ]
+    : expectations;
+
+  const localizeError = (message?: string) => {
+    if (locale !== 'fr') return message || 'Message could not be sent.';
+    if (!message || message === 'Message could not be sent.') return 'Le message n’a pas pu être envoyé.';
+    if (message === 'Please provide a valid name and email.') return 'Veuillez indiquer un nom et une adresse courriel valides.';
+    if (message === 'Contact form is not configured yet.') return 'Le formulaire de contact n’est pas encore configuré.';
+    if (message === 'Invalid request.') return 'La demande est invalide.';
+    return message;
+  };
+
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
   const [error, setError] = useState('');
   const [form, setForm] = useState({ name: '', email: '', business: '', service: '', message: '' });
@@ -44,12 +69,12 @@ export default function ContactPage() {
 
       if (!response.ok) {
         const data = await response.json().catch(() => ({}));
-        throw new Error(data.error || 'Message could not be sent.');
+        throw new Error(localizeError(data.error));
       }
 
       setStatus('sent');
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Message could not be sent.');
+      setError(localizeError(err instanceof Error ? err.message : undefined));
       setStatus('error');
     }
   };
@@ -84,7 +109,7 @@ export default function ContactPage() {
               <div className="premium-card premium-card-light">
                 <p className="premium-kicker" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>{copy.detailsTitle}</p>
                 <div style={{ display: 'grid', gap: '0.9rem' }}>
-                  {details.map(([label, value]) => (
+                  {localizedDetails.map(([label, value]) => (
                     <div key={label} style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', paddingBottom: '0.9rem', borderBottom: '1px solid rgba(10,10,10,0.08)' }}>
                       <span className="premium-kicker" style={{ color: 'var(--muted-light)' }}>{label}</span>
                       <span style={{ color: 'var(--black)', textAlign: 'right' }}>{value}</span>
@@ -96,7 +121,7 @@ export default function ContactPage() {
               <div className="premium-card premium-card-light">
                 <p className="premium-kicker" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>{copy.expectTitle}</p>
                 <ul className="premium-list">
-                  {expectations.map((item) => (
+                  {localizedExpectations.map((item) => (
                     <li key={item}><span className="premium-dot" /><span style={{ color: 'var(--black)' }}>{item}</span></li>
                   ))}
                 </ul>

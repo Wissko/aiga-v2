@@ -41,7 +41,7 @@ function AnimatedLine({ delay = 0 }: { delay?: number }) {
 export default function Footer() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
 
   return (
     <footer ref={ref} style={{ background: 'var(--black)', position: 'relative', overflow: 'hidden' }}>
@@ -245,7 +245,7 @@ export default function Footer() {
             fontWeight: 300,
             color: 'rgba(255,255,255,0.2)',
           }}>
-            &copy; 2026 To Be Seen. All rights reserved.
+            &copy; 2026 To Be Seen. {locale === 'fr' ? 'Tous droits réservés.' : 'All rights reserved.'}
           </p>
           <p style={{
             fontFamily: 'Satoshi, sans-serif',
