@@ -1,186 +1,124 @@
-'use client';
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, BarChart3, Clock, HelpCircle, Mail, Phone, Zap } from "lucide-react";
 
-import { useState } from 'react';
-import AnimatedSection from '@/components/AnimatedSection';
-import Marquee from '@/components/Marquee';
-import { useLanguage } from '@/components/LanguageProvider';
-import { getCopy } from '@/lib/site-copy';
-
-const details = [
-  ['Email', 'Agency.tobeseen@gmail.com'],
-  ['Location', 'International Operations'],
-  ['Response window', 'Within 24 hours'],
-  ['Call format', 'Free strategy session'],
+const contactCards = [
+  { icon: Mail, label: "EMAIL", value: "Agency.tobeseen@gmail.com" },
+  { icon: Phone, label: "CALL", value: "Book a free strategy call" },
+  { icon: Clock, label: "AVAILABILITY", value: "24/7\nAlways available online" },
 ];
 
-const expectations = [
-  'A focused review of your current setup',
-  'A recommendation on the most valuable next move',
-  'Clear scope if you decide to proceed',
+const helpCards = [
+  { icon: ArrowRight, title: "NEW PROJECT", body: "Let’s build a high-performing\ndigital system tailored to your goals." },
+  { icon: Zap, title: "EXISTING SYSTEM", body: "Optimize, automate and scale\nwhat you already have." },
+  { icon: BarChart3, title: "CONSULTING", body: "Get expert advice to make better\ndecisions, faster." },
+  { icon: HelpCircle, title: "OTHER INQUIRIES", body: "Partnerships, press or anything\nelse — we’re all ears." },
 ];
+
+function Header() {
+  return (
+    <header className="contact-v2-header">
+      <Link className="contact-v2-brand" href="/">TBS°</Link>
+      <p>Premium Business Systems<br />Website · Wallet Loyalty<br />Bookings · Follow-Up</p>
+      <span className="contact-v2-plus">+</span>
+      <Link className="contact-v2-menu" href="/menu">[ MENU ] <span>+</span></Link>
+    </header>
+  );
+}
 
 export default function ContactPage() {
-  const { locale } = useLanguage();
-  const copy = getCopy(locale).contact;
-  const localizedDetails = locale === 'fr'
-    ? [
-        ['Courriel', 'Agency.tobeseen@gmail.com'],
-        ['Zone', 'France et international'],
-        ['Délai de réponse', 'Sous 24 heures'],
-        ['Format de l’appel', 'Appel stratégique gratuit'],
-      ]
-    : details;
-  const localizedExpectations = locale === 'fr'
-    ? [
-        'Une revue ciblée de votre système actuel',
-        'Une recommandation sur le prochain mouvement le plus utile',
-        'Un périmètre clair si vous décidez d’avancer',
-      ]
-    : expectations;
-
-  const localizeError = (message?: string) => {
-    if (locale !== 'fr') return message || 'Message could not be sent.';
-    if (!message || message === 'Message could not be sent.') return 'Le message n’a pas pu être envoyé.';
-    if (message === 'Please provide a valid name and email.') return 'Veuillez indiquer un nom et une adresse courriel valides.';
-    if (message === 'Contact form is not configured yet.') return 'Le formulaire de contact n’est pas encore configuré.';
-    if (message === 'Invalid request.') return 'La demande est invalide.';
-    return message;
-  };
-
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
-  const [error, setError] = useState('');
-  const [form, setForm] = useState({ name: '', email: '', business: '', service: '', message: '' });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('sending');
-    setError('');
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-
-      if (!response.ok) {
-        const data = await response.json().catch(() => ({}));
-        throw new Error(localizeError(data.error));
-      }
-
-      setStatus('sent');
-    } catch (err) {
-      setError(localizeError(err instanceof Error ? err.message : undefined));
-      setStatus('error');
-    }
-  };
-
   return (
-    <>
-      <section className="section-dark page-hero-shell" style={{ minHeight: '68vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', padding: 'clamp(6rem, 10vw, 10rem) clamp(1.5rem, 6vw, 5rem) clamp(3rem, 5vw, 5rem)' }}>
-        <div className="page-hero-gradient" />
-        <div className="editorial-shell" style={{ position: 'relative', zIndex: 2 }}>
-          <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.heroEyebrow}</p>
-          <h1 className="heading-display" style={{ fontSize: 'clamp(72px, 12vw, 150px)', color: 'var(--white)', marginBottom: '1.5rem', maxWidth: '10em' }}>{copy.heroTitle}</h1>
-          <p className="page-hero-copy">
-            {copy.heroBody}
-          </p>
+    <main className="contact-v2-shell">
+      <section className="contact-v2-canvas">
+        <Header />
+
+        <nav className="contact-v2-subnav" aria-label="Contact navigation">
+          <Link href="/">← BACK TO ALL PAGES</Link>
+          <div>
+            <Link href="/results#outcomes">OUTCOMES</Link>
+            <Link href="/results#trust">TRUST</Link>
+            <Link href="/results#speed">SPEED</Link>
+            <Link href="/results#retention">RETENTION</Link>
+          </div>
+          <Link href="/work">VIEW SERVICES →</Link>
+        </nav>
+
+        <div className="contact-v2-mobile-hero" aria-hidden="true">
+          <strong>LET’S BUILD<br />SOMETHING ICONIC<br />TOGETHER</strong>
+          <p>Have a project in mind or just want to say hello?<br />We’d love to hear from you.</p>
         </div>
-      </section>
 
-      <Marquee text={copy.marquee} separator="·" dark={true} size="md" speed={22} />
+        <span className="contact-v2-mark mark-a">+</span>
+        <span className="contact-v2-mark mark-b">+</span>
+        <span className="contact-v2-mark mark-c">+</span>
+        <span className="contact-v2-mark mark-d">+</span>
 
-      <section className="section-light" style={{ padding: 'clamp(5rem, 9vw, 8rem) clamp(1.5rem, 6vw, 5rem)' }}>
-        <div className="editorial-shell premium-grid-2" style={{ alignItems: 'start' }}>
-          <AnimatedSection>
-            <div style={{ display: 'grid', gap: '1.25rem' }}>
-              <div>
-                <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.beforeEyebrow}</p>
-                <h2 className="heading-section" style={{ fontSize: 'clamp(34px, 5vw, 68px)', color: 'var(--black)', marginBottom: '1rem' }}>{copy.beforeTitle}</h2>
-                <p style={{ color: 'var(--muted-light)', maxWidth: '34rem' }}>
-                  {copy.beforeBody}
-                </p>
-              </div>
+        <section className="contact-v2-hero" aria-labelledby="contact-title">
+          <div className="contact-v2-copy">
+            <figure className="contact-v2-title-art" aria-hidden="true">
+              <Image src="/images/uploads/contact-ref-title.png" alt="" fill priority sizes="470px" />
+            </figure>
+            <h1 id="contact-title">LET’S BUILD<br />SOMETHING ICONIC<br />TOGETHER</h1>
+            <p>Have a project in mind or just want to say hello?<br />We’d love to hear from you.</p>
+          </div>
+          <figure className="contact-v2-image">
+            <Image src="/images/uploads/contact-ref-hero.png" alt="Architectural concrete curve" fill priority sizes="502px" />
+          </figure>
+        </section>
 
-              <div className="premium-card premium-card-light">
-                <p className="premium-kicker" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>{copy.detailsTitle}</p>
-                <div style={{ display: 'grid', gap: '0.9rem' }}>
-                  {localizedDetails.map(([label, value]) => (
-                    <div key={label} style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', paddingBottom: '0.9rem', borderBottom: '1px solid rgba(10,10,10,0.08)' }}>
-                      <span className="premium-kicker" style={{ color: 'var(--muted-light)' }}>{label}</span>
-                      <span style={{ color: 'var(--black)', textAlign: 'right' }}>{value}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="premium-card premium-card-light">
-                <p className="premium-kicker" style={{ color: 'var(--accent)', marginBottom: '0.75rem' }}>{copy.expectTitle}</p>
-                <ul className="premium-list">
-                  {localizedExpectations.map((item) => (
-                    <li key={item}><span className="premium-dot" /><span style={{ color: 'var(--black)' }}>{item}</span></li>
-                  ))}
-                </ul>
-              </div>
+        <section className="contact-v2-grid" aria-label="Contact options and form">
+          <div className="contact-v2-column contact-v2-touch">
+            <h2>GET IN TOUCH</h2>
+            <div className="contact-v2-contact-cards">
+              {contactCards.map(({ icon: Icon, label, value }) => (
+                <a className="contact-v2-contact-card" href="#" key={label}>
+                  <span className="contact-v2-card-icon"><Icon size={17} strokeWidth={2.2} /></span>
+                  <span className="contact-v2-card-copy"><b>{label}</b>{value.split("\n").map((line) => <small key={line}>{line}</small>)}</span>
+                  <ArrowRight className="contact-v2-card-arrow" size={15} />
+                </a>
+              ))}
             </div>
-          </AnimatedSection>
+          </div>
 
-          <AnimatedSection delay={0.08}>
-            <div className="contact-form-shell">
-              {status === 'sent' ? (
-                <div>
-                  <p className="premium-eyebrow" style={{ marginBottom: '1rem' }}>{copy.sentEyebrow}</p>
-                  <h3 className="heading-card" style={{ fontSize: 'clamp(28px, 4vw, 44px)', color: 'var(--black)', marginBottom: '0.75rem' }}>{copy.sentTitle}</h3>
-                  <p style={{ color: 'var(--muted-light)' }}>{copy.sentBody}</p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1.25rem' }}>
-                  {status === 'error' && (
-                    <p role="alert" style={{ color: 'var(--accent-strong)', background: 'rgba(122,99,134,0.1)', border: '1px solid rgba(122,99,134,0.2)', borderRadius: '1rem', padding: '0.9rem 1rem' }}>
-                      {error}
-                    </p>
-                  )}
-                  <div>
-                    <label className="contact-label">{copy.labels.name}</label>
-                    <input className="contact-input" name="name" type="text" value={form.name} onChange={handleChange} placeholder={copy.placeholders.name} required />
-                  </div>
-                  <div>
-                    <label className="contact-label">{copy.labels.email}</label>
-                    <input className="contact-input" name="email" type="email" value={form.email} onChange={handleChange} placeholder={copy.placeholders.email} required />
-                  </div>
-                  <div>
-                    <label className="contact-label">{copy.labels.business}</label>
-                    <input className="contact-input" name="business" type="text" value={form.business} onChange={handleChange} placeholder={copy.placeholders.business} />
-                  </div>
-                  <div>
-                    <label className="contact-label">{copy.labels.service}</label>
-                    <select className="contact-input" name="service" value={form.service} onChange={handleChange}>
-                      <option value="">{copy.select}</option>
-                      <option value="website">{copy.options[0]}</option>
-                      <option value="wallet-loyalty">{copy.options[1]}</option>
-                      <option value="bookings">{copy.options[2]}</option>
-                      <option value="crm">{copy.options[3]}</option>
-                      <option value="bundle">{copy.options[4]}</option>
-                      <option value="unsure">{copy.options[5]}</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label className="contact-label">{copy.labels.message}</label>
-                    <textarea className="contact-input" name="message" rows={6} value={form.message} onChange={handleChange} placeholder={copy.placeholders.message} />
-                  </div>
-                  <button type="submit" className="cta-btn-light" disabled={status === 'sending'} style={{ justifyContent: 'center', width: '100%' }}>
-                    {status === 'sending' ? copy.sending : copy.send}
-                  </button>
-                </form>
-              )}
+          <form className="contact-v2-column contact-v2-form">
+            <h2>SEND US A MESSAGE</h2>
+            <div className="contact-v2-fields two">
+              <label>FIRST NAME<input /></label>
+              <label>LAST NAME<input /></label>
             </div>
-          </AnimatedSection>
-        </div>
+            <label>EMAIL<input /></label>
+            <label>COMPANY<input /></label>
+            <label>MESSAGE<textarea /></label>
+            <button type="button">SEND MESSAGE <ArrowRight size={15} /></button>
+          </form>
+
+          <div className="contact-v2-column contact-v2-help">
+            <h2>WE’RE HERE TO HELP</h2>
+            <div className="contact-v2-help-list">
+              {helpCards.map(({ icon: Icon, title, body }) => (
+                <article className="contact-v2-help-card" key={title}>
+                  <span><Icon size={17} strokeWidth={2.2} /></span>
+                  <div><h3>{title}</h3><p>{body}</p></div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="contact-v2-faq" aria-label="FAQ">
+          <figure>
+            <Image src="/images/uploads/contact-faq-eye.png" alt="" fill sizes="170px" />
+          </figure>
+          <div>
+            <h2>QUICKER ANSWERS</h2>
+            <p>Check our FAQ or learn more about<br />what we can do for your business.</p>
+          </div>
+          <Link href="/about">VISIT FAQ <ArrowRight size={15} /></Link>
+        </section>
+
+        <span className="contact-v2-bottom-plus left">+</span>
+        <span className="contact-v2-bottom-plus right">+</span>
       </section>
-    </>
+    </main>
   );
 }
