@@ -79,6 +79,49 @@ const jsonLd = {
   ]
 };
 
+function BrandStructuredData() {
+  return (
+    <section
+      className="brand-structured-data"
+      aria-label="TO BE SEEN agency structured business information"
+      itemScope
+      itemType="https://schema.org/ProfessionalService"
+      vocab="https://schema.org/"
+      typeof="ProfessionalService Organization"
+    >
+      <meta itemProp="url" content="https://tobeseen.agency" />
+      <meta itemProp="email" content="Agency.tobeseen@gmail.com" />
+      <meta itemProp="openingHours" content="Mo-Su 00:00-23:59" />
+      <span itemProp="name" property="name">TO BE SEEN Agency</span>
+      <span itemProp="alternateName" property="alternateName">TO BE SEEN</span>
+      <span itemProp="alternateName" property="alternateName">tobeseen agency</span>
+      <span itemProp="alternateName" property="alternateName">TBS°</span>
+      <p itemProp="description" property="description">
+        TO BE SEEN is a digital agency and premium business systems studio for website creation,
+        wallet loyalty, automated bookings, client follow-up, SEO, performance and automation.
+      </p>
+      <ul className="brand-structured-services" itemProp="hasOfferCatalog" itemScope itemType="https://schema.org/OfferCatalog" typeof="OfferCatalog">
+        <meta itemProp="name" property="name" content="TO BE SEEN digital agency services" />
+        <li itemProp="itemListElement" itemScope itemType="https://schema.org/Offer" typeof="Offer">
+          <span itemProp="itemOffered" itemScope itemType="https://schema.org/Service" typeof="Service"><span itemProp="name" property="name">Website Creation</span></span>
+        </li>
+        <li itemProp="itemListElement" itemScope itemType="https://schema.org/Offer" typeof="Offer">
+          <span itemProp="itemOffered" itemScope itemType="https://schema.org/Service" typeof="Service"><span itemProp="name" property="name">Wallet Loyalty</span></span>
+        </li>
+        <li itemProp="itemListElement" itemScope itemType="https://schema.org/Offer" typeof="Offer">
+          <span itemProp="itemOffered" itemScope itemType="https://schema.org/Service" typeof="Service"><span itemProp="name" property="name">Booking Automation</span></span>
+        </li>
+        <li itemProp="itemListElement" itemScope itemType="https://schema.org/Offer" typeof="Offer">
+          <span itemProp="itemOffered" itemScope itemType="https://schema.org/Service" typeof="Service"><span itemProp="name" property="name">Client Follow-Up CRM</span></span>
+        </li>
+        <li itemProp="itemListElement" itemScope itemType="https://schema.org/Offer" typeof="Offer">
+          <span itemProp="itemOffered" itemScope itemType="https://schema.org/Service" typeof="Service"><span itemProp="name" property="name">SEO & Performance Insights</span></span>
+        </li>
+      </ul>
+    </section>
+  );
+}
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
@@ -88,6 +131,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <BrandStructuredData />
       </body>
     </html>
   );

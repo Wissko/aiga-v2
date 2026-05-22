@@ -5969,3 +5969,57 @@ html, body { overflow-x: hidden; }
 @media (max-width: 700px) {
   .contact-v2-title-art { display: none !important; }
 }
+
+/* Discreet visible SEO entity block: Microdata + RDFa without hidden keyword stuffing. */
+.brand-structured-data {
+  background: #050505;
+  color: rgba(246,246,242,.62);
+  border-top: 1px solid rgba(246,246,242,.12);
+  padding: 18px clamp(20px, 3.6vw, 52px) 22px;
+  display: grid;
+  grid-template-columns: auto auto auto auto 1fr;
+  gap: 10px 16px;
+  align-items: start;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  line-height: 1.45;
+  letter-spacing: .035em;
+  text-transform: uppercase;
+}
+.brand-structured-data > span {
+  color: rgba(246,246,242,.78);
+  font-weight: 900;
+  white-space: nowrap;
+}
+.brand-structured-data p {
+  margin: 0;
+  max-width: 760px;
+  color: rgba(246,246,242,.52);
+  text-transform: none;
+  letter-spacing: .01em;
+}
+.brand-structured-services {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  margin: 2px 0 0;
+  padding: 0;
+  list-style: none;
+  color: rgba(246,246,242,.46);
+}
+.brand-structured-services li {
+  font-weight: 800;
+  white-space: nowrap;
+}
+@media (max-width: 760px) {
+  .brand-structured-data {
+    grid-template-columns: 1fr 1fr;
+    padding: 18px 20px 22px;
+    gap: 8px 14px;
+  }
+  .brand-structured-data p,
+  .brand-structured-services {
+    grid-column: 1 / -1;
+  }
+}
