@@ -9,9 +9,9 @@ export default function SiteFooter() {
         <div className="site-footer-brand-block">
           <Link className="site-footer-logo" href="/">TBS°</Link>
           <p className="site-footer-tagline">
+            TO BE SEEN Agency<br />
             Digital Creative Studio<br />
-            Building Bold Experiences<br />
-            And Brands.
+            Premium Systems.
           </p>
         </div>
 
@@ -37,8 +37,8 @@ export default function SiteFooter() {
 
       <div className="site-footer-bottom">
         <p className="site-footer-legal">
-          © 2024 TBS STUDIO.<br />
-          All rights reserved.
+          © 2026 TO BE SEEN AGENCY.<br />
+          Digital agency for premium systems.
         </p>
         <nav className="site-footer-links" aria-label="Footer links">
           <Link href="/privacy">Privacy Policy</Link>

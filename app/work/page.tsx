@@ -7,7 +7,7 @@ function Header() {
   return (
     <header className="work-header">
       <Link className="work-brand" href="/">TBS°</Link>
-      <p className="work-kicker">Digital Creative Studio<br />Building Bold Experiences<br />And Brands.</p>
+      <p className="work-kicker">TO BE SEEN Agency<br />Digital Creative Studio<br />Premium Systems.</p>
       <span className="work-plus">+</span>
       <Link className="work-menu" href="/menu">( MENU ) <span>+</span></Link>
     </header>
@@ -20,7 +20,7 @@ export default function WorkPage() {
       <section className="work-canvas">
         <Header />
 
-        <section className="work-content work-services-content" aria-label="TBS services">
+        <section className="work-content work-services-content" aria-label="TO BE SEEN agency services">
           <h1 className="services-title-a11y">SERVICES</h1>
           <figure className="services-title-art" aria-hidden="true">
             <Image

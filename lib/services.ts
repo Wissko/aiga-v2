@@ -16,7 +16,7 @@ export const services: TbsService[] = [
     slug: "website-creation",
     title: "Website Creation",
     label: "Web design",
-    short: "Fast, premium websites built to create trust and move visitors toward a clear enquiry.",
+    short: "Fast, premium websites by TO BE SEEN agency, built to create trust and move visitors toward a clear enquiry.",
     bestFor: "Businesses with an outdated website, weak first impression, or unclear conversion path.",
     outcome: "A sharper first impression and a cleaner route from interest to enquiry.",
     detail: "We design and build premium websites that make your business easier to understand, easier to trust, and easier to contact. The site is structured around clarity, credibility, speed, and the next commercial action.",
@@ -63,7 +63,7 @@ export const services: TbsService[] = [
     short: "Technical foundations, search visibility, and reporting that make decisions easier.",
     bestFor: "Businesses that need cleaner visibility, faster pages, and better insight into what is working.",
     outcome: "A stronger technical base and clearer decisions from practical performance data.",
-    detail: "We improve the foundations that help clients find, trust, and choose you: technical SEO, page speed, local search basics, and simple reporting.",
+    detail: "TO BE SEEN agency improves the foundations that help clients find, trust, and choose you: technical SEO, page speed, local search basics, and simple reporting.",
     bullets: ["Technical SEO", "Performance cleanup", "Search visibility", "Simple reporting"],
   },
   {

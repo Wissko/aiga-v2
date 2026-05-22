@@ -9,7 +9,7 @@ export default function AboutPage() {
       <section className="simple-page-canvas about-hero-canvas">
         <header className="simple-page-header about-hero-header">
           <Link className="simple-page-brand" href="/">TBS°</Link>
-          <p>Digital Creative Studio<br />Building Bold Experiences<br />And Brands.</p>
+          <p>TO BE SEEN Agency<br />Digital Creative Studio<br />Premium Systems.</p>
           <Link className="simple-page-menu" href="/menu">( MENU ) <span>+</span></Link>
         </header>
 
@@ -27,7 +27,7 @@ export default function AboutPage() {
             />
           </figure>
           <p>
-            We build premium digital systems that make businesses easier to trust,
+            TO BE SEEN is a digital agency building premium digital systems that make businesses easier to trust,
             easier to contact, and easier to choose.
           </p>
           <Link href="/work" className="about-hero-cta">DISCOVER OUR APPROACH <span>→</span></Link>

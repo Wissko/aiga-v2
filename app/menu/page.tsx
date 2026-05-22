@@ -17,7 +17,7 @@ export default function MenuPage() {
       <section className="menu-page-canvas menu-page-canvas-v2">
         <header className="menu-page-header">
           <Link className="menu-page-brand" href="/">TBS°</Link>
-          <p>Premium Business Systems<br />Website · Wallet Loyalty<br />Bookings · Follow-Up</p>
+          <p>TO BE SEEN Agency<br />Premium Business Systems<br />Digital Agency</p>
           <Link className="menu-page-close" href="/">CLOSE <span>×</span></Link>
         </header>
 
@@ -44,7 +44,7 @@ export default function MenuPage() {
             </div>
             <div>
               <h2>NEXT STEP</h2>
-              <p><Link href="/contact">Book a strategy call</Link><br />Built to be trusted<br />Structured for better growth</p>
+              <p><Link href="/contact">Book a strategy call</Link><br />TO BE SEEN agency<br />Built for better growth</p>
             </div>
             <div>
               <h2>COMPANY</h2>
@@ -56,7 +56,7 @@ export default function MenuPage() {
         <footer className="menu-page-footer">
           <span>✳</span>
           <h2>EXCELLENCE DESERVES<br />AN AUDIENCE.</h2>
-          <p>© 2026 TO BE SEEN<br />Premium business systems.</p>
+          <p>© 2026 TO BE SEEN<br />Digital agency · Premium systems.</p>
           <nav>
             <Link href="/privacy">PRIVACY POLICY</Link>
             <Link href="/terms">TERMS OF SERVICE</Link>

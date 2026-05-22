@@ -10,9 +10,9 @@ export default function Home() {
         <header className="home-header">
           <div className="home-brand">TBS°</div>
           <p className="home-kicker">
+            TO BE SEEN Agency<br />
             Digital Creative Studio<br />
-            Building Bold Experiences<br />
-            And Brands.
+            Premium Systems.
           </p>
           <span className="home-plus home-plus-top">+</span>
           <Link className="home-menu" href="/menu">( MENU ) <span>+</span></Link>
@@ -31,7 +31,7 @@ export default function Home() {
               />
             </figure>
             <p className="home-intro">
-              We build premium digital systems<br />
+              TO BE SEEN is a digital agency building premium systems<br />
               that make businesses easier to trust,<br />
               easier to contact, and easier to choose.
             </p>
