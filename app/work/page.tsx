@@ -1,67 +1,57 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import SiteFooter from "../../components/SiteFooter";
-import { services } from "../../lib/services";
+import CtaBand from "../../components/CtaBand";
+import Marks from "../../components/Marks";
+import PageShell from "../../components/PageShell";
+import ProjectShots from "../../components/ProjectShots";
+import Reveal from "../../components/Reveal";
+import { projectTypes } from "../../lib/work";
 
-function Header() {
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "The kinds of businesses we build for and what each one gets: beauty retail, a creative portfolio, a holiday cottage. Websites, Loyalty Pass, bookings and follow-up.",
+};
+
+export default function ProjectsPage() {
   return (
-    <header className="work-header">
-      <Link className="work-brand" href="/">TBS°</Link>
-      <p className="work-kicker">TO BE SEEN Agency<br />Digital Creative Studio<br />Premium Systems.</p>
-      <span className="work-plus">+</span>
-      <Link className="work-menu" href="/menu">( MENU ) <span>+</span></Link>
-    </header>
-  );
-}
-
-export default function WorkPage() {
-  return (
-    <main className="work-shell">
-      <section className="work-canvas">
-        <Header />
-
-        <section className="work-content work-services-content" aria-label="TO BE SEEN agency services">
-          <h1 className="services-title-a11y">SERVICES</h1>
-          <figure className="services-title-art" aria-hidden="true">
-            <Image
-              src="/images/uploads/services-title-art.png"
-              alt=""
-              width={1536}
-              height={620}
-              priority
-              sizes="(max-width: 900px) 92vw, 760px"
-            />
-          </figure>
-          <nav className="work-filters" aria-label="Service filters">
-            <a className="active" href="#core-offers">CORE OFFERS</a>
-            <a href="#visibility">VISIBILITY</a>
-            <a href="#retention">RETENTION</a>
-            <a href="#scheduling">SCHEDULING</a>
-            <a href="#crm">CRM</a>
-            <a href="#bundle">BUNDLE</a>
-          </nav>
-
-          <div className="work-grid work-services-grid" id="core-offers">
-            {services.map((service) => (
-              <Link className="work-service-card" href={`/services/${service.slug}`} key={service.slug}>
-                <span className="work-service-number">{service.n}</span>
-                <span className="work-service-label">{service.label}</span>
-                <h2>{service.title}</h2>
-                <p>{service.short}</p>
-                <b>VIEW SERVICE <span>→</span></b>
-              </Link>
-            ))}
-          </div>
-
-          <footer className="work-stats work-services-stats">
-            <div><strong>06</strong><span>CORE OFFERS</span></div>
-            <div><strong>01</strong><span>COHERENT SYSTEM</span></div>
-            <div><strong>24</strong><span>HOUR STRUCTURE</span></div>
-            <Link href="/contact">BOOK A CALL <span>→</span></Link>
-          </footer>
-        </section>
+    <PageShell tone="paper">
+      <section className="page-hero" aria-labelledby="projects-title">
+        <p className="eyebrow">Projects</p>
+        <div className="title-wrap">
+          <Marks />
+          <h1 id="projects-title" className="display h1 ink-title">Projects</h1>
+        </div>
+        <p className="lede">
+          The kinds of businesses we build for, and what each one gets. Every project here is based on a system we have delivered; yours will be shaped the same way, around how you actually work.
+        </p>
       </section>
-      <SiteFooter />
-    </main>
+
+      <section className="container" aria-label="Project types">
+        <ul className="cases">
+          {projectTypes.map((item, index) => (
+            <Reveal as="li" key={item.slug} delay={index * 90}>
+              <Link href={`/work/${item.slug}`} className="case-card">
+                {item.shots ? (
+                  <ProjectShots shots={item.shots} alt={`${item.title} website, desktop and mobile`} />
+                ) : (
+                  <figure className="case-media">
+                    <Image src={item.image} alt={item.alt} fill sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" />
+                  </figure>
+                )}
+                <p className="case-meta">
+                  <span>{item.kind}</span>
+                </p>
+                <h2 className="display">{item.title}</h2>
+                <p>{item.summary}</p>
+              </Link>
+            </Reveal>
+          ))}
+        </ul>
+      </section>
+
+      <CtaBand title="Your business, next." text="Tell us what you do and where it leaks. We will tell you what we would build first." />
+    </PageShell>
   );
 }
